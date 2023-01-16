@@ -2,7 +2,11 @@
 title: "BIO 5100 Resources"
 ---
 
-## R Code
+## R & R Coding
+
+#### [How to install R, RStudio, and R packages](https://www.claisselab.com/install-r-rstudio)
+
+-   Videos, links and explanation for how to install, and what is R, RStudio and R Packages.
 
 #### [Posit Primers](https://posit.cloud/learn/primers)
 
@@ -11,6 +15,16 @@ title: "BIO 5100 Resources"
 #### [Rtutor.ai](http://rtutor.ai/)
 
 -   AI R code writer
+
+#### [R Coding (Tidyverse) Style Guide](https://style.tidyverse.org/index.html)
+
+-   General style guidance for writing clear and efficient R code.
+-   And additional style guidance can also be found here: <https://r4ds.hadley.nz/workflow-style.html>
+
+#### [R Coding Cheat Sheets](https://posit.co/resources/cheatsheets/)
+
+-   Cheat Sheets for writing various types of R code
+-   Starting out, I'd suggest downloading (and maybe printing out) these two cheat sheets: ***Data Visualization w/ ggplot2*** & ***Data Transformation w/ dplyr***
 
 ------------------------------------------------------------------------
 
@@ -22,4 +36,40 @@ title: "BIO 5100 Resources"
 
 #### [Awesome Quarto (Github site)](https://github.com/mcanouil/awesome-quarto)
 
--   A curated list of Quarto talks, tools, examples & articles
+-   A(n awesome) curated list of Quarto talks, tools, examples & articles
+
+------------------------------------------------------------------------
+
+## Statistics
+
+#### [Common statistical tests as linear models](https://lindeloev.github.io/tests-as-linear/)
+
+-   Reference website showing the linear models underlying common parametric and \"non-parametric\" traditional statistical tests.
+
+------------------------------------------------------------------------
+
+## Misc.
+
+#### [Connect your Google Scholar to CPP Library to access pdfs of journal articles](https://libguides.library.cpp.edu/c.php?g=863498&p=6191577)
+
+-   Link your CPP library account to your google scholar
+
+#### [How to appropriately cite R and R packages](https://ropensci.org/blog/2021/11/16/how-to-cite-r-and-r-packages/)
+
+-   A short primer from a popular R blog on how to cite R and R packages in your thesis, publications, etc.
+
+------------------------------------------------------------------------
+
+## Continue your learning
+
+#### [Tidy Tuesday Website](https://github.com/rfordatascience/tidytuesday)
+
+-   The weekly `#TidyTuesday` event people all over the world are doing! Every week they post a raw dataset, a chart or article related to that dataset, and ask you to explore the data. Some people will then post what they come up with on Twitter. A good way to keep practicing your R skills after Bio 5100 is over, can make it weekly thing you do with fellow students...
+
+#### [prstatistics.com (statistics workshops)](https://www.prstatistics.com/)
+
+-   Company that offers \~1 week workshops on various specific biostatistics and R coding topics.
+
+#### [Highland Statistics (advanced statistics workshops and books)](https://www.highstat.com/index.php/courses)
+
+-   Company that offers "how to" textbooks and \~1 week workshops on advanced statistics topics (e.g., generalized linear models, mixed models).

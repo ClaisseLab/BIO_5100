@@ -11,6 +11,34 @@
     "href": "index.html",
     "title": "BIO 5100 Resources",
     "section": "",
-    "text": "R Code\n\nPosit Primers\n\nOnline tidyverse coding tutorials (from Posit, formerly RStudio)\n\n\n\nRtutor.ai\n\nAI R code writer\n\n\n\n\n\nQuarto\n\nquarto.org\n\nMain reference website\n\n\n\nAwesome Quarto (Github site)\n\nA curated list of Quarto talks, tools, examples & articles"
+    "text": "Videos, links and explanation for how to install, and what is R, RStudio and R Packages.\n\n\n\n\n\nOnline tidyverse coding tutorials (from Posit, formerly RStudio)\n\n\n\n\n\nAI R code writer\n\n\n\n\n\nGeneral style guidance for writing clear and efficient R code.\nAnd additional style guidance can also be found here: https://r4ds.hadley.nz/workflow-style.html\n\n\n\n\n\nCheat Sheets for writing various types of R code\nStarting out, I’d suggest downloading (and maybe printing out) these two cheat sheets: Data Visualization w/ ggplot2 & Data Transformation w/ dplyr"
+  },
+  {
+    "objectID": "index.html#quarto",
+    "href": "index.html#quarto",
+    "title": "BIO 5100 Resources",
+    "section": "Quarto",
+    "text": "Quarto\n\nquarto.org\n\nMain reference website\n\n\n\nAwesome Quarto (Github site)\n\nA(n awesome) curated list of Quarto talks, tools, examples & articles"
+  },
+  {
+    "objectID": "index.html#statistics",
+    "href": "index.html#statistics",
+    "title": "BIO 5100 Resources",
+    "section": "Statistics",
+    "text": "Statistics\n\nCommon statistical tests as linear models\n\nReference website showing the linear models underlying common parametric and \"non-parametric\" traditional statistical tests."
+  },
+  {
+    "objectID": "index.html#misc.",
+    "href": "index.html#misc.",
+    "title": "BIO 5100 Resources",
+    "section": "Misc.",
+    "text": "Misc.\n\nConnect your Google Scholar to CPP Library to access pdfs of journal articles\n\nLink your CPP library account to your google scholar\n\n\n\nHow to appropriately cite R and R packages\n\nA short primer from a popular R blog on how to cite R and R packages in your thesis, publications, etc."
+  },
+  {
+    "objectID": "index.html#continue-your-learning",
+    "href": "index.html#continue-your-learning",
+    "title": "BIO 5100 Resources",
+    "section": "Continue your learning",
+    "text": "Continue your learning\n\nTidy Tuesday Website\n\nThe weekly #TidyTuesday event people all over the world are doing! Every week they post a raw dataset, a chart or article related to that dataset, and ask you to explore the data. Some people will then post what they come up with on Twitter. A good way to keep practicing your R skills after Bio 5100 is over, can make it weekly thing you do with fellow students…\n\n\n\nprstatistics.com (statistics workshops)\n\nCompany that offers ~1 week workshops on various specific biostatistics and R coding topics.\n\n\n\nHighland Statistics (advanced statistics workshops and books)\n\nCompany that offers “how to” textbooks and ~1 week workshops on advanced statistics topics (e.g., generalized linear models, mixed models)."
   }
 ]
