@@ -2,6 +2,24 @@
 title: "BIO 5100 Resources"
 ---
 
-This is a Quarto website.
+# R Code
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+#### [Posit Primers](https://posit.cloud/learn/primers)
+
+-   Online tidyverse coding tutorials (from Posit, formerly RStudio)
+
+#### [Rtutor.ai](http://rtutor.ai/)
+
+-   AI R code writer
+
+------------------------------------------------------------------------
+
+# Quarto
+
+#### [quarto.org](https://quarto.org/)
+
+-   Main reference website
+
+#### [Awesome Quarto (Github site)](https://github.com/mcanouil/awesome-quarto)
+
+-   A curated list of Quarto talks, tools, examples & articles
