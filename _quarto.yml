@@ -3,12 +3,26 @@ project:
   output-dir: docs
 
 website:
-  title: "BIO_5100"
+  title: "BIO 5100 Resources"
   navbar:
+    search: false
+    background: primary
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - text: "Home"
+        file: index.qmd
+#      - about.qmd
+    right:
+      - icon: house-fill
+        href: https://claisselab.com
+      - icon: twitter
+        href: https://twitter.com/JeremyClaisse
+  page-footer:
+    left: This is a quarto built website <https://quarto.org/docs/websites>.
+    right:  
+      - icon: house-fill
+        href: https://tclaisselab.com
+      - icon: twitter
+        href: https://twitter.com/JeremyClaisse
 
 format:
   html:

@@ -1,11 +1,9 @@
 ---
-title: "BIO_5100"
+title: "BIO 5100 Resources"
+date: last-modified
+date-format: "D MMM YYYY"
 ---
 
 This is a Quarto website.
 
 To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{r}
-1 + 1
-```
