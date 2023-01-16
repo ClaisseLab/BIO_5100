@@ -1,7 +1,5 @@
 ---
 title: "BIO 5100 Resources"
-date: last-modified
-date-format: "D MMM YYYY"
 ---
 
 This is a Quarto website.
