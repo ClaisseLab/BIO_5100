@@ -9,7 +9,7 @@ website:
     left:
       - text: "Resources"
         file: index.qmd
-#      - about.qmd
+      - Online_Books.qmd
     right:
       - icon: house-fill
         href: https://claisselab.com

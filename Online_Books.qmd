@@ -1,0 +1,55 @@
+---
+title: "Online Books"
+---
+
+#### [Statistical Inference via Data Science (A ModernDive into R and the Tidyverse)](https://moderndive.com/index.html)
+
+-   Introduction to R, RStudio and the Tidyverse for visualizing, wrangling and analyzing your data.
+
+#### [Fundamentals of Data Visualization (using R) by Claus O. Wilke](https://clauswilke.com/dataviz/index.html)
+
+-   A guide to making visualizations that accurately reflect the data, tell a story, and look professional. 
+
+-   The R code for the book can be found on GitHub, at <https://github.com/clauswilke/dataviz>
+
+#### [Elements of Statistical Modeling for Experimental Biology by Jeffrey A. Walker](https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/index.html)
+
+-   Takes a statistical modeling approach, focusing on estimates of effects and uncertainty instead of traditional hypothesis testing.
+
+#### [R for Data Science (2nd Edition) by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund](https://r4ds.had.co.nz/index.html)
+
+-   Mostly covers details of using the tidyverse to import, wrangle and get your data ready to analyze. 
+
+#### [Analysis of community ecology data in R by David Zelený](https://www.davidzeleny.net/anadat-r/doku.php/en:start)
+
+-   Multivariate analysis including ordination (e.g., PCA, nMDS plots), cluster analysis and diversity analysis
+
+#### [Applied Biostats by Yaniv Brandvain](https://bookdown.org/ybrandvain/Applied-Biostats/)
+
+-   A "book" written to accompany his biostats course, lots of good guidance and resources.
+
+#### [Statistical Thinking for the 21st Century by Russell A. Poldrack](https://statsthinking21.github.io/statsthinking21-core-site/index.html#)
+
+-   Modern approach to introductory statistics, good sections on plotting and summarizing data.
+
+#### [Introduction to Modern Statistics by Mine Çetinkaya-Rundel & Johanna Hardin](https://openintro-ims.netlify.app/index.html)
+
+-   Modern take on introductory statistics in an R based format.
+
+#### [Modern Statistics for Modern Biology by Susan Holmes, Wolfgang Huber](https://www.huber.embl.de/msmb/introduction.html)
+
+-   Covers many modern approaches to data analysis, and many different types of data including RNA-Seq, flow-cytometry, taxa abundances, imaging data and single cell measurements.
+
+-   Note some of the R code relies on Base R instead of Tidyverse functions.
+
+#### [Broadening Your Statistical Horizons: Generalized Linear Models and Multilevel Models By Julie Legler and Paul Roback](https://bookdown.org/roback/bookdown-BeyondMLR/)
+
+-   More advanced stats topics including Generalized Linear Models likelihood theory, zero-inflated Poisson, and parametric bootstrapping
+
+#### [Biological Statistics by John H. McDonald](https://stats.libretexts.org/Bookshelves/Applied_Statistics/Book%3A_Biological_Statistics_(McDonald))
+
+-   Traditional statistics text, covering details of specific hypothesis tests (*not R based, but potentially useful if your adviser makes you to use old school statistics*)
+
+#### [The Big Book of R (links to online textbooks)](https://www.bigbookofr.com/)
+
+-   A maintained list of of online R textbook resources

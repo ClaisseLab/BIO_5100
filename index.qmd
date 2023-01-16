@@ -2,7 +2,7 @@
 title: "BIO 5100 Resources"
 ---
 
-## R & R Coding
+## R & Coding
 
 #### [How to install R, RStudio, and R packages](https://www.claisselab.com/install-r-rstudio)
 
@@ -26,8 +26,6 @@ title: "BIO 5100 Resources"
 -   Cheat Sheets for writing various types of R code
 -   Starting out, I'd suggest downloading (and maybe printing out) these two cheat sheets: ***Data Visualization w/ ggplot2*** & ***Data Transformation w/ dplyr***
 
-------------------------------------------------------------------------
-
 ## Quarto
 
 #### [quarto.org](https://quarto.org/)
@@ -38,15 +36,11 @@ title: "BIO 5100 Resources"
 
 -   A(n awesome) curated list of Quarto talks, tools, examples & articles
 
-------------------------------------------------------------------------
-
 ## Statistics
 
 #### [Common statistical tests as linear models](https://lindeloev.github.io/tests-as-linear/)
 
 -   Reference website showing the linear models underlying common parametric and \"non-parametric\" traditional statistical tests.
-
-------------------------------------------------------------------------
 
 ## Misc.
 
@@ -57,8 +51,6 @@ title: "BIO 5100 Resources"
 #### [How to appropriately cite R and R packages](https://ropensci.org/blog/2021/11/16/how-to-cite-r-and-r-packages/)
 
 -   A short primer from a popular R blog on how to cite R and R packages in your thesis, publications, etc.
-
-------------------------------------------------------------------------
 
 ## Continue your learning
 
