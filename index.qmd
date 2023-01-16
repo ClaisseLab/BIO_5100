@@ -2,7 +2,7 @@
 title: "BIO 5100 Resources"
 ---
 
-# R Code
+## R Code
 
 #### [Posit Primers](https://posit.cloud/learn/primers)
 
@@ -14,7 +14,7 @@ title: "BIO 5100 Resources"
 
 ------------------------------------------------------------------------
 
-# Quarto
+## Quarto
 
 #### [quarto.org](https://quarto.org/)
 
