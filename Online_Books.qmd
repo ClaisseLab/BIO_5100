@@ -42,7 +42,7 @@ title: "Online Books"
 
 -   Note some of the R code relies on Base R instead of Tidyverse functions.
 
-#### [Broadening Your Statistical Horizons: Generalized Linear Models and Multilevel Models By Julie Legler and Paul Roback](https://bookdown.org/roback/bookdown-BeyondMLR/)
+#### [Beyond Multiple Linear Regression: Generalized Linear Models and Multilevel Models By Julie Legler and Paul Roback](https://bookdown.org/roback/bookdown-BeyondMLR/)
 
 -   More advanced stats topics including Generalized Linear Models likelihood theory, zero-inflated Poisson, and parametric bootstrapping
 

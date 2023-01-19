@@ -40,7 +40,17 @@ title: "BIO 5100 Resources"
 
 #### [Common statistical tests as linear models](https://lindeloev.github.io/tests-as-linear/)
 
--   Reference website showing the linear models underlying common parametric and \"non-parametric\" traditional statistical tests.
+-   Reference website showing the linear models underlying common parametric and "non-parametric" traditional statistical tests.
+
+## Data Management
+
+#### [Openscapes - Guidance for data organization in spreadsheets](https://openscapes.github.io/series/data-strategies#data-organization-in-spreadsheets)
+
+-   Compiled (by [openscapes.org](https://www.openscapes.org/)) guidance from multiple resources for how to organize and format your data in spreadsheets so that it is ready to analyze in R and follows "tidy data principles."
+
+#### [How to name things (files) - by Jenny Bryan](https://speakerdeck.com/jennybc/how-to-name-files)
+
+-   Best practices for naming your files [by Jenny Bryan](https://jennybryan.org/about/) *(and note she's got lots of other great resources on her website)*
 
 ## Misc.
 
