@@ -53,6 +53,6 @@
     "href": "index.html#data-management",
     "title": "BIO 5100 Resources",
     "section": "Data Management",
-    "text": "Data Management\n\nOpenscapes - Guidance for data organization in spreadsheets\n\nCompiled (by openscapes.org) guidance from multiple resources for how to organize and format your data in spreadsheets so that it is ready to analyze in R and follows “tidy data principles.”\n\n\n\nHow to name things (files) - by Jenny Bryan\n\nBest practices for naming your files by Jenny Bryan (and note she’s got lots of other great resources on her website)"
+    "text": "Data Management\n\nOpenscapes - Guidance for data organization in spreadsheets\n\nCompiled (by openscapes.org) guidance from multiple resources for how to organize and format your data in spreadsheets so that it is ready to analyze in R and follows “tidy data” principles.\n\n\n\nHow to name things (files) - by Jenny Bryan\n\nBest practices for naming your files by Jenny Bryan (and note she’s got lots of other great resources on her website)"
   }
 ]

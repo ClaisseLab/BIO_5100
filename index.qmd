@@ -46,7 +46,7 @@ title: "BIO 5100 Resources"
 
 #### [Openscapes - Guidance for data organization in spreadsheets](https://openscapes.github.io/series/data-strategies#data-organization-in-spreadsheets)
 
--   Compiled (by [openscapes.org](https://www.openscapes.org/)) guidance from multiple resources for how to organize and format your data in spreadsheets so that it is ready to analyze in R and follows "tidy data principles."
+-   Compiled (by [openscapes.org](https://www.openscapes.org/)) guidance from multiple resources for how to organize and format your data in spreadsheets so that it is ready to analyze in R and follows "tidy data" principles.
 
 #### [How to name things (files) - by Jenny Bryan](https://speakerdeck.com/jennybc/how-to-name-files)
 
