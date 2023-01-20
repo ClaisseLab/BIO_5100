@@ -22,7 +22,7 @@ title: "BIO 5100 Resources"
 -   Cheat Sheets for writing various types of R code
 -   Starting out, I'd suggest downloading (and maybe printing out) these two cheat sheets: ***Data Visualization w/ ggplot2*** & ***Data Transformation w/ dplyr***
 
-#### [Tidy Data Tutor: visualize your dplyr analysis pipelines](https://posit.cloud/learn/primers)
+#### [Tidy Data Tutor: visualize your dplyr analysis pipelines](https://tidydatatutor.com/)
 
 -   Visualizes dplyr code to help you understand what specific dplyr functions are doing with the data
 
