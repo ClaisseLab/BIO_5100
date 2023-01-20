@@ -12,10 +12,6 @@ title: "BIO 5100 Resources"
 
 -   Online tidyverse coding tutorials (from Posit, formerly RStudio)
 
-#### [Rtutor.ai](http://rtutor.ai/)
-
--   AI R code writer
-
 #### [R Coding (Tidyverse) Style Guide](https://style.tidyverse.org/index.html)
 
 -   General style guidance for writing clear and efficient R code.
@@ -25,6 +21,14 @@ title: "BIO 5100 Resources"
 
 -   Cheat Sheets for writing various types of R code
 -   Starting out, I'd suggest downloading (and maybe printing out) these two cheat sheets: ***Data Visualization w/ ggplot2*** & ***Data Transformation w/ dplyr***
+
+#### [Tidy Data Tutor: visualize your dplyr analysis pipelines](https://posit.cloud/learn/primers)
+
+-   Visualizes dplyr code to help you understand what specific dplyr functions are doing with the data
+
+#### [Rtutor.ai](http://rtutor.ai/)
+
+-   AI R code writer, can help you figure out what you need to do or debug your code
 
 ## Quarto
 
