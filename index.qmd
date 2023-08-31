@@ -54,7 +54,7 @@ title: "BIO 5100 Resources"
 
 #### [How to name things (files) - by Jenny Bryan](https://speakerdeck.com/jennybc/how-to-name-files)
 
--   Best practices for naming your files [by Jenny Bryan](https://jennybryan.org/about/) *(and note she's got lots of other great resources on her website)*
+-   Best practices for naming your files [by Jenny Bryan](https://jennybryan.org/about/) *(& she's got lots of other great resources on her website)*
 
 ## Misc.
 
