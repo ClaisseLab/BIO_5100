@@ -10,19 +10,20 @@ website:
       - text: "Resources"
         file: index.qmd
       - Online_Books.qmd
+      - text: "BIO 5800L"
+        href: https://claisselab.github.io/BIO_5800L/
     right:
       - icon: house-fill
         href: https://claisselab.com
-      - icon: twitter
-        href: https://twitter.com/JeremyClaisse
+      - icon: github
+        href: https://github.com/ClaisseLab
   page-footer:
     left: This is a quarto built website <https://quarto.org/docs/websites>.
     right:  
       - icon: house-fill
         href: https://claisselab.com
-      - icon: twitter
-        href: https://twitter.com/JeremyClaisse
-
+      - icon: github
+        href: https://github.com/ClaisseLab
 format:
   html:
     theme: darkly
