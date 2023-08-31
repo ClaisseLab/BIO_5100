@@ -29,6 +29,5 @@ format:
     theme: darkly
     css: styles.css
     toc: true
-
 editor: visual
 
