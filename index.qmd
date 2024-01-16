@@ -17,6 +17,16 @@ title: "BIO 5100 Resources"
 -   General style guidance for writing clear and efficient R code.
 -   And additional style guidance can also be found here: <https://r4ds.hadley.nz/workflow-style.html>
 
+#### [Data Carpentry Workshops](https://datacarpentry.org/lessons/)
+
+-   Data Carpentry develops workshops on the fundamental data skills needed to conduct research, and its lessons are domain specific (e.g., ecology, genomics, geospatial). Lessons are in the form of self-paced tutorials, and are designed for researchers to teach themselves basic concepts and skills for working with data.
+-   [Ecology Workshop](https://datacarpentry.org/ecology-workshop/)
+-   [Genomics Workshop](https://datacarpentry.org/genomics-workshop/)
+
+#### [(Youtube Channel Playlist) Introduction to Data Science in R](https://youtube.com/playlist?list=PL9qLtkRkGWLeh9UNptt_734t0u1zXz5wy&si=D5JDhulAbPz9s9M-)
+
+-   Brief 3-8 min videos on various topics From the Duke Center for Computational Thinking covering topics like data manipulation with dplyr, data visualization with ggplot2, and using other functions from the tidyverse.
+
 #### [R Coding Cheat Sheets](https://posit.co/resources/cheatsheets/)
 
 -   Cheat Sheets for writing various types of R code
@@ -26,9 +36,19 @@ title: "BIO 5100 Resources"
 
 -   Visualizes dplyr code to help you understand what specific dplyr functions are doing with the data
 
+## Coding with AI help
+
 #### [Rtutor.ai](http://rtutor.ai/)
 
 -   AI R code writer, can help you figure out what you need to do or debug your code
+
+#### [GitHub Copilot in RStudio](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html)
+
+-   To use GitHub Copilot, you must have a GitHub account and an active subscription to Copilot. GitHub Copilot is free for [students](https://docs.github.com/en/education/explore-the-benefits-of-teaching-and-learning-with-github-education/github-global-campus-for-students/apply-to-github-global-campus-as-a-student) and [educators](https://education.github.com/teachers).
+
+#### [(video) How to use GitHub Copilot and ChatGPT in RStudio](https://youtu.be/t7NrkAeosog?si=FmJALL3OHPVpAa2S)
+
+-   In this video, we learn how to use GitHub Copilot and ChatGPT directly from within RStudio. Specifically, we'll go over all of the setup steps that are required for using 1) the RStudio Copilot integration, and 2) the chattr package which allows you to interact with Large Language Models (LLMs) like the OpenAI models.
 
 ## Quarto
 
@@ -40,7 +60,15 @@ title: "BIO 5100 Resources"
 
 -   A(n awesome) curated list of Quarto talks, tools, examples & articles
 
+#### [(Video) Getting started with Quarto](https://youtu.be/_f3latmOhew?si=uhyPfszmTX8FfwFu)
+
+-   This video walks you through creating documents, presentations, and websites and publishing with Quarto. The video features authoring Quarto documents with executable R code chunks using the RStudio Visual Editor (https://quarto.org/docs/visual-editor/).
+
 ## Statistics
+
+#### [MarinStatsLectures Youtube Channel](https://www.youtube.com/@marinstatlectures/playlists)
+
+-   These R Programming and Statistics videos/tutorials were originally created for Master's and PhD students at UBC by Professor Mike Marin and are now available to public. These videos provide a comprehensive and completely free set of tutorials for introductory and intermediate concepts in Statistics and Statistics with R. 
 
 #### [Common statistical tests as linear models](https://lindeloev.github.io/tests-as-linear/)
 
@@ -56,6 +84,8 @@ title: "BIO 5100 Resources"
 
 -   Best practices for naming your files [by Jenny Bryan](https://jennybryan.org/about/) *(& she's got lots of other great resources on her website)*
 
+#### [Data Carpentry - Common Mistakes Storing Data in Spreadsheets](https://datacarpentry.org/spreadsheet-ecology-lesson/02-common-mistakes.html)
+
 ## Misc.
 
 #### [Connect your Google Scholar to CPP Library to access pdfs of journal articles](https://libguides.library.cpp.edu/c.php?g=863498&p=6191577)
@@ -65,6 +95,9 @@ title: "BIO 5100 Resources"
 #### [How to appropriately cite R and R packages](https://ropensci.org/blog/2021/11/16/how-to-cite-r-and-r-packages/)
 
 -   A short primer from a popular R blog on how to cite R and R packages in your thesis, publications, etc.
+
+#### [Fisheries-Related R Packages](https://fishr-core-team.github.io/fishR/pages/packages.html)
+
 
 ## Continue your learning
 
@@ -79,3 +112,11 @@ title: "BIO 5100 Resources"
 #### [Highland Statistics (advanced statistics workshops and books)](https://www.highstat.com/index.php/courses)
 
 -   Company that offers "how to" textbooks and \~1 week workshops on advanced statistics topics (e.g., generalized linear models, mixed models).
+
+## Communities to join
+
+#### [R Ladies](https://rladies.org/)
+
+-   Attend [events](https://rladies.org/activities/events/), or join a [Local Chapter](https://benubah.github.io/r-community-explorer/rladies.html) (e.g., [R Ladies Pasadena](https://www.meetup.com/rladies-pasadena/),[R Ladies Riverside](https://www.meetup.com/rladies-riverside/))
+
+

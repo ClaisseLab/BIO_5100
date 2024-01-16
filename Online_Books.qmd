@@ -4,21 +4,21 @@ title: "Online Books"
 
 #### [Statistical Inference via Data Science (A ModernDive into R and the Tidyverse)](https://moderndive.com/index.html)
 
--   Introduction to R, RStudio and the Tidyverse for visualizing, wrangling and analyzing your data.
+-   Introduction to R, RStudio and the Tidyverse for visualizing, wrangling and analyzing your data.
 
 #### [Applied Statistics for Experimental Biology by Jeffrey A. Walker](https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/)
 
 -   (Primary text we follow for BIO 5100/L) Takes a statistical modeling approach, focusing on estimates of effects and uncertainty instead of traditional hypothesis testing.
 
-#### [Fundamentals of Data Visualization (using R) by Claus O. Wilke](https://clauswilke.com/dataviz/index.html)
-
--   A guide to making visualizations that accurately reflect the data, tell a story, and look professional. 
-
--   The R code for the book can be found on GitHub, at <https://github.com/clauswilke/dataviz>
-
 #### [R for Data Science (2nd Edition) by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund](https://r4ds.hadley.nz/)
 
--   Mostly covers details of using the tidyverse to import, wrangle and get your data ready to analyze. 
+-   Mostly covers details of using the tidyverse to import, wrangle and get your data ready to analyze.
+
+#### [Fundamentals of Data Visualization (using R) by Claus O. Wilke](https://clauswilke.com/dataviz/index.html)
+
+-   A guide to making visualizations that accurately reflect the data, tell a story, and look professional.
+
+-   The R code for the book can be found on GitHub, at <https://github.com/clauswilke/dataviz>
 
 #### [Analysis of community ecology data in R by David Zelený](https://www.davidzeleny.net/anadat-r/doku.php/en:start)
 
