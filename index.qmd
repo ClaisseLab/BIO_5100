@@ -68,7 +68,7 @@ title: "BIO 5100 Resources"
 
 #### [MarinStatsLectures Youtube Channel](https://www.youtube.com/@marinstatlectures/playlists)
 
--   These R Programming and Statistics videos/tutorials were originally created for Master's and PhD students at UBC by Professor Mike Marin and are now available to public. These videos provide a comprehensive and completely free set of tutorials for introductory and intermediate concepts in Statistics and Statistics with R. 
+-   These R Programming and Statistics videos/tutorials were originally created for Master's and PhD students at UBC by Professor Mike Marin and are now available to public. These videos provide a comprehensive and completely free set of tutorials for introductory and intermediate concepts in Statistics and Statistics with R.
 
 #### [Common statistical tests as linear models](https://lindeloev.github.io/tests-as-linear/)
 
@@ -98,7 +98,6 @@ title: "BIO 5100 Resources"
 
 #### [Fisheries-Related R Packages](https://fishr-core-team.github.io/fishR/pages/packages.html)
 
-
 ## Continue your learning
 
 #### [Tidy Tuesday Website](https://github.com/rfordatascience/tidytuesday)
@@ -118,5 +117,3 @@ title: "BIO 5100 Resources"
 #### [R Ladies](https://rladies.org/)
 
 -   Attend [events](https://rladies.org/activities/events/), or join a [Local Chapter](https://benubah.github.io/r-community-explorer/rladies.html) (e.g., [R Ladies Pasadena](https://www.meetup.com/rladies-pasadena/),[R Ladies Riverside](https://www.meetup.com/rladies-riverside/))
-
-
