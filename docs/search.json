@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "qmd_to_R_Script.html",
+    "href": "qmd_to_R_Script.html",
+    "title": "Convert .qmd Quarto file to .R Script",
+    "section": "",
+    "text": "If your adviser wants you to send them your code in a .R Script, but you originally wrote it in a .qmd file…\n\nthis process removes the text parts of the .qmd, just keeps code and comments within all code chunks\n\n\nOpen RStudio by double clicking on your .qmd file (which auto sets the working directory to that folder)\nClose just .qmd file (leave RStudio open)\n\n\nOr you could open RStudio and manually set the working directory the folder where .qmd file is (RStudio &gt; Session &gt; Set working directory)\n\n\nRun code below in Rstudio console (but edit file_name.qmd to match your .qmd file name):\n\nknitr::purl(\"file_name.qmd\")\nThis will save a new .R script file in that folder that is just the code from your .qmd file\n\nAdapted from https://bookdown.org/yihui/rmarkdown-cookbook/purl.html\n(.Rmd works same way as .qmd)"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "BIO 5100 Resources",
@@ -63,17 +70,17 @@
     "text": "Communities to join\n\nR Ladies\n\nAttend events, or join a Local Chapter (e.g., R Ladies Pasadena,R Ladies Riverside)\n\n\n\nData Science Hangout\n\nJoin a community of data scientists that share insights about what it means to be a responsible, effective, and inspiring leader."
   },
   {
+    "objectID": "Example_Code.html",
+    "href": "Example_Code.html",
+    "title": "Example Code from BIO 5100/L",
+    "section": "",
+    "text": "Links to class example code from Spring 2024 BIO 5100/L will be posted here."
+  },
+  {
     "objectID": "Online_Books.html",
     "href": "Online_Books.html",
     "title": "Online Books",
     "section": "",
     "text": "Statistical Inference via Data Science (A ModernDive into R and the Tidyverse)\n\nIntroduction to R, RStudio and the Tidyverse for visualizing, wrangling and analyzing your data.\n\n\n\nApplied Statistics for Experimental Biology by Jeffrey A. Walker\n\n(Primary text we follow for BIO 5100/L) Takes a statistical modeling approach, focusing on estimates of effects and uncertainty instead of traditional hypothesis testing.\n\n\n\nR for Data Science (2nd Edition) by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund\n\nMostly covers details of using the tidyverse to import, wrangle and get your data ready to analyze.\n\n\n\nFundamentals of Data Visualization (using R) by Claus O. Wilke\n\nA guide to making visualizations that accurately reflect the data, tell a story, and look professional.\nThe R code for the book can be found on GitHub, at https://github.com/clauswilke/dataviz\n\n\n\nAnalysis of community ecology data in R by David Zelený\n\nMultivariate analysis including ordination (e.g., PCA, nMDS plots), cluster analysis and diversity analysis\n\n\n\nApplied Biostats by Yaniv Brandvain\n\nA “book” written to accompany his biostats course, lots of good guidance and resources.\n\n\n\nStatistical Thinking for the 21st Century by Russell A. Poldrack\n\nModern approach to introductory statistics, good sections on plotting and summarizing data.\n\n\n\nIntroduction to Modern Statistics by Mine Çetinkaya-Rundel & Johanna Hardin\n\nModern take on introductory statistics in an R based format.\n\n\n\nModern Statistics for Modern Biology by Susan Holmes, Wolfgang Huber\n\nCovers many modern approaches to data analysis, and many different types of data including RNA-Seq, flow-cytometry, taxa abundances, imaging data and single cell measurements.\nNote some of the R code relies on Base R instead of Tidyverse functions.\n\n\n\nBeyond Multiple Linear Regression: Generalized Linear Models and Multilevel Models By Julie Legler and Paul Roback\n\nMore advanced stats topics including Generalized Linear Models likelihood theory, zero-inflated Poisson, and parametric bootstrapping\n\n\n\nBiological Statistics by John H. McDonald\n\nTraditional statistics text, covering details of specific hypothesis tests (not R based, but potentially useful if your adviser makes you to use old school statistics)\n\n\n\nThe Big Book of R (links to online textbooks)\n\nA maintained list of of online R textbook resources"
-  },
-  {
-    "objectID": "qmd_to_R_Script.html",
-    "href": "qmd_to_R_Script.html",
-    "title": "Convert .qmd Quarto file to .R Script",
-    "section": "",
-    "text": "If your adviser wants you to send them your code in a .R Script, but you originally wrote it in a .qmd file…\n\nthis process removes the text parts of the .qmd, just keeps code and comments within all code chunks\n\n\nOpen RStudio by double clicking on your .qmd file (which auto sets the working directory to that folder)\nClose just .qmd file (leave RStudio open)\n\n\nOr you could open RStudio and manually set the working directory the folder where .qmd file is (RStudio &gt; Session &gt; Set working directory)\n\n\nRun code below in Rstudio console (but edit file_name.qmd to match your .qmd file name):\n\nknitr::purl(\"file_name.qmd\")\nThis will save a new .R script file in that folder that is just the code from your .qmd file\n\nAdapted from https://bookdown.org/yihui/rmarkdown-cookbook/purl.html\n(.Rmd works same way as .qmd)"
   }
 ]

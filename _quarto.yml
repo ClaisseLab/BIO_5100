@@ -12,6 +12,8 @@ website:
       - Online_Books.qmd
       - text: "BIO 5800L"
         href: https://claisselab.github.io/BIO_5800L/
+      - text: "Example Code"
+        href: https://claisselab.github.io/BIO_5100/Example_Code.html
     right:
       - icon: house-fill
         href: https://claisselab.com
