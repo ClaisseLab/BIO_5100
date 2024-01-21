@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>BIO 5100 - BIO 5100 Resources</title>
+<title>BIO 5100 - Convert .qmd Quarto file to .R Script</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -82,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Resources</span></a>
   </li>  
   <li class="nav-item">
@@ -117,27 +117,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#r-coding" id="toc-r-coding" class="nav-link active" data-scroll-target="#r-coding">R &amp; Coding</a></li>
-  <li><a href="#coding-with-ai-help" id="toc-coding-with-ai-help" class="nav-link" data-scroll-target="#coding-with-ai-help">Coding with AI help</a></li>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
-  <li><a href="#statistics" id="toc-statistics" class="nav-link" data-scroll-target="#statistics">Statistics</a></li>
-  <li><a href="#data-management" id="toc-data-management" class="nav-link" data-scroll-target="#data-management">Data Management</a></li>
-  <li><a href="#misc." id="toc-misc." class="nav-link" data-scroll-target="#misc.">Misc.</a></li>
-  <li><a href="#continue-your-learning" id="toc-continue-your-learning" class="nav-link" data-scroll-target="#continue-your-learning">Continue your learning</a></li>
-  <li><a href="#communities-to-join" id="toc-communities-to-join" class="nav-link" data-scroll-target="#communities-to-join">Communities to join</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">BIO 5100 Resources</h1>
+<h1 class="title">Convert .qmd Quarto file to .R Script</h1>
 </div>
 
 
@@ -152,187 +139,27 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="r-coding" class="level2">
-<h2 class="anchored" data-anchor-id="r-coding">R &amp; Coding</h2>
-<section id="how-to-install-r-rstudio-and-r-packages" class="level4">
-<h4 class="anchored" data-anchor-id="how-to-install-r-rstudio-and-r-packages"><a href="https://www.claisselab.com/install-r-rstudio">How to install R, RStudio, and R packages</a></h4>
+<p><em>If your adviser wants you to send them your code in a .R Script, but you originally wrote it in a .qmd file…</em></p>
 <ul>
-<li>Videos, links and explanation for how to install, and what is R, RStudio and R Packages.</li>
+<li>this process removes the text parts of the .qmd, just keeps code and comments within all code chunks</li>
 </ul>
-</section>
-<section id="posit-primers" class="level4">
-<h4 class="anchored" data-anchor-id="posit-primers"><a href="https://posit.cloud/learn/primers">Posit Primers</a></h4>
+<ol type="1">
+<li><p>Open RStudio by double clicking on your .qmd file (which auto sets the working directory to that folder)</p></li>
+<li><p>Close just .qmd file (leave RStudio open)</p></li>
+</ol>
 <ul>
-<li>Online tidyverse coding tutorials (from Posit, formerly RStudio)</li>
+<li>Or you could open RStudio and manually set the working directory the folder where .qmd file is (RStudio &gt; Session &gt; Set working directory)</li>
 </ul>
-</section>
-<section id="r-coding-tidyverse-style-guide" class="level4">
-<h4 class="anchored" data-anchor-id="r-coding-tidyverse-style-guide"><a href="https://style.tidyverse.org/index.html">R Coding (Tidyverse) Style Guide</a></h4>
-<ul>
-<li>General style guidance for writing clear and efficient R code.</li>
-<li>And additional style guidance can also be found here: <a href="https://r4ds.hadley.nz/workflow-style.html" class="uri">https://r4ds.hadley.nz/workflow-style.html</a></li>
-</ul>
-</section>
-<section id="data-carpentry-workshops" class="level4">
-<h4 class="anchored" data-anchor-id="data-carpentry-workshops"><a href="https://datacarpentry.org/lessons/">Data Carpentry Workshops</a></h4>
-<ul>
-<li>Data Carpentry develops workshops on the fundamental data skills needed to conduct research, and its lessons are domain specific (e.g., ecology, genomics, geospatial). Lessons are in the form of self-paced tutorials, and are designed for researchers to teach themselves basic concepts and skills for working with data.</li>
-<li><a href="https://datacarpentry.org/ecology-workshop/">Ecology Workshop</a></li>
-<li><a href="https://datacarpentry.org/genomics-workshop/">Genomics Workshop</a></li>
-</ul>
-</section>
-<section id="youtube-channel-playlist-introduction-to-data-science-in-r" class="level4">
-<h4 class="anchored" data-anchor-id="youtube-channel-playlist-introduction-to-data-science-in-r"><a href="https://youtube.com/playlist?list=PL9qLtkRkGWLeh9UNptt_734t0u1zXz5wy&amp;si=D5JDhulAbPz9s9M-">(Youtube Channel Playlist) Introduction to Data Science in R</a></h4>
-<ul>
-<li>Brief 3-8 min videos on various topics From the Duke Center for Computational Thinking covering topics like data manipulation with dplyr, data visualization with ggplot2, and using other functions from the tidyverse.</li>
-</ul>
-</section>
-<section id="r-coding-cheat-sheets" class="level4">
-<h4 class="anchored" data-anchor-id="r-coding-cheat-sheets"><a href="https://posit.co/resources/cheatsheets/">R Coding Cheat Sheets</a></h4>
-<ul>
-<li>Cheat Sheets for writing various types of R code</li>
-<li>Starting out, I’d suggest downloading (and maybe printing out) these two cheat sheets: <strong><em>Data Visualization w/ ggplot2</em></strong> &amp; <strong><em>Data Transformation w/ dplyr</em></strong></li>
-</ul>
-</section>
-<section id="tidy-data-tutor-visualize-your-dplyr-analysis-pipelines" class="level4">
-<h4 class="anchored" data-anchor-id="tidy-data-tutor-visualize-your-dplyr-analysis-pipelines"><a href="https://tidydatatutor.com/">Tidy Data Tutor: visualize your dplyr analysis pipelines</a></h4>
-<ul>
-<li>Visualizes dplyr code to help you understand what specific dplyr functions are doing with the data</li>
-</ul>
-</section>
-<section id="how-to-convert-.qmd-quarto-file-to-.r-script" class="level4">
-<h4 class="anchored" data-anchor-id="how-to-convert-.qmd-quarto-file-to-.r-script"><a href="https://claisselab.github.io/BIO_5100/qmd_to_R_Script">How to convert .qmd Quarto file to .R Script</a></h4>
-<ul>
-<li>If your adviser wants you to send them your code in a .R Script, but you originally wrote it in a .qmd file…</li>
-<li>An other option is the render your .qmd file to a word doc and email them that.</li>
-</ul>
-</section>
-</section>
-<section id="coding-with-ai-help" class="level2">
-<h2 class="anchored" data-anchor-id="coding-with-ai-help">Coding with AI help</h2>
-<section id="rtutor.ai" class="level4">
-<h4 class="anchored" data-anchor-id="rtutor.ai"><a href="http://rtutor.ai/">Rtutor.ai</a></h4>
-<ul>
-<li>AI R code writer, can help you figure out what you need to do or debug your code</li>
-</ul>
-</section>
-<section id="github-copilot-in-rstudio" class="level4">
-<h4 class="anchored" data-anchor-id="github-copilot-in-rstudio"><a href="https://docs.posit.co/ide/user/ide/guide/tools/copilot.html">GitHub Copilot in RStudio</a></h4>
-<ul>
-<li>To use GitHub Copilot, you must have a GitHub account and an active subscription to Copilot. GitHub Copilot is free for <a href="https://docs.github.com/en/education/explore-the-benefits-of-teaching-and-learning-with-github-education/github-global-campus-for-students/apply-to-github-global-campus-as-a-student">students</a> and <a href="https://education.github.com/teachers">educators</a>.</li>
-</ul>
-</section>
-<section id="video-how-to-use-github-copilot-and-chatgpt-in-rstudio" class="level4">
-<h4 class="anchored" data-anchor-id="video-how-to-use-github-copilot-and-chatgpt-in-rstudio"><a href="https://youtu.be/t7NrkAeosog?si=FmJALL3OHPVpAa2S">(video) How to use GitHub Copilot and ChatGPT in RStudio</a></h4>
-<ul>
-<li>In this video, we learn how to use GitHub Copilot and ChatGPT directly from within RStudio. Specifically, we’ll go over all of the setup steps that are required for using 1) the RStudio Copilot integration, and 2) the chattr package which allows you to interact with Large Language Models (LLMs) like the OpenAI models.</li>
-</ul>
-</section>
-</section>
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<section id="quarto.org" class="level4">
-<h4 class="anchored" data-anchor-id="quarto.org"><a href="https://quarto.org/">quarto.org</a></h4>
-<ul>
-<li>Main reference website</li>
-</ul>
-</section>
-<section id="awesome-quarto-github-site" class="level4">
-<h4 class="anchored" data-anchor-id="awesome-quarto-github-site"><a href="https://github.com/mcanouil/awesome-quarto">Awesome Quarto (Github site)</a></h4>
-<ul>
-<li>A(n awesome) curated list of Quarto talks, tools, examples &amp; articles</li>
-</ul>
-</section>
-<section id="video-getting-started-with-quarto" class="level4">
-<h4 class="anchored" data-anchor-id="video-getting-started-with-quarto"><a href="https://youtu.be/_f3latmOhew?si=uhyPfszmTX8FfwFu">(Video) Getting started with Quarto</a></h4>
-<ul>
-<li>This video walks you through creating documents, presentations, and websites and publishing with Quarto. The video features authoring Quarto documents with executable R code chunks using the RStudio Visual Editor (https://quarto.org/docs/visual-editor/).</li>
-</ul>
-</section>
-</section>
-<section id="statistics" class="level2">
-<h2 class="anchored" data-anchor-id="statistics">Statistics</h2>
-<section id="marinstatslectures-youtube-channel" class="level4">
-<h4 class="anchored" data-anchor-id="marinstatslectures-youtube-channel"><a href="https://www.youtube.com/@marinstatlectures/playlists">MarinStatsLectures Youtube Channel</a></h4>
-<ul>
-<li>These R Programming and Statistics videos/tutorials were originally created for Master’s and PhD students at UBC by Professor Mike Marin and are now available to public. These videos provide a comprehensive and completely free set of tutorials for introductory and intermediate concepts in Statistics and Statistics with R.</li>
-</ul>
-</section>
-<section id="common-statistical-tests-as-linear-models" class="level4">
-<h4 class="anchored" data-anchor-id="common-statistical-tests-as-linear-models"><a href="https://lindeloev.github.io/tests-as-linear/">Common statistical tests as linear models</a></h4>
-<ul>
-<li>Reference website showing the linear models underlying common parametric and “non-parametric” traditional statistical tests.</li>
-</ul>
-</section>
-</section>
-<section id="data-management" class="level2">
-<h2 class="anchored" data-anchor-id="data-management">Data Management</h2>
-<section id="openscapes---guidance-for-data-organization-in-spreadsheets" class="level4">
-<h4 class="anchored" data-anchor-id="openscapes---guidance-for-data-organization-in-spreadsheets"><a href="https://openscapes.github.io/series/data-strategies#data-organization-in-spreadsheets">Openscapes - Guidance for data organization in spreadsheets</a></h4>
-<ul>
-<li>Compiled (by <a href="https://www.openscapes.org/">openscapes.org</a>) guidance from multiple resources for how to organize and format your data in spreadsheets so that it is ready to analyze in R and follows “tidy data” principles.</li>
-</ul>
-</section>
-<section id="how-to-name-things-files---by-jenny-bryan" class="level4">
-<h4 class="anchored" data-anchor-id="how-to-name-things-files---by-jenny-bryan"><a href="https://speakerdeck.com/jennybc/how-to-name-files">How to name things (files) - by Jenny Bryan</a></h4>
-<ul>
-<li>Best practices for naming your files <a href="https://jennybryan.org/about/">by Jenny Bryan</a> <em>(&amp; she’s got lots of other great resources on her website)</em></li>
-</ul>
-</section>
-<section id="data-carpentry---common-mistakes-storing-data-in-spreadsheets" class="level4">
-<h4 class="anchored" data-anchor-id="data-carpentry---common-mistakes-storing-data-in-spreadsheets"><a href="https://datacarpentry.org/spreadsheet-ecology-lesson/02-common-mistakes.html">Data Carpentry - Common Mistakes Storing Data in Spreadsheets</a></h4>
-</section>
-</section>
-<section id="misc." class="level2">
-<h2 class="anchored" data-anchor-id="misc.">Misc.</h2>
-<section id="connect-your-google-scholar-to-cpp-library-to-access-pdfs-of-journal-articles" class="level4">
-<h4 class="anchored" data-anchor-id="connect-your-google-scholar-to-cpp-library-to-access-pdfs-of-journal-articles"><a href="https://libguides.library.cpp.edu/c.php?g=863498&amp;p=6191577">Connect your Google Scholar to CPP Library to access pdfs of journal articles</a></h4>
-<ul>
-<li>Link your CPP library account to your google scholar</li>
-</ul>
-</section>
-<section id="how-to-appropriately-cite-r-and-r-packages" class="level4">
-<h4 class="anchored" data-anchor-id="how-to-appropriately-cite-r-and-r-packages"><a href="https://ropensci.org/blog/2021/11/16/how-to-cite-r-and-r-packages/">How to appropriately cite R and R packages</a></h4>
-<ul>
-<li>A short primer from a popular R blog on how to cite R and R packages in your thesis, publications, etc.</li>
-</ul>
-</section>
-<section id="fisheries-related-r-packages" class="level4">
-<h4 class="anchored" data-anchor-id="fisheries-related-r-packages"><a href="https://fishr-core-team.github.io/fishR/pages/packages.html">Fisheries-Related R Packages</a></h4>
-</section>
-</section>
-<section id="continue-your-learning" class="level2">
-<h2 class="anchored" data-anchor-id="continue-your-learning">Continue your learning</h2>
-<section id="tidy-tuesday-website" class="level4">
-<h4 class="anchored" data-anchor-id="tidy-tuesday-website"><a href="https://github.com/rfordatascience/tidytuesday">Tidy Tuesday Website</a></h4>
-<ul>
-<li>The weekly <code>#TidyTuesday</code> event people all over the world are doing! Every week they post a raw dataset, a chart or article related to that dataset, and ask you to explore the data. Some people will then post what they come up with on Twitter. A good way to keep practicing your R skills after Bio 5100 is over, can make it weekly thing you do with fellow students…</li>
-</ul>
-</section>
-<section id="prstatistics.com-statistics-workshops" class="level4">
-<h4 class="anchored" data-anchor-id="prstatistics.com-statistics-workshops"><a href="https://www.prstatistics.com/">prstatistics.com (statistics workshops)</a></h4>
-<ul>
-<li>Company that offers ~1 week workshops on various specific biostatistics and R coding topics.</li>
-</ul>
-</section>
-<section id="highland-statistics-advanced-statistics-workshops-and-books" class="level4">
-<h4 class="anchored" data-anchor-id="highland-statistics-advanced-statistics-workshops-and-books"><a href="https://www.highstat.com/index.php/courses">Highland Statistics (advanced statistics workshops and books)</a></h4>
-<ul>
-<li>Company that offers “how to” textbooks and ~1 week workshops on advanced statistics topics (e.g., generalized linear models, mixed models).</li>
-</ul>
-</section>
-</section>
-<section id="communities-to-join" class="level2">
-<h2 class="anchored" data-anchor-id="communities-to-join">Communities to join</h2>
-<section id="r-ladies" class="level4">
-<h4 class="anchored" data-anchor-id="r-ladies"><a href="https://rladies.org/">R Ladies</a></h4>
-<ul>
-<li>Attend <a href="https://rladies.org/activities/events/">events</a>, or join a <a href="https://benubah.github.io/r-community-explorer/rladies.html">Local Chapter</a> (e.g., <a href="https://www.meetup.com/rladies-pasadena/">R Ladies Pasadena</a>,<a href="https://www.meetup.com/rladies-riverside/">R Ladies Riverside</a>)</li>
-</ul>
+<ol start="3" type="1">
+<li>Run code below in Rstudio console (but edit <code>file_name.qmd</code> to match your .qmd file name):</li>
+</ol>
+<p><code>knitr::purl("file_name.qmd")</code></p>
+<p>This will save a new .R script file in that folder that is just the code from your .qmd file</p>
+<hr>
+<p>Adapted from <a href="https://bookdown.org/yihui/rmarkdown-cookbook/purl.html" class="uri">https://bookdown.org/yihui/rmarkdown-cookbook/purl.html</a></p>
+<p>(.Rmd works same way as .qmd)</p>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

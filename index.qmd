@@ -36,6 +36,11 @@ title: "BIO 5100 Resources"
 
 -   Visualizes dplyr code to help you understand what specific dplyr functions are doing with the data
 
+#### [How to convert .qmd Quarto file to .R Script](https://claisselab.github.io/BIO_5100/qmd_to_R_Script)
+
+-   If your adviser wants you to send them your code in a .R Script, but you originally wrote it in a .qmd file...
+-   An other option is the render your .qmd file to a word doc and email them that.
+
 ## Coding with AI help
 
 #### [Rtutor.ai](http://rtutor.ai/)

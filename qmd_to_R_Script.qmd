@@ -1,0 +1,25 @@
+---
+title: "Convert .qmd Quarto file to .R Script"
+---
+
+*If your adviser wants you to send them your code in a .R Script, but you originally wrote it in a .qmd file...*
+
+-   this process removes the text parts of the .qmd, just keeps code and comments within all code chunks
+
+1.  Open RStudio by double clicking on your .qmd file (which auto sets the working directory to that folder)
+
+2.  Close just .qmd file (leave RStudio open)
+
+-   Or you could open RStudio and manually set the working directory the folder where .qmd file is (RStudio \> Session \> Set working directory)
+
+3.  Run code below in Rstudio console (but edit `file_name.qmd` to match your .qmd file name):
+
+`knitr::purl("file_name.qmd")`
+
+This will save a new .R script file in that folder that is just the code from your .qmd file
+
+------------------------------------------------------------------------
+
+Adapted from <https://bookdown.org/yihui/rmarkdown-cookbook/purl.html>
+
+(.Rmd works same way as .qmd)
