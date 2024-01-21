@@ -93,6 +93,10 @@ title: "BIO 5100 Resources"
 
 ## Misc.
 
+#### [Scientific writing resources](https://claisselab.github.io/BIO_5800L/#scientific-writing)
+
+-   Links to papers with advice on scientific writing, including specifics on how to write statistical methods and results sections
+
 #### [Connect your Google Scholar to CPP Library to access pdfs of journal articles](https://libguides.library.cpp.edu/c.php?g=863498&p=6191577)
 
 -   Link your CPP library account to your google scholar
