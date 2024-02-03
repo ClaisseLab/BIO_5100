@@ -31,5 +31,6 @@ format:
     theme: darkly
     css: styles.css
     toc: true
+    code-link: true
 editor: visual
 
