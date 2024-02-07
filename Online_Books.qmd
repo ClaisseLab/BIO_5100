@@ -14,6 +14,10 @@ title: "Online Books"
 
 -   Mostly covers details of using the tidyverse to import, wrangle and get your data ready to analyze.
 
+#### [Guide to Effect Sizes and Confidence Intervals](https://matthewbjane.quarto.pub/guide-to-effect-sizes-and-confidence-intervals)
+
+-   Collaborative guide aims to provide academics, students and researchers with hands-on, step-by-step instructions for calculating effect sizes and confidence intervals for common statistical procedures.
+
 #### [Fundamentals of Data Visualization (using R) by Claus O. Wilke](https://clauswilke.com/dataviz/index.html)
 
 -   A guide to making visualizations that accurately reflect the data, tell a story, and look professional.
