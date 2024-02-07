@@ -2,5 +2,6 @@
 title: "Example Code from BIO 5100/L"
 ---
 
-#### Links to class example code from Spring 2024 BIO 5100/L will be posted here.
+# Spring 2024 BIO 5100/L class notes and example code
 
+[Week 2-3 Visualize Distributions & Descriptive Statistics](https://claisselab.github.io/BIO_5100/Distributions.html)
