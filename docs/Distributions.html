@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jeremy Claisse">
+<meta name="dcterms.date" content="2024-02-14">
 
 <title>BIO 5100 - BIO 5100 - Visualize Distributions &amp; Descriptive Statistics</title>
 <style>
@@ -242,7 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">3 Feb 2024</p>
+      <p class="date">14 Feb 2024</p>
     </div>
   </div>
   
@@ -268,11 +269,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-1" data-code-annotation="1">load the tidyverse package (which includes ggplot2 and dplyr)</span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-1">load the tidyverse package (which includes ggplot2 and dplyr)</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-1" data-code-annotation="2">load the skimr package (which includes the skim() function for descriptive statistics)</span>
+<span data-code-lines="2" data-code-annotation="2" data-code-cell="annotated-cell-1">load the skimr package (which includes the skim() function for descriptive statistics)</span>
 </dd>
 </dl>
 </div>
@@ -290,7 +291,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-2" data-code-annotation="1">Use the <code>read_csv()</code> function to read the .csv data table file, and assign that to an R object named <code>dat_yt</code></span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-2">Use the <code>read_csv()</code> function to read the .csv data table file, and assign that to an R object named <code>dat_yt</code></span>
 </dd>
 </dl>
 </div>
@@ -308,7 +309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-3" data-code-annotation="1">use glimpse<code>()</code> function to examine the structure of the tibble named dat_yt</span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-3">use glimpse<code>()</code> function to examine the structure of the tibble named dat_yt</span>
 </dd>
 </dl>
 </div>
@@ -349,15 +350,15 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-4" data-code-annotation="1">Assign the results back to the ‘dat_yt’ object to store the changes</span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-4">Assign the results back to the ‘dat_yt’ object to store the changes</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-4" data-code-annotation="2">Use <code>as_factor()</code> to convert the location variable to a factor, and <code>mutate()</code> overwrites the location variable in dat_yt with the new factor version</span>
+<span data-code-lines="2" data-code-annotation="2" data-code-cell="annotated-cell-4">Use <code>as_factor()</code> to convert the location variable to a factor, and <code>mutate()</code> overwrites the location variable in dat_yt with the new factor version</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="5" data-code-cell="annotated-cell-4" data-code-annotation="3">You can see in the <code>glimpse()</code> output that the variable location is now class <em>fct</em> (factor).</span>
+<span data-code-lines="5" data-code-annotation="3" data-code-cell="annotated-cell-4">You can see in the <code>glimpse()</code> output that the variable location is now class <em>fct</em> (factor).</span>
 </dd>
 </dl>
 </div>
@@ -392,15 +393,15 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-5" data-code-annotation="1">Pass dat_yt using the <code>|&gt;</code> pipe operator to the <code>summarize()</code> function</span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-5">Pass dat_yt using the <code>|&gt;</code> pipe operator to the <code>summarize()</code> function</span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-5" data-code-annotation="2">using the <code>mean()</code> and <code>median()</code> functions of the length_cm variable</span>
+<span data-code-lines="2" data-code-annotation="2" data-code-cell="annotated-cell-5">using the <code>mean()</code> and <code>median()</code> functions of the length_cm variable</span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-5" data-code-annotation="3">and name those columns <em>mean_length_cm</em> and <em>median_length_cm</em> where those descriptive statistic values will be stored</span>
+<span data-code-lines="3" data-code-annotation="3" data-code-cell="annotated-cell-5">and name those columns <em>mean_length_cm</em> and <em>median_length_cm</em> where those descriptive statistic values will be stored</span>
 </dd>
 </dl>
 </div>
@@ -428,19 +429,19 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-6" data-code-annotation="1">Pass the dat_yt data.frame using the <code>|&gt;</code> pipe operator</span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-6">Pass the dat_yt data.frame using the <code>|&gt;</code> pipe operator</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-6" data-code-annotation="2">to the <code>group_by()</code> function and group (subset) the data by sex, then pass that</span>
+<span data-code-lines="2" data-code-annotation="2" data-code-cell="annotated-cell-6">to the <code>group_by()</code> function and group (subset) the data by sex, then pass that</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-6" data-code-annotation="3">to the <code>summarize()</code> function to make calculations on each group of data</span>
+<span data-code-lines="3" data-code-annotation="3" data-code-cell="annotated-cell-6">to the <code>summarize()</code> function to make calculations on each group of data</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-lines="4" data-code-cell="annotated-cell-6" data-code-annotation="4">using the <code>min()</code>, <code>mean()</code>, <code>median(),</code> and <code>max()</code> functions of the parasites variable and name those columns where those descriptive statistic values will be stored accordingly</span>
+<span data-code-lines="4" data-code-annotation="4" data-code-cell="annotated-cell-6">using the <code>min()</code>, <code>mean()</code>, <code>median(),</code> and <code>max()</code> functions of the parasites variable and name those columns where those descriptive statistic values will be stored accordingly</span>
 </dd>
 </dl>
 </div>
@@ -479,15 +480,15 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-7" data-code-annotation="1">Pass the dat_yt with the pipe operator to the <code>ggplot()</code> function</span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-7">Pass the dat_yt with the pipe operator to the <code>ggplot()</code> function</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-7" data-code-annotation="2">define the “aesthetics” with <code>aes()</code> argument, and set the x variable we want to plot as length_cm</span>
+<span data-code-lines="2" data-code-annotation="2" data-code-cell="annotated-cell-7">define the “aesthetics” with <code>aes()</code> argument, and set the x variable we want to plot as length_cm</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-7" data-code-annotation="3">then add + the <code>geom_histogram()</code> layer to plot the histogram</span>
+<span data-code-lines="3" data-code-annotation="3" data-code-cell="annotated-cell-7">then add + the <code>geom_histogram()</code> layer to plot the histogram</span>
 </dd>
 </dl>
 </div>
@@ -509,11 +510,11 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-8" data-code-annotation="1">add the argument <code>bins = 5</code> to the layer <code>geom_histogram()</code></span>
+<span data-code-lines="2" data-code-annotation="1" data-code-cell="annotated-cell-8">add the argument <code>bins = 5</code> to the layer <code>geom_histogram()</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-8" data-code-annotation="2">add a title with function + <code>ggtitle()</code></span>
+<span data-code-lines="3" data-code-annotation="2" data-code-cell="annotated-cell-8">add a title with function + <code>ggtitle()</code></span>
 </dd>
 </dl>
 </div>
@@ -529,11 +530,11 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-9" data-code-annotation="1">Increase the number of bins to 25</span>
+<span data-code-lines="2" data-code-annotation="1" data-code-cell="annotated-cell-9">Increase the number of bins to 25</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-9" data-code-annotation="2">add a title with function + <code>ggtitle()</code></span>
+<span data-code-lines="3" data-code-annotation="2" data-code-cell="annotated-cell-9">add a title with function + <code>ggtitle()</code></span>
 </dd>
 </dl>
 </div>
@@ -549,11 +550,11 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-10" data-code-annotation="1">Increase the number of bins to 100</span>
+<span data-code-lines="2" data-code-annotation="1" data-code-cell="annotated-cell-10">Increase the number of bins to 100</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-10" data-code-annotation="2">add a title with function + <code>ggtitle()</code></span>
+<span data-code-lines="3" data-code-annotation="2" data-code-cell="annotated-cell-10">add a title with function + <code>ggtitle()</code></span>
 </dd>
 </dl>
 </div>
@@ -575,7 +576,7 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-11" data-code-annotation="1">Typically want to pick binwidths that people are familiar with like 1 cm (i.e., best not to choose binwidths of some random number, for example 0.38 cm)</span>
+<span data-code-lines="2" data-code-annotation="1" data-code-cell="annotated-cell-11">Typically want to pick binwidths that people are familiar with like 1 cm (i.e., best not to choose binwidths of some random number, for example 0.38 cm)</span>
 </dd>
 </dl>
 </div>
@@ -604,7 +605,7 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-13" data-code-annotation="1">each sex in a row with the ‘rows’ argument in `facet_grid()’ function</span>
+<span data-code-lines="3" data-code-annotation="1" data-code-cell="annotated-cell-13">each sex in a row with the ‘rows’ argument in `facet_grid()’ function</span>
 </dd>
 </dl>
 </div>
@@ -620,7 +621,7 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-14" data-code-annotation="1">each sex in a column with the ‘cols’ argument in `facet_grid()’ function</span>
+<span data-code-lines="3" data-code-annotation="1" data-code-cell="annotated-cell-14">each sex in a column with the ‘cols’ argument in `facet_grid()’ function</span>
 </dd>
 </dl>
 </div>
@@ -655,7 +656,7 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-15" data-code-annotation="1">each sex in a row and each location in a column</span>
+<span data-code-lines="3" data-code-annotation="1" data-code-cell="annotated-cell-15">each sex in a row and each location in a column</span>
 </dd>
 </dl>
 </div>
@@ -724,15 +725,15 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-19" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="4" data-code-cell="annotated-cell-19" data-code-annotation="1"><code>geom_vline()</code> function to add vertical lines to the plot</span>
+<span data-code-lines="4" data-code-annotation="1" data-code-cell="annotated-cell-19"><code>geom_vline()</code> function to add vertical lines to the plot</span>
 </dd>
 <dt data-target-cell="annotated-cell-19" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="5" data-code-cell="annotated-cell-19" data-code-annotation="2"><code>color = "red"</code> and <code>linewidth = 2</code> arguments to change the color and thickness of the line</span>
+<span data-code-lines="5" data-code-annotation="2" data-code-cell="annotated-cell-19"><code>color = "red"</code> and <code>linewidth = 2</code> arguments to change the color and thickness of the line</span>
 </dd>
 <dt data-target-cell="annotated-cell-19" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="7" data-code-cell="annotated-cell-19" data-code-annotation="3"><code>color = "blue"</code> to make the median line blue</span>
+<span data-code-lines="7" data-code-annotation="3" data-code-cell="annotated-cell-19"><code>color = "blue"</code> to make the median line blue</span>
 </dd>
 </dl>
 </div>
@@ -765,7 +766,7 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-21" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-21" data-code-annotation="1">Add a ‘scale_x_continuous()’ layer with ‘breaks’ argument to define the position of the tick marks. ‘0:8’ creates a sequence of numbers from 0 to 8.</span>
+<span data-code-lines="3" data-code-annotation="1" data-code-cell="annotated-cell-21">Add a ‘scale_x_continuous()’ layer with ‘breaks’ argument to define the position of the tick marks. ‘0:8’ creates a sequence of numbers from 0 to 8.</span>
 </dd>
 </dl>
 </div>
@@ -783,7 +784,7 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-22" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="4" data-code-cell="annotated-cell-22" data-code-annotation="1">Add a ‘scale_x_continuous()’ layer with ‘breaks’ argument to define the position of the tick marks. ‘c(0, 2, 4, 6, 8)’ manually sets tick marks at those values.</span>
+<span data-code-lines="4" data-code-annotation="1" data-code-cell="annotated-cell-22">Add a ‘scale_x_continuous()’ layer with ‘breaks’ argument to define the position of the tick marks. ‘c(0, 2, 4, 6, 8)’ manually sets tick marks at those values.</span>
 </dd>
 </dl>
 </div>
@@ -812,7 +813,7 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-23" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-23" data-code-annotation="1">Here <strong>NAs are caused by empty cells in the original .csv file</strong> in the <code>gonad_wt_g</code> column. <em>This is kind of a “safety feature” built in to the <code>mean()</code> function to make sure you are aware you have NAs in your data.</em></span>
+<span data-code-lines="3" data-code-annotation="1" data-code-cell="annotated-cell-23">Here <strong>NAs are caused by empty cells in the original .csv file</strong> in the <code>gonad_wt_g</code> column. <em>This is kind of a “safety feature” built in to the <code>mean()</code> function to make sure you are aware you have NAs in your data.</em></span>
 </dd>
 </dl>
 </div>
@@ -833,7 +834,7 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-24" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-24" data-code-annotation="1">the ‘?’ opens the help file for the function ‘mean’ in the Help tab (bottom right window). And in the help file you can look at the arguments and see that there is an argument <code>na.rm</code> that you can set to <code>TRUE</code> to ignore the NA’s.</span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-24">the ‘?’ opens the help file for the function ‘mean’ in the Help tab (bottom right window). And in the help file you can look at the arguments and see that there is an argument <code>na.rm</code> that you can set to <code>TRUE</code> to ignore the NA’s.</span>
 </dd>
 </dl>
 </div>
@@ -850,11 +851,11 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-25" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-25" data-code-annotation="1">Add the argument <code>na.rm = T</code> to the <code>mean()</code> and</span>
+<span data-code-lines="3" data-code-annotation="1" data-code-cell="annotated-cell-25">Add the argument <code>na.rm = T</code> to the <code>mean()</code> and</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="4" data-code-cell="annotated-cell-25" data-code-annotation="2"><code>median()</code> functions to ignore the NA’s caused here by empty cells (missing data for fish gonad weight) in the original .csv file</span>
+<span data-code-lines="4" data-code-annotation="2" data-code-cell="annotated-cell-25"><code>median()</code> functions to ignore the NA’s caused here by empty cells (missing data for fish gonad weight) in the original .csv file</span>
 </dd>
 </dl>
 </div>
@@ -888,7 +889,7 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-27" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-27" data-code-annotation="1">Use the <code>filter()</code> function to select the rows where <code>gut_wt_g</code> is <em>greater than</em> 1000g</span>
+<span data-code-lines="2" data-code-annotation="1" data-code-cell="annotated-cell-27">Use the <code>filter()</code> function to select the rows where <code>gut_wt_g</code> is <em>greater than</em> 1000g</span>
 </dd>
 </dl>
 </div>
@@ -911,7 +912,7 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-28" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-28" data-code-annotation="1">Use the <code>filter()</code> function to select the rows where <code>gut_wt_g</code> is <em>less than</em> 1000g (i.e., filter out the two extreme values)</span>
+<span data-code-lines="2" data-code-annotation="1" data-code-cell="annotated-cell-28">Use the <code>filter()</code> function to select the rows where <code>gut_wt_g</code> is <em>less than</em> 1000g (i.e., filter out the two extreme values)</span>
 </dd>
 </dl>
 </div>
@@ -939,15 +940,15 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-29" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-29" data-code-annotation="1">Assign dat_yt to itself to save the result, pass dat_yt using the <code>|&gt;</code> pipe operator to</span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-29">Assign dat_yt to itself to save the result, pass dat_yt using the <code>|&gt;</code> pipe operator to</span>
 </dd>
 <dt data-target-cell="annotated-cell-29" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-29" data-code-annotation="2">the <code>mutate()</code> function which adds new columns or (in this case) writes over the existing gut_wt_g column, use the <code>na_if()</code> to replace 1300 (a extreme gut weight value) and</span>
+<span data-code-lines="2" data-code-annotation="2" data-code-cell="annotated-cell-29">the <code>mutate()</code> function which adds new columns or (in this case) writes over the existing gut_wt_g column, use the <code>na_if()</code> to replace 1300 (a extreme gut weight value) and</span>
 </dd>
 <dt data-target-cell="annotated-cell-29" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-29" data-code-annotation="3">add a similar mutate argument for the value of 25000</span>
+<span data-code-lines="3" data-code-annotation="3" data-code-cell="annotated-cell-29">add a similar mutate argument for the value of 25000</span>
 </dd>
 </dl>
 </div>
@@ -959,7 +960,7 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-30" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-30" data-code-annotation="1">Can confirm values were replaced with NAs by using the filter function again to confirm the extreme values are no longer in the gut_wt_g column</span>
+<span data-code-lines="2" data-code-annotation="1" data-code-cell="annotated-cell-30">Can confirm values were replaced with NAs by using the filter function again to confirm the extreme values are no longer in the gut_wt_g column</span>
 </dd>
 </dl>
 </div>
@@ -1011,15 +1012,15 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-33" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-33" data-code-annotation="1">Use the <code>filter()</code> function to select only the rows where <code>sex</code> is “M”</span>
+<span data-code-lines="2" data-code-annotation="1" data-code-cell="annotated-cell-33">Use the <code>filter()</code> function to select only the rows where <code>sex</code> is “M”</span>
 </dd>
 <dt data-target-cell="annotated-cell-33" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-33" data-code-annotation="2">calculate the coefficient of variation for ‘length_cm’ with <code>mean()</code> and <code>sd()</code> following the formula <strong>cv = sd/mean*100</strong></span>
+<span data-code-lines="3" data-code-annotation="2" data-code-cell="annotated-cell-33">calculate the coefficient of variation for ‘length_cm’ with <code>mean()</code> and <code>sd()</code> following the formula <strong>cv = sd/mean*100</strong></span>
 </dd>
 <dt data-target-cell="annotated-cell-33" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="4" data-code-cell="annotated-cell-33" data-code-annotation="3">calculate the coefficient of variation for <code>gonad_wt_g</code></span>
+<span data-code-lines="4" data-code-annotation="3" data-code-cell="annotated-cell-33">calculate the coefficient of variation for <code>gonad_wt_g</code></span>
 </dd>
 </dl>
 </div>
@@ -1224,13 +1225,13 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 </ul>
 <div class="cell" data-fig.dim="[3,2.5]">
 <div class="sourceCode cell-code" id="annotated-cell-39"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-39-1" class="code-annotation-target"><a href="#annotated-cell-39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat_yt, <span class="fu">aes</span>(<span class="at">x =</span> gonad_wt_g)) <span class="sc">+</span></span>
-<span id="annotated-cell-39-2"><a href="#annotated-cell-39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="annotated-cell-39-2"><a href="#annotated-cell-39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="annotated-cell-39-3"><a href="#annotated-cell-39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Gonad Weight (g)"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-39" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-39" data-code-annotation="1">For histogram: must specify <strong><code>x = gonad_wt_g</code></strong> in <code>aes()</code></span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-39">For histogram: must specify <strong><code>x = gonad_wt_g</code></strong> in <code>aes()</code></span>
 </dd>
 </dl>
 </div>
@@ -1246,7 +1247,7 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-40" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-40" data-code-annotation="1">For boxplot: must specify <strong><code>y = gonad_wt_g</code></strong> in <code>aes()</code></span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-40">For boxplot: must specify <strong><code>y = gonad_wt_g</code></strong> in <code>aes()</code></span>
 </dd>
 </dl>
 </div>
@@ -1262,11 +1263,11 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-41" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-41" data-code-annotation="1">For ivp (geom_jitter): must specify <strong><code>x = 1,  y = gonad_wt_g</code></strong> in <code>aes()</code></span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-41">For ivp (geom_jitter): must specify <strong><code>x = 1,  y = gonad_wt_g</code></strong> in <code>aes()</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-41" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-41" data-code-annotation="2"><em><code>geom_jitter()</code> is like <code>geom_point()</code>, but randomly moves values a little bit (“jitters” them) so they don’t overlap for visibility</em></span>
+<span data-code-lines="2" data-code-annotation="2" data-code-cell="annotated-cell-41"><em><code>geom_jitter()</code> is like <code>geom_point()</code>, but randomly moves values a little bit (“jitters” them) so they don’t overlap for visibility</em></span>
 </dd>
 </dl>
 </div>
@@ -1383,18 +1384,18 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 </ul>
 <div class="cell" data-fig.dim="[5,3]">
 <div class="sourceCode cell-code" id="annotated-cell-43"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-43" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-43-1" class="code-annotation-target"><a href="#annotated-cell-43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat_yt, <span class="fu">aes</span>(<span class="at">x =</span> gonad_wt_g)) <span class="sc">+</span></span>
-<span id="annotated-cell-43-2"><a href="#annotated-cell-43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="annotated-cell-43-2"><a href="#annotated-cell-43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-43" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-43-3" class="code-annotation-target"><a href="#annotated-cell-43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span> (<span class="at">rows =</span> <span class="fu">vars</span>(sex)) <span class="sc">+</span></span>
 <span id="annotated-cell-43-4"><a href="#annotated-cell-43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Gonad Weight (g)"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-43" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-43" data-code-annotation="1">For histogram: must specify <strong><code>x = gonad_wt_g</code></strong> in <code>aes()</code></span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-43">For histogram: must specify <strong><code>x = gonad_wt_g</code></strong> in <code>aes()</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-43" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-43" data-code-annotation="2">use facet_grid to create separate histograms for each sex</span>
+<span data-code-lines="3" data-code-annotation="2" data-code-cell="annotated-cell-43">use facet_grid to create separate histograms for each sex</span>
 </dd>
 </dl>
 </div>
@@ -1411,7 +1412,7 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-44" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-44" data-code-annotation="1">For boxplot: must specify <code>x = sex, y = gonad_wt_g</code> in <code>aes()</code></span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-44">For boxplot: must specify <code>x = sex, y = gonad_wt_g</code> in <code>aes()</code></span>
 </dd>
 </dl>
 </div>
@@ -1421,18 +1422,18 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 </div>
 <div class="cell" data-fig.dim="[5,3]">
 <div class="sourceCode cell-code" id="annotated-cell-45"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-45" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-45-1" class="code-annotation-target"><a href="#annotated-cell-45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat_yt, <span class="fu">aes</span>(<span class="at">x =</span> sex,  <span class="at">y =</span> gonad_wt_g)) <span class="sc">+</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-45" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-45-2" class="code-annotation-target"><a href="#annotated-cell-45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-45" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-45-2" class="code-annotation-target"><a href="#annotated-cell-45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
 <span id="annotated-cell-45-3"><a href="#annotated-cell-45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Gonad Weight (g)"</span>) <span class="sc">+</span></span>
 <span id="annotated-cell-45-4"><a href="#annotated-cell-45-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Sex"</span>) </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-45" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-45" data-code-annotation="1">For ivp (geom_jitter): must specify <code>x = sex,  y = gonad_wt_g</code> in <code>aes()</code></span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-45">For ivp (geom_jitter): must specify <code>x = sex,  y = gonad_wt_g</code> in <code>aes()</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-45" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-45" data-code-annotation="2"><em><code>geom_jitter()</code> is like <code>geom_point()</code>, but randomly moves values a little bit (“jitters” them) so they don’t overlap for visibility</em></span>
+<span data-code-lines="2" data-code-annotation="2" data-code-cell="annotated-cell-45"><em><code>geom_jitter()</code> is like <code>geom_point()</code>, but randomly moves values a little bit (“jitters” them) so they don’t overlap for visibility</em></span>
 </dd>
 </dl>
 </div>
@@ -1449,11 +1450,11 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-46" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-46" data-code-annotation="1"><em><code>group_by()</code></em> is a dplyr function that tells R to calculate the descriptive statistics separately for each group (in this case by sex)</span>
+<span data-code-lines="3" data-code-annotation="1" data-code-cell="annotated-cell-46"><em><code>group_by()</code></em> is a dplyr function that tells R to calculate the descriptive statistics separately for each group (in this case by sex)</span>
 </dd>
 <dt data-target-cell="annotated-cell-46" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="4" data-code-cell="annotated-cell-46" data-code-annotation="2"><em><code>skim()</code></em> is a function from the skimr package that calculates descriptive statistics for each group</span>
+<span data-code-lines="4" data-code-annotation="2" data-code-cell="annotated-cell-46"><em><code>skim()</code></em> is a function from the skimr package that calculates descriptive statistics for each group</span>
 </dd>
 </dl>
 </div>
@@ -1587,14 +1588,14 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <div class="cell" data-fig.dim="[6,3]">
 <div class="sourceCode cell-code" id="annotated-cell-47"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-47-1"><a href="#annotated-cell-47-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Histogram gonad weight by sex</span></span>
 <span id="annotated-cell-47-2"><a href="#annotated-cell-47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat_yt, <span class="fu">aes</span>(<span class="at">x =</span> gonad_wt_g)) <span class="sc">+</span></span>
-<span id="annotated-cell-47-3"><a href="#annotated-cell-47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="annotated-cell-47-3"><a href="#annotated-cell-47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-47" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-47-4" class="code-annotation-target"><a href="#annotated-cell-47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="at">rows =</span> <span class="fu">vars</span>(sex), <span class="at">cols =</span> <span class="fu">vars</span>(location)) <span class="sc">+</span></span>
 <span id="annotated-cell-47-5"><a href="#annotated-cell-47-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Gonad Weight (g)"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-47" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="4" data-code-cell="annotated-cell-47" data-code-annotation="1">specify both rows and cols arguments in <code>facet_grid()</code></span>
+<span data-code-lines="4" data-code-annotation="1" data-code-cell="annotated-cell-47">specify both rows and cols arguments in <code>facet_grid()</code></span>
 </dd>
 </dl>
 </div>
@@ -1604,14 +1605,14 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 </div>
 <div class="cell" data-fig.dim="[6,3]">
 <div class="sourceCode cell-code" id="annotated-cell-48"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-48-1"><a href="#annotated-cell-48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat_yt, <span class="fu">aes</span>(<span class="at">x =</span> gonad_wt_g)) <span class="sc">+</span></span>
-<span id="annotated-cell-48-2"><a href="#annotated-cell-48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="annotated-cell-48-2"><a href="#annotated-cell-48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-48" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-48-3" class="code-annotation-target"><a href="#annotated-cell-48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="at">rows =</span> <span class="fu">vars</span>(location), <span class="at">cols =</span> <span class="fu">vars</span>(sex)) <span class="sc">+</span></span>
 <span id="annotated-cell-48-4"><a href="#annotated-cell-48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Gonad Weight (g)"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-48" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-48" data-code-annotation="1">reverse rows and cols variables as it provides different perspective on comparisons.</span>
+<span data-code-lines="3" data-code-annotation="1" data-code-cell="annotated-cell-48">reverse rows and cols variables as it provides different perspective on comparisons.</span>
 </dd>
 </dl>
 </div>
@@ -1631,7 +1632,7 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-49" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-49" data-code-annotation="1">specify ‘x = location’ and include the additional aesthetic argument <code>color = sex</code></span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-49">specify ‘x = location’ and include the additional aesthetic argument <code>color = sex</code></span>
 </dd>
 </dl>
 </div>
@@ -1654,7 +1655,7 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-50" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-50" data-code-annotation="1">specify ‘x = location’ and include the additional aesthetic argument <code>color = sex</code></span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-50">specify ‘x = location’ and include the additional aesthetic argument <code>color = sex</code></span>
 </dd>
 </dl>
 </div>
@@ -1676,11 +1677,11 @@ $ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "me
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-51" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-51" data-code-annotation="1"><em><code>group_by()</code></em> each combination of the sex and location variables</span>
+<span data-code-lines="2" data-code-annotation="1" data-code-cell="annotated-cell-51"><em><code>group_by()</code></em> each combination of the sex and location variables</span>
 </dd>
 <dt data-target-cell="annotated-cell-51" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-51" data-code-annotation="2"><em><code>skim()</code></em> is a function from the skimr package that calculates descriptive statistics for each group</span>
+<span data-code-lines="3" data-code-annotation="2" data-code-cell="annotated-cell-51"><em><code>skim()</code></em> is a function from the skimr package that calculates descriptive statistics for each group</span>
 </dd>
 </dl>
 </div>

@@ -588,7 +588,7 @@ Assignment 2 will ask you to do something like (*but with a different data set a
 ```{r}
 #| fig.dim: !expr c(3, 2.5)
 ggplot(dat_yt, aes(x = gonad_wt_g)) + # <1>
-  geom_histogram() +
+  geom_histogram(binwidth = 2) +
   xlab("Gonad Weight (g)")
 ```
 
@@ -636,7 +636,7 @@ skim(gonad_wt_g)
 ```{r}
 #| fig.dim: !expr c(5, 3)
 ggplot(dat_yt, aes(x = gonad_wt_g)) + # <1>
-  geom_histogram() +
+  geom_histogram(binwidth = 2) +
   facet_grid (rows = vars(sex)) + # <2>
   xlab("Gonad Weight (g)")
 ```
@@ -657,7 +657,7 @@ ggplot(dat_yt, aes(x = sex, y = gonad_wt_g)) + # <1>
 ```{r}
 #| fig.dim: !expr c(5, 3)
 ggplot(dat_yt, aes(x = sex,  y = gonad_wt_g)) + # <1>
-  geom_jitter() + # <2>
+  geom_jitter(width = 0.2) + # <2>
   ylab("Gonad Weight (g)") +
   xlab("Sex") 
 ```
@@ -705,7 +705,7 @@ Same as by sex above ***just switch out 'sex' for 'location' in all the code***
 #| fig.dim: !expr c(6, 3)
 #Histogram gonad weight by sex
 ggplot(dat_yt, aes(x = gonad_wt_g)) +
-  geom_histogram() +
+  geom_histogram(binwidth = 2) +
   facet_grid(rows = vars(sex), cols = vars(location)) + # <1>
   xlab("Gonad Weight (g)")
 ```
@@ -715,7 +715,7 @@ ggplot(dat_yt, aes(x = gonad_wt_g)) +
 ```{r}
 #| fig.dim: !expr c(6, 3)
 ggplot(dat_yt, aes(x = gonad_wt_g)) +
-  geom_histogram() +
+  geom_histogram(binwidth = 2) +
   facet_grid(rows = vars(location), cols = vars(sex)) + # <1>
   xlab("Gonad Weight (g)")
 ```
