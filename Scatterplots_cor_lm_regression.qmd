@@ -282,20 +282,20 @@ dat_yt |>
 ggplot(dat_yt, aes(x = length_cm, y = gonad_wt_g)) +
   geom_point()  +
   geom_smooth(method = lm, se = FALSE) +
-  ggtitle("one numerical predictor (Simple Linear Regression)")
+  ggtitle("1 numeric predictor (Simple Linear Regression)")
 
 # one categorical predictor (ANOVA)
 ggplot(dat_yt, aes(x = fishing_level, y = gonad_wt_g)) +
   geom_point()  +
   stat_summary(fun = "mean", color = "blue", size = 10, 
                geom = "point", shape = "_") +
-  ggtitle("compare group means (ANOVA)")
+  ggtitle("1 categorical predictor (ANOVA)")
 
 # one numerical predictor + one categorical predictor (ANCOVA)
 ggplot(dat_yt, aes(x = length_cm, y = gonad_wt_g, color = fishing_level)) +
   geom_point()  +
   geom_smooth(method = lm, se = FALSE) +
-  ggtitle("compare linear relationships across groups (ANCOVA)")
+  ggtitle("1 numeric * 1 categorical predictor (ANCOVA)")
 ```
 
 ------------------------------------------------------------------------
@@ -304,7 +304,7 @@ ggplot(dat_yt, aes(x = length_cm, y = gonad_wt_g, color = fishing_level)) +
 
 `lm()` **is the linear model function** that can be used fit all types of **General Linear Models.**
 
-<https://en.wikipedia.org/wiki/General_linear_model>
+<https://lindeloev.github.io/tests-as-linear/>
 
 -   Common statistical methods you are familiar with like S*imple Linear Regression, ANOVA, ANCOVA, Multiple Regression* are forms of general linear models (*note this is different from General[**ized**]{.underline} Linear Models*).
 
