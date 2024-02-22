@@ -5,3 +5,5 @@ title: "Example Code from BIO 5100/L"
 # Spring 2024 BIO 5100/L class notes and example code
 
 [Week 2-3 Visualize Distributions & Descriptive Statistics](https://claisselab.github.io/BIO_5100/Distributions.html)
+
+[Week 4-5 Scatterplots, correlation, linear models (simple linear regression)](https://claisselab.github.io/BIO_5100/Scatterplots_cor_lm_regression.html)
