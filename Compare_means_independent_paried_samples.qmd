@@ -839,9 +839,6 @@ Or w/ Paired Data:
 -   ***NOTE - DATA MUST BE SORTED so each pair is in the same order by explanatory variable, here data was entered that way, but you could use the dplyr function `arrange()` to sort rows if necessary*** <https://dplyr.tidyverse.org/reference/arrange.html>
 
 ```{r}
-# using differences data table, run as one-sample t-test compared to 0
-t.test(cell_count_diff ~ 1, mu=0, data = dat_diff)
-
 # using paired data table, run as actual paired-sample t-test
 t.test(cell_count~treatment, data = dat_paired, paired = TRUE)
 ```

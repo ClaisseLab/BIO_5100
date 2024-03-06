@@ -228,7 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">1 Mar 2024</p>
+      <p class="date">6 Mar 2024</p>
     </div>
   </div>
   
@@ -1339,22 +1339,7 @@ mean of x
 </li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># using differences data table, run as one-sample t-test compared to 0</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">cell_count_diff</span> <span class="op">~</span> <span class="fl">1</span>, mu<span class="op">=</span><span class="fl">0</span>, data <span class="op">=</span> <span class="va">dat_diff</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    One Sample t-test
-
-data:  cell_count_diff
-t = -2.7014, df = 8, p-value = 0.02701
-alternative hypothesis: true mean is not equal to 0
-95 percent confidence interval:
- -54.784709  -4.326402
-sample estimates:
-mean of x 
--29.55556 </code></pre>
-</div>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># using paired data table, run as actual paired-sample t-test</span></span>
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># using paired data table, run as actual paired-sample t-test</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">cell_count</span><span class="op">~</span><span class="va">treatment</span>, data <span class="op">=</span> <span class="va">dat_paired</span>, paired <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
