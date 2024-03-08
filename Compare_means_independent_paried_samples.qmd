@@ -396,9 +396,9 @@ Note:
 
 1.  *(Fig. X) would be citing the combined results figure that includes (top) the effects plot and (below) plot w/ the data points, means and the 95% CIs for each group.*
 
-2.  *You could add the t-statistic and p-value (from the contrasts table) above*
+2.  *You can add the t-statistic and p-value (from the contrasts table) above or two-sample t-test output below, both are equivalent.*
 
-More explanation of why it is advised you don't use the word "significant" in the results can be found here (*but if you or your adviser want to, that is fine too, since p-value is \< 0.05*) and examples of writing results can be found here: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#step-7-report-the-model-results>
+More explanation of why it is optional to (and advised by this author that you don't) use the word "significant" in the results can be found here (*but if you or your adviser want to, that is fine too, since p-value is \< 0.05*) and examples of writing results can be found here: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#step-7-report-the-model-results>
 
 ## Two-sample t-test (hypothesis test)
 
@@ -802,13 +802,15 @@ ggsave(
 
 ## Results sentence
 
--   include both the **magnitude (effect size)** and **direction** of difference
+-   You should include both the **magnitude (effect size)** and **direction** of difference
+-   Focus on the biology and *do not make a statistical result the subject of the sentence*.
 
 **The drug decreased cell counts by an average of 29.6 cells (95% CI: 4.3 to 54.8, p = 0.027) compared to taking a placebo (Fig. X).**
 
--   Figure X would be combined results plot above
+-   Figure X would be combined results plot above with effects plot on top (w/ 95% CI of mean differences) and plot witht he original data points on the bottom.
+-   the p-value could be found in the contrasts table above or in the t-test outputs below.
 
-More explanation of why it is advised you don't use the word "significant" in the results can be found here (*but if you or your adviser want to, that is fine too, since p-value is \< 0.05*) and other examples of writing results can be found here: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#step-7-report-the-model-results>
+More explanation of why it is optional to (and why this author advises you don't need to) use the word "significant" in the results can be found here (*but if you or your adviser want to, that is fine too, since p-value is \< 0.05*) and other examples of writing results can be found here: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#step-7-report-the-model-results>
 
 ## Paired-Sample t-test (or one-sample t-test w/ mu = 0)
 
@@ -820,7 +822,7 @@ More explanation of why it is advised you don't use the word "significant" in th
 
 ------------------------------------------------------------------------
 
-There are two ways to specify a paired-t-test using the `t.test()` function.
+There are two ways to specify a paired-t-test using the `t.test()` function both yield the same results.
 
 (my preferred method) Calculate the differences, then run a one-sample t-test with the constant = 0 (*that you are comparing the mean of the differences to*):
 
@@ -845,18 +847,24 @@ t.test(cell_count~treatment, data = dat_paired, paired = TRUE)
 
 *Both methods yield identical results, with the exception of sign differences (negative/positive) on the mean difference and t-statistic values (which just depends on the order of the pairs in the data set when the differences are calculated), so just keep track of what is being subtracted from what.*
 
-## Results sentence (based on t-test results)
+------------------------------------------------------------------------
 
-Using statistics produced in t-test output and potentially additional code chunks above, we can write the results in multiple ways (depending on what the researcher wants to emphasize):
+### Extra: Use of broom package tidy() function w/ t.test()
 
--   include both the **magnitude (effect size)** and **direction** of difference
--   report name of test and relevant statistics in parentheses at end of sentence (*don't make the test the subject of the sentence*).
+-   Can also wrap the `tidy()` function from broom package around the t.test, to get a "tidy" output with the same values organized in a data.frame
 
-**The drug decreased cell counts by an average of 29.6 cells (95% CI: 4.3 to 54.8) compared to receiving a placebo (paired-sample t-test, t~8~ = 2.7, p = 0.027, Fig. X)**
+-   Can be useful if you want to store the results and directly output values (like p-value or CIs etc.)
 
-Note:
+<https://cran.r-project.org/web/packages/broom/vignettes/broom.html>
 
-1.  (Fig. X) would be citing a results figure (plot) that included the data, the mean and the 95% CI (even if you are going to run a t-test, still show the 95% CI).
-2.  Including "*significant*" is optional, as that can already be seen by interpreting the p-value in the parentheses at the end of the sentence.
+```{r}
+t_test_cell_diff <- t.test(cell_count_diff ~ 1, mu=0, data = dat_diff)
+
+# show results in "tidy" data.frame format (from broom package)
+tidy(t_test_cell_diff)
+# select mean difference, 95%CIs and p-value
+tidy(t_test_cell_diff) |> 
+  select(estimate, conf.low, conf.high, p.value)
+```
 
 ------------------------------------------------------------------------

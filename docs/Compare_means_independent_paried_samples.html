@@ -203,8 +203,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#combine-plots-into-a-single-results-figure-1" id="toc-combine-plots-into-a-single-results-figure-1" class="nav-link" data-scroll-target="#combine-plots-into-a-single-results-figure-1">Combine plots into a single results figure</a></li>
   <li><a href="#export-save-plot-to-a-.png-file-with-ggsave-1" id="toc-export-save-plot-to-a-.png-file-with-ggsave-1" class="nav-link" data-scroll-target="#export-save-plot-to-a-.png-file-with-ggsave-1">Export (save) plot to a .png file with ggsave()</a></li>
   <li><a href="#results-sentence-1" id="toc-results-sentence-1" class="nav-link" data-scroll-target="#results-sentence-1">Results sentence</a></li>
-  <li><a href="#paired-sample-t-test-or-one-sample-t-test-w-mu-0" id="toc-paired-sample-t-test-or-one-sample-t-test-w-mu-0" class="nav-link" data-scroll-target="#paired-sample-t-test-or-one-sample-t-test-w-mu-0">Paired-Sample t-test (or one-sample t-test w/ mu = 0)</a></li>
-  <li><a href="#results-sentence-based-on-t-test-results" id="toc-results-sentence-based-on-t-test-results" class="nav-link" data-scroll-target="#results-sentence-based-on-t-test-results">Results sentence (based on t-test results)</a></li>
+  <li>
+<a href="#paired-sample-t-test-or-one-sample-t-test-w-mu-0" id="toc-paired-sample-t-test-or-one-sample-t-test-w-mu-0" class="nav-link" data-scroll-target="#paired-sample-t-test-or-one-sample-t-test-w-mu-0">Paired-Sample t-test (or one-sample t-test w/ mu = 0)</a>
+  <ul class="collapse">
+<li><a href="#extra-use-of-broom-package-tidy-function-w-t.test-1" id="toc-extra-use-of-broom-package-tidy-function-w-t.test-1" class="nav-link" data-scroll-target="#extra-use-of-broom-package-tidy-function-w-t.test-1">Extra: Use of broom package tidy() function w/ t.test()</a></li>
+  </ul>
+</li>
   </ul>
 </li>
   </ul></nav>
@@ -228,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">6 Mar 2024</p>
+      <p class="date">8 Mar 2024</p>
     </div>
   </div>
   
@@ -724,9 +728,9 @@ Confidence level used: 0.95 </code></pre>
 <p>Note:</p>
 <ol type="1">
 <li><p><em>(Fig. X) would be citing the combined results figure that includes (top) the effects plot and (below) plot w/ the data points, means and the 95% CIs for each group.</em></p></li>
-<li><p><em>You could add the t-statistic and p-value (from the contrasts table) above</em></p></li>
+<li><p><em>You can add the t-statistic and p-value (from the contrasts table) above or two-sample t-test output below, both are equivalent.</em></p></li>
 </ol>
-<p>More explanation of why it is advised you don’t use the word “significant” in the results can be found here (<em>but if you or your adviser want to, that is fine too, since p-value is &lt; 0.05</em>) and examples of writing results can be found here: <a href="https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#step-7-report-the-model-results" class="uri">https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#step-7-report-the-model-results</a></p>
+<p>More explanation of why it is optional to (and advised by this author that you don’t) use the word “significant” in the results can be found here (<em>but if you or your adviser want to, that is fine too, since p-value is &lt; 0.05</em>) and examples of writing results can be found here: <a href="https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#step-7-report-the-model-results" class="uri">https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#step-7-report-the-model-results</a></p>
 </section><section id="two-sample-t-test-hypothesis-test" class="level2"><h2 class="anchored" data-anchor-id="two-sample-t-test-hypothesis-test">Two-sample t-test (hypothesis test)</h2>
 <div class="cell">
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Review the help file for the t.test function, there are various options</span></span>
@@ -1293,19 +1297,21 @@ Confidence level used: 0.95 </code></pre>
 </div>
 </section><section id="results-sentence-1" class="level2"><h2 class="anchored" data-anchor-id="results-sentence-1">Results sentence</h2>
 <ul>
-<li>include both the <strong>magnitude (effect size)</strong> and <strong>direction</strong> of difference</li>
+<li>You should include both the <strong>magnitude (effect size)</strong> and <strong>direction</strong> of difference</li>
+<li>Focus on the biology and <em>do not make a statistical result the subject of the sentence</em>.</li>
 </ul>
 <p><strong>The drug decreased cell counts by an average of 29.6 cells (95% CI: 4.3 to 54.8, p = 0.027) compared to taking a placebo (Fig. X).</strong></p>
 <ul>
-<li>Figure X would be combined results plot above</li>
+<li>Figure X would be combined results plot above with effects plot on top (w/ 95% CI of mean differences) and plot witht he original data points on the bottom.</li>
+<li>the p-value could be found in the contrasts table above or in the t-test outputs below.</li>
 </ul>
-<p>More explanation of why it is advised you don’t use the word “significant” in the results can be found here (<em>but if you or your adviser want to, that is fine too, since p-value is &lt; 0.05</em>) and other examples of writing results can be found here: <a href="https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#step-7-report-the-model-results" class="uri">https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#step-7-report-the-model-results</a></p>
+<p>More explanation of why it is optional to (and why this author advises you don’t need to) use the word “significant” in the results can be found here (<em>but if you or your adviser want to, that is fine too, since p-value is &lt; 0.05</em>) and other examples of writing results can be found here: <a href="https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#step-7-report-the-model-results" class="uri">https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#step-7-report-the-model-results</a></p>
 </section><section id="paired-sample-t-test-or-one-sample-t-test-w-mu-0" class="level2"><h2 class="anchored" data-anchor-id="paired-sample-t-test-or-one-sample-t-test-w-mu-0">Paired-Sample t-test (or one-sample t-test w/ mu = 0)</h2>
 <p><strong>Statistical Hypotheses (for a Paired-Sample t-test)</strong></p>
 <p><em>Null Hypothesis:</em> mean of the differences in the population is equal to 0</p>
 <p><em>Alternative Hypothesis:</em> mean of the differences in the population is NOT equal to 0</p>
 <hr>
-<p>There are two ways to specify a paired-t-test using the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function.</p>
+<p>There are two ways to specify a paired-t-test using the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function both yield the same results.</p>
 <p>(my preferred method) Calculate the differences, then run a one-sample t-test with the constant = 0 (<em>that you are comparing the mean of the differences to</em>):</p>
 <ul>
 <li>
@@ -1356,22 +1362,38 @@ mean difference
 </div>
 </div>
 <p><em>Both methods yield identical results, with the exception of sign differences (negative/positive) on the mean difference and t-statistic values (which just depends on the order of the pairs in the data set when the differences are calculated), so just keep track of what is being subtracted from what.</em></p>
-</section><section id="results-sentence-based-on-t-test-results" class="level2"><h2 class="anchored" data-anchor-id="results-sentence-based-on-t-test-results">Results sentence (based on t-test results)</h2>
-<p>Using statistics produced in t-test output and potentially additional code chunks above, we can write the results in multiple ways (depending on what the researcher wants to emphasize):</p>
+<hr>
+<section id="extra-use-of-broom-package-tidy-function-w-t.test-1" class="level3"><h3 class="anchored" data-anchor-id="extra-use-of-broom-package-tidy-function-w-t.test-1">Extra: Use of broom package tidy() function w/ t.test()</h3>
 <ul>
-<li>include both the <strong>magnitude (effect size)</strong> and <strong>direction</strong> of difference</li>
-<li>report name of test and relevant statistics in parentheses at end of sentence (<em>don’t make the test the subject of the sentence</em>).</li>
+<li><p>Can also wrap the <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code> function from broom package around the t.test, to get a “tidy” output with the same values organized in a data.frame</p></li>
+<li><p>Can be useful if you want to store the results and directly output values (like p-value or CIs etc.)</p></li>
 </ul>
-<p><strong>The drug decreased cell counts by an average of 29.6 cells (95% CI: 4.3 to 54.8) compared to receiving a placebo (paired-sample t-test, t<sub>8</sub> = 2.7, p = 0.027, Fig. X)</strong></p>
-<p>Note:</p>
-<ol type="1">
-<li>(Fig. X) would be citing a results figure (plot) that included the data, the mean and the 95% CI (even if you are going to run a t-test, still show the 95% CI).</li>
-<li>Including “<em>significant</em>” is optional, as that can already be seen by interpreting the p-value in the parentheses at the end of the sentence.</li>
-</ol>
+<p><a href="https://cran.r-project.org/web/packages/broom/vignettes/broom.html" class="uri">https://cran.r-project.org/web/packages/broom/vignettes/broom.html</a></p>
+<div class="cell">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">t_test_cell_diff</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">cell_count_diff</span> <span class="op">~</span> <span class="fl">1</span>, mu<span class="op">=</span><span class="fl">0</span>, data <span class="op">=</span> <span class="va">dat_diff</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># show results in "tidy" data.frame format (from broom package)</span></span>
+<span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="va">t_test_cell_diff</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 8
+  estimate statistic p.value parameter conf.low conf.high method     alternative
+     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      
+1    -29.6     -2.70  0.0270         8    -54.8     -4.33 One Sampl… two.sided  </code></pre>
+</div>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># select mean difference, 95%CIs and p-value</span></span>
+<span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="va">t_test_cell_diff</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">estimate</span>, <span class="va">conf.low</span>, <span class="va">conf.high</span>, <span class="va">p.value</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+  estimate conf.low conf.high p.value
+     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1    -29.6    -54.8     -4.33  0.0270</code></pre>
+</div>
+</div>
 <hr>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
