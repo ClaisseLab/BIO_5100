@@ -466,7 +466,7 @@ tidy(t_test_len_supp) |>
 
 #### **Biological Question: Does a drug have an effect on patient cell counts?**
 
-Manually entered *made-up* data (in "wide" format)
+**Manually entered *made-up* data in "wide" format** (NOT part of typical analysis, as your data would typically already be entered/provided in "long" tidy format. Just here to create made-up data to use below)
 
 ```{r}
 ## create data frame w/ data manually entered
@@ -475,34 +475,18 @@ dat_paired_wide <- tibble(
   placebo = c(78, 54, 142, 25, 101, 99, 94, 107, 64),
   drug = c(79, 48, 52, 15, 61, 107, 77, 54, 5)
 )
-# look at "wide" format (not what you want)
-# one variable (cell_counts) is split across two columns
-dat_paired_wide
-```
-
-*In the wide format it is clear that data are "paired" by patient (pre-post). In this wide format one variable (cell count) is split across two columns.*
-
-## Convert Data From "Wide" to "Long" Format
-
-If the data are in wide format, you'll want to convert them to long format before proceeding with an analysis using tidyverse functions. These function (e.g., functions from ggplot2 and dplyr packages) always want data in a "tidy" format, which includes having the data in **"long" format (one variable per column).**
-
-We can use the tidyr functions `pivot_longer()` and `pivot_wider()` to reformat data from wide to long, or from long to wide format.
-
-See here for examples: <https://tidyr.tidyverse.org/reference/pivot_longer.html>
-
-```{r}
 ## use pivot_longer function from dplyr to convert from wide to long data table format
 dat_paired <- dat_paired_wide |>
   pivot_longer(cols = placebo:drug, 
                names_to = "treatment", values_to = "cell_count")
-# look at "long" format 
+# data now in "long" format 
 # i.e., what you always want your data to be if possible
-# and typcially need long format for plotting w/ ggplot
-# single variable in each colum
+# and typically need long format for plotting w/ ggplot
+# single variable in each column
 dat_paired
 ```
 
-*While in the long format it might be a little harder to see, but data are still "paired" by patient_no.*
+*In output above can see the data are "paired" by patient_no.*
 
 -   use glimpse`()` function to examine the structure of the data.frame named dat_yt
 
@@ -569,6 +553,9 @@ plot_dat_paired
 # convert from long to wide format, then subtract drug - placebo values 
 # for each patient creating a new column named cell_count_diff
 dat_diff <- dat_paired |>
+  # select just columns you want to be involved in pivot
+  # don't include extra numeric data columns
+  select(patient_no, treatment, cell_count) |>
   pivot_wider(names_from = treatment,
               values_from = cell_count) |>
   mutate(cell_count_diff = drug - placebo)
