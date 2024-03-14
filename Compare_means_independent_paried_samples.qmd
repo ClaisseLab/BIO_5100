@@ -466,10 +466,14 @@ tidy(t_test_len_supp) |>
 
 #### **Biological Question: Does a drug have an effect on patient cell counts?**
 
-**Manually entered *made-up* data in "wide" format** (NOT part of typical analysis, as your data would typically already be entered/provided in "long" tidy format. Just here to create made-up data to use below)
+**Manually entered *made-up* data in "wide" format for this demo, then converted to long more "tidy" format (NOT part of typical analysis procedure)**
 
 ```{r}
-## create data frame w/ data manually entered
+## Made-up data for this demo, manually entered into 
+# dataframe
+# NOTE - This is just for demo, not part of typical 
+# analysis where you'd already have your data entered
+# in tidy format in a spreadsheet and read that in.
 dat_paired_wide <- tibble(
   patient_no = 1:9,
   placebo = c(78, 54, 142, 25, 101, 99, 94, 107, 64),
