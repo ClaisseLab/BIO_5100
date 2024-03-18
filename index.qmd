@@ -130,5 +130,3 @@ title: "BIO 5100 Resources"
 #### [Data Science Hangout](https://posit.co/data-science-hangout/)
 
 -   Join a community of data scientists that share insights about what it means to be a responsible, effective, and inspiring leader.
-
-

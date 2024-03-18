@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Jeremy Claisse">
+<meta name="dcterms.date" content="2024-03-18">
+<title>BIO 5100 - Week 9 - Comparing more than 2 means (traditionally one-way ANOVA)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><link rel="stylesheet" href="styles.css">
+</head>
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">BIO 5100</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+<li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Online_Books.html" rel="" target="">
+ <span class="menu-text">Online Books</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://claisselab.github.io/BIO_5800L/" rel="" target="">
+ <span class="menu-text">BIO 5800L</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://claisselab.github.io/BIO_5100/Example_Code.html" rel="" target="">
+ <span class="menu-text">Example Code</span></a>
+  </li>  
+</ul>
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://claisselab.com" rel="" target=""><i class="bi bi-house-fill" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ClaisseLab" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+<div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li>
+<a href="#linear-model-w-a-categorical-x-explanatory-variable-comparing-more-than-2-means" id="toc-linear-model-w-a-categorical-x-explanatory-variable-comparing-more-than-2-means" class="nav-link active" data-scroll-target="#linear-model-w-a-categorical-x-explanatory-variable-comparing-more-than-2-means">Linear model w/ a categorical X (explanatory) variable (Comparing more than 2 means)</a>
+  <ul class="collapse">
+<li><a href="#load-packages" id="toc-load-packages" class="nav-link" data-scroll-target="#load-packages">Load Packages</a></li>
+  <li><a href="#general-modeling-strategy" id="toc-general-modeling-strategy" class="nav-link" data-scroll-target="#general-modeling-strategy">General modeling strategy:</a></li>
+  <li><a href="#background-of-data-set" id="toc-background-of-data-set" class="nav-link" data-scroll-target="#background-of-data-set">Background of Data Set</a></li>
+  <li><a href="#read-in-data-table" id="toc-read-in-data-table" class="nav-link" data-scroll-target="#read-in-data-table">Read in data table</a></li>
+  <li><a href="#convert-a-variable-column-to-factor-and-set-the-order-of-levels" id="toc-convert-a-variable-column-to-factor-and-set-the-order-of-levels" class="nav-link" data-scroll-target="#convert-a-variable-column-to-factor-and-set-the-order-of-levels"><strong>Convert a variable (column) to factor and <u>set the order of levels</u></strong></a></li>
+  </ul>
+</li>
+  <li><a href="#initial-exploratory-analysis" id="toc-initial-exploratory-analysis" class="nav-link" data-scroll-target="#initial-exploratory-analysis">Initial Exploratory Analysis</a></li>
+  <li><a href="#define-the-linear-model" id="toc-define-the-linear-model" class="nav-link" data-scroll-target="#define-the-linear-model">Define the Linear Model</a></li>
+  <li>
+<a href="#assumptions-checking" id="toc-assumptions-checking" class="nav-link" data-scroll-target="#assumptions-checking">“Assumptions checking”</a>
+  <ul class="collapse">
+<li><a href="#linear-model-assumptions" id="toc-linear-model-assumptions" class="nav-link" data-scroll-target="#linear-model-assumptions">Linear model assumptions</a></li>
+  <li><a href="#a.-simple-random-sample-srs-from-each-population-group-or-treatment-b.-observations-are-independent" id="toc-a.-simple-random-sample-srs-from-each-population-group-or-treatment-b.-observations-are-independent" class="nav-link" data-scroll-target="#a.-simple-random-sample-srs-from-each-population-group-or-treatment-b.-observations-are-independent">A. simple random sample (SRS) from each population (group or treatment) &amp; B. Observations are independent</a></li>
+  <li><a href="#c.-residuals-follow-a-normal-distribution" id="toc-c.-residuals-follow-a-normal-distribution" class="nav-link" data-scroll-target="#c.-residuals-follow-a-normal-distribution">C. Residuals follow a normal distribution</a></li>
+  <li><a href="#d.-check-for-equal-variances-among-groups-homoscedasticity" id="toc-d.-check-for-equal-variances-among-groups-homoscedasticity" class="nav-link" data-scroll-target="#d.-check-for-equal-variances-among-groups-homoscedasticity">D. Check for <strong>“equal” variances among groups (<em>homoscedasticity</em>)</strong></a></li>
+  <li><a href="#what-you-can-write-in-thesis-or-paper-methods-about-assumptions-checking" id="toc-what-you-can-write-in-thesis-or-paper-methods-about-assumptions-checking" class="nav-link" data-scroll-target="#what-you-can-write-in-thesis-or-paper-methods-about-assumptions-checking"><strong>What you can write in thesis or paper methods <em>about assumptions checking</em>:</strong></a></li>
+  <li><a href="#what-if-data-do-not-meet-assumptions" id="toc-what-if-data-do-not-meet-assumptions" class="nav-link" data-scroll-target="#what-if-data-do-not-meet-assumptions">What if data do not meet assumptions?</a></li>
+  </ul>
+</li>
+  <li><a href="#coefficient-table" id="toc-coefficient-table" class="nav-link" data-scroll-target="#coefficient-table">Coefficient table</a></li>
+  <li>
+<a href="#create-emmeans-table-mean-95-ci-for-each-group" id="toc-create-emmeans-table-mean-95-ci-for-each-group" class="nav-link" data-scroll-target="#create-emmeans-table-mean-95-ci-for-each-group">Create emmeans table (mean + 95% CI for each group)</a>
+  <ul class="collapse">
+<li><a href="#points-means-plot-w-model-95-cis" id="toc-points-means-plot-w-model-95-cis" class="nav-link" data-scroll-target="#points-means-plot-w-model-95-cis">Points &amp; means plot w/ (model) 95% CIs</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#pairwise-differences-between-means-in-contrasts-table-2-options" id="toc-pairwise-differences-between-means-in-contrasts-table-2-options" class="nav-link" data-scroll-target="#pairwise-differences-between-means-in-contrasts-table-2-options">Pairwise differences between means in contrasts table (2 options)</a>
+  <ul class="collapse">
+<li><a href="#option-1-tukey-honestly-significant-difference-hsd-contrasts-table-corresponding-effects-plot-w-adjusted-95-cis-and-p-values" id="toc-option-1-tukey-honestly-significant-difference-hsd-contrasts-table-corresponding-effects-plot-w-adjusted-95-cis-and-p-values" class="nav-link" data-scroll-target="#option-1-tukey-honestly-significant-difference-hsd-contrasts-table-corresponding-effects-plot-w-adjusted-95-cis-and-p-values"><strong>Option 1: Tukey Honestly Significant Difference (HSD)</strong> contrasts table &amp; corresponding “effects” plot w/ adjusted 95% CIs and p-values</a></li>
+  <li><a href="#effects-plot-w-95-ci-tukey-hsd-all-pairwise-comparisons-version" id="toc-effects-plot-w-95-ci-tukey-hsd-all-pairwise-comparisons-version" class="nav-link" data-scroll-target="#effects-plot-w-95-ci-tukey-hsd-all-pairwise-comparisons-version">Effects plot w/ 95% CI (Tukey HSD all pairwise comparisons version)</a></li>
+  <li>
+<a href="#option-2-pre-planned-contrasts-no-adjustments-contrasts-table-corresponding-effects-plot-w-95-ci-and-p-values" id="toc-option-2-pre-planned-contrasts-no-adjustments-contrasts-table-corresponding-effects-plot-w-95-ci-and-p-values" class="nav-link" data-scroll-target="#option-2-pre-planned-contrasts-no-adjustments-contrasts-table-corresponding-effects-plot-w-95-ci-and-p-values"><strong>Option 2: Pre-planned contrasts (no adjustments)</strong> contrasts table &amp; corresponding “effects” plot w/ 95% CI and p-values</a>
+  <ul class="collapse">
+<li><a href="#pre-planned-contrasts-and-associated-plot-of-mean-pairwise-differences-w-95-cis" id="toc-pre-planned-contrasts-and-associated-plot-of-mean-pairwise-differences-w-95-cis" class="nav-link" data-scroll-target="#pre-planned-contrasts-and-associated-plot-of-mean-pairwise-differences-w-95-cis">Pre-planned contrasts and associated plot of mean pairwise differences w/ 95% CIs</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#effects-plot-w-95-ci-preplanned-contrasts-version" id="toc-effects-plot-w-95-ci-preplanned-contrasts-version" class="nav-link" data-scroll-target="#effects-plot-w-95-ci-preplanned-contrasts-version">Effects plot w/ 95% CI (preplanned contrasts version)</a>
+  <ul class="collapse">
+<li><a href="#table-of-all-pairwise-contrasts-no-adjustments-to-include-in-appendix-etc." id="toc-table-of-all-pairwise-contrasts-no-adjustments-to-include-in-appendix-etc." class="nav-link" data-scroll-target="#table-of-all-pairwise-contrasts-no-adjustments-to-include-in-appendix-etc.">Table of all pairwise contrasts no adjustments (to include in appendix etc.)</a></li>
+  </ul>
+</li>
+  </ul>
+</li>
+  <li>
+<a href="#combine-plots-into-a-single-primary-results-figure" id="toc-combine-plots-into-a-single-primary-results-figure" class="nav-link" data-scroll-target="#combine-plots-into-a-single-primary-results-figure">Combine plots into a single primary results figure</a>
+  <ul class="collapse">
+<li><a href="#option-1-tukey-hsd-all-pairwise-comparisons-versions-with-adjusted-difference-p-values-and-95-cis" id="toc-option-1-tukey-hsd-all-pairwise-comparisons-versions-with-adjusted-difference-p-values-and-95-cis" class="nav-link" data-scroll-target="#option-1-tukey-hsd-all-pairwise-comparisons-versions-with-adjusted-difference-p-values-and-95-cis">Option 1: Tukey HSD all pairwise comparisons versions (with adjusted difference p-values and 95% CIs)</a></li>
+  <li><a href="#option-2-preplanned-contrasts-version-with-no-adjustment-of-p-values-or-95-cis" id="toc-option-2-preplanned-contrasts-version-with-no-adjustment-of-p-values-or-95-cis" class="nav-link" data-scroll-target="#option-2-preplanned-contrasts-version-with-no-adjustment-of-p-values-or-95-cis">Option 2: Preplanned contrasts version (with NO adjustment of p-values or 95% CIs)</a></li>
+  </ul>
+</li>
+  <li><a href="#write-save-plot-to-a-.png-file-with-ggsave" id="toc-write-save-plot-to-a-.png-file-with-ggsave" class="nav-link" data-scroll-target="#write-save-plot-to-a-.png-file-with-ggsave">Write (save) plot to a .png file with ggsave()</a></li>
+  <li><a href="#pairwise-mean-differences-expressed-as-a" id="toc-pairwise-mean-differences-expressed-as-a" class="nav-link" data-scroll-target="#pairwise-mean-differences-expressed-as-a"><strong>Pairwise mean differences expressed as a %</strong></a></li>
+  <li><a href="#write-results-sentences-for-this-analysis." id="toc-write-results-sentences-for-this-analysis." class="nav-link" data-scroll-target="#write-results-sentences-for-this-analysis.">Write results sentences for this analysis.</a></li>
+  <li>
+<a href="#one-way-anova-hypothesis-test" id="toc-one-way-anova-hypothesis-test" class="nav-link" data-scroll-target="#one-way-anova-hypothesis-test">One-way ANOVA (hypothesis test)</a>
+  <ul class="collapse">
+<li><a href="#anova-table-w-anova-function-using-linear-model-object" id="toc-anova-table-w-anova-function-using-linear-model-object" class="nav-link" data-scroll-target="#anova-table-w-anova-function-using-linear-model-object">ANOVA Table w/ <code>anova()</code> function using linear model object</a></li>
+  <li><a href="#results-from-just-the-one-way-anova-test" id="toc-results-from-just-the-one-way-anova-test" class="nav-link" data-scroll-target="#results-from-just-the-one-way-anova-test">Results from just the one-way ANOVA test:</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#extra-info-false-discovery-rate" id="toc-extra-info-false-discovery-rate" class="nav-link" data-scroll-target="#extra-info-false-discovery-rate">(Extra info) False Discovery Rate</a>
+  <ul class="collapse">
+<li><a href="#another-type-of-p-value-adjustment-for-multiple-comparisons---used-most-often-for-genetics-analysis" id="toc-another-type-of-p-value-adjustment-for-multiple-comparisons---used-most-often-for-genetics-analysis" class="nav-link" data-scroll-target="#another-type-of-p-value-adjustment-for-multiple-comparisons---used-most-often-for-genetics-analysis">(another type of p-value adjustment for multiple comparisons - used most often for genetics analysis)</a></li>
+  </ul>
+</li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">Week 9 - Comparing more than 2 means (traditionally one-way ANOVA)</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jeremy Claisse </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">18 Mar 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header><section id="linear-model-w-a-categorical-x-explanatory-variable-comparing-more-than-2-means" class="level1"><h1>Linear model w/ a categorical X (explanatory) variable (Comparing more than 2 means)</h1>
+<section id="load-packages" class="level2"><h2 class="anchored" data-anchor-id="load-packages">Load Packages</h2>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># load tidyverse</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># load tidymodels package (to use functions in broom package)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidymodels.tidymodels.org">tidymodels</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># load skimr package - to use skim() function </span></span>
+<span><span class="co"># for descriptive statistics</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/skimr/">skimr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># load emmeans package: "estimated marginal means" package</span></span>
+<span><span class="co">#install.packages("emmeans")</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rvlenth/emmeans">emmeans</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#load cowplot package</span></span>
+<span><span class="co"># used to combine multiple ggplots into a single figure</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/cowplot/">cowplot</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The tidyverse package is actually a collection of multiple R packages <a href="https://www.tidyverse.org/packages/" class="uri">https://www.tidyverse.org/packages/</a> including the <strong>ggplot2</strong> package (for plotting) and <strong>dplyr</strong> package (for organizing and summarizing data). And you can load these (and others packages in the tidyverse) all at once using <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code>.</p>
+<p>The <strong>ggplot2 Package</strong> we will use primarily for making plots (and is part of the tidyverse) has great help pages: <a href="https://ggplot2.tidyverse.org/reference/index.html" class="uri"><strong>https://ggplot2.tidyverse.org/reference/index.html</strong></a></p>
+<p>The <strong>dplyr Package</strong> we will use for “data wrangling” (e.g., organizing, summarizing) and it also has (not as extensive) help pages <a href="https://dplyr.tidyverse.org/" class="uri">https://dplyr.tidyverse.org/</a> (plus cheat sheets <em>RStudio &gt; Help &gt; Cheatsheets</em>)</p>
+<p>The <strong>broom Package</strong> is <strong>loaded/installed as part of <a href="https://tidymodels.org/"><u>tidymodels</u></a> meta-package</strong> (similar to tidyverse). More information/examples of broom package functions can be found here: <a href="https://broom.tidymodels.org/articles/broom.html" class="uri">https://broom.tidymodels.org/articles/broom.html</a></p>
+<p>The <strong>emmeans Package</strong> will be used to output means, 95% CIs, p-values and other statistics from specified <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> objects</p>
+<ul>
+<li><p>Lots of vignettes here that demo what the package can do: <a href="https://cran.r-project.org/web/packages/emmeans/index.html" class="uri">https://cran.r-project.org/web/packages/emmeans/index.html</a></p></li>
+<li><p>This one reviews the basics: <a href="https://cran.r-project.org/web/packages/emmeans/vignettes/AQuickStart.html" class="uri">https://cran.r-project.org/web/packages/emmeans/vignettes/AQuickStart.html</a></p></li>
+</ul>
+<p>The <strong>cowplot Package</strong> will be used here to combined multiple ggplots into a single figure. But it also contains functions for all sorts other plotting purposes (<em>some cool/useful, others I would not necessarily advise using</em>):</p>
+<ul>
+<li>cowplot <a href="https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html" class="uri">https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html</a>
+</li>
+</ul>
+<hr></section><section id="general-modeling-strategy" class="level2"><h2 class="anchored" data-anchor-id="general-modeling-strategy">General modeling strategy:</h2>
+<p><a href="https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/intro-linear-models.html#modeling-strategy" class="uri">https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/intro-linear-models.html#modeling-strategy</a></p>
+<hr></section><section id="background-of-data-set" class="level2"><h2 class="anchored" data-anchor-id="background-of-data-set">Background of Data Set</h2>
+<p>The Laysan Finch (<em>Telespiza contans</em>), a species in the Hawaiian honeycreeper radiation, is endemic to <strong>Laysan Island</strong> in the Northwest Hawaiian Islands. Early last century rabbits, introduced in 1903, devoured the island’s vegetation and caused the near extinction of the Finch (and extinction of several other bird species). After the elimination of rabbits in 1923, the Finch population recovered. Concern about the species’ vulnerability to such catastrophes, however, led the U.S. Fish and Wildlife Service to establish additional populations at Pearl and Hermes Reef (also in the Northwest Hawaiian Islands). A few birds were introduced to <strong>Southeast Island</strong> at Pearl and Hermes in 1967, and by the early 1970s several other of the small islands of the atoll had been colonized (including <strong>North Island</strong> also in this data set).</p>
+<p>Dr.&nbsp;Sheila Conant (University of Hawaii Professor) and her students have been studying Laysan Finches since the 1980s. One question of great interest has been whether the populations at Pearl and Hermes have evolved differences from the source population on Laysan Island (see Conant, C., 1988, “Geographic variation in the Laysan Finch (<em>Telespyza contans</em>)’, Evolutionary Ecology 2:270-282). <strong>Of particular interest is whether the beak morphology of the birds in the translocated populations differs</strong> from that of birds on Laysan; if so, <strong>this could represent an evolutionary response to the marked differences in the size and hardness of the main food (seeds)</strong> between Laysan and North and South East Islands in the Pearl and Hermes Atoll.</p>
+<p>The data provided here are from a morphological study by Dr.&nbsp;Conant and Marie Morin in the 1980s. For simplicity and to avoid confounding factors, this data considers only the <strong>beak widths of adult female birds captured in 1987</strong>. On Southeast Island, North Island (both islands in the Pearl and Hermes Reef atoll complex) and Laysan Island birds were netting or trapped then measured. <strong>“Beak width” is the width of the upper mandible at the distal end of the nares perpendicular to the mouth line, measured by caliper to the nearest 0.01mm and recorded in mm</strong>.</p>
+</section><section id="read-in-data-table" class="level2"><h2 class="anchored" data-anchor-id="read-in-data-table">Read in data table</h2>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat_bw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"bird_beak_width.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#View the structure of the full data set:</span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">dat_bw</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 92
+Columns: 2
+$ beakwid_mm &lt;dbl&gt; 7.42, 7.12, 7.64, 7.78, 8.14, 8.01, 8.16, 7.59, 7.44, 7.82,…
+$ island     &lt;chr&gt; "Laysan", "Laysan", "Laysan", "Laysan", "Laysan", "Laysan",…</code></pre>
+</div>
+</div>
+</section><section id="convert-a-variable-column-to-factor-and-set-the-order-of-levels" class="level2"><h2 class="anchored" data-anchor-id="convert-a-variable-column-to-factor-and-set-the-order-of-levels"><strong>Convert a variable (column) to factor and <u>set the order of levels</u></strong></h2>
+<p>Convert the island variable (column) to a factor and use the argument <code>levels =</code> to set the order that the levels will be arranged in a plot or output table. Here we will put Laysan Island first since that is where the birds originally came from when they were translocated to Southeast Island and North Island.</p>
+<ul>
+<li>NOTE:</li>
+<li><em>the order of your levels will affect their order in the <strong>emmeans</strong> and <strong>contrast</strong> tables you’ll create below, so if you change the level here, you may need to revise that code accordingly as well.</em></li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Can first see what the different values are </span></span>
+<span><span class="co"># to include in the levels argument below</span></span>
+<span><span class="va">dat_bw</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">island</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 1
+  island   
+  &lt;chr&gt;    
+1 Laysan   
+2 North    
+3 Southeast</code></pre>
+</div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># then use those values in the level argument</span></span>
+<span><span class="co"># (you choose the order)</span></span>
+<span><span class="va">dat_bw</span> <span class="op">&lt;-</span> <span class="va">dat_bw</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>island <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">island</span>,</span>
+<span>                         levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Laysan"</span>, <span class="st">"Southeast"</span>, <span class="st">"North"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># the base R levels() function can be used to</span></span>
+<span><span class="co"># check level order matches what is above</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">dat_bw</span><span class="op">$</span><span class="va">island</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Laysan"    "Southeast" "North"    </code></pre>
+</div>
+</div>
+<p><strong>Biological Question: Do the beak widths differ, on average, among the three populations, and in particular, between the source population (Laysan) and the two Southeast and North Island populations?</strong></p>
+<ul>
+<li>
+<strong>Response Variable</strong>: <em>Beak Width (mm)</em>
+</li>
+<li>
+<strong>Factor (Independent Variable)</strong>: <em>Island</em>
+</li>
+<li>
+<strong>Levels (groups/samples) in the Factor:</strong> <em>Laysan Island, Southeast Island, North Island</em>
+</li>
+</ul>
+<hr></section></section><section id="initial-exploratory-analysis" class="level1"><h1>Initial Exploratory Analysis</h1>
+<ul>
+<li>
+<p><strong>NEW</strong>: <strong>argument <code>scales = "free_y"</code></strong> within <code><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid()</a></code> allows each histogram to have different y-axis limits (range). Although this potentially could be used with other types of faceted plots, not just histograms.</p>
+<ul>
+<li><p>Because sample sizes are so different among the 3 islands, without this, the bar heights for the small sample island would appear very short and hard to interpret.</p></li>
+<li><p><strong>However</strong>, it is also often good to keep the default (all histograms have same y-axis range) as that shows the difference in sample sizes more easily across samples, so it really depends on the type of message your are trying to communicate with the plot. In an exploratory analysis it can be good to do both.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Individual Value Plot (Stripchart) beakwid_mm by island</span></span>
+<span><span class="va">dat_bw</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>, y <span class="op">=</span> <span class="va">beakwid_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># add big red point for each mean</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span></span>
+<span>    fun <span class="op">=</span> <span class="st">"mean"</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"red"</span>,</span>
+<span>    size <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>    geom <span class="op">=</span> <span class="st">"point"</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Compare_multiple_means_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Histogram of beakwid_mm facted by island</span></span>
+<span><span class="va">dat_bw</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">beakwid_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">8</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># scales = "free_y" argument lets each histogram have a</span></span>
+<span>  <span class="co"># different y-axis range to best fit the data in that histogram</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span><span class="op">(</span>rows <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">island</span><span class="op">)</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Compare_multiple_means_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Boxplots of beakwid_mm by island</span></span>
+<span><span class="va">dat_bw</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>, y <span class="op">=</span> <span class="va">beakwid_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Compare_multiple_means_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># summary/descriptive statistics of beakwid_mm by island</span></span>
+<span><span class="va">dat_bw</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">island</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">group_by(dat_bw, island)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">92</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">island</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 15%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 6%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: left;">island</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">beakwid_mm</td>
+<td style="text-align: left;">Laysan</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7.60</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">7.02</td>
+<td style="text-align: right;">7.47</td>
+<td style="text-align: right;">7.62</td>
+<td style="text-align: right;">7.72</td>
+<td style="text-align: right;">8.16</td>
+<td style="text-align: left;">▁▃▇▃▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">beakwid_mm</td>
+<td style="text-align: left;">Southeast</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7.77</td>
+<td style="text-align: right;">0.31</td>
+<td style="text-align: right;">6.98</td>
+<td style="text-align: right;">7.55</td>
+<td style="text-align: right;">7.82</td>
+<td style="text-align: right;">7.91</td>
+<td style="text-align: right;">8.53</td>
+<td style="text-align: left;">▁▆▇▃▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">beakwid_mm</td>
+<td style="text-align: left;">North</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">8.00</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">7.66</td>
+<td style="text-align: right;">7.81</td>
+<td style="text-align: right;">7.94</td>
+<td style="text-align: right;">8.17</td>
+<td style="text-align: right;">8.36</td>
+<td style="text-align: left;">▇▅▂▅▅</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><em>The Laysan and North distributions have single peaks and no outliers. The Southeast distribution has the appearance of two peaks, but given the small number of observations this probably does not really indicate a bi-modal population distribution as you’ll notice those peaks are caused by just 1 or 2 birds. There are two outliers in the Southeast distribution, one low and one high (but these beak widths are still realistic, and probably not an issue, and they don’t appear to be data recording/entry errors or something).</em></p>
+<p><em>The Laysan distribution is slightly skewed, with more observations below the peak than above it; the other two samples are too small to be able to assess symmetry.</em></p>
+<p><em>The center of the North distribution is somewhat higher than those of the other two. Beak widths also look a little larger in the Southeast sample: although the peaks of the Laysan and Southeast populations are roughly similar, a greater fraction of Southeast than Laysan measurements are above the peak.</em></p>
+<hr></section><section id="define-the-linear-model" class="level1"><h1>Define the Linear Model</h1>
+<p>Note this code/process is adapted from: <a href="https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#oneway" class="uri">https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#oneway</a></p>
+<ul>
+<li><em>If you want more background, detailed explanation or need to do a more complicated analysis, that is a great resource.</em></li>
+</ul>
+<p>Use a formula within <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> and your data object with <code>data =</code> argument.</p>
+<ul>
+<li>
+<strong>response ~ explanatory</strong> (here: “<em>beak width as a function of island”</em>)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># linear model</span></span>
+<span><span class="va">lm_bw_island</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">beakwid_mm</span> <span class="op">~</span> <span class="va">island</span>, data <span class="op">=</span> <span class="va">dat_bw</span><span class="op">)</span></span>
+<span><span class="va">lm_bw_island</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = beakwid_mm ~ island, data = dat_bw)
+
+Coefficients:
+    (Intercept)  islandSoutheast      islandNorth  
+         7.6031           0.1629           0.3919  </code></pre>
+</div>
+</div>
+<hr></section><section id="assumptions-checking" class="level1"><h1>“Assumptions checking”</h1>
+<section id="linear-model-assumptions" class="level3"><h3 class="anchored" data-anchor-id="linear-model-assumptions">Linear model assumptions</h3>
+<p>More details/descriptions can be found here:</p>
+<p><a href="https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/intro-linear-models.html#specific-assumptions-for-inference-with-a-linear-model" class="uri">https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/intro-linear-models.html#specific-assumptions-for-inference-with-a-linear-model</a></p>
+<p>One-way (one-factor) ANOVA assumptions are also described further here:</p>
+<p><a href="https://en.wikipedia.org/wiki/One-way_analysis_of_variance" class="uri">https://en.wikipedia.org/wiki/One-way_analysis_of_variance</a></p>
+</section><section id="a.-simple-random-sample-srs-from-each-population-group-or-treatment-b.-observations-are-independent" class="level2"><h2 class="anchored" data-anchor-id="a.-simple-random-sample-srs-from-each-population-group-or-treatment-b.-observations-are-independent">A. simple random sample (SRS) from each population (group or treatment) &amp; B. Observations are independent</h2>
+<ul>
+<li>The potential for bias arises from the fact that which of the birds were in the sample was not determined randomly. If by some chance elusive birds which were not caught differ in their beak dimensions from the less-elusive birds which are in the sample, this undercoverage would produce samples unrepresentative of the entire population. This would be something the researchers would need assess based on previous published research, their own experience, and ultimately it comes down to “best professional judgement”.</li>
+</ul></section><section id="c.-residuals-follow-a-normal-distribution" class="level2"><h2 class="anchored" data-anchor-id="c.-residuals-follow-a-normal-distribution">C. Residuals follow a normal distribution</h2>
+<ul>
+<li>Same as “The distribution of Y within each group is normally distributed.”</li>
+</ul>
+<p><em>Assess “normality” assumption for this example:</em></p>
+<ul>
+<li>
+<p><strong>Start by using the exploratory analysis plots you already made above</strong> <em>(Histograms, Individual Value Plots, Boxplots):</em></p>
+<ul>
+<li><em>You can see in those plots that the distribution of data for each group (Island) are pretty symmetrical. The distribution for North island might look a little right skewed (positive tail) however the sample size is small (n = 10) so that skewness is just due to a couple bird widths being a little smaller, so not something I’d be concerned about.</em></li>
+</ul>
+</li>
+<li><p><em>We can also assess the assumption more formally by extracting the model residuals like we did in a regression context earlier in the semester using the <code>augment()</code> function with the linear model object (residuals = difference between the predicted mean for each group and the actual data points) and then plotting those residuals.</em></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># use augment function (in broom package loaded with tidymodels)</span></span>
+<span><span class="co"># to extract residuals of our new model</span></span>
+<span><span class="va">lm_bw_island_augment</span> <span class="op">&lt;-</span> <span class="fu">augment</span><span class="op">(</span><span class="va">lm_bw_island</span><span class="op">)</span></span>
+<span><span class="co"># histogram of residuals</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">lm_bw_island_augment</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">.resid</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Compare_multiple_means_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># residuals vs. predictor (x-values) plot</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">lm_bw_island_augment</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span>  <span class="va">island</span>, y <span class="op">=</span> <span class="va">.resid</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Compare_multiple_means_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ul>
+<li><em>As expected the histogram of the residuals looks pretty symmetrical (i.e., “Normal” enough).</em></li>
+<li><em>And the residuals vs.&nbsp;predictor (x-values) plot (what is typically used for regression model assumption checking) looks fine (symmetrical around y = 0) as well.</em></li>
+</ul></section><section id="d.-check-for-equal-variances-among-groups-homoscedasticity" class="level2"><h2 class="anchored" data-anchor-id="d.-check-for-equal-variances-among-groups-homoscedasticity">D. Check for <strong>“equal” variances among groups (<em>homoscedasticity</em>)</strong>
+</h2>
+<ul>
+<li>This assumption says that all groups (samples) of data have “the same” variance (e.g., spread, sd), but in terms of checking it’s about making sure the standard deviations are not too different from each other.</li>
+</ul>
+<p>First look at plots above (histogram, boxplot, individual value plot): <strong><em>Does the spread look similar in 2 samples?</em></strong></p>
+<p>Then assess equal variance assumption with a “<em>rule of thumb</em>”:</p>
+<ul>
+<li>
+<strong>Primary rule:</strong> (<em>When n/group &gt; 5 &amp; n/groups similar</em>) Consider alternative approach if largest sd &gt; 4*smallest sd (<em>i.e., variances not similar enough</em>)</li>
+<li>
+<strong>Secondary Rule:</strong> (<em>When n/group NOT similar</em>) Be extra cautious when largest sd is associated with the group with the smallest n.&nbsp;In this case consider alternative approach if largest sd &gt; 2*smallest sd.</li>
+<li>see <a href="https://csu-cpp.primo.exlibrisgroup.com/discovery/fulldisplay?docid=alma991004980729702915&amp;context=L&amp;vid=01CALS_PUP:01CALS_PUP&amp;lang=en&amp;search_scope=everything&amp;adaptor=Local%20Search%20Engine&amp;tab=Everything&amp;query=any,contains,Biostatistical%20Analysis%20%20Jerrold%20H.%20Zar&amp;offset=0">Zar <strong>Biostatistical Analysis</strong> textbook</a> for more info (<em>and/or could cite in thesis/paper if necessary</em>)</li>
+</ul>
+<p><u><em>If there are large outliers, one/both of the distributions are very highly skewed, and/or the spread in the data is very different between groups</em></u><em>, then can consider other options for calculating the 95% CIs (e.g., bootstrapping), using a Generalized linear model, and/or running a non-parametric test.</em></p>
+<p><em>Assess “equal” variance assumption for this example:</em></p>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># note these sd and n values already produced in code </span></span>
+<span><span class="co"># chunk above, just calculating them again here for demo purposes</span></span>
+<span><span class="va">dat_bw</span> <span class="op">|&gt;</span>  </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">island</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean_beakwid_mm <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">beakwid_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>            sd_beakwid_mm <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">beakwid_mm</span><span class="op">)</span>,</span>
+<span>            n_beakwid_mm <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+  island    mean_beakwid_mm sd_beakwid_mm n_beakwid_mm
+  &lt;fct&gt;               &lt;dbl&gt;         &lt;dbl&gt;        &lt;int&gt;
+1 Laysan               7.60         0.226           62
+2 Southeast            7.77         0.313           20
+3 North                8.00         0.240           10</code></pre>
+</div>
+</div>
+<ul>
+<li><em>sample sizes are very different (“not similar”) 62 vs.&nbsp;20 and 10, so would want to be more cautious, but</em></li>
+<li>
+<em>largest sd (SouthEast Island 0.31 ) is NOT 2*sd of smallest sd (Laysan 0.22) - SO WE ARE OK, Variances are “equal enough”</em>
+<ul>
+<li>Also smallest n (North w/ 10) does not have smalled sd (0.24)</li>
+</ul>
+</li>
+<li><em>also interesting that in comparison to what you see in the plots, North actually has a larger sd than Laysan – since spread/range looks wider for Laysan in the plots - but remember the sd in-class activity - more points close to mean (in Laysan sample) results Laysan having a smaller <u>average deviation</u> from mean.</em></li>
+</ul>
+<hr></section><section id="what-you-can-write-in-thesis-or-paper-methods-about-assumptions-checking" class="level2"><h2 class="anchored" data-anchor-id="what-you-can-write-in-thesis-or-paper-methods-about-assumptions-checking"><strong>What you can write in thesis or paper methods <em>about assumptions checking</em>:</strong></h2>
+<p><strong>“Data distributions and model residuals were assessed to confirm that they met linear model assumptions.”</strong></p>
+<ul>
+<li><em>Then, if pushed by thesis adviser/committee or paper reviewers, you could add the specific details they are requesting.</em></li>
+</ul>
+<hr></section><section id="what-if-data-do-not-meet-assumptions" class="level2"><h2 class="anchored" data-anchor-id="what-if-data-do-not-meet-assumptions">What if data do not meet assumptions?</h2>
+<p>(<em>some details/examples provided in future weeks of BIO 5100</em>)</p>
+<p><strong>You could choose to:</strong></p>
+<ul>
+<li>
+<p>Use a General<strong>ized</strong> Linear Model <em>that assumes a different (than Normal) distribution</em></p>
+<ul>
+<li>If you are going to be working a lot with data that doesn’t typically meet normality assumptions (for example, if data are counts of things with mostly very small counts, but then sometimes very large counts, <em>i.e., data strongly skewed right</em>) then this could be a good approach to learn and use.</li>
+</ul>
+</li>
+<li><p>Use other methods that do not assume normal residual distributions and/or similar variances (e.g., bootstrap confidence intervals or permutation tests). We will discuss some of these later in the semester.</p></li>
+<li><p>(<em>if you must just get a p-value</em>) A nonparametric alternative test for one-way ANOVA using the Kruskal-Wallis test <code><a href="https://rdrr.io/r/stats/kruskal.test.html">kruskal.test()</a></code> (base R package). However, nonparametric tests do not provide effect sizes so this is not a preferred method.</p></li>
+<li><p>(<em>also easy, but not preferred</em>) Transform your data (e.g., Log10 or square-root transform the response variable) to try to have the transformed variable meet regular model assumptions. However this means your inference will be based on the transformed version of the variable which is often hard(er) to interpret.</p></li>
+</ul>
+<hr></section></section><section id="coefficient-table" class="level1"><h1>Coefficient table</h1>
+<p>Create a “coefficient table” in a “tidy” table format</p>
+<ul>
+<li><p>Uses <code>tidy()</code> function from broom package, with a <code>conf.int = T</code> argument to include calculation of 95% CIs.</p></li>
+<li><p><em>Note: the coefficient table is not the most useful/friendly format and can include some irrelevant information. While it is a good idea to create and review it, but you will mostly use/interpret the emmeans and contrast (pairs) tables below.</em></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># use tidy function from broom package with the </span></span>
+<span><span class="co"># linear model object</span></span>
+<span><span class="va">lm_bw_island_coef</span> <span class="op">&lt;-</span> <span class="fu">tidy</span><span class="op">(</span><span class="va">lm_bw_island</span>, conf.int <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">lm_bw_island_coef</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 7
+  term            estimate std.error statistic   p.value conf.low conf.high
+  &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)        7.60     0.0316    241.   5.20e-127   7.54       7.67 
+2 islandSoutheast    0.163    0.0640      2.55 1.26e-  2   0.0358     0.290
+3 islandNorth        0.392    0.0848      4.62 1.28e-  5   0.223      0.560</code></pre>
+</div>
+</div>
+<p>More detail on what is in the coefficient table here: <a href="https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#oneway-what-coefs-are" class="uri">https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#oneway-what-coefs-are</a></p>
+<hr></section><section id="create-emmeans-table-mean-95-ci-for-each-group" class="level1"><h1>Create emmeans table (mean + 95% CI for each group)</h1>
+<p>Calculate a mean and 95% confidence interval for each group (island) of beak widths.</p>
+<p>Using <code><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans()</a></code> function from the <strong>emmeans package</strong></p>
+<ul>
+<li><p>Provides the basics: <a href="https://cran.r-project.org/web/packages/emmeans/vignettes/AQuickStart.html" class="uri">https://cran.r-project.org/web/packages/emmeans/vignettes/AQuickStart.html</a></p></li>
+<li><p>&amp; Lots of vignettes for other uses of functions in this package: <a href="https://cran.r-project.org/web/packages/emmeans/index.html" class="uri">https://cran.r-project.org/web/packages/emmeans/index.html</a></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># create emmeans table object</span></span>
+<span><span class="va">lm_bw_island_emm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">lm_bw_island</span>, <span class="op">~</span> <span class="va">island</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">lm_bw_island_emm</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> island    emmean     SE df lower.CL upper.CL
+ Laysan      7.60 0.0316 89     7.54     7.67
+ Southeast   7.77 0.0556 89     7.66     7.88
+ North       8.00 0.0787 89     7.84     8.15
+
+Confidence level used: 0.95 </code></pre>
+</div>
+</div>
+<ul>
+<li><p><strong>The means (emmean column) in the emmeans table</strong> are technically “modeled” means, but here, and for many linear models, these will be equal to the sampled means (the means calculated from each group of raw data). This may not be the case for some more complicated models.</p></li>
+<li><p><strong>The 95% CIs in the emmeans table</strong> (lower.CL to upper.CL) are calculated using all the data in the model (using a pooled standard deviation and sample size across both groups of data).</p></li>
+</ul>
+<p>For more explanation see: <a href="https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#the-emmeans-table-is-a-table-of-modeled-means-and-inferential-statistics" class="uri">https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#the-emmeans-table-is-a-table-of-modeled-means-and-inferential-statistics</a></p>
+<hr>
+<section id="points-means-plot-w-model-95-cis" class="level2"><h2 class="anchored" data-anchor-id="points-means-plot-w-model-95-cis">Points &amp; means plot w/ (model) 95% CIs</h2>
+<p>(The bottom part of) your final results plot for this type of analysis should show all the raw data points in each group (island) so the reader can see the distributions of data along with the means and 95% CIs for each group that are calculated from those data.</p>
+<ul>
+<li><em>Note: This will be the bottom part of your final results plot regardless of what option you choose in the next steps to do the pairwise comparisons of the means.</em></li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># note in ggplot below we had to turn the emmeans object into</span></span>
+<span><span class="co"># a tibble (data.frame) so it would work as data in </span></span>
+<span><span class="co"># ggplot as_tibble(lm_bw_island_emm)</span></span>
+<span></span>
+<span><span class="va">plot_lm_bw_island_emm</span> <span class="op">&lt;-</span> <span class="va">dat_bw</span> <span class="op">|&gt;</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>, y <span class="op">=</span> <span class="va">beakwid_mm</span>, color <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.1</span>, alpha <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Beakwidth (mm)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Island"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co">#use emm object as 2nd data table to plot 95% CIs</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_crossbar</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="va">lm_bw_island_emm</span><span class="op">)</span>, </span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">emmean</span>,</span>
+<span>                    ymin <span class="op">=</span> <span class="va">lower.CL</span>,</span>
+<span>                    ymax <span class="op">=</span> <span class="va">upper.CL</span><span class="op">)</span>, </span>
+<span>                width <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span>                color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot_lm_bw_island_emm</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Compare_multiple_means_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="288"></p>
+</div>
+</div>
+<p>This plot shows the raw data for each group (Island). The <code><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_crossbar()</a></code> plots the group means (middle line) and the 95% CIs from the associated linear model which were calculated in the emmeans table above.</p>
+<ul>
+<li>Note <code><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange()</a></code> could be used instead of <code><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_crossbar()</a></code> if you prefer that style of plotting mean + CIs <a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html" class="uri">https://ggplot2.tidyverse.org/reference/geom_linerange.html</a> (scroll down to bottom of page to see various error bar plotting examples)</li>
+</ul>
+<hr></section></section><section id="pairwise-differences-between-means-in-contrasts-table-2-options" class="level1"><h1>Pairwise differences between means in contrasts table (2 options)</h1>
+<p><strong>To compare the island means to each other (WHAT WE REALLY CARE ABOUT FOR THIS ANALYSIS) you need to pick EITHER :</strong></p>
+<ol type="1">
+<li><strong>to do pre-planned contrasts (which we’ll do further down)</strong></li>
+</ol>
+<pre><code>**OR**</code></pre>
+<ol start="2" type="1">
+<li><strong>one type of post-hoc (multiple comparisons) procedure that seems most appropriate for the question/experiment/data.</strong></li>
+</ol>
+<ul>
+<li>Here we’ll first demo the <strong>Tukey HSD</strong> procedure which is one of the most common “post-hoc” (<em>i.e., after the fact</em>) procedures. This is an “all possible” pairwise comparisons approach that is appropriate if your analysis is exploratory (i.e., you didn’t have specific hypotheses from the outset that you’d expect certain effects and just want to compare all the treatments to see what the data shows).</li>
+<li>Next we’ll demo the <strong>pre-planned contrast</strong> approach advocated by the author of the text linked to below. This is for a situation where you expected certain treatments may have specific effects and your study is most focused on those specific treatments.</li>
+<li>But you should NOT use both in your own data analysis or your class assignment (<strong><em>just pick the most appropriate one to use, and use only that approach</em></strong>).
+<ul>
+<li><em>i.e., you SHOULD NOT first do the Tukey HSD procedure, and if you find that the results were not significant, then do the less conservative pre-planned contrasts procedure.</em></li>
+</ul>
+</li>
+</ul>
+<p>For more detail on different types (other options when analyzing your own data) of multiple testing/adjustment procedures see:</p>
+<p><a href="https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#adjustment-for-multiple-tests" class="uri">https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#adjustment-for-multiple-tests</a></p>
+<p>And see:</p>
+<p><a href="https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/factorial.html#twoway-multiple-tests" class="uri">https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/factorial.html#twoway-multiple-tests</a></p>
+<section id="option-1-tukey-honestly-significant-difference-hsd-contrasts-table-corresponding-effects-plot-w-adjusted-95-cis-and-p-values" class="level2"><h2 class="anchored" data-anchor-id="option-1-tukey-honestly-significant-difference-hsd-contrasts-table-corresponding-effects-plot-w-adjusted-95-cis-and-p-values">
+<strong>Option 1: Tukey Honestly Significant Difference (HSD)</strong> contrasts table &amp; corresponding “effects” plot w/ adjusted 95% CIs and p-values</h2>
+<p><a href="https://en.wikipedia.org/wiki/Tukey%27s_range_test" class="uri">https://en.wikipedia.org/wiki/Tukey%27s_range_test</a></p>
+<ul>
+<li>runs all possible pairwise tests by default, but the more tests (<em>determined by the number of levels within your factor variable</em>), the more conservative each test becomes (i.e., more each p-value is adjusted larger)</li>
+</ul>
+<p><strong>“Contrasts table”</strong> using <code><a href="https://rdrr.io/pkg/emmeans/man/contrast.html">contrast()</a></code> function from <strong>emmeans package</strong></p>
+<ul>
+<li>For details on the argument <code>method =</code> see help(“contrast-methods”)</li>
+</ul>
+<p><a href="https://cran.r-project.org/web/packages/emmeans/vignettes/comparisons.html" class="uri">https://cran.r-project.org/web/packages/emmeans/vignettes/comparisons.html</a></p>
+<ul>
+<li>The Tukey HSD procedure is specified in the <code><a href="https://rdrr.io/pkg/emmeans/man/contrast.html">contrast()</a></code> function by using both arguments:
+<ul>
+<li>
+<code>method = "revpairwise"</code> or <code>method = "pairwise"</code> which will do “all possible” pairwise comparisons.
+<ul>
+<li>The choice of pairwise vs.&nbsp;revpairwise depends on which groups (islands) you want to be first in the difference calculation (switching them with make positive differences become negative and viceversa).</li>
+<li>How many pairwise comparisons it does depends on how many groups/levels are in your categorical variable.</li>
+</ul>
+</li>
+<li>
+<code>adjust = "tukey"</code> specifies that the Tukey HSD adjustment will be made to the pairwise 95% CIs and p-values. They will be adjusted larger, and how big that adjustment is depends on the total number of pairwise comparisons being done.</li>
+</ul>
+</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lm_bw_island_pairs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/contrast.html">contrast</a></span><span class="op">(</span><span class="va">lm_bw_island_emm</span>,</span>
+<span>                               method <span class="op">=</span> <span class="st">"revpairwise"</span>,</span>
+<span>                               adjust <span class="op">=</span> <span class="st">"tukey"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span>infer <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#Note: method = "revpairwise" switches the order in subtraction</span></span>
+<span><span class="co"># for comparison (up to researcher/you to determine which is</span></span>
+<span><span class="co"># more appropriate)</span></span>
+<span></span>
+<span><span class="va">lm_bw_island_pairs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> contrast           estimate     SE df  lower.CL upper.CL t.ratio p.value
+ Southeast - Laysan    0.163 0.0640 89  0.010393    0.315   2.546  0.0334
+ North - Laysan        0.392 0.0848 89  0.189790    0.594   4.621  &lt;.0001
+ North - Southeast     0.229 0.0964 89 -0.000741    0.459   2.376  0.0509
+
+Confidence level used: 0.95 
+Conf-level adjustment: tukey method for comparing a family of 3 estimates 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+</div>
+</div>
+<p>This table is important for reporting treatment effects and 95% CI and it <code>lm_len_supp_pairs</code> is used in the ggplot code below to create the effects plot.</p>
+<ul>
+<li>A <strong>contrast</strong> is a difference in means.</li>
+<li>The <strong>“estimate” column</strong> is this difference</li>
+<li>
+<strong>95% CI of this difference</strong> is lower.CL to upper.CL</li>
+<li>The columns “t.ratio” and “p.value” contains the t (test statistic) and p values of the significance test of the estimate. The t-statistic is the ratio of the estimate (difference in means) to the SE of the estimate (which includes sd, the spread in the data, and the sample size). It is a signal (the estimate) to noise (SE of the estimate) ratio.</li>
+<li>The p-values here can also be reported in your results, it is for the significance test: <em>is the difference between the 2 means significantly different from 0?</em>
+<ul>
+<li>Or a better interpretation of the p-value here is: <em>what is the probability of getting this data if there was no difference between the 2 means?</em>
+</li>
+<li>And interpret it as a %: <em>There is only a 3.3%, &lt;.01%, or 5.1% chance that these data came from a true population where there was no difference between the respective pairs of means.</em>
+</li>
+</ul>
+</li>
+<li><em>The the p-values are adjusted (made larger) because you are running 3 different pairwise t-tests simultaneously.</em></li>
+</ul>
+<p>For more explanation see: <a href="https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#estimates-of-the-effects-are-in-the-contrasts-table" class="uri">https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#estimates-of-the-effects-are-in-the-contrasts-table</a></p>
+<hr></section><section id="effects-plot-w-95-ci-tukey-hsd-all-pairwise-comparisons-version" class="level2"><h2 class="anchored" data-anchor-id="effects-plot-w-95-ci-tukey-hsd-all-pairwise-comparisons-version">Effects plot w/ 95% CI (Tukey HSD all pairwise comparisons version)</h2>
+<div class="cell">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># note in ggplot below we had to turn the contrast object into</span></span>
+<span><span class="co"># a tibble (data.frame) so it would work as data in ggplot</span></span>
+<span></span>
+<span><span class="va">plot_lm_bw_island_pairs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="va">lm_bw_island_pairs</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
+<span>    y <span class="op">=</span> <span class="va">contrast</span>,</span>
+<span>    x <span class="op">=</span> <span class="va">estimate</span>,</span>
+<span>    label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/format.pval.html">format.pval</a></span><span class="op">(</span><span class="va">p.value</span>,</span>
+<span>                        digits <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>                        eps <span class="op">=</span> <span class="fl">0.001</span><span class="op">)</span></span>
+<span>  <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>xmin <span class="op">=</span> <span class="va">lower.CL</span>,</span>
+<span>                      xmax <span class="op">=</span> <span class="va">upper.CL</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">0</span>, linetype <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Effects (mm)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">""</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"top"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span>vjust <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>            nudge_y <span class="op">=</span> <span class="fl">0.25</span>,</span>
+<span>            size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot_lm_bw_island_pairs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Compare_multiple_means_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="288"></p>
+</div>
+</div>
+<p>This plot shows the 3 pairwise differences between the 3 means (each combination of 2 islands), and the 95% CI for those differences (i.e., <em>“if the experiment was repeated, 95% of the time you’d expect the true population mean of the difference between those 95% CIs”</em>).</p>
+<ul>
+<li><p>The dashed line at 0 is there for reference since if the islands had the same average beak width, the difference in their means would be 0.</p></li>
+<li><p><em>The pairwise difference between North &amp; Laysan was the largest (and it’s 95% CI was not close to crossing 0), it also had the smallest Tukey HSD adjusted p-value in the output above.</em></p></li>
+<li><p><em>Note for (Southeast - Laysan, and North - Southeast) the two with p-values in the output above close to 0.05, the lower limit of their 95% CIs are close to 0 (i.e.&nbsp;0 = no difference in beak widths)</em></p></li>
+</ul>
+<hr></section><section id="option-2-pre-planned-contrasts-no-adjustments-contrasts-table-corresponding-effects-plot-w-95-ci-and-p-values" class="level2"><h2 class="anchored" data-anchor-id="option-2-pre-planned-contrasts-no-adjustments-contrasts-table-corresponding-effects-plot-w-95-ci-and-p-values">
+<strong>Option 2: Pre-planned contrasts (no adjustments)</strong> contrasts table &amp; corresponding “effects” plot w/ 95% CI and p-values</h2>
+<p>“Pre-planned contrasts” are typically used if you know in advance that you are primarily interested in just some of the specific pairwise comparisons and these do not have the 95% CIs and p-values “adjusted.” However, the author of the text below advocates for using a version of this approach in most situations (<em>see more below</em>).</p>
+<ul>
+<li>Biological question: Do the beak widths differ, on average, among the three populations, <strong>and in particular, between the source population (Laysan) and the two Southeast and North Island populations</strong>?</li>
+<li>So we’ll focus on 2 (of the three possible) pairwise comparisons:
+<ul>
+<li>SE - Laysan</li>
+<li>N - Laysan</li>
+</ul>
+</li>
+</ul>
+<p>According to: <a href="https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/factorial.html#twoway-multiple-tests" class="uri">https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/factorial.html#twoway-multiple-tests</a></p>
+<p>“<em>The most transparent best practice is to report all, <strong>unadjusted p-values</strong>. Reporting all unadjusted p-values allows a reader to compute whatever adjustment they deem appropriate for the question they are addressing. Reporting all p-values could overwhelm the principal message of a figure. Instead, <strong>report focal (planned comparison) p-values in the figure and a table of all p-values in the supplement</strong>. There should be a table of these for every experiment in the supplement.</em>”</p>
+<section id="pre-planned-contrasts-and-associated-plot-of-mean-pairwise-differences-w-95-cis" class="level3"><h3 class="anchored" data-anchor-id="pre-planned-contrasts-and-associated-plot-of-mean-pairwise-differences-w-95-cis">Pre-planned contrasts and associated plot of mean pairwise differences w/ 95% CIs</h3>
+<div class="cell">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Pre-planned contrasts (pairwise mean differences we care</span></span>
+<span><span class="co"># about)</span></span>
+<span></span>
+<span><span class="co"># lm_bw_island_emm # print the emmeans table in console to</span></span>
+<span><span class="co"># get row numbers (factor level order) for each group</span></span>
+<span></span>
+<span><span class="co"># set the mean as the row number from the emmeans table</span></span>
+<span><span class="va">Laysan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="va">Southeast</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="va">North</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># NOTE: if you have more than 3 levels in your factor you'd</span></span>
+<span><span class="co"># need to add more ,0 the c() above so there's one for</span></span>
+<span><span class="co"># each level.</span></span>
+<span></span>
+<span><span class="co"># the method argument specifies which pre-planned contrasts</span></span>
+<span><span class="co"># will be included</span></span>
+<span><span class="va">lm_bw_island_planned</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/contrast.html">contrast</a></span><span class="op">(</span></span>
+<span>  <span class="va">lm_bw_island_emm</span>,</span>
+<span>  method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>    <span class="st">"SE - Laysan"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">Southeast</span> <span class="op">-</span> <span class="va">Laysan</span><span class="op">)</span>,</span>
+<span>    <span class="st">"N - Laysan"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">North</span> <span class="op">-</span> <span class="va">Laysan</span><span class="op">)</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  adjust <span class="op">=</span> <span class="st">"none"</span> <span class="co"># no 95% CI or p-value adjustments</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span>infer <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">lm_bw_island_planned</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> contrast    estimate     SE df lower.CL upper.CL t.ratio p.value
+ SE - Laysan    0.163 0.0640 89   0.0358     0.29   2.546  0.0126
+ N - Laysan     0.392 0.0848 89   0.2234     0.56   4.621  &lt;.0001
+
+Confidence level used: 0.95 </code></pre>
+</div>
+</div>
+<p>This table is important for reporting treatment effects and 95% CI and it <code>lm_bw_island_planned</code> is used in the ggplot code below to create the effects plot.</p>
+<ul>
+<li>A <strong>contrast</strong> is a difference in means.</li>
+<li>The <strong>“estimate” column</strong> is this difference</li>
+<li>
+<strong>95% CI of this difference</strong> is lower.CL to upper.CL</li>
+<li>The columns “t.ratio” and “p.value” contains the t (test statistic) and p values of the significance test of the estimate. The t-statistic is the ratio of the estimate (difference in means) to the SE of the estimate (which includes sd, the spread in the data, and the sample size). It is a signal (the estimate) to noise (SE of the estimate) ratio.</li>
+<li>The p-values here can also be reported in your results, it is for the significance test: <em>is the difference between the 2 means significantly different from 0?</em>
+<ul>
+<li>Or a better interpretation of the p-value here is: <em>what is the probability of getting this data if there was no difference between the 2 means?</em>
+</li>
+<li>And interpret it as a %: <em>There is only a 1.3% and &lt;.01% chance that these data came from a true population where there was no difference between the respective pairs of means.</em>
+</li>
+</ul>
+</li>
+</ul>
+<p>For more explanation see: <a href="https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#estimates-of-the-effects-are-in-the-contrasts-table" class="uri">https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#estimates-of-the-effects-are-in-the-contrasts-table</a></p>
+<hr></section></section><section id="effects-plot-w-95-ci-preplanned-contrasts-version" class="level2"><h2 class="anchored" data-anchor-id="effects-plot-w-95-ci-preplanned-contrasts-version">Effects plot w/ 95% CI (preplanned contrasts version)</h2>
+<p>This effects plot will just include the 2 pairwise comparisons (Southeast - Laysan &amp; North - Laysan) that we are primarily interested in.</p>
+<div class="cell">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># note in ggplot below we had to turn the contrast object into </span></span>
+<span><span class="co"># a tibble (data.frame) so it would work as data in ggplot</span></span>
+<span><span class="va">plot_lm_bw_island_planned</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="va">lm_bw_island_planned</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
+<span>    y <span class="op">=</span> <span class="va">contrast</span>,</span>
+<span>    x <span class="op">=</span> <span class="va">estimate</span>,</span>
+<span>    label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/format.pval.html">format.pval</a></span><span class="op">(</span><span class="va">p.value</span>,</span>
+<span>                        digits <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>                        eps <span class="op">=</span> <span class="fl">0.001</span><span class="op">)</span></span>
+<span>  <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>xmin <span class="op">=</span> <span class="va">lower.CL</span>,</span>
+<span>                      xmax <span class="op">=</span> <span class="va">upper.CL</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">0</span>, linetype <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Effects (mm)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">""</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"top"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span>vjust <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>            nudge_y <span class="op">=</span> <span class="fl">0.25</span>,</span>
+<span>            size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot_lm_bw_island_planned</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Compare_multiple_means_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="288"></p>
+</div>
+</div>
+<p>This plot shows the 2 (pre-planned) pairwise differences between the selected means (between the origin Laysan Island and the each of the other 2 islands the birds were relocated to), and the 95% CI for those differences (i.e., “if the experiment was repeated, 95% of the time you’d expect the true population mean of the difference between those 95% CIs”).</p>
+<p>The dashed line at 0 is there for reference since if the islands had the same average beak width, the difference in their means would be 0.</p>
+<section id="table-of-all-pairwise-contrasts-no-adjustments-to-include-in-appendix-etc." class="level3"><h3 class="anchored" data-anchor-id="table-of-all-pairwise-contrasts-no-adjustments-to-include-in-appendix-etc.">Table of all pairwise contrasts no adjustments (to include in appendix etc.)</h3>
+<p>According to: <a href="https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/factorial.html#twoway-multiple-tests" class="uri">https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/factorial.html#twoway-multiple-tests</a></p>
+<p>“The most transparent best practice is to <strong>report all, unadjusted p-values</strong>. Reporting all unadjusted p-values allows a reader to compute whatever adjustment they deem appropriate for the question they are addressing. Reporting all p-values could overwhelm the principal message of a figure. Instead, report focal (planned comparison) p-values in the figure and <strong>a table of all p-values in the supplement. There should be a table of these for every experiment in the supplement.</strong>”</p>
+<div class="cell">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lm_bw_island_pairs_no_adjust</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/contrast.html">contrast</a></span><span class="op">(</span><span class="va">lm_bw_island_emm</span>,</span>
+<span>                                         method <span class="op">=</span> <span class="st">"revpairwise"</span>,</span>
+<span>                                         adjust <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span>infer <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">lm_bw_island_pairs_no_adjust</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> contrast           estimate     SE df lower.CL upper.CL t.ratio p.value
+ Southeast - Laysan    0.163 0.0640 89   0.0358    0.290   2.546  0.0126
+ North - Laysan        0.392 0.0848 89   0.2234    0.560   4.621  &lt;.0001
+ North - Southeast     0.229 0.0964 89   0.0375    0.421   2.376  0.0197
+
+Confidence level used: 0.95 </code></pre>
+</div>
+</div>
+<hr></section></section></section><section id="combine-plots-into-a-single-primary-results-figure" class="level1"><h1>Combine plots into a single primary results figure</h1>
+<p>Use the effects plot above (Tukey HSD or pre-planned contrasts) for the <strong>approach you already chose as the most appropriate</strong> and use that plot object to create a combined results plot.</p>
+<p><strong>Both plot options are created here, but for your analysis you will just include 1.</strong></p>
+<p><strong>DO NOT INCLUDE BOTH VERSIONS OF THE RESULTS PLOTS BELOW IN YOUR ANALYSIS. PICK ONE.</strong></p>
+<section id="option-1-tukey-hsd-all-pairwise-comparisons-versions-with-adjusted-difference-p-values-and-95-cis" class="level3"><h3 class="anchored" data-anchor-id="option-1-tukey-hsd-all-pairwise-comparisons-versions-with-adjusted-difference-p-values-and-95-cis">Option 1: Tukey HSD all pairwise comparisons versions (with adjusted difference p-values and 95% CIs)</h3>
+<p>We’ll use the <code><a href="https://wilkelab.org/cowplot/reference/plot_grid.html">plot_grid()</a></code> function from the <strong>cowplot package</strong> to combine our two plots above into a single results figure.</p>
+<ul>
+<li>The <code>align = "v"</code> and <code>axis = "rl"</code> arguments make the axes of our 2 plots line up appropriately when combined. See help file for more detail: <a href="https://rdrr.io/cran/cowplot/man/plot_grid.html" class="uri">https://rdrr.io/cran/cowplot/man/plot_grid.html</a>
+</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://wilkelab.org/cowplot/reference/plot_grid.html">plot_grid</a></span><span class="op">(</span></span>
+<span>  <span class="va">plot_lm_bw_island_pairs</span>,</span>
+<span>  <span class="va">plot_lm_bw_island_emm</span>,</span>
+<span>  nrow <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  align <span class="op">=</span> <span class="st">"v"</span>,</span>
+<span>  axis <span class="op">=</span> <span class="st">"rl"</span>,</span>
+<span>  rel_heights <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.55</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co"># rel_heights argument adjusts the relative size of two plots</span></span>
+<span></span>
+<span><span class="va">results_plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Compare_multiple_means_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="288"></p>
+</div>
+</div>
+</section><section id="option-2-preplanned-contrasts-version-with-no-adjustment-of-p-values-or-95-cis" class="level3"><h3 class="anchored" data-anchor-id="option-2-preplanned-contrasts-version-with-no-adjustment-of-p-values-or-95-cis">Option 2: Preplanned contrasts version (with NO adjustment of p-values or 95% CIs)</h3>
+<p>We’ll use the <code><a href="https://wilkelab.org/cowplot/reference/plot_grid.html">plot_grid()</a></code> function from the <strong>cowplot package</strong> to combine our two plots above into a single results figure.</p>
+<ul>
+<li>The <code>align = "v"</code> and <code>axis = "rl"</code> arguments make the axes of our 2 plots line up appropriately when combined. See help file for more detail: <a href="https://rdrr.io/cran/cowplot/man/plot_grid.html" class="uri">https://rdrr.io/cran/cowplot/man/plot_grid.html</a>
+</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://wilkelab.org/cowplot/reference/plot_grid.html">plot_grid</a></span><span class="op">(</span></span>
+<span>  <span class="va">plot_lm_bw_island_planned</span>,</span>
+<span>  <span class="va">plot_lm_bw_island_emm</span>,</span>
+<span>  nrow <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  align <span class="op">=</span> <span class="st">"v"</span>,</span>
+<span>  axis <span class="op">=</span> <span class="st">"rl"</span>,</span>
+<span>  rel_heights <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.45</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co"># rel_heights argument adjusts the relative size of two plots</span></span>
+<span></span>
+<span><span class="va">results_plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Compare_multiple_means_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="288"></p>
+</div>
+</div>
+<p>This primary results plot is adapted from code in (the version you are using is based on regular ggplot code): <a href="https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#step-6-plot-the-model" class="uri">https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#step-6-plot-the-model</a></p>
+<hr></section></section><section id="write-save-plot-to-a-.png-file-with-ggsave" class="level1"><h1>Write (save) plot to a .png file with ggsave()</h1>
+<ul>
+<li><p>the file will be saved to your “working directory” (typically <u>the folder where your .qmd file is</u>). <strong>You’ll need to look in that folder to see the .png file!</strong></p></li>
+<li><p><strong>You identify the type of file format you want to save it to with the <u>file name extension</u> at the end of the file name</strong>. Here we use <strong>.png</strong> (a great default for putting images into word docs or PPT presentations). But many others are available such as: “.pdf” (easy to view or email a .pdf to someone; and good to use for uploading plot files to journals if they’ll accept this format), “.eps” (another vector format some journals one), “.png”, “.jpeg”, “.tiff”, “.svg”(use for further editing in <a href="https://inkscape.org/" class="uri">https://inkscape.org/</a> freeware on windows).</p></li>
+<li><p>You can read more about the difference between <strong><em>vector vs.&nbsp;raster</em></strong> image file types here: <a href="https://guides.lib.umich.edu/c.php?g=282942&amp;p=1885352" class="uri">https://guides.lib.umich.edu/c.php?g=282942&amp;p=1885352</a>. And more about specific file types here: <a href="https://guides.lib.umich.edu/c.php?g=282942&amp;p=1885348" class="uri">https://guides.lib.umich.edu/c.php?g=282942&amp;p=1885348</a></p></li>
+<li><p>You specify the dimensions of the plot with the <code>width =</code> and <code>height =</code> arguments, default is inches. Try different widths and heights (<em>keeping in mind what would fit on a 8in by 11in page size</em>) and see what works for the plot you making. Often a plot shows the data better when it is taller or wider (<strong><em>so try different ratios of width to height</em></strong>).</p></li>
+<li><p>You can also specify the image “quality” using the “dots per inch” argument <code>dpi =</code> and typically you want to use 300 or 600 for a high quality image. Depending on the file type (with .tiff for example) 600 dpi can sometimes create huge file sizes, but that is usually where I start (<em>then only go down to 300 if needed</em>).</p></li>
+<li><p><em>NOTE - sometimes you can get an error when running <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code> repeatedly if the saved .png file is already open on your computer in your image viewer - need to close it each time you want to edit and re-output the image file.</em></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># output plot to .png file type, set size (default is inches),</span></span>
+<span><span class="co"># 300 or 600 dpi is high quality</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span></span>
+<span>  <span class="st">"plot_lm_bw_island_95CIs.png"</span>,</span>
+<span>  <span class="va">results_plot</span>,</span>
+<span>  width <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  height <span class="op">=</span> <span class="fl">6</span>,</span>
+<span>  dpi <span class="op">=</span> <span class="fl">600</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr></section><section id="pairwise-mean-differences-expressed-as-a" class="level1"><h1><strong>Pairwise mean differences expressed as a %</strong></h1>
+<p>When writing your results it sometimes, especially for readers that are not super familiar with the study system, can help to scale effect sizes (pairwise differences between means in this case) as a percentage.</p>
+<ul>
+<li>Pull the appropriate mean difference and island mean values from the contrast and emmeans tables above.</li>
+<li>effect size as a <strong>percent difference</strong> (difference between the means/smaller mean * 100)</li>
+<li><em>Note: “<strong>Direction</strong>” of effect size in this instance refers to indicating which mean is larger.</em></li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># effect size: Southeast - Laysan expressed as </span></span>
+<span><span class="co"># percentage difference</span></span>
+<span><span class="co"># use round() function to round to 1 decimal places</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">0.16</span><span class="op">/</span><span class="fl">7.60</span><span class="op">*</span><span class="fl">100</span>, <span class="fl">1</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.1</code></pre>
+</div>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># effect size: North - Laysan expressed as </span></span>
+<span><span class="co"># percentage difference</span></span>
+<span><span class="co"># use round() function to round to 1 decimal places</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">0.39</span><span class="op">/</span><span class="fl">7.60</span><span class="op">*</span><span class="fl">100</span>, <span class="fl">1</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.1</code></pre>
+</div>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#Then to a lesser degree we might also be interested in </span></span>
+<span><span class="co"># if the means for the two islands they were translocated </span></span>
+<span><span class="co"># to are difference from each other</span></span>
+<span></span>
+<span><span class="co"># effect size: North - Southeast expressed as </span></span>
+<span><span class="co"># percentage difference</span></span>
+<span><span class="co"># use round() function to round to 1 decimal places</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">0.23</span><span class="op">/</span><span class="fl">7.77</span><span class="op">*</span><span class="fl">100</span>, <span class="fl">1</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<hr></section><section id="write-results-sentences-for-this-analysis." class="level1"><h1>Write results sentences for this analysis.</h1>
+<p>When writing results sentences focus on the biology, not on the statistics (which should go primarily in parentheses).</p>
+<p><em>Do not make statistical analyses the subject of the sentence if at all possible (i.e., do not write “Our p-value was….” or “our confidence interval did not cross 0, therefore…”)</em></p>
+<p><em>Using statistics produced in the code chunks above we can write</em>:</p>
+<p><strong>The mean finch beak width on North Island (8.00 mm, 95% CI: 7.84 to 8.15) was the largest, and was 5.1% larger (mean difference: 0.39 mm, 95% CI: 0.22 to 0.56, p-value &lt; 0.0001) than finches on Laysan Island (7.60 mm, 95% CI: 7.54 to 7.67). Mean finch beak width was intermediate on Southeast Island (7.77 mm, 95% CI: 7.66 to 7.88), and was 2.1% larger (mean difference: 0.16 mm, 95% CI: 0.036 to 0.29, p-value = 0.013) than finches on Laysan Island (Fig. X).</strong></p>
+<p>Note:</p>
+<ol type="1">
+<li><em>(Fig. X) would be citing the combined results figure for the preplanned contrasts option that includes (top) the pre-planned contrasts effects plot and (below) plot w/ the data points, means and the 95% CIs for each group.</em></li>
+</ol>
+<p>More explanation of why it is advised you don’t use the word “significant” in the results can be found here (<em>but if you or your adviser want to, that is fine too, since p-values were &lt; 0.05</em>) and examples of writing results can be found here: <a href="https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#step-7-report-the-model-results" class="uri">https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#step-7-report-the-model-results</a></p>
+<hr></section><section id="one-way-anova-hypothesis-test" class="level1"><h1>One-way ANOVA (hypothesis test)</h1>
+<p><a href="https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#how-to-generate-anova-tables">This Author</a> advocates that you only run an ANOVA “<em>if your PI, manager, thesis committee, or journal editor insists that you do ANOVA, and you cannot convince them otherwise…. Note that even though we are generating that table, the computation of the contrast table and all inference from that is not part of the ANOVA.</em>”</p>
+<p>Null Hypothesis: there is <strong>no difference</strong> (<em>i.e., they are equal</em>) in the population mean beak widths of the birds from the 3 islands</p>
+<p>Alternative Hypothesis: <strong>at least one</strong> population mean <strong>is different</strong> from the others</p>
+<ul>
+<li><em>Note: this doesn’t mean all 3 are different from each other in this example (only one needs to be different)</em></li>
+</ul>
+<section id="anova-table-w-anova-function-using-linear-model-object" class="level3"><h3 class="anchored" data-anchor-id="anova-table-w-anova-function-using-linear-model-object">ANOVA Table w/ <code>anova()</code> function using linear model object</h3>
+<ul>
+<li><strong>use the <code><a href="https://rdrr.io/r/stats/anova.html">anova()</a></code> function with the linear model object created in the code chunk above</strong></li>
+</ul>
+<p>For more background see: <a href="https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#how-to-generate-anova-tables" class="uri">https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#how-to-generate-anova-tables</a></p>
+<ul>
+<li>This text discusses other options for running various “flavors” of ANOVA in R (i.e., different “types” of sums-of-squares that can be used etc.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># anova function</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">lm_bw_island</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: beakwid_mm
+          Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+island     2 1.5070 0.75352  12.166 2.133e-05 ***
+Residuals 89 5.5122 0.06194                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p><em>The overall ANOVA is highly significant (much less than 0.05): We can confidently reject the null hypothesis that all three populations have the same mean beak width, but this p-value DOES NOT TELL US ANYTHING about how BIG THE DIFFERENCES ARE BETWEEN THE ISLANDS.</em></p>
+<p><em>If you are going to do a traditional ANOVA you’d typically first write a sentence reporting the ANOVA results, followed by a second (and maybe 3rd or 4th) results sentence(s) reporting the pairwise differences/comparisons that you actually care about.</em></p>
+</section><section id="results-from-just-the-one-way-anova-test" class="level3"><h3 class="anchored" data-anchor-id="results-from-just-the-one-way-anova-test">Results from just the one-way ANOVA test:</h3>
+<p>Using statistics produced <strong><em>just in the one-way ANOVA output</em></strong>, what you can say is actually <strong>quite limited</strong>:</p>
+<p><strong>The mean beak width varied significantly among islands (one-way ANOVA, F<sub>2,89</sub> = 12.1, p &lt; 0.001, Fig. X).</strong></p>
+<p><em>or</em></p>
+<p><strong>Island had a significant effect on mean beak width (one-way ANOVA, F<sub>2,89</sub> = 12.1, p &lt; 0.001, Fig. X).</strong></p>
+<ul>
+<li><em>Note: with just the ANOVA result you can’t say anything about which specific means are different from another.</em></li>
+</ul>
+<hr></section></section><section id="extra-info-false-discovery-rate" class="level1"><h1>(Extra info) False Discovery Rate</h1>
+<section id="another-type-of-p-value-adjustment-for-multiple-comparisons---used-most-often-for-genetics-analysis" class="level3"><h3 class="anchored" data-anchor-id="another-type-of-p-value-adjustment-for-multiple-comparisons---used-most-often-for-genetics-analysis">(another type of p-value adjustment for multiple comparisons - used most often for genetics analysis)</h3>
+<p><a href="https://en.wikipedia.org/wiki/False_discovery_rate" class="uri">https://en.wikipedia.org/wiki/False_discovery_rate</a></p>
+<p>In statistics, the false discovery rate (FDR) is a method of conceptualizing the rate of type I errors in null hypothesis testing when conducting multiple comparisons. Formally described by Yoav Benjamini and Yosef Hochberg in 1995 (“BH” procedure), was motivated by the development in technologies that allowed the collection and analysis of a large number of distinct variables in several individuals (e.g., the expression level of each of 10,000 different genes in 100 different persons).</p>
+<p>FDR-controlling procedures are designed to control the expected proportion of “discoveries” (rejected null hypotheses) that are false (incorrect rejections of the null). FDR-controlling procedures provide less stringent control of Type I errors compared to <strong>familywise error rate (FWER) controlling procedures</strong> (such as the p-value adjustments or corrections we did above with Tukey’s HSD post-hoc tests), which control the probability of at least one Type I error. Thus, FDR-controlling procedures have greater power (i.e., won’t raise your p-values as much), at the cost of increased numbers of Type I errors.</p>
+<ul>
+<li><em>This type of procedure is now being used in ecological or other studies (albeit still rarely) in situations where there are a lot of different variables being compared using repeated statistical tests and the researchers want to try to control for the multiple comparisons issue in some fashion, but the more conservative methods (e.g., Tukey’s HSD used above) either don’t seem appropriate or would adjust the p-values so much (so high) that it wouldn’t seem reasonable.</em></li>
+</ul>
+
+
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">This is a quarto built website <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://claisselab.com">
+      <i class="bi bi-house-fill" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ClaisseLab">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+</div>
+  </div>
+</footer>
+
+
+</body></html>
