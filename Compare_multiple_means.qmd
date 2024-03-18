@@ -12,9 +12,7 @@ execute:
   warning: false
 ---
 
-# Linear model w/ a categorical X (explanatory) variable (Comparing more than 2 means)
-
-## Load Packages
+# Load Packages
 
 ```{r}
 #| label: load packages
@@ -57,13 +55,13 @@ The **cowplot Package** will be used here to combined multiple ggplots into a si
 
 ------------------------------------------------------------------------
 
-## General modeling strategy:
+# General modeling strategy:
 
 <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/intro-linear-models.html#modeling-strategy>
 
 ------------------------------------------------------------------------
 
-## Background of Data Set
+# Background of Data Set
 
 The Laysan Finch (*Telespiza contans*), a species in the Hawaiian honeycreeper radiation, is endemic to **Laysan Island** in the Northwest Hawaiian Islands. Early last century rabbits, introduced in 1903, devoured the island's vegetation and caused the near extinction of the Finch (and extinction of several other bird species). After the elimination of rabbits in 1923, the Finch population recovered. Concern about the species' vulnerability to such catastrophes, however, led the U.S. Fish and Wildlife Service to establish additional populations at Pearl and Hermes Reef (also in the Northwest Hawaiian Islands). A few birds were introduced to **Southeast Island** at Pearl and Hermes in 1967, and by the early 1970s several other of the small islands of the atoll had been colonized (including **North Island** also in this data set).
 
@@ -179,7 +177,7 @@ lm_bw_island
 
 # "Assumptions checking"
 
-### Linear model assumptions
+## Linear model assumptions
 
 More details/descriptions can be found here:
 
@@ -189,11 +187,11 @@ One-way (one-factor) ANOVA assumptions are also described further here:
 
 <https://en.wikipedia.org/wiki/One-way_analysis_of_variance>
 
-## A. simple random sample (SRS) from each population (group or treatment) & B. Observations are independent
+### A. simple random sample (SRS) from each population (group or treatment) & B. Observations are independent
 
 -   The potential for bias arises from the fact that which of the birds were in the sample was not determined randomly. If by some chance elusive birds which were not caught differ in their beak dimensions from the less-elusive birds which are in the sample, this undercoverage would produce samples unrepresentative of the entire population. This would be something the researchers would need assess based on previous published research, their own experience, and ultimately it comes down to "best professional judgement".
 
-## C. Residuals follow a normal distribution
+### C. Residuals follow a normal distribution
 
 -   Same as "The distribution of Y within each group is normally distributed."
 
@@ -220,7 +218,7 @@ ggplot(lm_bw_island_augment, aes(x =  island, y = .resid)) +
 -   *As expected the histogram of the residuals looks pretty symmetrical (i.e., "Normal" enough).*
 -   *And the residuals vs. predictor (x-values) plot (what is typically used for regression model assumption checking) looks fine (symmetrical around y = 0) as well.*
 
-## D. Check for **"equal" variances among groups (*homoscedasticity*)**
+### D. Check for **"equal" variances among groups (*homoscedasticity*)**
 
 -   This assumption says that all groups (samples) of data have "the same" variance (e.g., spread, sd), but in terms of checking it's about making sure the standard deviations are not too different from each other.
 
@@ -251,15 +249,11 @@ dat_bw |>
     -   Also smallest n (North w/ 10) does not have smalled sd (0.24)
 -   *also interesting that in comparison to what you see in the plots, North actually has a larger sd than Laysan -- since spread/range looks wider for Laysan in the plots - but remember the sd in-class activity - more points close to mean (in Laysan sample) results Laysan having a smaller [average deviation]{.underline} from mean.*
 
-------------------------------------------------------------------------
-
 ## **What you can write in thesis or paper methods *about assumptions checking*:**
 
 **"Data distributions and model residuals were assessed to confirm that they met linear model assumptions."**
 
 -   *Then, if pushed by thesis adviser/committee or paper reviewers, you could add the specific details they are requesting.*
-
-------------------------------------------------------------------------
 
 ## What if data do not meet assumptions?
 
@@ -277,9 +271,7 @@ dat_bw |>
 
 -   (*also easy, but not preferred*) Transform your data (e.g., Log10 or square-root transform the response variable) to try to have the transformed variable meet regular model assumptions. However this means your inference will be based on the transformed version of the variable which is often hard(er) to interpret.
 
-------------------------------------------------------------------------
-
-# Coefficient table
+## Coefficient table
 
 Create a "coefficient table" in a "tidy" table format
 
@@ -297,9 +289,7 @@ lm_bw_island_coef
 
 More detail on what is in the coefficient table here: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#oneway-what-coefs-are>
 
-------------------------------------------------------------------------
-
-# Create emmeans table (mean + 95% CI for each group)
+## Create emmeans table (mean + 95% CI for each group)
 
 Calculate a mean and 95% confidence interval for each group (island) of beak widths.
 
@@ -321,8 +311,6 @@ lm_bw_island_emm
 -   **The 95% CIs in the emmeans table** (lower.CL to upper.CL) are calculated using all the data in the model (using a pooled standard deviation and sample size across both groups of data).
 
 For more explanation see: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#the-emmeans-table-is-a-table-of-modeled-means-and-inferential-statistics>
-
-------------------------------------------------------------------------
 
 ## Points & means plot w/ (model) 95% CIs
 
@@ -360,9 +348,7 @@ This plot shows the raw data for each group (Island). The `geom_crossbar()` plot
 
 -   Note `geom_pointrange()` could be used instead of `geom_crossbar()` if you prefer that style of plotting mean + CIs <https://ggplot2.tidyverse.org/reference/geom_linerange.html> (scroll down to bottom of page to see various error bar plotting examples)
 
-------------------------------------------------------------------------
-
-# Pairwise differences between means in contrasts table (2 options)
+## Pairwise differences between means in contrasts table (2 options)
 
 **To compare the island means to each other (WHAT WE REALLY CARE ABOUT FOR THIS ANALYSIS) you need to pick EITHER :**
 
@@ -387,7 +373,7 @@ And see:
 
 <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/factorial.html#twoway-multiple-tests>
 
-## **Option 1: Tukey Honestly Significant Difference (HSD)** contrasts table & corresponding "effects" plot w/ adjusted 95% CIs and p-values
+### **Option 1: Tukey Honestly Significant Difference (HSD)** contrasts table & corresponding "effects" plot w/ adjusted 95% CIs and p-values
 
 <https://en.wikipedia.org/wiki/Tukey%27s_range_test>
 
@@ -430,9 +416,7 @@ This table is important for reporting treatment effects and 95% CI and it `lm_le
 
 For more explanation see: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#estimates-of-the-effects-are-in-the-contrasts-table>
 
-------------------------------------------------------------------------
-
-## Effects plot w/ 95% CI (Tukey HSD all pairwise comparisons version)
+### Effects plot w/ 95% CI (Tukey HSD all pairwise comparisons version)
 
 ```{r}
 #| fig.height: 1.5
@@ -470,9 +454,7 @@ This plot shows the 3 pairwise differences between the 3 means (each combination
 
 -   *Note for (Southeast - Laysan, and North - Southeast) the two with p-values in the output above close to 0.05, the lower limit of their 95% CIs are close to 0 (i.e. 0 = no difference in beak widths)*
 
-------------------------------------------------------------------------
-
-## **Option 2: Pre-planned contrasts (no adjustments)** contrasts table & corresponding "effects" plot w/ 95% CI and p-values
+### Option 2: Pre-planned contrasts (no adjustments) contrasts table & corresponding "effects" plot w/ 95% CI and p-values
 
 "Pre-planned contrasts" are typically used if you know in advance that you are primarily interested in just some of the specific pairwise comparisons and these do not have the 95% CIs and p-values "adjusted." However, the author of the text below advocates for using a version of this approach in most situations (*see more below*).
 
@@ -534,9 +516,7 @@ This table is important for reporting treatment effects and 95% CI and it `lm_bw
 
 For more explanation see: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#estimates-of-the-effects-are-in-the-contrasts-table>
 
-------------------------------------------------------------------------
-
-## Effects plot w/ 95% CI (preplanned contrasts version)
+### Effects plot w/ 95% CI (preplanned contrasts version)
 
 This effects plot will just include the 2 pairwise comparisons (Southeast - Laysan & North - Laysan) that we are primarily interested in.
 
@@ -586,13 +566,11 @@ lm_bw_island_pairs_no_adjust <- contrast(lm_bw_island_emm,
 lm_bw_island_pairs_no_adjust
 ```
 
-------------------------------------------------------------------------
-
-# Combine plots into a single primary results figure
+## Combine plots into a single primary results figure
 
 Use the effects plot above (Tukey HSD or pre-planned contrasts) for the **approach you already chose as the most appropriate** and use that plot object to create a combined results plot.
 
-**Both plot options are created here, but for your analysis you will just include 1.**
+**Both plot options are created here, but for your analysis you will just include 1 option** (*Tukey HSD or pre-planned contrasts*).
 
 **DO NOT INCLUDE BOTH VERSIONS OF THE RESULTS PLOTS BELOW IN YOUR ANALYSIS. PICK ONE.**
 
