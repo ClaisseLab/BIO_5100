@@ -1,5 +1,5 @@
 ---
-title: "Week 9 - Comparing more than 2 means (traditionally one-way ANOVA)"
+title: "Week 10 - Comparing more than 2 means (traditionally one-way ANOVA)"
 author: "Jeremy Claisse"
 date: last-modified
 date-format: "D MMM YYYY"
