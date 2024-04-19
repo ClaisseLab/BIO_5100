@@ -1,5 +1,5 @@
 ---
-title: "BIO 5100 - Correlation & Regression Intro, Normal Distributions"
+title: "BIO 5100 Correlation & Regression Intro, Normal Distributions"
 author: "Jeremy Claisse"
 date: last-modified
 date-format: "D MMM YYYY"

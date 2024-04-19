@@ -1,5 +1,5 @@
 ---
-title: "Example Code - Correlation and Regression w/ inference and assumptions checking"
+title: "BIO 5100 Correlation and Regression w/ inference and assumptions checking"
 author: "Jeremy Claisse"
 date: last-modified
 date-format: "D MMM YYYY"

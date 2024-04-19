@@ -1,5 +1,5 @@
 ---
-title: "Week 7 - Comparing Means from independent and paired samples"
+title: "BIO 5100 Comparing Means from independent and paired samples"
 author: "Jeremy Claisse"
 date: last-modified
 date-format: "D MMM YYYY"
