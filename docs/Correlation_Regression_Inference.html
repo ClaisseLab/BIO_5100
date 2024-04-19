@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Jeremy Claisse">
+<meta name="dcterms.date" content="2024-04-19">
+<title>BIO 5100 - Example Code - Correlation and Regression w/ inference and assumptions checking</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><link rel="stylesheet" href="styles.css">
+</head>
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">BIO 5100</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+<li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Online_Books.html" rel="" target="">
+ <span class="menu-text">Online Books</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://claisselab.github.io/BIO_5800L/" rel="" target="">
+ <span class="menu-text">BIO 5800L</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://claisselab.github.io/BIO_5100/Example_Code.html" rel="" target="">
+ <span class="menu-text">Example Code</span></a>
+  </li>  
+</ul>
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://claisselab.com" rel="" target=""><i class="bi bi-house-fill" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ClaisseLab" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+<div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li><a href="#load-packages" id="toc-load-packages" class="nav-link active" data-scroll-target="#load-packages">Load Packages</a></li>
+  <li>
+<a href="#general-modeling-strategy" id="toc-general-modeling-strategy" class="nav-link" data-scroll-target="#general-modeling-strategy">General modeling strategy:</a>
+  <ul class="collapse">
+<li>
+<a href="#read-in-the-data-file" id="toc-read-in-the-data-file" class="nav-link" data-scroll-target="#read-in-the-data-file">Read-in the data file</a>
+  <ul class="collapse">
+<li><a href="#view-some-of-the-data" id="toc-view-some-of-the-data" class="nav-link" data-scroll-target="#view-some-of-the-data">View (some of) the data</a></li>
+  </ul>
+</li>
+  </ul>
+</li>
+  <li>
+<a href="#scatter-plots" id="toc-scatter-plots" class="nav-link" data-scroll-target="#scatter-plots">Scatter plots</a>
+  <ul class="collapse">
+<li><a href="#a-scatter-plot-of-yellow-tang-length-cm-and-gonad-weight" id="toc-a-scatter-plot-of-yellow-tang-length-cm-and-gonad-weight" class="nav-link" data-scroll-target="#a-scatter-plot-of-yellow-tang-length-cm-and-gonad-weight">A scatter plot of yellow tang length cm and gonad weight:</a></li>
+  <li>
+<a href="#customizing-scatter-plots" id="toc-customizing-scatter-plots" class="nav-link" data-scroll-target="#customizing-scatter-plots">Customizing Scatter plots</a>
+  <ul class="collapse">
+<li><a href="#if-you-want-to-change-characteristics-size-color-shape-of-all-points" id="toc-if-you-want-to-change-characteristics-size-color-shape-of-all-points" class="nav-link" data-scroll-target="#if-you-want-to-change-characteristics-size-color-shape-of-all-points">If you want to change characteristics (size, color, shape) of ALL POINTS:</a></li>
+  <li><a href="#now-map-the-sex-variable-to-color-in-the-aes-in-the-scatter-plot-of-yellow-tang-length-cm-and-gonad-weight" id="toc-now-map-the-sex-variable-to-color-in-the-aes-in-the-scatter-plot-of-yellow-tang-length-cm-and-gonad-weight" class="nav-link" data-scroll-target="#now-map-the-sex-variable-to-color-in-the-aes-in-the-scatter-plot-of-yellow-tang-length-cm-and-gonad-weight">Now map the sex variable to color in the <code>aes()</code> in the scatter plot of yellow tang length cm and gonad weight:</a></li>
+  </ul>
+</li>
+  <li><a href="#geom_smoothlowess-moving-average-curves" id="toc-geom_smoothlowess-moving-average-curves" class="nav-link" data-scroll-target="#geom_smoothlowess-moving-average-curves"><code>geom_smooth()</code><em>LOWESS moving average curves</em></a></li>
+  </ul>
+</li>
+  <li>
+<a href="#correlation-coefficient" id="toc-correlation-coefficient" class="nav-link" data-scroll-target="#correlation-coefficient">Correlation Coefficient</a>
+  <ul class="collapse">
+<li><a href="#cor-within-summarize" id="toc-cor-within-summarize" class="nav-link" data-scroll-target="#cor-within-summarize"><code>cor()</code> within summarize()</a></li>
+  <li><a href="#corrr-tidyverse-package-extra---only-if-need-to-do-a-lot-of-correlations" id="toc-corrr-tidyverse-package-extra---only-if-need-to-do-a-lot-of-correlations" class="nav-link" data-scroll-target="#corrr-tidyverse-package-extra---only-if-need-to-do-a-lot-of-correlations"><code>corrr</code> tidyverse package (extra - only if need to do a lot of correlations)</a></li>
+  <li><a href="#guess-the-correlation-coefficient" id="toc-guess-the-correlation-coefficient" class="nav-link" data-scroll-target="#guess-the-correlation-coefficient">Guess the correlation coefficient:</a></li>
+  <li><a href="#correlation-coefficient-r-for-each-level-of-a-variable-w-group_by" id="toc-correlation-coefficient-r-for-each-level-of-a-variable-w-group_by" class="nav-link" data-scroll-target="#correlation-coefficient-r-for-each-level-of-a-variable-w-group_by">Correlation Coefficient r for each level of a variable w/ <code>group_by()</code></a></li>
+  </ul>
+</li>
+  <li>
+<a href="#correlation-significance-tests" id="toc-correlation-significance-tests" class="nav-link" data-scroll-target="#correlation-significance-tests">Correlation Significance Tests</a>
+  <ul class="collapse">
+<li><a href="#scatter-plot-of-data-to-assess-correlation-assumptions" id="toc-scatter-plot-of-data-to-assess-correlation-assumptions" class="nav-link" data-scroll-target="#scatter-plot-of-data-to-assess-correlation-assumptions">Scatter plot of data (to assess correlation assumptions)</a></li>
+  <li><a href="#assumptions-for-parametric-pearsons-correlation-coefficient-r-the-test" id="toc-assumptions-for-parametric-pearsons-correlation-coefficient-r-the-test" class="nav-link" data-scroll-target="#assumptions-for-parametric-pearsons-correlation-coefficient-r-the-test">Assumptions for parametric Pearson’s correlation coefficient r (&amp; the test)</a></li>
+  <li><a href="#correlation-hypothesis-test-with-cor.test" id="toc-correlation-hypothesis-test-with-cor.test" class="nav-link" data-scroll-target="#correlation-hypothesis-test-with-cor.test">Correlation hypothesis test with <code>cor.test()</code></a></li>
+  <li><a href="#non-parametric-correlation-test-examples" id="toc-non-parametric-correlation-test-examples" class="nav-link" data-scroll-target="#non-parametric-correlation-test-examples">Non-parametric correlation test examples</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#lm-w-1-numeric-explanatory-variable-simple-linear-regression" id="toc-lm-w-1-numeric-explanatory-variable-simple-linear-regression" class="nav-link" data-scroll-target="#lm-w-1-numeric-explanatory-variable-simple-linear-regression">lm() w/ 1 Numeric Explanatory Variable (Simple Linear Regression)</a>
+  <ul class="collapse">
+<li><a href="#does-cat-body-weight-explain-predict-cat-heart-weight" id="toc-does-cat-body-weight-explain-predict-cat-heart-weight" class="nav-link" data-scroll-target="#does-cat-body-weight-explain-predict-cat-heart-weight">Does cat body weight explain (predict) cat heart weight?</a></li>
+  <li><a href="#read-in-the-data" id="toc-read-in-the-data" class="nav-link" data-scroll-target="#read-in-the-data">Read in the data</a></li>
+  <li>
+<a href="#initial-exploratory-analysis" id="toc-initial-exploratory-analysis" class="nav-link" data-scroll-target="#initial-exploratory-analysis">Initial Exploratory Analysis</a>
+  <ul class="collapse">
+<li><a href="#initial-exploratory-scatter-plot" id="toc-initial-exploratory-scatter-plot" class="nav-link" data-scroll-target="#initial-exploratory-scatter-plot">Initial exploratory scatter plot</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#fit-a-linear-regression-model-with-lm" id="toc-fit-a-linear-regression-model-with-lm" class="nav-link" data-scroll-target="#fit-a-linear-regression-model-with-lm">Fit a Linear Regression Model with <code>lm()</code></a>
+  <ul class="collapse">
+<li><a href="#regression-line-equation-y-b0-b1x" id="toc-regression-line-equation-y-b0-b1x" class="nav-link" data-scroll-target="#regression-line-equation-y-b0-b1x">Regression line equation (Y = <em>b</em><sub>0</sub> + <em>b</em><sub>1</sub>X):</a></li>
+  </ul>
+</li>
+  <li><a href="#coefficient-table---inference-with-the-slope-parameter-what-we-typically-care-about" id="toc-coefficient-table---inference-with-the-slope-parameter-what-we-typically-care-about" class="nav-link" data-scroll-target="#coefficient-table---inference-with-the-slope-parameter-what-we-typically-care-about">Coefficient table - Inference with the slope parameter (what we typically care about)</a></li>
+  <li><a href="#making-predictions-with-your-linear-model-line-equation" id="toc-making-predictions-with-your-linear-model-line-equation" class="nav-link" data-scroll-target="#making-predictions-with-your-linear-model-line-equation">Making Predictions with your linear model line equation</a></li>
+  <li><a href="#glance-output-w-linear-model-for-adjusted-r2-value" id="toc-glance-output-w-linear-model-for-adjusted-r2-value" class="nav-link" data-scroll-target="#glance-output-w-linear-model-for-adjusted-r2-value">Glance output w/ linear model for adjusted-R<sup>2</sup> value</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#combined-linear-regression-results-plots" id="toc-combined-linear-regression-results-plots" class="nav-link" data-scroll-target="#combined-linear-regression-results-plots">Combined Linear Regression Results Plot(s)</a>
+  <ul class="collapse">
+<li><a href="#combine-plots-into-a-single-primary-results-figure" id="toc-combine-plots-into-a-single-primary-results-figure" class="nav-link" data-scroll-target="#combine-plots-into-a-single-primary-results-figure">Combine plots into a single primary results figure</a></li>
+  <li><a href="#write-save-plot-to-a-.png-file-with-ggsave" id="toc-write-save-plot-to-a-.png-file-with-ggsave" class="nav-link" data-scroll-target="#write-save-plot-to-a-.png-file-with-ggsave">Write (save) plot to a .png file with ggsave()</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#assessing-the-quality-and-fit-of-your-model" id="toc-assessing-the-quality-and-fit-of-your-model" class="nav-link" data-scroll-target="#assessing-the-quality-and-fit-of-your-model">Assessing the quality and fit of your model</a>
+  <ul class="collapse">
+<li><a href="#model-residuals-examining-them" id="toc-model-residuals-examining-them" class="nav-link" data-scroll-target="#model-residuals-examining-them">Model Residuals (examining them)</a></li>
+  <li><a href="#residuals-visualization" id="toc-residuals-visualization" class="nav-link" data-scroll-target="#residuals-visualization">Residuals visualization</a></li>
+  <li><a href="#histogram-of-model-residuals" id="toc-histogram-of-model-residuals" class="nav-link" data-scroll-target="#histogram-of-model-residuals">Histogram of model residuals</a></li>
+  <li>
+<a href="#assumptions-of-simple-linear-regression" id="toc-assumptions-of-simple-linear-regression" class="nav-link" data-scroll-target="#assumptions-of-simple-linear-regression">Assumptions of simple linear regression</a>
+  <ul class="collapse">
+<li><a href="#a.-simple-random-sample-srs-from-each-population-group-or-treatment" id="toc-a.-simple-random-sample-srs-from-each-population-group-or-treatment" class="nav-link" data-scroll-target="#a.-simple-random-sample-srs-from-each-population-group-or-treatment">A. Simple random sample (SRS) from each population (group or treatment)</a></li>
+  <li><a href="#b.-observations-are-independent" id="toc-b.-observations-are-independent" class="nav-link" data-scroll-target="#b.-observations-are-independent">B. Observations are independent</a></li>
+  <li><a href="#c.-residuals-follow-a-normal-distribution-values-of-y-vary-normally-around-mean-of-y" id="toc-c.-residuals-follow-a-normal-distribution-values-of-y-vary-normally-around-mean-of-y" class="nav-link" data-scroll-target="#c.-residuals-follow-a-normal-distribution-values-of-y-vary-normally-around-mean-of-y">C. Residuals follow a normal distribution (values of y vary normally around mean of y)</a></li>
+  <li><a href="#d.-equal-variance-around-the-regression-line-homoscedasticity" id="toc-d.-equal-variance-around-the-regression-line-homoscedasticity" class="nav-link" data-scroll-target="#d.-equal-variance-around-the-regression-line-homoscedasticity">D. Equal variance around the regression line (homoscedasticity)</a></li>
+  <li><a href="#e.-relationship-between-the-variables-is-linear" id="toc-e.-relationship-between-the-variables-is-linear" class="nav-link" data-scroll-target="#e.-relationship-between-the-variables-is-linear">E. Relationship between the variables is linear</a></li>
+  </ul>
+</li>
+  <li><a href="#typical-linear-regression-diagnostic-plots" id="toc-typical-linear-regression-diagnostic-plots" class="nav-link" data-scroll-target="#typical-linear-regression-diagnostic-plots">Typical linear regression “Diagnostic Plots”</a></li>
+  <li><a href="#plot-1-residuals-vs-fitted" id="toc-plot-1-residuals-vs-fitted" class="nav-link" data-scroll-target="#plot-1-residuals-vs-fitted">Plot (1) Residuals vs Fitted</a></li>
+  <li><a href="#plot-2-normal-q-q-plot" id="toc-plot-2-normal-q-q-plot" class="nav-link" data-scroll-target="#plot-2-normal-q-q-plot">Plot (2) Normal Q-Q plot</a></li>
+  <li><a href="#plot-3-scale-location" id="toc-plot-3-scale-location" class="nav-link" data-scroll-target="#plot-3-scale-location">Plot (3) Scale-Location</a></li>
+  <li><a href="#plot-4-residuals-vs.-leverage-cooks-distance---highly-influential-points" id="toc-plot-4-residuals-vs.-leverage-cooks-distance---highly-influential-points" class="nav-link" data-scroll-target="#plot-4-residuals-vs.-leverage-cooks-distance---highly-influential-points">Plot (4) Residuals vs.&nbsp;<strong><em>Leverage</em></strong> <strong>(</strong>Cook’s distance - Highly Influential Points)</a></li>
+  <li><a href="#residuals-vs.-leverage-plot" id="toc-residuals-vs.-leverage-plot" class="nav-link" data-scroll-target="#residuals-vs.-leverage-plot">Residuals vs.&nbsp;Leverage plot</a></li>
+  <li>
+<a href="#remove-most-influential-point-and-plot-the-new-line-to-see-how-much-it-influences-the-model-the-line" id="toc-remove-most-influential-point-and-plot-the-new-line-to-see-how-much-it-influences-the-model-the-line" class="nav-link" data-scroll-target="#remove-most-influential-point-and-plot-the-new-line-to-see-how-much-it-influences-the-model-the-line">Remove most influential point and plot the new line to see how much it influences the model (the line)</a>
+  <ul class="collapse">
+<li><a href="#how-much-did-removing-that-big-cat-data-point-impact-the-model-i.e.-did-the-line-slope-change" id="toc-how-much-did-removing-that-big-cat-data-point-impact-the-model-i.e.-did-the-line-slope-change" class="nav-link" data-scroll-target="#how-much-did-removing-that-big-cat-data-point-impact-the-model-i.e.-did-the-line-slope-change">How much did removing that big cat data point impact the model (i.e., did the line slope change)?</a></li>
+  </ul>
+</li>
+  <li><a href="#demo-label-data-points-by-their-row-number" id="toc-demo-label-data-points-by-their-row-number" class="nav-link" data-scroll-target="#demo-label-data-points-by-their-row-number">(Demo) Label data points by their row number</a></li>
+  </ul>
+</li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">Example Code - Correlation and Regression w/ inference and assumptions checking</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jeremy Claisse </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">19 Apr 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header><section id="load-packages" class="level1"><h1>Load Packages</h1>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># load tidymodels package (to use functions in broom package)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidymodels.tidymodels.org">tidymodels</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># load skimr package - to use skim() function </span></span>
+<span><span class="co"># for descriptive statistics</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/skimr/">skimr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#load cowplot package</span></span>
+<span><span class="co"># used to combine multiple ggplots into a single figure</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/cowplot/">cowplot</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># load tidyverse</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The tidyverse package is actually a collection of multiple R packages <a href="https://www.tidyverse.org/packages/" class="uri">https://www.tidyverse.org/packages/</a> including the <strong>ggplot2</strong> package (for plotting) and <strong>dplyr</strong> package (for organizing and summarizing data). And you can load these (and others packages in the tidyverse) all at once using <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code>.</p>
+<p>The <strong>ggplot2 Package</strong> we will use primarily for making plots (and is part of the tidyverse) has great help pages: <a href="https://ggplot2.tidyverse.org/reference/index.html" class="uri"><strong>https://ggplot2.tidyverse.org/reference/index.html</strong></a></p>
+<p>The <strong>dplyr Package</strong> we will use for “data wrangling” (e.g., organizing, summarizing) and it also has (not as extensive) help pages <a href="https://dplyr.tidyverse.org/" class="uri">https://dplyr.tidyverse.org/</a> (plus cheat sheets <em>RStudio &gt; Help &gt; Cheatsheets</em>)</p>
+<p>The <strong>broom Package</strong> is <strong>loaded/installed as part of <a href="https://tidymodels.org/"><u>tidymodels</u></a> meta-package</strong> (similar to tidyverse). More information/examples of broom package functions can be found here: <a href="https://broom.tidymodels.org/articles/broom.html" class="uri">https://broom.tidymodels.org/articles/broom.html</a></p>
+<p>The <strong>cowplot Package</strong> will be used here to combined multiple ggplots into a single figure. But it also contains functions for all sorts other plotting purposes (<em>some cool/useful, others I would not necessarily advise using</em>):</p>
+<ul>
+<li>cowplot <a href="https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html" class="uri">https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html</a>
+</li>
+</ul>
+<hr></section><section id="general-modeling-strategy" class="level1"><h1>General modeling strategy:</h1>
+<p><a href="https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/intro-linear-models.html#modeling-strategy" class="uri">https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/intro-linear-models.html#modeling-strategy</a></p>
+<hr>
+<section id="read-in-the-data-file" class="level2"><h2 class="anchored" data-anchor-id="read-in-the-data-file">Read-in the data file</h2>
+<ul>
+<li>Use the <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> function to read the .csv data table file into RStudio</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Read-in .csv file with YT simulated data</span></span>
+<span><span class="co"># name the R object dat_yt</span></span>
+<span><span class="va">dat_yt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"YellowTangData_29_SEP_2016.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="view-some-of-the-data" class="level3"><h3 class="anchored" data-anchor-id="view-some-of-the-data">View (some of) the data</h3>
+<ul>
+<li>use glimpse<code>()</code> function to examine the structure of the data.frame named dat_yt</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">dat_yt</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 100
+Columns: 8
+$ sex           &lt;chr&gt; "M", "F", "F", "F", "F", "M", "F", "F", "M", "M", "M", "…
+$ length_cm     &lt;dbl&gt; 20.3, 16.0, 17.2, 17.1, 15.9, 20.5, 17.7, 15.1, 21.1, 19…
+$ gonad_wt_g    &lt;dbl&gt; 6.6, 22.0, 6.2, 17.4, 17.6, NA, 9.1, 15.4, 8.8, 7.6, 9.0…
+$ home_range_m2 &lt;dbl&gt; 3.6, 24.5, 3.4, 19.8, 15.7, 5.1, 7.8, 2.1, 3.5, 1.7, 2.2…
+$ gut_wt_g      &lt;dbl&gt; 2.6, 0.6, 2.1, 0.7, 0.4, 0.7, 1.6, 2.7, 0.4, 2.2, 0.8, 0…
+$ parasites     &lt;dbl&gt; 8, 8, 7, 8, 8, 8, 8, 6, 8, 7, 6, 7, 6, 7, 6, 7, 7, 8, 7,…
+$ location      &lt;dbl&gt; 3, 1, 2, 4, 2, 2, 3, 1, 4, 1, 1, 2, 3, 4, 1, 3, 4, 2, 3,…
+$ fishing_level &lt;chr&gt; "low", "high", "medium", "prohibited", "medium", "medium…</code></pre>
+</div>
+</div>
+<p>The data type of each variable: <a href="https://tibble.tidyverse.org/articles/types.html" class="uri">https://tibble.tidyverse.org/articles/types.html</a> (typically you’ll see: chr - character, dbl - double (number), or fct - factor (categorical variable)</p>
+<hr></section></section></section><section id="scatter-plots" class="level1"><h1>Scatter plots</h1>
+<p>See the tidyverse help page for <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> to see how to customize scatter plots:</p>
+<p><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="uri">https://ggplot2.tidyverse.org/reference/geom_point.html</a></p>
+<p>There’s also additional options (like how to specify a certain point shape) here:</p>
+<p><a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html" class="uri">https://ggplot2.tidyverse.org/articles/ggplot2-specs.html</a></p>
+<section id="a-scatter-plot-of-yellow-tang-length-cm-and-gonad-weight" class="level3"><h3 class="anchored" data-anchor-id="a-scatter-plot-of-yellow-tang-length-cm-and-gonad-weight">A scatter plot of yellow tang length cm and gonad weight:</h3>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dat_yt</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">length_cm</span>, y <span class="op">=</span> <span class="va">gonad_wt_g</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"length (cm)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"gonad weight (g)"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><em>This appears to be a relatively weak, negative relationship.</em></p>
+</section><section id="customizing-scatter-plots" class="level2"><h2 class="anchored" data-anchor-id="customizing-scatter-plots">Customizing Scatter plots</h2>
+<p>See the tidyverse help page for <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> to see how to customize scatter plots:</p>
+<p><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="uri">&lt;https://ggplot2.tidyverse.org/reference/geom_point.html&gt;</a></p>
+<p>There’s also additional options (like how to specify a certain point shape) here:</p>
+<p><a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html" class="uri">https://ggplot2.tidyverse.org/articles/ggplot2-specs.html</a></p>
+<section id="if-you-want-to-change-characteristics-size-color-shape-of-all-points" class="level3"><h3 class="anchored" data-anchor-id="if-you-want-to-change-characteristics-size-color-shape-of-all-points">If you want to change characteristics (size, color, shape) of ALL POINTS:</h3>
+<ul>
+<li>Put those arguments in <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code>, NOT in <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dat_yt</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">length_cm</span>, y <span class="op">=</span> <span class="va">gonad_wt_g</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"dark green"</span>, size <span class="op">=</span>  <span class="fl">3</span>, shape <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"length (cm)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"gonad weight (g)"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section><section id="now-map-the-sex-variable-to-color-in-the-aes-in-the-scatter-plot-of-yellow-tang-length-cm-and-gonad-weight" class="level3"><h3 class="anchored" data-anchor-id="now-map-the-sex-variable-to-color-in-the-aes-in-the-scatter-plot-of-yellow-tang-length-cm-and-gonad-weight">Now map the sex variable to color in the <code>aes()</code> in the scatter plot of yellow tang length cm and gonad weight:</h3>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dat_yt</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">length_cm</span>, y <span class="op">=</span> <span class="va">gonad_wt_g</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"length (cm)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"gonad weight (g)"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section></section><section id="geom_smoothlowess-moving-average-curves" class="level2"><h2 class="anchored" data-anchor-id="geom_smoothlowess-moving-average-curves">
+<code>geom_smooth()</code><em>LOWESS moving average curves</em>
+</h2>
+<p><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="uri">https://ggplot2.tidyverse.org/reference/geom_smooth.html</a></p>
+<ul>
+<li><p><code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code> by default adds a moving average smoother line, also referred to as a LOWESS smoother curve (Locally Weighted Scatterplot Smoothing)</p></li>
+<li><p>we add the argument <code>se = FALSE</code> so that error bars do not plot on the line, which is not necessary here.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># a smoother line (moving average) for all data</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dat_yt</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">length_cm</span>, y <span class="op">=</span> <span class="va">gonad_wt_g</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"length (cm)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"gonad weight (g)"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ul>
+<li><p>the <code>span</code> argument changes the range of x values over which the the moving average is done.</p></li>
+<li><p>Typically use trial and error, try values between 0.3 and 1.0 for span.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># span = 0.3</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dat_yt</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">length_cm</span>, y <span class="op">=</span> <span class="va">gonad_wt_g</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>span <span class="op">=</span> <span class="fl">0.3</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"length (cm)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"gonad weight (g)"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># span = 1</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dat_yt</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">length_cm</span>, y <span class="op">=</span> <span class="va">gonad_wt_g</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>span <span class="op">=</span> <span class="fl">1</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"length (cm)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"gonad weight (g)"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ul>
+<li>if we add <code>color = sex</code> to aes, it will do a smoother line (moving average) for each sex</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># add color = sex to aes</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dat_yt</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">length_cm</span>, y <span class="op">=</span> <span class="va">gonad_wt_g</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"length (cm)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"gonad weight (g)"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dat_yt</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">length_cm</span>, <span class="va">gonad_wt_g</span>, color <span class="op">=</span> <span class="va">fishing_level</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>  <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><em>Can see differences in the relationship between the sexes. However fishing_level does not appear to impact the relationship at all (all fishing levels have very similar smoother lines).</em></p>
+<hr></section></section><section id="correlation-coefficient" class="level1"><h1>Correlation Coefficient</h1>
+<p><strong>NOTE:</strong> you should do <strong>EITHER</strong> a correlation analysis or a linear model (regression) analyses. They are similar but have different purposes, so you choose to do one or the other depending on your purpose. (<strong>DO NOT DO BOTH</strong> for your assignment or your own analyses).</p>
+<section id="cor-within-summarize" class="level2"><h2 class="anchored" data-anchor-id="cor-within-summarize">
+<code>cor()</code> within summarize()</h2>
+<ul>
+<li><p>You can also make cor() work with the pipe operator and the <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> function, similar to calculating a mean, median etc.</p></li>
+<li><p>Note: the cor() function has arguments for the x and y variables in the correlation</p></li>
+<li><p>and if there are NAs in either variable you need to add the argument <code>use = "pairwise.complete.obs"</code> so the result is not an NA</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat_yt</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">length_cm</span>, <span class="va">gonad_wt_g</span>, </span>
+<span>                    use <span class="op">=</span> <span class="st">"pairwise.complete.obs"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+       r
+   &lt;dbl&gt;
+1 -0.634</code></pre>
+</div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># uncomment to see help file for the cor function</span></span>
+<span><span class="co"># ?cor</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><em>Here -0.63 indicates a moderately strong (strength) negative (direction) relationship between for t<u>he entire sample of Yellow Tang</u> length and gonad weight as can be seen in the previous scatter plot.</em></p>
+</section><section id="corrr-tidyverse-package-extra---only-if-need-to-do-a-lot-of-correlations" class="level2"><h2 class="anchored" data-anchor-id="corrr-tidyverse-package-extra---only-if-need-to-do-a-lot-of-correlations">
+<code>corrr</code> tidyverse package (extra - only if need to do a lot of correlations)</h2>
+<p><a href="https://www.tidyverse.org/blog/2020/12/corrr-0-4-3/" class="uri">https://www.tidyverse.org/blog/2020/12/corrr-0-4-3/</a></p>
+<p><code>corrr</code> is a package for exploring correlations in R, focused on creating and working with data frames of correlations that can be easily explored via <code>corrr</code> functions or by leveraging other functions in the tidyverse. <strong>It’s main value is if you want to run a lot of correlations between many different variables in a data.frame, <u>so we won’t use it much/at all in our course</u>. JUST HERE FOR DEMO, don’t need to install/use…</strong></p>
+<ul>
+<li>(install if necessary, and) load the corrr package with the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># must download and install corrr package on your computer if </span></span>
+<span><span class="co"># you have never done so before (only need to do this once).</span></span>
+<span><span class="co"># uncomment the code below to install if needed:</span></span>
+<span><span class="co"># install.packages("corrr")</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymodels/corrr">corrr</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>
+<code><a href="https://corrr.tidymodels.org/reference/correlate.html">correlate()</a></code> is the function from the corrr package to produce correlation coefficients.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat_yt</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">length_cm</span>, <span class="va">gonad_wt_g</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://corrr.tidymodels.org/reference/correlate.html">correlate</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  term       length_cm gonad_wt_g
+  &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;
+1 length_cm     NA         -0.634
+2 gonad_wt_g    -0.634     NA    </code></pre>
+</div>
+</div>
+<ul>
+<li><p>The output is similar to the one produced by the cor() function above if you just want to see the correlation coefficient for a pair of numerical variables.</p></li>
+<li><p>However, the <code><a href="https://corrr.tidymodels.org/reference/correlate.html">correlate()</a></code> output is a data.frame (i.e., a tidyverse “tibble”) instead of being a matrix, so there are some advantages. But the real benefits come if you want to run correlations between many pairs of variables and/or visualize those.</p></li>
+<li><p>See the tidyverse help page for the corrr package if you want to see more examples of what it can do: <a href="https://www.tidyverse.org/blog/2020/12/corrr-0-4-3/" class="uri">https://www.tidyverse.org/blog/2020/12/corrr-0-4-3/</a></p></li>
+</ul>
+<hr>
+<ul>
+<li>Here we select all numerical columns, and then calculate correlation between all pair-wise combinations of variables.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat_yt</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select_all.html">select_if</a></span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://corrr.tidymodels.org/reference/correlate.html">correlate</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 7
+  term          length_cm gonad_wt_g home_range_m2 gut_wt_g parasites location
+  &lt;chr&gt;             &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 length_cm       NA         -0.634         0.0452  -0.0998   -0.0944   0.0426
+2 gonad_wt_g      -0.634     NA            -0.0356   0.119     0.0479   0.0565
+3 home_range_m2    0.0452    -0.0356       NA       -0.0558   -0.294   -0.0689
+4 gut_wt_g        -0.0998     0.119        -0.0558  NA         0.0268  -0.137 
+5 parasites       -0.0944     0.0479       -0.294    0.0268   NA        0.0310
+6 location         0.0426     0.0565       -0.0689  -0.137     0.0310  NA     </code></pre>
+</div>
+</div>
+</section><section id="guess-the-correlation-coefficient" class="level2"><h2 class="anchored" data-anchor-id="guess-the-correlation-coefficient">Guess the correlation coefficient:</h2>
+<p><a href="https://psu-eberly.shinyapps.io/Correlation_Guessing/" class="uri">https://psu-eberly.shinyapps.io/Correlation_Guessing/</a></p>
+<p><em>It is good to be able to relatively precisely (maybe within 0.3) guess a correlation coefficient from looking at a plot of data.</em></p>
+<p><strong>(This Shiny App is something else built with R)</strong></p>
+</section><section id="correlation-coefficient-r-for-each-level-of-a-variable-w-group_by" class="level2"><h2 class="anchored" data-anchor-id="correlation-coefficient-r-for-each-level-of-a-variable-w-group_by">Correlation Coefficient r for each level of a variable w/ <code>group_by()</code>
+</h2>
+<ul>
+<li>Calculate the correlation coefficient each sex using the group_by function:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat_yt</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">length_cm</span>, <span class="va">gonad_wt_g</span>, </span>
+<span>                    use <span class="op">=</span> <span class="st">"pairwise.complete.obs"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  sex       r
+  &lt;chr&gt; &lt;dbl&gt;
+1 F     0.104
+2 M     0.192</code></pre>
+</div>
+</div>
+<p><em>When we ran the correlation with all data (all fish in the sample) it was -0.63, but now for each sex individually it switches to very week positive relationships (0.19 for males and 0.10 for females).</em></p>
+<hr></section></section><section id="correlation-significance-tests" class="level1"><h1>Correlation Significance Tests</h1>
+<p>Read in the data</p>
+<div class="cell">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># | label: Read in data</span></span>
+<span><span class="co"># must install "MASS" package, if not installed already</span></span>
+<span><span class="co"># use cats data object in MASS package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="http://www.stats.ox.ac.uk/pub/MASS4/">"MASS"</a></span><span class="op">)</span> </span>
+<span></span>
+<span><span class="co"># uncomment to see help file for cats data set</span></span>
+<span><span class="co">#?cats</span></span>
+<span></span>
+<span><span class="co"># assign built in data set to a new object </span></span>
+<span><span class="co"># name so it can be modified as needed</span></span>
+<span><span class="va">dat_cats</span><span class="op">&lt;-</span><span class="va">cats</span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">dat_cats</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 144
+Columns: 3
+$ Sex &lt;fct&gt; F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, …
+$ Bwt &lt;dbl&gt; 2.0, 2.0, 2.0, 2.1, 2.1, 2.1, 2.1, 2.1, 2.1, 2.1, 2.1, 2.1, 2.2, 2…
+$ Hwt &lt;dbl&gt; 7.0, 7.4, 9.5, 7.2, 7.3, 7.6, 8.1, 8.2, 8.3, 8.5, 8.7, 9.8, 7.1, 8…</code></pre>
+</div>
+</div>
+<hr>
+<section id="scatter-plot-of-data-to-assess-correlation-assumptions" class="level3"><h3 class="anchored" data-anchor-id="scatter-plot-of-data-to-assess-correlation-assumptions">Scatter plot of data (to assess correlation assumptions)</h3>
+<div class="cell">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dat_cats</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y<span class="op">=</span><span class="va">Hwt</span>, x<span class="op">=</span><span class="va">Bwt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2</span>, shape<span class="op">=</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span> <span class="co"># Use hollow circles</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Body Weight (kg)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Heart Weight (g)"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section><section id="assumptions-for-parametric-pearsons-correlation-coefficient-r-the-test" class="level2"><h2 class="anchored" data-anchor-id="assumptions-for-parametric-pearsons-correlation-coefficient-r-the-test">Assumptions for parametric Pearson’s correlation coefficient r (&amp; the test)</h2>
+<p><strong>A) Linearity: data follows a linear relationship</strong></p>
+<ul>
+<li><p>Can be examined by looking at a scatter plot. If the data points have approximately a straight line (and not a curve) relationship, then the data satisfies the linearity assumption.</p></li>
+<li><p>Can also add a geom_smooth() layer (default moving average curve) to help visualize if the relationship is linear or curved</p></li>
+</ul>
+<p><strong>B) Normality: distribution of each variable approximately normal</strong></p>
+<ul>
+<li>can assess with separate histograms for each variable</li>
+</ul>
+<p><strong>C) Homoscedasticity (equal variances along the linear relationship)</strong></p>
+<ul>
+<li><p>Looking for if variance (spread or scatter) is smaller for a particular range of values and larger for another range of values, then there is a violation of homoscedasticity.</p></li>
+<li><p>Can check this just by looking at the scatter plot.</p></li>
+</ul>
+<hr></section><section id="correlation-hypothesis-test-with-cor.test" class="level2"><h2 class="anchored" data-anchor-id="correlation-hypothesis-test-with-cor.test">Correlation hypothesis test with <code>cor.test()</code>
+</h2>
+<p><strong>The test uses the null hypothesis that the Pearson correlation coefficient = 0</strong></p>
+<div class="cell">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># calculate r with cor() function</span></span>
+<span><span class="va">dat_cats</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">Bwt</span>, <span class="va">Hwt</span>, use <span class="op">=</span> <span class="st">"pairwise.complete.obs"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          r
+1 0.8041274</code></pre>
+</div>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># run correlation test (default is regular parametric test)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span><span class="op">~</span> <span class="va">Bwt</span> <span class="op">+</span> <span class="va">Hwt</span>, data <span class="op">=</span> <span class="va">dat_cats</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  Bwt and Hwt
+t = 16.119, df = 142, p-value &lt; 2.2e-16
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.7375682 0.8552122
+sample estimates:
+      cor 
+0.8041274 </code></pre>
+</div>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Can also use tidy() function to to turn the output into </span></span>
+<span><span class="co"># a data.frame. For example, if you wanted to extract </span></span>
+<span><span class="co"># the 95%CI limits.</span></span>
+<span><span class="fu">tidy</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span><span class="op">~</span> <span class="va">Bwt</span> <span class="op">+</span> <span class="va">Hwt</span>, data <span class="op">=</span> <span class="va">dat_cats</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 8
+  estimate statistic  p.value parameter conf.low conf.high method    alternative
+     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;int&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;      
+1    0.804      16.1 6.97e-34       142    0.738     0.855 Pearson'… two.sided  </code></pre>
+</div>
+</div>
+<p><em>You should report the correlation coefficient r with 95% CI from the <code><a href="https://rdrr.io/r/stats/cor.test.html">cor.test()</a></code> output, as well as the p-value.</em></p>
+<p>There was a strong correlation between a cat’s heart weight and its body weight (r = 0.80, 95% CI 0.74 to 0.86, p-value &lt; 0.001).</p>
+<hr></section><section id="non-parametric-correlation-test-examples" class="level2"><h2 class="anchored" data-anchor-id="non-parametric-correlation-test-examples">Non-parametric correlation test examples</h2>
+<p><strong>If your data or the relationship is/are:</strong></p>
+<ul>
+<li>ordinal (ranks)</li>
+<li>a non-linear relationship</li>
+<li>non-Normal distributions or not equal variance across the relationship</li>
+</ul>
+<p>Then a non-parametric correlation test could be used. There are multiple types, each apparently work better under certain conditions. You could Google “types of non-parametric correlation tests” and then see what best matches your data and use that one.</p>
+<div class="cell">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># if your data is ordinal (ranks) or is non-linear you </span></span>
+<span><span class="co"># could do a non-parametric correlation test </span></span>
+<span><span class="co"># (and produce the assocaited non-parametric </span></span>
+<span><span class="co"># versions of a correlation coefficients)</span></span>
+<span><span class="va">dat_ranked</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span> pain_A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">4</span>,<span class="fl">8</span>,<span class="fl">7</span>,<span class="fl">7</span>,<span class="fl">9</span>,<span class="fl">1</span>,<span class="fl">7</span>,<span class="fl">3</span>,<span class="fl">10</span>,<span class="fl">2</span><span class="op">)</span>,</span>
+<span>                        pain_B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">8</span>,<span class="fl">1</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">8</span>,<span class="fl">10</span>,<span class="fl">9</span>,<span class="fl">9</span>,<span class="fl">2</span>,<span class="fl">7</span>,<span class="fl">7</span>,<span class="fl">8</span>,<span class="fl">3</span><span class="op">)</span> <span class="op">)</span></span>
+<span></span>
+<span><span class="co"># plot the scatterplot of the ranked data </span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dat_ranked</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y<span class="op">=</span><span class="va">pain_A</span>, x<span class="op">=</span><span class="va">pain_B</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Pain Level Procedure B"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Pain Level Procedure A"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">11</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">11</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># R can calculate a Spearman rho coefficient </span></span>
+<span><span class="co"># ("Spearman Rank Correlation") and do a test</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span><span class="op">~</span> <span class="va">Bwt</span> <span class="op">+</span> <span class="va">Hwt</span>, data <span class="op">=</span> <span class="va">dat_cats</span>, method<span class="op">=</span><span class="st">"spearman"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Spearman's rank correlation rho
+
+data:  Bwt and Hwt
+S = 104085, p-value &lt; 2.2e-16
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.7908427 </code></pre>
+</div>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># R can calculate a Kendall tau coefficient </span></span>
+<span><span class="co"># and do a test</span></span>
+<span><span class="co"># this one often used for small sample sizes</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span><span class="op">~</span> <span class="va">Bwt</span> <span class="op">+</span> <span class="va">Hwt</span>, data <span class="op">=</span> <span class="va">dat_cats</span>, method<span class="op">=</span><span class="st">"kendall"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Kendall's rank correlation tau
+
+data:  Bwt and Hwt
+z = 10.465, p-value &lt; 2.2e-16
+alternative hypothesis: true tau is not equal to 0
+sample estimates:
+      tau 
+0.6079403 </code></pre>
+</div>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># You can find various sources describing which </span></span>
+<span><span class="co"># nonparametric correlation test is better under certain </span></span>
+<span><span class="co"># curcimstances, or see what is typically used in your </span></span>
+<span><span class="co"># sub-field and use that one.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr></section></section><section id="lm-w-1-numeric-explanatory-variable-simple-linear-regression" class="level1"><h1>lm() w/ 1 Numeric Explanatory Variable (Simple Linear Regression)</h1>
+<section id="does-cat-body-weight-explain-predict-cat-heart-weight" class="level3"><h3 class="anchored" data-anchor-id="does-cat-body-weight-explain-predict-cat-heart-weight">Does cat body weight explain (predict) cat heart weight?</h3>
+<p><strong>NOTE:</strong> you should do <strong>EITHER</strong> a correlation analysis or a linear model (regression) analyses. They are similar but have different purposes, so you choose to do one or the other depending on your purpose. (<strong>DO NOT DO BOTH</strong> for your assignment or your own analyses).</p>
+<p>For additional detail on simple linear regression analysis following a linear modeling framework see:</p>
+<p><a href="https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/regression.html#regression" class="uri">https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/regression.html#regression</a></p>
+</section><section id="read-in-the-data" class="level2"><h2 class="anchored" data-anchor-id="read-in-the-data">Read in the data</h2>
+<div class="cell">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># use cats data object in MASS package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="http://www.stats.ox.ac.uk/pub/MASS4/">"MASS"</a></span><span class="op">)</span> </span>
+<span><span class="co"># must install "MASS" package, if not installed already</span></span>
+<span></span>
+<span><span class="co"># uncomment to see help file for cats data set</span></span>
+<span><span class="co">#?cats</span></span>
+<span></span>
+<span><span class="co"># assign built in data set to a new object </span></span>
+<span><span class="co"># name so it can be modified as needed</span></span>
+<span><span class="va">dat_cats</span> <span class="op">&lt;-</span> <span class="va">cats</span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">dat_cats</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 144
+Columns: 3
+$ Sex &lt;fct&gt; F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, …
+$ Bwt &lt;dbl&gt; 2.0, 2.0, 2.0, 2.1, 2.1, 2.1, 2.1, 2.1, 2.1, 2.1, 2.1, 2.1, 2.2, 2…
+$ Hwt &lt;dbl&gt; 7.0, 7.4, 9.5, 7.2, 7.3, 7.6, 8.1, 8.2, 8.3, 8.5, 8.7, 9.8, 7.1, 8…</code></pre>
+</div>
+</div>
+</section><section id="initial-exploratory-analysis" class="level2"><h2 class="anchored" data-anchor-id="initial-exploratory-analysis">Initial Exploratory Analysis</h2>
+<p>While our goal is ultimately to look at the relationship between the heart and body weights, it is always a good idea to look at the distributions of each numeric variable by itself. Primarily to see if anything looks weird with each of the data distributions.</p>
+<div class="cell">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Histogram of Hwt</span></span>
+<span><span class="va">dat_cats</span> <span class="op">|&gt;</span> </span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Hwt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>bins <span class="op">=</span><span class="fl">8</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Boxplots of Hwt </span></span>
+<span><span class="va">dat_cats</span> <span class="op">|&gt;</span> </span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">Hwt</span>, x <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-20-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Histogram of Bwt</span></span>
+<span><span class="va">dat_cats</span> <span class="op">|&gt;</span> </span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Bwt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>bins <span class="op">=</span><span class="fl">8</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-20-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Boxplots of Bwt </span></span>
+<span><span class="va">dat_cats</span> <span class="op">|&gt;</span> </span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">Bwt</span>, x <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-20-4.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># summary/descriptive statistics of beakwid_mm by island</span></span>
+<span><span class="va">dat_cats</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">dat_cats</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">144</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">factor</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: factor</strong></p>
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 14%">
+<col style="width: 20%">
+<col style="width: 11%">
+<col style="width: 13%">
+<col style="width: 19%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: left;">ordered</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: left;">top_counts</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td style="text-align: left;">Sex</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">M: 97, F: 47</td>
+</tr></tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 12%">
+<col style="width: 17%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 7%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Bwt</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2.72</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">2.30</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">3.02</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: left;">▇▇▆▃▂</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hwt</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">10.63</td>
+<td style="text-align: right;">2.43</td>
+<td style="text-align: right;">6.3</td>
+<td style="text-align: right;">8.95</td>
+<td style="text-align: right;">10.1</td>
+<td style="text-align: right;">12.12</td>
+<td style="text-align: right;">20.5</td>
+<td style="text-align: left;">▆▇▅▁▁</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="initial-exploratory-scatter-plot" class="level3"><h3 class="anchored" data-anchor-id="initial-exploratory-scatter-plot">Initial exploratory scatter plot</h3>
+<ul>
+<li>Before you go through the trouble of fitting the linear model, good to start by looking at the relationship with the data to see if a linear relationship seems reasonable.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat_cats</span> <span class="op">|&gt;</span> </span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y<span class="op">=</span><span class="va">Hwt</span>, x<span class="op">=</span><span class="va">Bwt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2</span>, shape<span class="op">=</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Cat Body Weight (kg)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Cat Heart Weight (g)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co">#loess smoother (moving average) line</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>se <span class="op">=</span> <span class="cn">F</span>, color <span class="op">=</span> <span class="st">"gold"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># linear regression line</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>se <span class="op">=</span> <span class="cn">F</span>, method <span class="op">=</span> <span class="va">lm</span>, color <span class="op">=</span> <span class="st">"purple"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><em>Comparing the linear regression line (<code>method = lm</code>) to the smoother (moving average) line is a good method to see how “linear” the relationship really is.</em></p>
+</section></section><section id="fit-a-linear-regression-model-with-lm" class="level2"><h2 class="anchored" data-anchor-id="fit-a-linear-regression-model-with-lm">Fit a Linear Regression Model with <code>lm()</code>
+</h2>
+<p>Does cat body weight explain (predict) cat heart weight?</p>
+<p>(<em>but more importantly, why did so many cats have to die to get his data?</em>)</p>
+<p><code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> <strong>is the linear model function</strong> that can be used fit all types of <strong>General Linear Models.</strong></p>
+<p><a href="https://en.wikipedia.org/wiki/General_linear_model" class="uri">https://en.wikipedia.org/wiki/General_linear_model</a></p>
+<ul>
+<li><p>Common statistical methods you are familiar with like S<em>imple Linear Regression, ANOVA, ANCOVA, Multiple Regression</em> are forms of general linear models. (<em>note this is different from General<u><strong>ized</strong></u> Linear Models</em>)</p></li>
+<li><p>The traditional analysis methods are just based on the type of explanatory (predictor) variable(s) in the general linear model: Regression (numerical predictor), ANOVA (categorical predictor), or ANCOVA (numerical and categorical predictors)</p></li>
+<li><p>Fit the linear model using the <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> function</p></li>
+<li>
+<p>define the model in lm() with a formula:</p>
+<ul>
+<li><p><em>response_variable</em> ~ <em>predictor_variable</em></p></li>
+<li><p><em>y ~ x</em></p></li>
+</ul>
+</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lm_H_B</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Hwt</span> <span class="op">~</span> <span class="va">Bwt</span>, data<span class="op">=</span><span class="va">dat_cats</span><span class="op">)</span></span>
+<span><span class="co"># look at the default model output</span></span>
+<span><span class="va">lm_H_B</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Hwt ~ Bwt, data = dat_cats)
+
+Coefficients:
+(Intercept)          Bwt  
+    -0.3567       4.0341  </code></pre>
+</div>
+</div>
+<section id="regression-line-equation-y-b0-b1x" class="level3"><h3 class="anchored" data-anchor-id="regression-line-equation-y-b0-b1x">Regression line equation (Y = <em>b</em><sub>0</sub> + <em>b</em><sub>1</sub>X):</h3>
+<p><strong>Regression line:</strong></p>
+<p><em>y-intercept = -0.36 g, and slope = 4.0 g/kg</em></p>
+<p>(Cat Heart Weight g) = -0.36 + 4.0 (Cat Body Weight kg)</p>
+<p><em>Slope interpretation (put in context of units of each variable): as body weight increases by 1 kg, on average a cat’s heart weight increases by 4 g</em></p>
+</section></section><section id="coefficient-table---inference-with-the-slope-parameter-what-we-typically-care-about" class="level2"><h2 class="anchored" data-anchor-id="coefficient-table---inference-with-the-slope-parameter-what-we-typically-care-about">Coefficient table - Inference with the slope parameter (what we typically care about)</h2>
+<p>Create a “coefficient table” in a “tidy” table format</p>
+<ul>
+<li>Uses <code>tidy()</code> function from broom package, with a <code>conf.int = T</code> argument to include calculation of 95% CIs.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># use tidy function from broom package with the </span></span>
+<span><span class="co"># linear model object</span></span>
+<span><span class="va">lm_H_B_coef</span> <span class="op">&lt;-</span> <span class="fu">tidy</span><span class="op">(</span><span class="va">lm_H_B</span>, conf.int <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">lm_H_B_coef</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 7
+  term        estimate std.error statistic  p.value conf.low conf.high
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)   -0.357     0.692    -0.515 6.07e- 1    -1.73      1.01
+2 Bwt            4.03      0.250    16.1   6.97e-34     3.54      4.53</code></pre>
+</div>
+</div>
+<p>NOTE: We do not care about the Intercept parameter in this regression analysis (and that is typically the case for simple linear regressions). What we care about the is the slope parameter estimate (Bwt term).</p>
+<p><em>(Conceptual interpretation) We are 95% confident that cat heart weight increases by between 3.5 to 4.5 g for every increase in 1kg of cat body weight. (the y-intercept = what is a cat’s heart weight when it has a body weight of 0, it not relevant in this analysis so we don’t care about it’s 95% CI either)</em></p>
+<p><strong>Significance test for the slope parameter (p-value in Bwt row of coef table)</strong></p>
+<p>(is the slope significantly different from 0? Slope = 0 means body weight does not have a relationship to heart weight) - Note: Significance for a t-test for regression slope parameter</p>
+<pre><code>    Ho: b = 0
+
+    Ha: b ≠ 0</code></pre>
+<p>More detail on regression coefficients (slope parameter) and the associated 95% CI of the slope here: <a href="https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/regression.html#inference-the-coefficient-table" class="uri">https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/regression.html#inference-the-coefficient-table</a></p>
+</section><section id="making-predictions-with-your-linear-model-line-equation" class="level2"><h2 class="anchored" data-anchor-id="making-predictions-with-your-linear-model-line-equation">Making Predictions with your linear model line equation</h2>
+<p>Calculate the predicted heart weight for body weight of 3 kg using the linear model</p>
+<div class="cell">
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Y = b0 + b1*X</span></span>
+<span></span>
+<span><span class="co"># predicted Y = y-intercept + slope * x-value</span></span>
+<span></span>
+<span><span class="co"># type in y-intercept and slope values</span></span>
+<span><span class="op">(</span><span class="op">-</span><span class="fl">0.4</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="fl">4.0</span> <span class="op">*</span> <span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11.6</code></pre>
+</div>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># use coef function to extract the intercept and slope</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">lm_H_B</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">lm_H_B</span><span class="op">)</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">*</span><span class="fl">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11.74553</code></pre>
+</div>
+</div>
+<ul>
+<li><p>To visualize the prediction, add a vertical line to your plot with <code><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline()</a></code> at weight = 3 kg</p></li>
+<li><p>And a horizontal line to your plot with <code><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline()</a></code> at the predicted heart weight value</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat_cats</span> <span class="op">|&gt;</span> </span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">Hwt</span>, x <span class="op">=</span> <span class="va">Bwt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>  <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="va">lm</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span> <span class="co"># add a vertical  line at length = 20 cm </span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">3</span>, color <span class="op">=</span> <span class="st">"green"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span><span class="co"># add a horizontal line at the predicted gonad weight value</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">lm_H_B</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">lm_H_B</span><span class="op">)</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">*</span><span class="fl">3</span>, color <span class="op">=</span> <span class="st">"brown"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section><section id="glance-output-w-linear-model-for-adjusted-r2-value" class="level2"><h2 class="anchored" data-anchor-id="glance-output-w-linear-model-for-adjusted-r2-value">Glance output w/ linear model for adjusted-R<sup>2</sup> value</h2>
+<div class="cell">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Interpret glance() function output for the linear model</span></span>
+<span><span class="fu">glance</span><span class="op">(</span><span class="va">lm_H_B</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 12
+  r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC
+      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     0.647         0.644  1.45      260. 6.97e-34     1  -257.  520.  529.
+# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+</div>
+</div>
+<p><em>Cat body weight explains 64% of the variation in cat heart weight</em> (Adjusted R<sup>2</sup> = 0.64).</p>
+<p><strong>R<sup>2</sup> vs Adjusted-R<sup>2</sup> value? (just always use Adjusted-R<sup>2</sup>)</strong></p>
+<ul>
+<li><p><strong><em>Adjusted R-squared</em></strong> is an attempt to account for the phenomenon of the R<sup>2</sup> automatically and spuriously increasing when extra explanatory variables are added to the model (from <a href="https://en.wikipedia.org/wiki/Coefficient_of_determination" class="uri">&lt;https://en.wikipedia.org/wiki/Coefficient_of_determination&gt;</a>). This is often what is actually reported in papers as the R<sup>2</sup> value (and they don’t note that it is the “adjusted” value). It is always going to be a little lower than the “regular” or “Multiple” R<sup>2</sup> value, so it is the more conservative statistic to report.</p></li>
+<li><p>For more on this see: <a href="https://www.analyticsvidhya.com/blog/2020/07/difference-between-r-squared-and-adjusted-r-squared/" class="uri">https://www.analyticsvidhya.com/blog/2020/07/difference-between-r-squared-and-adjusted-r-squared/</a></p></li>
+</ul></section></section><section id="combined-linear-regression-results-plots" class="level1"><h1>Combined Linear Regression Results Plot(s)</h1>
+<p>Below is code for the 2 parts of the final results plot, similar to what we’ve done when comparing means, but this time the top “Effect” plot is the slope parameter value w/ 95% CI (instead of being difference between means w/ 95% CI of that difference).</p>
+<ol type="1">
+<li><p><strong>(Top) Effect (Slope Parameter) plot w/ 95% CI of the slope</strong> which uses the coefficients table object <code>lm_H_B_coef</code> you created above for the slope parameter and the 95% CI.</p></li>
+<li><p><strong>(Bottom) Linear Regression Plot</strong> with data points and linear model regression line.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># note in ggplot below we had to filter the coef object created</span></span>
+<span><span class="co"># above for just the slope parameter</span></span>
+<span><span class="va">plot_lm_H_B_effect</span> <span class="op">&lt;-</span> <span class="va">lm_H_B_coef</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># must filter for just the slope parameter </span></span>
+<span>  <span class="co"># (we don't care about the intercept)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">term</span> <span class="op">==</span> <span class="st">"Bwt"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">term</span>, x <span class="op">=</span> <span class="va">estimate</span>, </span>
+<span>             label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/format.pval.html">format.pval</a></span><span class="op">(</span><span class="va">p.value</span>, </span>
+<span>                                 digits <span class="op">=</span> <span class="fl">2</span>, </span>
+<span>                                 eps <span class="op">=</span> <span class="fl">0.001</span><span class="op">)</span></span>
+<span>             <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>xmin <span class="op">=</span> <span class="va">conf.low</span>,</span>
+<span>                      xmax <span class="op">=</span> <span class="va">conf.high</span></span>
+<span>                      <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">0</span>, linetype <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Effects (g/kg)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">""</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"top"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html">scale_y_discrete</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Slope"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span>vjust <span class="op">=</span> <span class="fl">0</span>, nudge_y <span class="op">=</span> <span class="fl">0.25</span>, size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot_lm_H_B_effect</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># plot both fitted lines on same plot (just to show they are the same thing - wouldn't normally do this), change color and size so both are visible</span></span>
+<span><span class="va">plot_lm_H_B_regression</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dat_cats</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">Hwt</span>, x <span class="op">=</span> <span class="va">Bwt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2</span>, shape <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="va">lm</span>, se <span class="op">=</span> <span class="cn">F</span>, col<span class="op">=</span> <span class="st">"blue"</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Body Weight (kg)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Heart Weight (g)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot_lm_H_B_regression</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-27-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<section id="combine-plots-into-a-single-primary-results-figure" class="level2"><h2 class="anchored" data-anchor-id="combine-plots-into-a-single-primary-results-figure">Combine plots into a single primary results figure</h2>
+<p>We’ll use the <code><a href="https://wilkelab.org/cowplot/reference/plot_grid.html">plot_grid()</a></code> function from the <strong>cowplot package</strong> to combine our two plots above into a single results figure.</p>
+<ul>
+<li>The <code>align = "v"</code> and <code>axis = "rl"</code> arguments make the axes of our 2 plots line up appropriately when combined. See help file for more detail: <a href="https://rdrr.io/cran/cowplot/man/plot_grid.html" class="uri">https://rdrr.io/cran/cowplot/man/plot_grid.html</a>
+</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://wilkelab.org/cowplot/reference/plot_grid.html">plot_grid</a></span><span class="op">(</span><span class="va">plot_lm_H_B_effect</span>, </span>
+<span>                          <span class="va">plot_lm_H_B_regression</span>, </span>
+<span>                          nrow <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>                          align <span class="op">=</span> <span class="st">"v"</span>,</span>
+<span>                          axis <span class="op">=</span> <span class="st">"rl"</span>,</span>
+<span>                          rel_heights <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.3</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span>                          <span class="op">)</span></span>
+<span><span class="co"># rel_heights argument adjusts the relative size of two plots </span></span>
+<span></span>
+<span><span class="va">results_plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="288"></p>
+</div>
+</div>
+</section><section id="write-save-plot-to-a-.png-file-with-ggsave" class="level2"><h2 class="anchored" data-anchor-id="write-save-plot-to-a-.png-file-with-ggsave">Write (save) plot to a .png file with ggsave()</h2>
+<ul>
+<li><p>the file will be saved to your “working directory” (typically <u>the folder where your .qmd file is</u>). <strong>You’ll need to look in that folder to see the .png file!</strong></p></li>
+<li><p><strong>You identify the type of file format you want to save it to with the <u>file name extension</u> at the end of the file name</strong>. Here we use <strong>.png</strong> (a great default for putting images into word docs or PPT presentations). But many others are available such as: “.pdf” (easy to view or email a .pdf to someone; and good to use for uploading plot files to journals if they’ll accept this format), “.eps” (another vector format some journals one), “.png”, “.jpeg”, “.tiff”, “.svg”(use for further editing in <a href="https://inkscape.org/" class="uri">https://inkscape.org/</a> freeware on windows).</p></li>
+<li><p>You can read more about the difference between <strong><em>vector vs.&nbsp;raster</em></strong> image file types here: <a href="https://guides.lib.umich.edu/c.php?g=282942&amp;p=1885352" class="uri">https://guides.lib.umich.edu/c.php?g=282942&amp;p=1885352</a>. And more about specific file types here: <a href="https://guides.lib.umich.edu/c.php?g=282942&amp;p=1885348" class="uri">https://guides.lib.umich.edu/c.php?g=282942&amp;p=1885348</a></p></li>
+<li><p>You specify the dimensions of the plot with the <code>width =</code> and <code>height =</code> arguments, default is inches. Try different widths and heights (<em>keeping in mind what would fit on a 8in by 11in page size</em>) and see what works for the plot you making. Often a plot shows the data better when it is taller or wider (<strong><em>so try different ratios of width to height</em></strong>).</p></li>
+<li><p>You can also specify the image “quality” using the “dots per inch” argument <code>dpi =</code> and typically you want to use 300 or 600 for a high quality image. Depending on the file type (with .tiff for example) 600 dpi can sometimes create huge file sizes, but that is usually where I start (<em>then only go down to 300 if needed</em>).</p></li>
+<li><p><em>NOTE - sometimes you can get an error when running <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code> repeatedly if the saved .png file is already open on your computer in your image viewer - need to close it each time you want to edit and re-output the image file.</em></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># output plot to .png file type, set size (default is inches),</span></span>
+<span><span class="co"># 300 or 600 dpi is high quality</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"plot_lm_H_B_regression_combined.png"</span>, <span class="va">results_plot</span>, </span>
+<span>       width <span class="op">=</span> <span class="fl">5</span>, </span>
+<span>       height <span class="op">=</span> <span class="fl">6</span>, </span>
+<span>       dpi <span class="op">=</span> <span class="fl">600</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr></section></section><section id="assessing-the-quality-and-fit-of-your-model" class="level1"><h1>Assessing the quality and fit of your model</h1>
+<section id="model-residuals-examining-them" class="level3"><h3 class="anchored" data-anchor-id="model-residuals-examining-them">Model Residuals (examining them)</h3>
+<p>Model residuals are <strong>the difference</strong> (in the Y or vertical direction) between the <strong><em>observed y</em></strong> values (the data) and the <strong><em>predicted y</em></strong> values (the regression line).</p>
+<ul>
+<li>We can use the <code>augment()</code> function (from broom package, loaded with tidymodels) to extract information from the model about each point in our data set</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## use augment() function (from broom package, loaded in tidymodels) to </span></span>
+<span><span class="co"># extract information from the model about each point in our data set</span></span>
+<span><span class="va">lm_H_B_augment</span> <span class="op">&lt;-</span> <span class="fu">augment</span><span class="op">(</span><span class="va">lm_H_B</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Run data table object to see (some) rows/columns:</span></span>
+<span><span class="va">lm_H_B_augment</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 144 × 8
+     Hwt   Bwt .fitted  .resid   .hat .sigma    .cooksd .std.resid
+   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+ 1   7     2      7.71 -0.711  0.0225   1.46 0.00282       -0.495 
+ 2   7.4   2      7.71 -0.311  0.0225   1.46 0.000541      -0.217 
+ 3   9.5   2      7.71  1.79   0.0225   1.45 0.0178         1.25  
+ 4   7.2   2.1    8.11 -0.915  0.0185   1.46 0.00381       -0.636 
+ 5   7.3   2.1    8.11 -0.815  0.0185   1.46 0.00302       -0.566 
+ 6   7.6   2.1    8.11 -0.515  0.0185   1.46 0.00121       -0.358 
+ 7   8.1   2.1    8.11 -0.0149 0.0185   1.46 0.00000101    -0.0103
+ 8   8.2   2.1    8.11  0.0851 0.0185   1.46 0.0000330      0.0592
+ 9   8.3   2.1    8.11  0.185  0.0185   1.46 0.000156       0.129 
+10   8.5   2.1    8.11  0.385  0.0185   1.46 0.000675       0.268 
+# ℹ 134 more rows</code></pre>
+</div>
+</div>
+</section><section id="residuals-visualization" class="level2"><h2 class="anchored" data-anchor-id="residuals-visualization">Residuals visualization</h2>
+<p>Adapted code from <a href="https://drsimonj.svbtle.com/visualising-residuals" class="uri">&lt;https://drsimonj.svbtle.com/visualising-residuals&gt;</a></p>
+<p><em>This is not something you’d typically include in a paper or thesis, but it is a good diagnostic tool to use in your analysis</em></p>
+<div class="cell">
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lm_H_B_augment</span> <span class="op">|&gt;</span> </span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">Hwt</span>, x <span class="op">=</span> <span class="va">Bwt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="va">lm</span>, se <span class="op">=</span> <span class="cn">FALSE</span>, color <span class="op">=</span> <span class="st">"lightgrey"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>xend <span class="op">=</span> <span class="va">Bwt</span>, yend <span class="op">=</span> <span class="va">.fitted</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># point color AND size mapped to residual size</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">.resid</span><span class="op">)</span>, size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">.resid</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_continuous.html">scale_color_continuous</a></span><span class="op">(</span>low <span class="op">=</span> <span class="st">"black"</span>, high <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># color and size legend also removed</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"none"</span>, size <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">.fitted</span><span class="op">)</span>, shape <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Body Weight (kg)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Heart Weight (g)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section><section id="histogram-of-model-residuals" class="level2"><h2 class="anchored" data-anchor-id="histogram-of-model-residuals">Histogram of model residuals</h2>
+<div class="cell">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lm_H_B_augment</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span> <span class="op">(</span>x <span class="op">=</span> <span class="va">.resid</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong><em>Assess if they look “Normally Distributed” enough to meet normality assumption.</em></strong></p>
+</section><section id="assumptions-of-simple-linear-regression" class="level2"><h2 class="anchored" data-anchor-id="assumptions-of-simple-linear-regression">Assumptions of simple linear regression</h2>
+<section id="a.-simple-random-sample-srs-from-each-population-group-or-treatment" class="level3"><h3 class="anchored" data-anchor-id="a.-simple-random-sample-srs-from-each-population-group-or-treatment">A. Simple random sample (SRS) from each population (group or treatment)</h3>
+</section><section id="b.-observations-are-independent" class="level3"><h3 class="anchored" data-anchor-id="b.-observations-are-independent">B. Observations are independent</h3>
+</section><section id="c.-residuals-follow-a-normal-distribution-values-of-y-vary-normally-around-mean-of-y" class="level3"><h3 class="anchored" data-anchor-id="c.-residuals-follow-a-normal-distribution-values-of-y-vary-normally-around-mean-of-y">C. Residuals follow a normal distribution (values of y vary normally around mean of y)</h3>
+</section><section id="d.-equal-variance-around-the-regression-line-homoscedasticity" class="level3"><h3 class="anchored" data-anchor-id="d.-equal-variance-around-the-regression-line-homoscedasticity">D. Equal variance around the regression line (homoscedasticity)</h3>
+</section><section id="e.-relationship-between-the-variables-is-linear" class="level3"><h3 class="anchored" data-anchor-id="e.-relationship-between-the-variables-is-linear">E. Relationship between the variables is linear</h3>
+</section></section><section id="typical-linear-regression-diagnostic-plots" class="level2"><h2 class="anchored" data-anchor-id="typical-linear-regression-diagnostic-plots">Typical linear regression “Diagnostic Plots”</h2>
+<p><strong>Used to assess model assumptions</strong></p>
+<div class="cell">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># you may need to install ggfortify package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sinhrks/ggfortify">ggfortify</a></span><span class="op">)</span></span>
+<span><span class="co"># create 4 traditional "diagnostic plots" of linear models</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">lm_H_B</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>For a detailed explanation of what to look for to interpret each of these 4 diagnostic plots to assess model assumptions with your own analysis see:</p>
+<p><a href="https://data.library.virginia.edu/diagnostic-plots/" class="uri">&lt;https://data.library.virginia.edu/diagnostic-plots/&gt;</a></p>
+<p>And</p>
+<p><a href="http://www.sthda.com/english/articles/39-regression-model-diagnostics/161-linear-regression-assumptions-and-diagnostics-in-r-essentials/" class="uri">&lt;http://www.sthda.com/english/articles/39-regression-model-diagnostics/161-linear-regression-assumptions-and-diagnostics-in-r-essentials/&gt;</a></p>
+</section><section id="plot-1-residuals-vs-fitted" class="level2"><h2 class="anchored" data-anchor-id="plot-1-residuals-vs-fitted">Plot (1) Residuals vs Fitted</h2>
+<ul>
+<li><p><em>Is a linear relationship at good fit to your data?</em></p></li>
+<li><p><em>You shouldn’t see any patterns in the residuals if a linear model is a good fit.</em></p></li>
+<li><p><em>Also, can help to assess normality assumption and equal variance assumption.</em></p></li>
+</ul></section><section id="plot-2-normal-q-q-plot" class="level2"><h2 class="anchored" data-anchor-id="plot-2-normal-q-q-plot">Plot (2) Normal Q-Q plot</h2>
+<p><strong><em>to assess Normality of model residuals</em></strong></p>
+<p><em>If the residuals are Normal the points should be more or less along the line.</em></p>
+<p>For more info on interpreting Normal Q-Q plots to assess Normality see:</p>
+<p><a href="http://data.library.virginia.edu/understanding-q-q-plots/" class="uri">&lt;http://data.library.virginia.edu/understanding-q-q-plots/&gt;</a></p>
+</section><section id="plot-3-scale-location" class="level2"><h2 class="anchored" data-anchor-id="plot-3-scale-location">Plot (3) Scale-Location</h2>
+<p><em>to assess equal variance assumption (if residuals have similar spread across the range of predictor (x) values</em></p>
+<p><em>Ideally you, shouldn’t see any patterns in the residuals (line should be more or less flat indicating similar variance across the range of x values).</em></p>
+</section><section id="plot-4-residuals-vs.-leverage-cooks-distance---highly-influential-points" class="level2"><h2 class="anchored" data-anchor-id="plot-4-residuals-vs.-leverage-cooks-distance---highly-influential-points">Plot (4) Residuals vs.&nbsp;<strong><em>Leverage</em></strong> <strong>(</strong>Cook’s distance - Highly Influential Points)</h2>
+<p><strong>We are looking for high leverage + high residual = high Cook’s distance points</strong></p>
+<ul>
+<li><p>Cook’s distance is a measure of “influence” - i.e., how much would the model (the line in this case) change if you removed that point.</p></li>
+<li><p>Some texts say a Cook’s distance &gt;1 is a problem.</p></li>
+<li><p>For more info on Outliers, Leverage Points and Influential Points see: <a href="https://www2.stat.duke.edu/courses/Spring19/sta101.002/post/project/outliers.html" class="uri">&lt;https://www2.stat.duke.edu/courses/Spring19/sta101.002/post/project/outliers.html&gt;</a></p></li>
+</ul>
+<section id="look-at-the-lm_h_b_augment-object-in-the-data-viewer-click-on-it-in-the-top-right-environment-window" class="level4"><h4 class="anchored" data-anchor-id="look-at-the-lm_h_b_augment-object-in-the-data-viewer-click-on-it-in-the-top-right-environment-window">Look at the lm_H_B_augment object in the data viewer (click on it in the top right environment window)</h4>
+<ul>
+<li><p><strong>Then sort by .cooksd (Cook’s distance) and figure out which point has the highest value</strong> (i.e., <em>what is its body and heart weight?</em>)</p></li>
+<li><p><strong>Then find that point <u>in the scatter plot of your data</u> (you made is a much earlier code chunk).</strong></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lm_H_B_augment</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># select most relevent columns</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Hwt</span>, <span class="va">Bwt</span>, <span class="va">.resid</span>, <span class="va">.cooksd</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># sort by Cook's distance (highest to lowest) to see which </span></span>
+<span>  <span class="co"># points have most influence on the model (the line)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">.cooksd</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 144 × 4
+     Hwt   Bwt .resid .cooksd
+   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+ 1  20.5   3.9   5.12  0.330 
+ 2  11     3.7  -3.57  0.114 
+ 3  17.2   3.5   3.44  0.0732
+ 4  11.8   3.6  -2.37  0.0419
+ 5  16.8   3.8   1.83  0.0356
+ 6  11.7   3.5  -2.06  0.0263
+ 7  15.4   3.3   2.44  0.0246
+ 8  11.2   3.4  -2.16  0.0236
+ 9  15.7   3.5   1.94  0.0232
+10  11     2.2   2.48  0.0227
+# ℹ 134 more rows</code></pre>
+</div>
+</div>
+</section></section><section id="residuals-vs.-leverage-plot" class="level2"><h2 class="anchored" data-anchor-id="residuals-vs.-leverage-plot">Residuals vs.&nbsp;Leverage plot</h2>
+<p><strong>Overall you should use graphics and examine in closer detail the points with “<em>values that are substantially larger than the rest</em>”.</strong></p>
+<ul>
+<li><p>Unlike the other 3 plots, this time patterns are not relevant.</p></li>
+<li><p>Just looking for high leverage + high residual (= high Cook’s distance) points</p></li>
+<li><p>Some Texts say Cook’s distance &gt;1 be concerned.</p></li>
+<li><p>R will label points w/ their row number that might be an issue</p></li>
+</ul></section><section id="remove-most-influential-point-and-plot-the-new-line-to-see-how-much-it-influences-the-model-the-line" class="level2"><h2 class="anchored" data-anchor-id="remove-most-influential-point-and-plot-the-new-line-to-see-how-much-it-influences-the-model-the-line">Remove most influential point and plot the new line to see how much it influences the model (the line)</h2>
+<ul>
+<li><p>Remove the most influential point to see how much the results (the regression line and the statistic output) change with the point removed</p></li>
+<li><p>Then run the code to and interpret the plot.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Replace FILL_IN with the correct value to remove the most influential point</span></span>
+<span><span class="va">big_cat_removed</span> <span class="op">&lt;-</span> <span class="va">dat_cats</span> <span class="op">|&gt;</span>   </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Hwt</span> <span class="op">!=</span> <span class="fl">20.5</span> <span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dat_cats</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y<span class="op">=</span><span class="va">Hwt</span>, x<span class="op">=</span><span class="va">Bwt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method<span class="op">=</span><span class="va">lm</span>, se <span class="op">=</span> <span class="cn">F</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="co"># draw line with most infleuncial point removed</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>              data <span class="op">=</span> <span class="va">big_cat_removed</span>, color <span class="op">=</span> <span class="st">"red"</span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># re-fit model and run hypothesis test to data set without the most influential point (COMPARE TO PREVIOUS RESULTS WITH ALL DATA)</span></span>
+<span><span class="fu">tidy</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Hwt</span> <span class="op">~</span> <span class="va">Bwt</span>, data<span class="op">=</span><span class="va">big_cat_removed</span><span class="op">)</span>, conf.int <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 7
+  term        estimate std.error statistic  p.value conf.low conf.high
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)    0.118     0.674     0.175 8.61e- 1    -1.21      1.45
+2 Bwt            3.85      0.244    15.7   7.62e-33     3.36      4.33</code></pre>
+</div>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># compare regression slope parameter to one from model with all data. Did the slope change much?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="how-much-did-removing-that-big-cat-data-point-impact-the-model-i.e.-did-the-line-slope-change" class="level3"><h3 class="anchored" data-anchor-id="how-much-did-removing-that-big-cat-data-point-impact-the-model-i.e.-did-the-line-slope-change">How much did removing that big cat data point impact the model (i.e., did the line slope change)?</h3>
+<p><em>If the super loving (big hearted) cat didn’t really effect the model much, then it is not a “problem.” And you can be confident in your model fit to the data.</em></p>
+<p><em>If a super loving cat is a problem (i.e., removing it changes your model a lot) then you could report results for both the model with and the model without the loving cat in it. Or you could reason (based on your understanding of the data collection and/or biology - that was a data collection/entry error or just doesn’t reflect biological reality) that it should be removed from the data set.</em></p>
+</section></section><section id="demo-label-data-points-by-their-row-number" class="level2"><h2 class="anchored" data-anchor-id="demo-label-data-points-by-their-row-number">(Demo) Label data points by their row number</h2>
+<ul>
+<li>if you want to see which point is which row in the dat_cats</li>
+<li>Note you need to manually enter 144 in geom_text below (which is the number of rows in the dat_cats so ggplot knows how many labels to use)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># scatter plot with a regression line using the lm coefficients from model above</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dat_cats</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y<span class="op">=</span><span class="va">Hwt</span>, x<span class="op">=</span><span class="va">Bwt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="va">lm</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"depth (m)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"height (cm)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span>label<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">144</span>, vjust <span class="op">=</span> <span class="fl">0</span>, nudge_y <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="co">#add row labels to plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Correlation_Regression_Inference_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>Also be aware there is a package called ggrepel that provided functions to add labels to points on plots so that they don’t overlap (i.e., they “<em>repel</em>” each other)</strong></p>
+<p><a href="https://ggrepel.slowkow.com/articles/examples.html"><strong>https://ggrepel.slowkow.com/articles/examples.html</strong></a></p>
+
+
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">This is a quarto built website <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://claisselab.com">
+      <i class="bi bi-house-fill" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ClaisseLab">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+</div>
+  </div>
+</footer>
+
+
+</body></html>
