@@ -14,7 +14,7 @@ title: "Online Books"
 
 -   Mostly covers details of using the tidyverse to import, wrangle and get your data ready to analyze.
 
-#### [Spatial Statistics for Data Science: Theory and Practice with R by  Moraga](https://www.paulamoraga.com/book-spatial/index.html)
+#### [Spatial Statistics for Data Science: Theory and Practice with R by Paula Moraga](https://www.paulamoraga.com/book-spatial/index.html)
 
 -   Describes statistical methods, modeling approaches, and visualization techniques to analyze spatial data using R. Includes an overview of types of spatial data, relevant R packages for analyzing and visualizing spatial data, explanations of spatial statistics, and fully reproducible examples analyzing areal, geostatistical, and point pattern data.
 
