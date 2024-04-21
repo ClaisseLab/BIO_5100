@@ -60,7 +60,7 @@ title: "BIO 5100 Resources"
 
 -   In this video, we learn how to use GitHub Copilot and ChatGPT directly from within RStudio. Specifically, we'll go over all of the setup steps that are required for using 1) the RStudio Copilot integration, and 2) the chattr package which allows you to interact with Large Language Models (LLMs) like the OpenAI models.
 
-## Quarto
+## Quarto (and Git/GitHub)
 
 #### [quarto.org](https://quarto.org/)
 
@@ -78,20 +78,25 @@ title: "BIO 5100 Resources"
 
 -   If you *don't want to learn about how to use Git and GitHub*, **hosting your Quarto website on Netlify for free is less steps** [(see this step-by-step tutorial for building a quarto website then hosting it on Netlify)](https://jadeyryan.com/blog/2024-02-19_beginner-quarto-netlify/)
 
-- If you'd like to host your Quarto Website on GitHub for free (and you've never used Git or GitHub before) there are multiple steps to **FIRST (1) getting Git Installed & GitHub Set up:**
+-   If you'd like to host your Quarto Website on GitHub for free (and you've never used Git or GitHub before) there are multiple steps to **FIRST (1) getting Git Installed & GitHub Set up:**
 
     -   **(Watch)** What is Git (version control software)? [(2 min video)](https://youtu.be/6OTy2N-rSbw?si=Jdsl4k_vdtbd5354)
+
     -   **(Watch)** What is GitHub (repository/folder hosting website)? [(3 min video)](https://youtu.be/eBMs0X5dM_k?si=GY5LnP_ascsYdr4w)
+
     -   **(Then follow this guide to**) [Setting up Git & GitHub linked w/ RStudio](https://sites.northwestern.edu/researchcomputing/resources/using-git-and-github-with-r-rstudio/)
+
+        -   **AND/OR** there's a more in-depth guide (online book) to setting up Git & GitHub linked w/ RStudio: [Happy Git and GitHub for the useR](https://happygitwithr.com/)
+
+        -   *but note: if you do follow this guide, initially skip the install a "Git Client" (other software to manage Git) section since you are going to use RStudio for this*
+
+-   **THEN (2) Build your Quarto Website & host it online with GitHub Pages** - can follow [these step-by-step instructions (and template if you want) to building your website and hosting it on GitHub](https://www.marvinschmitt.com/blog/website-tutorial-quarto/)
+
+    - [Here's anoterh step-by-step tutorial for building a quarto website BUT - SKIP all the stuff related to hosting it on Netlify as you're going to host it on GitHub)](https://jadeyryan.com/blog/2024-02-19_beginner-quarto-netlify/)
     
-    -   **OR** if you'd like a more in-depth guide to setting up Git & GitHub linked w/ RStudio:
-        1.  Create your free GitHub (website) account [Chapter 4](https://happygitwithr.com/github-acct)
-        2.  Install Git (version control) software on your computer [Chapter 6 & 7](https://happygitwithr.com/install-git) NOTE (skip chapter 8) you DO NOT need to install a "git client" (another program) you are going to use RStudio for this
-        3.  Connect your Git to GitHub via RStudio (which will allow you to "Commit" then "Push" your files from your computer to GitHub from within RStudio) [Chapters 9 & 10](https://happygitwithr.com/connect-intro.html)
+    - And more guidance on details of [building Quarto Websites here](https://quarto.org/docs/websites/#learning-more)
 
--   **THEN (2) Build your Quarto Website** - can follow [these step-by-step instructions - but SKIP/Ignore the Netlify parts (since you are going to host your webiste on GitHub)](https://jadeyryan.com/blog/2024-02-19_beginner-quarto-netlify/)
-
--   **FINALLY (3) get the Quarto website you built above hosted on GitHub** by following these instructions ( And here is a step-by-step guide (blog post) for [to use RStudio to push your website to GitHub and hosting your website for free on guithub](https://jadeyryan.com/blog/2023-11-19_publish-quarto-website/)
+    - And more here on hosting a website on GitHub Pages with the "Render to docs" method] (https://quarto.org/docs/publishing/github-pages.html#render-to-docs)
 
 ## Statistics
 
