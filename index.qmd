@@ -17,16 +17,16 @@ title: "BIO 5100 Resources"
 -   General style guidance for writing clear and efficient R code.
 -   And additional style guidance can also be found here: <https://r4ds.hadley.nz/workflow-style.html>
 
+#### [Coding Club Tutorials](https://ourcodingclub.github.io/tutorials.html)
+
+-   A collection of coding, data science and statistics tutorials with examples, part of a free and self-paced online course: *Data Science for Ecologists and Environmental Scientists!*
+-   Tutorials include: R basics, Data manipulation & visualization, modelling, spatial data analysis, Reproducible research (e.g., using GitHub and connecting your RStudio to GitHub) and more.
+
 #### [Data Carpentry Workshops](https://datacarpentry.org/lessons/)
 
 -   Data Carpentry develops workshops on the fundamental data skills needed to conduct research, and its lessons are domain specific (e.g., ecology, genomics, geospatial). Lessons are in the form of self-paced tutorials, and are designed for researchers to teach themselves basic concepts and skills for working with data.
 -   [Ecology Workshop](https://datacarpentry.org/ecology-workshop/)
 -   [Genomics Workshop](https://datacarpentry.org/genomics-workshop/)
-
-#### [Coding Club Tutorials](https://ourcodingclub.github.io/tutorials.html)
-
--   A collection of coding, data science and statistics tutorials with examples, part of a free and self-paced online course: *Data Science for Ecologists and Environmental Scientists!*
--   Tutorials include: R basics, Data manipulation & visualization, modelling, spatial data analysis, Reproducible research (e.g., using GitHub and connecting your RStudio to GitHub) and more.
 
 #### [(Youtube Channel Playlist) Introduction to Data Science in R](https://youtube.com/playlist?list=PL9qLtkRkGWLeh9UNptt_734t0u1zXz5wy&si=D5JDhulAbPz9s9M-)
 
@@ -73,6 +73,25 @@ title: "BIO 5100 Resources"
 #### [(Video) Getting started with Quarto](https://youtu.be/_f3latmOhew?si=uhyPfszmTX8FfwFu)
 
 -   This video walks you through creating documents, presentations, and websites and publishing with Quarto. The video features authoring Quarto documents with executable R code chunks using the RStudio Visual Editor (https://quarto.org/docs/visual-editor/).
+
+#### [Build Websites with Quarto (Posit overview site )](https://quarto.org/docs/websites/)
+
+-   If you *don't want to learn about how to use Git and GitHub*, **hosting your Quarto website on Netlify for free is less steps** [(see this step-by-step tutorial for building a quarto website then hosting it on Netlify)](https://jadeyryan.com/blog/2024-02-19_beginner-quarto-netlify/)
+
+- If you'd like to host your Quarto Website on GitHub for free (and you've never used Git or GitHub before) there are multiple steps to **FIRST (1) getting Git Installed & GitHub Set up:**
+
+    -   **(Watch)** What is Git (version control software)? [(2 min video)](https://youtu.be/6OTy2N-rSbw?si=Jdsl4k_vdtbd5354)
+    -   **(Watch)** What is GitHub (repository/folder hosting website)? [(3 min video)](https://youtu.be/eBMs0X5dM_k?si=GY5LnP_ascsYdr4w)
+    -   **(Then follow this guide to**) [Setting up Git & GitHub linked w/ RStudio](https://sites.northwestern.edu/researchcomputing/resources/using-git-and-github-with-r-rstudio/)
+    
+    -   **OR** if you'd like a more in-depth guide to setting up Git & GitHub linked w/ RStudio:
+        1.  Create your free GitHub (website) account [Chapter 4](https://happygitwithr.com/github-acct)
+        2.  Install Git (version control) software on your computer [Chapter 6 & 7](https://happygitwithr.com/install-git) NOTE (skip chapter 8) you DO NOT need to install a "git client" (another program) you are going to use RStudio for this
+        3.  Connect your Git to GitHub via RStudio (which will allow you to "Commit" then "Push" your files from your computer to GitHub from within RStudio) [Chapters 9 & 10](https://happygitwithr.com/connect-intro.html)
+
+-   **THEN (2) Build your Quarto Website** - can follow [these step-by-step instructions - but SKIP/Ignore the Netlify parts (since you are going to host your webiste on GitHub)](https://jadeyryan.com/blog/2024-02-19_beginner-quarto-netlify/)
+
+-   **FINALLY (3) get the Quarto website you built above hosted on GitHub** by following these instructions ( And here is a step-by-step guide (blog post) for [to use RStudio to push your website to GitHub and hosting your website for free on guithub](https://jadeyryan.com/blog/2023-11-19_publish-quarto-website/)
 
 ## Statistics
 
