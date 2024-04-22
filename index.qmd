@@ -92,11 +92,11 @@ title: "BIO 5100 Resources"
 
 -   **THEN (2) Build your Quarto Website & host it online with GitHub Pages** - can follow [these step-by-step instructions (and template if you want) to building your website and hosting it on GitHub](https://www.marvinschmitt.com/blog/website-tutorial-quarto/)
 
-    - [Here's anoterh step-by-step tutorial for building a quarto website BUT - SKIP all the stuff related to hosting it on Netlify as you're going to host it on GitHub)](https://jadeyryan.com/blog/2024-02-19_beginner-quarto-netlify/)
+    - Here's another [step-by-step tutorial for building a quarto website BUT (since it doesn't involved hosting the site on GitHub) SKIP all the stuff related to hosting it on Netlify](https://jadeyryan.com/blog/2024-02-19_beginner-quarto-netlify/)
     
     - And more guidance on details of [building Quarto Websites here](https://quarto.org/docs/websites/#learning-more)
 
-    - And more here on hosting a website on GitHub Pages with the "Render to docs" method] (https://quarto.org/docs/publishing/github-pages.html#render-to-docs)
+    - And more here on [hosting a website on GitHub Pages with the "Render to docs" method](https://quarto.org/docs/publishing/github-pages.html#render-to-docs)
 
 ## Statistics
 
