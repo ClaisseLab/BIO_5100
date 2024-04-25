@@ -98,6 +98,8 @@ title: "BIO 5100 Resources"
 
     -   And more here on [hosting a website on GitHub Pages with the "Render to docs" method](https://quarto.org/docs/publishing/github-pages.html#render-to-docs)
 
+    -   And here's another [YouTube Video Playlist on creating Quarto Websites hosted on GitHub](https://www.youtube.com/watch?v=e9qCS8ODs4o&list=PLkrJrLs7xfbXcEKhTCKRSr2VXH4yiBeXo)
+
 #### [Use GitHub as your Data Science Portfolio](https://dev.to/buildwebcrumbs/tips-to-use-github-as-your-portfolio-4kb2)
 
 -   GitHub is an online platform that allows users to store, manage,share, and collaborate on their (R and other languages) code. You could create your own account and [use it to show-off your analysis code for your thesis](https://dev.to/buildwebcrumbs/tips-to-use-github-as-your-portfolio-4kb2). Many Research labs have GutHub accounts and use it to collaborate on code [see an example](https://github.com/pinskylab). It can also be used to freely host website (see section above).
