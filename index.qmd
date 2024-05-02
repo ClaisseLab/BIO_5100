@@ -58,7 +58,7 @@ title: "BIO 5100 Resources"
 
 #### [Rtutor.ai](http://rtutor.ai/)
 
--   An external (web based) AI R code writer, can help you figure out what you need to do or debug your code if you don't want to use something integrated within R Studio.
+-   An external (web based) AI R code writer, if you don't want to use something integrated within R Studio (i.e., one of the options above) this can help you figure out example code for a task or help debug (find errors) in your code.
 
 ## Quarto and Git/GitHub
 
