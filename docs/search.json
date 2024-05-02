@@ -25,7 +25,7 @@
     "href": "index.html#coding-with-ai-help",
     "title": "BIO 5100 Resources",
     "section": "Coding with AI help",
-    "text": "Coding with AI help\n\nRtutor.ai\n\nAI R code writer, can help you figure out what you need to do or debug your code\n\n\n\nGitHub Copilot in RStudio\n\nTo use GitHub Copilot, you must have a GitHub account and an active subscription to Copilot. GitHub Copilot is free for students and educators.\n\n\n\n(video) How to use GitHub Copilot and ChatGPT in RStudio\n\nIn this video, we learn how to use GitHub Copilot and ChatGPT directly from within RStudio. Specifically, we’ll go over all of the setup steps that are required for using 1) the RStudio Copilot integration, and 2) the chattr package which allows you to interact with Large Language Models (LLMs) like the OpenAI models."
+    "text": "Coding with AI help\n\n(video) How to use GitHub Copilot and ChatGPT in RStudio\n\nIn this video, we learn how to use GitHub Copilot and ChatGPT directly from within RStudio. Specifically, we’ll go over all of the setup steps that are required for using 1) the RStudio Copilot integration, and 2) the chattr package which allows you to interact with Large Language Models (LLMs) like the OpenAI models.\n\n\n\nGitHub Copilot in RStudio\n\nTo use GitHub Copilot, you must have a GitHub account and an active subscription to Copilot. GitHub Copilot is free for students and educators.\n\n\n\nRtutor.ai\n\nAn external (web based) AI R code writer, can help you figure out what you need to do or debug your code if you don’t want to use something integrated within R Studio."
   },
   {
     "objectID": "index.html#quarto",

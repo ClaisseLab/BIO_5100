@@ -48,17 +48,17 @@ title: "BIO 5100 Resources"
 
 ## Coding with AI help
 
-#### [Rtutor.ai](http://rtutor.ai/)
+#### [(video) How to use GitHub Copilot and ChatGPT in RStudio](https://youtu.be/t7NrkAeosog?si=FmJALL3OHPVpAa2S)
 
--   AI R code writer, can help you figure out what you need to do or debug your code
+-   In this video, we learn how to use GitHub Copilot and ChatGPT directly from within RStudio. Specifically, we'll go over all of the setup steps that are required for using 1) the RStudio Copilot integration, and 2) the chattr package which allows you to interact with Large Language Models (LLMs) like the OpenAI models.
 
 #### [GitHub Copilot in RStudio](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html)
 
 -   To use GitHub Copilot, you must have a GitHub account and an active subscription to Copilot. GitHub Copilot is free for [students](https://docs.github.com/en/education/explore-the-benefits-of-teaching-and-learning-with-github-education/github-global-campus-for-students/apply-to-github-global-campus-as-a-student) and [educators](https://education.github.com/teachers).
 
-#### [(video) How to use GitHub Copilot and ChatGPT in RStudio](https://youtu.be/t7NrkAeosog?si=FmJALL3OHPVpAa2S)
+#### [Rtutor.ai](http://rtutor.ai/)
 
--   In this video, we learn how to use GitHub Copilot and ChatGPT directly from within RStudio. Specifically, we'll go over all of the setup steps that are required for using 1) the RStudio Copilot integration, and 2) the chattr package which allows you to interact with Large Language Models (LLMs) like the OpenAI models.
+-   An external (web based) AI R code writer, can help you figure out what you need to do or debug your code if you don't want to use something integrated within R Studio.
 
 ## Quarto and Git/GitHub
 
