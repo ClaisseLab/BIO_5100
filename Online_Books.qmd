@@ -10,9 +10,25 @@ title: "Online Books"
 
 -   (Primary text we follow for BIO 5100/L) Takes a statistical modeling approach, focusing on estimates of effects and uncertainty instead of traditional hypothesis testing.
 
+#### [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/)
+
+-   While this book gives some details on the basics of ggplot2, its primary focus is explaining the Grammar of Graphics that ggplot2 uses, and describing the full details. It is not a cookbook, and won’t necessarily help you create any specific graphic that you need. But it will help you understand the details of the underlying theory, giving you the power to tailor any plot specifically to your needs.
+
+#### [R Graphics Cookbook, 2nd edition](https://r-graphics.org/)
+
+-   A cookbook for creating graphics in R with ggplot2. More than 150 recipes to help you generate high-quality graphs quickly.
+
 #### [R for Data Science (2nd Edition) by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund](https://r4ds.hadley.nz/)
 
 -   Mostly covers details of using the tidyverse to import, wrangle and get your data ready to analyze.
+
+
+
+#### [Fundamentals of Data Visualization (using R) by Claus O. Wilke](https://clauswilke.com/dataviz/index.html)
+
+-   A guide to making visualizations that accurately reflect the data, tell a story, and look professional.
+
+-   The R code for the book can be found on GitHub, at <https://github.com/clauswilke/dataviz>
 
 #### [Spatial Statistics for Data Science: Theory and Practice with R by Paula Moraga](https://www.paulamoraga.com/book-spatial/index.html)
 
@@ -22,11 +38,8 @@ title: "Online Books"
 
 -   Collaborative guide aims to provide academics, students and researchers with hands-on, step-by-step instructions for calculating effect sizes and confidence intervals for common statistical procedures.
 
-#### [Fundamentals of Data Visualization (using R) by Claus O. Wilke](https://clauswilke.com/dataviz/index.html)
-
--   A guide to making visualizations that accurately reflect the data, tell a story, and look professional.
-
--   The R code for the book can be found on GitHub, at <https://github.com/clauswilke/dataviz>
+#### [Applied Multivariate Statistics in R](https://uw.pressbooks.pub/appliedmultivariatestatistics/front-matter/introduction/)
+-   A guide to using R for multivariate statistics, including PCA, nMDS, RDS, etc. -   It began as notes for students in a course at UW.  These notes provide a background in multivariate analysis of a wide range of data.  Emphasis is on the practical application of these techniques.
 
 #### [Analysis of community ecology data in R by David Zelený](https://www.davidzeleny.net/anadat-r/doku.php/en:start)
 
@@ -35,6 +48,10 @@ title: "Online Books"
 #### [Applied Biostats by Yaniv Brandvain](https://bookdown.org/ybrandvain/Applied-Biostats/)
 
 -   A "book" written to accompany his biostats course, lots of good guidance and resources.
+
+#### [Tidy Modeling with R by Max Kuhn and Julia Silge](https://www.tmwr.org/)
+
+-   A guide to using the tidymodels framework for modeling and machine learning in R.
 
 #### [Statistical Thinking for the 21st Century by Russell A. Poldrack](https://statsthinking21.github.io/statsthinking21-core-site/index.html#)
 
@@ -46,7 +63,7 @@ title: "Online Books"
 
 #### [Modern Statistics for Modern Biology by Susan Holmes, Wolfgang Huber](https://www.huber.embl.de/msmb/introduction.html)
 
--   Covers many modern approaches to data analysis, and many different types of data including RNA-Seq, flow-cytometry, taxa abundances, imaging data and single cell measurements.
+-   Covers many modern approaches to data analysis, and many different types of data including RNA-Seq, flow-cytometry, taxa abundances, imaging data and single cell measurements.
 
 -   Note some of the R code relies on Base R instead of Tidyverse functions.
 
@@ -56,7 +73,7 @@ title: "Online Books"
 
 #### [Biological Statistics by John H. McDonald](https://stats.libretexts.org/Bookshelves/Applied_Statistics/Book%3A_Biological_Statistics_(McDonald))
 
--   Traditional statistics text, covering details of specific hypothesis tests (*not R based, but potentially useful if your adviser makes you to use old school statistics*)
+-   Traditional statistics text, covering details of specific hypothesis tests (*not R based, but potentially useful if your adviser makes you to use old school statistics*)
 
 #### [The Big Book of R (links to online textbooks)](https://www.bigbookofr.com/)
 

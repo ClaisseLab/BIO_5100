@@ -28,6 +28,13 @@ title: "BIO 5100 Resources"
 -   [Ecology Workshop](https://datacarpentry.org/ecology-workshop/)
 -   [Genomics Workshop](https://datacarpentry.org/genomics-workshop/)
 
+#### [Conding Club Tutorials](https://ourcodingclub.github.io/tutorials.html)
+-  A collection of coding, data science and statistics tutorials with examples, mostly with R, but also with python and other languages.
+
+#### [(Youtube Channel) R for the Rest of Us](https://www.youtube.com/@rfortherestofus/videos)
+
+-   A great series of short videos on various R topics. I really like this one because through the videos he uses a lot of newer tidyverse functions so I'm learning new ways to do things.
+
 #### [(Youtube Channel Playlist) Introduction to Data Science in R](https://youtube.com/playlist?list=PL9qLtkRkGWLeh9UNptt_734t0u1zXz5wy&si=D5JDhulAbPz9s9M-)
 
 -   Brief 3-8 min videos on various topics From the Duke Center for Computational Thinking covering topics like data manipulation with dplyr, data visualization with ggplot2, and using other functions from the tidyverse.
