@@ -1,14 +1,6 @@
 ---
-title: "BIO 5100/L class notes and example code for selected topics"
-execute:
-  echo: false
+title: "BIO 5100/L example code w/ class notes for selected topics"
 ---
-
-```{r}
-# Code chunk just to save text/hyperlinks (can copy/paste below) 
-#  [Week 2-3 Visualize distributions & descriptive statistics](https://claisselab.github.io/BIO_5100/Distributions.html)
-# 
-```
 
 Week 2-3 Visualize distributions & descriptive statistics (NOTE: *link to this example code will be made available prior to associated assignment*)
 

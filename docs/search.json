@@ -72,7 +72,7 @@
   {
     "objectID": "Example_Code.html",
     "href": "Example_Code.html",
-    "title": "BIO 5100/L class notes and example code for selected topics",
+    "title": "BIO 5100/L example code w/ class notes for selected topics",
     "section": "",
     "text": "Week 2-3 Visualize distributions & descriptive statistics (NOTE: link to this example code will be made available prior to associated assignment)\nWeek 4-5 Scatterplots, correlation, linear models (simple linear regression)\nWeek 7 Linear model to compare means, 2 independent samples and paired data\nWeek 10 Linear model to compare multiple means, make pairwise comparisons (and run a one-way ANOVA if you must)\nWeek 13 Inference from a linear model w/ 1 numeric explanatory variable (Simple Linear Regression) + correlation significance tests & assumptions checking"
   },
