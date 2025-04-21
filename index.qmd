@@ -63,9 +63,6 @@ title: "BIO 5100 Resources"
 
 -   To use GitHub Copilot, you must have a GitHub account and an active subscription to Copilot. GitHub Copilot is free for [students](https://docs.github.com/en/education/explore-the-benefits-of-teaching-and-learning-with-github-education/github-global-campus-for-students/apply-to-github-global-campus-as-a-student) and [educators](https://education.github.com/teachers).
 
-#### [Rtutor.ai](http://rtutor.ai/)
-
--   An external (web based) AI R code writer, if you don't want to use something integrated within R Studio (i.e., one of the options above) this can help you figure out example code for a task or help debug (find errors) in your code.
 
 ## Quarto and Git/GitHub
 
@@ -83,7 +80,7 @@ title: "BIO 5100 Resources"
 
 #### [Build Websites with Quarto (Posit overview site )](https://quarto.org/docs/websites/)
 
--   If you *don't want to learn about how to use Git and GitHub*, **hosting your Quarto website on Netlify for free is less steps** [(see this step-by-step tutorial for building a quarto website then hosting it on Netlify)](https://jadeyryan.com/blog/2024-02-19_beginner-quarto-netlify/)
+-   [(Then this is a good step-by-step tutorial for building a quarto website, although stop when they get to hosting it on Netlify if you want to host it on GitHub )](https://jadeyryan.com/blog/2024-02-19_beginner-quarto-netlify/)
 
 -   If you'd like to host your Quarto Website on GitHub for free (and you've never used Git or GitHub before) there are multiple steps to **FIRST (1) getting Git Installed & your GitHub setup:**
 
@@ -92,20 +89,18 @@ title: "BIO 5100 Resources"
     -   **(Watch)** What is GitHub (repository/folder hosting website)? [(3 min video)](https://youtu.be/eBMs0X5dM_k?si=GY5LnP_ascsYdr4w)
 
     -   **(Then follow this guide to**) [Setting up Git & GitHub linked w/ RStudio](https://sites.northwestern.edu/researchcomputing/resources/using-git-and-github-with-r-rstudio/)
-
+    
         -   **AND/OR** there's a more in-depth guide (online book) to setting up Git & GitHub linked w/ RStudio: [Happy Git and GitHub for the useR](https://happygitwithr.com/)
 
         -   *but note: if you do follow this guide, initially skip the install a "Git Client" (other software to manage Git) section since you are going to use RStudio for this*
 
--   **THEN (2) Build your Quarto Website & host it online with GitHub Pages** - can follow [these step-by-step instructions (and template if you want) to building your website and hosting it on GitHub](https://www.marvinschmitt.com/blog/website-tutorial-quarto/)
+-   **THEN (2) Build your Quarto Website & host it online with GitHub Pages** - can follow [these step-by-step instructions for building a quarto website BUT (since it doesn't involved hosting the site on GitHub) SKIP all the stuff towards the end related to hosting it on Netlify](https://jadeyryan.com/blog/2024-02-19_beginner-quarto-netlify/)
 
-    -   Here's another [step-by-step tutorial for building a quarto website BUT (since it doesn't involved hosting the site on GitHub) SKIP all the stuff related to hosting it on Netlify](https://jadeyryan.com/blog/2024-02-19_beginner-quarto-netlify/)
+    -   And more here on how you can [host a website on GitHub Pages with the "Render to docs" method](https://quarto.org/docs/publishing/github-pages.html#render-to-docs) and here is a [7 min video walkthrough on how to do that](https://www.youtube.com/watch?v=wZ9pZOFSCko)
+    
+    -   And for more details on building quarto websites [ here's a (20 min) video on that  ](https://www.youtube.com/watch?v=l7r24gTEkEY), which is part of a video playlist [which includes additional in-depth vidoes for other features for building Quarto websites](https://www.youtube.com/playlist?list=PL9HYL-VRX0oTCvag75m8yDjFoJvE-gMxp) 
 
     -   And more guidance on details of [building Quarto Websites here](https://quarto.org/docs/websites/#learning-more)
-
-    -   And more here on [hosting a website on GitHub Pages with the "Render to docs" method](https://quarto.org/docs/publishing/github-pages.html#render-to-docs)
-
-    -   And here's another [YouTube Video Playlist on creating Quarto Websites hosted on GitHub](https://www.youtube.com/watch?v=e9qCS8ODs4o&list=PLkrJrLs7xfbXcEKhTCKRSr2VXH4yiBeXo)
 
 #### [Use GitHub as your Data Science Portfolio](https://dev.to/buildwebcrumbs/tips-to-use-github-as-your-portfolio-4kb2)
 
