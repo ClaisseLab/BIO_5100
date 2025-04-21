@@ -80,7 +80,9 @@ title: "BIO 5100 Resources"
 
 #### [Build Websites with Quarto (Posit overview site )](https://quarto.org/docs/websites/)
 
--   If you'd like to host your Quarto Website on GitHub for free (and you've never used Git or GitHub before) there are multiple steps to **FIRST (1) getting Git Installed & your GitHub setup:**
+-   If you'd like to host your Quarto Website on GitHub for free (and you've never used Git or GitHub before) there are multiple steps to do this
+
+-   **FIRST (1) get Git Installed on your computer & your GitHub account setup:**
 
     -   **(Watch)** What is Git (version control software)? [(2 min video)](https://youtu.be/6OTy2N-rSbw?si=Jdsl4k_vdtbd5354)
 
