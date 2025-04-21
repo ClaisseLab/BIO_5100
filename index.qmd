@@ -80,8 +80,6 @@ title: "BIO 5100 Resources"
 
 #### [Build Websites with Quarto (Posit overview site )](https://quarto.org/docs/websites/)
 
--   [(Then this is a good step-by-step tutorial for building a quarto website, although stop when they get to hosting it on Netlify if you want to host it on GitHub )](https://jadeyryan.com/blog/2024-02-19_beginner-quarto-netlify/)
-
 -   If you'd like to host your Quarto Website on GitHub for free (and you've never used Git or GitHub before) there are multiple steps to **FIRST (1) getting Git Installed & your GitHub setup:**
 
     -   **(Watch)** What is Git (version control software)? [(2 min video)](https://youtu.be/6OTy2N-rSbw?si=Jdsl4k_vdtbd5354)
@@ -94,9 +92,11 @@ title: "BIO 5100 Resources"
 
         -   *but note: if you do follow this guide, initially skip the install a "Git Client" (other software to manage Git) section since you are going to use RStudio for this*
 
--   **THEN (2) Build your Quarto Website & host it online with GitHub Pages** - can follow [these step-by-step instructions for building a quarto website BUT (since it doesn't involved hosting the site on GitHub) SKIP all the stuff towards the end related to hosting it on Netlify](https://jadeyryan.com/blog/2024-02-19_beginner-quarto-netlify/)
+-   **THEN (2) Build your Quarto Website & host it online with GitHub Pages** 
 
-    -   And more here on how you can [host a website on GitHub Pages with the "Render to docs" method](https://quarto.org/docs/publishing/github-pages.html#render-to-docs) and here is a [7 min video walkthrough on how to do that](https://www.youtube.com/watch?v=wZ9pZOFSCko)
+- can follow [these step-by-step instructions for building a quarto website](https://jadeyryan.com/blog/2024-02-19_beginner-quarto-netlify/) BUT STOP when it gets to the "Netlify" section, as you'll want to host your website on GitHub Pages instead - Instructions on that below
+
+    -   And more here on how you can [host a website on GitHub Pages with the "Render to docs" method](https://quarto.org/docs/publishing/github-pages.html#render-to-docs) and here is a [7 min video walkthrough on host a website on GitHub Pages](https://www.youtube.com/watch?v=wZ9pZOFSCko)
     
     -   And for more details on building quarto websites [ here's a (20 min) video on that  ](https://www.youtube.com/watch?v=l7r24gTEkEY), which is part of a video playlist [which includes additional in-depth vidoes for other features for building Quarto websites](https://www.youtube.com/playlist?list=PL9HYL-VRX0oTCvag75m8yDjFoJvE-gMxp) 
 
