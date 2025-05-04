@@ -6,9 +6,9 @@ title: "Online Books"
 
 -   Introduction to R, RStudio and the Tidyverse for visualizing, wrangling and analyzing your data.
 
-#### [Applied Statistics for Experimental Biology by Jeffrey A. Walker](https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/)
+#### [Statistics for the Experimental Bench Biologist by Jeffrey A. Walker](https://middleprofessor.github.io/benchbiostats/chapters/intro.html)
 
--   (Primary text we follow for BIO 5100/L) Takes a statistical modeling approach, focusing on estimates of effects and uncertainty instead of traditional hypothesis testing.
+-   (Primary text we follow for BIO 5100/L) Takes a statistical modeling approach, focusing on estimates of effects and uncertainty instead of traditional hypothesis testing. Great option for lab or field based researching working with experimental data. This book is written in a very approachable style, and is a great introduction to the concepts of statistical modeling.
 
 #### [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/)
 
@@ -23,7 +23,6 @@ title: "Online Books"
 -   Mostly covers details of using the tidyverse to import, wrangle and get your data ready to analyze.
 
 
-
 #### [Fundamentals of Data Visualization (using R) by Claus O. Wilke](https://clauswilke.com/dataviz/index.html)
 
 -   A guide to making visualizations that accurately reflect the data, tell a story, and look professional.
@@ -33,6 +32,12 @@ title: "Online Books"
 #### [Spatial Statistics for Data Science: Theory and Practice with R by Paula Moraga](https://www.paulamoraga.com/book-spatial/index.html)
 
 -   Describes statistical methods, modeling approaches, and visualization techniques to analyze spatial data using R. Includes an overview of types of spatial data, relevant R packages for analyzing and visualizing spatial data, explanations of spatial statistics, and fully reproducible examples analyzing areal, geostatistical, and point pattern data.
+
+
+#### [tidyomics: Open project to create tidy analysis packages for omics data](https://github.com/tidyomics)
+
+-   Tidyomics enables the use of familiar tidyverse verbs (e.g., select, filter, mutate) to manipulate rich data objects in the Bioconductor ecosystem. Importantly, the data objects are not modified, but tidyomics provides a tidy interface to work on the native objects, leveraging existing Bioconductor classes and algorithms.
+
 
 #### [Guide to Effect Sizes and Confidence Intervals](https://matthewbjane.quarto.pub/guide-to-effect-sizes-and-confidence-intervals)
 
