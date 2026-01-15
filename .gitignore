@@ -6,3 +6,4 @@
 /.quarto/
 
 /YellowTangData_29_SEP_2016.csv
+**/*.quarto_ipynb

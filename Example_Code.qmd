@@ -2,7 +2,12 @@
 title: "BIO 5100/L example code w/ class notes for selected topics"
 ---
 
-[Week 1-2 Visualize distributions & descriptive statistics](https://claisselab.github.io/BIO_5100/Distributions.html) 
+<!--
+[Week 1-2 Visualize distributions & descriptive statistics](https://claisselab.github.io/BIO_5100/Distributions.html)
+-->
+
+Week 1-2 Visualize distributions & descriptive statistics (coming soon)
+
 
 [Week 3-4 Scatterplots, correlation, linear models (simple linear regression)](https://claisselab.github.io/BIO_5100/Scatterplots_cor_lm_regression.html)
 
