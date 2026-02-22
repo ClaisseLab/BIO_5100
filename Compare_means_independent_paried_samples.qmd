@@ -263,15 +263,17 @@ For more explanation see: <https://www.middleprofessor.com/files/applied-biostat
 
 plot_lm_len_supp_emm <- dat_tg |>
   ggplot(aes(x = supp, y = len, color = supp)) +
-  geom_jitter(width = 0.1) +
+  geom_jitter(width = 0.1, height = 0) +
   ylab("Length of Odontoblasts (μm)") +
   xlab("Supplement Type") +
-  #use emm object as 2nd data table to plot 95% CIs
+  # use emm object as 2nd data table to plot 95% CIs
   geom_crossbar(
     data = as_tibble(lm_len_supp_emm),
-    aes(y = emmean,
-        ymin = lower.CL,
-        ymax = upper.CL),
+    aes(
+      y = emmean,
+      ymin = lower.CL,
+      ymax = upper.CL
+    ),
     width = 0.1
   ) +
   theme_classic() +
@@ -833,7 +835,7 @@ Or w/ Paired Data:
 
 ```{r}
 # using paired data table, run as actual paired-sample t-test
-t.test(cell_count~treatment, data = dat_paired, paired = TRUE)
+t.test(cell_count~treatment, data = dat_paired, pair = TRUE)
 ```
 
 *Both methods yield identical results, with the exception of sign differences (negative/positive) on the mean difference and t-statistic values (which just depends on the order of the pairs in the data set when the differences are calculated), so just keep track of what is being subtracted from what.*
