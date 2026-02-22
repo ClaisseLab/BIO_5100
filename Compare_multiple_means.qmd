@@ -333,19 +333,23 @@ For more explanation see: <https://www.middleprofessor.com/files/applied-biostat
 # ggplot as_tibble(lm_bw_island_emm)
 
 plot_lm_bw_island_emm <- dat_bw |>
-ggplot(aes(x = island, y = beakwid_mm, color = island)) +
-  geom_jitter(width = 0.1, alpha = 0.4) +
+  ggplot(aes(x = island, y = beakwid_mm, color = island)) +
+  geom_jitter(width = 0.1, height = 0, alpha = 0.4) +
   ylab("Beakwidth (mm)") +
   xlab("Island") +
-  #use emm object as 2nd data table to plot 95% CIs
-  geom_crossbar(data = as_tibble(lm_bw_island_emm), 
-                aes(y = emmean,
-                    ymin = lower.CL,
-                    ymax = upper.CL), 
-                width = 0.2,
-                color = "black") +
+  # use emm object as 2nd data table to plot 95% CIs
+  geom_crossbar(
+    data = as_tibble(lm_bw_island_emm),
+    aes(
+      y = emmean,
+      ymin = lower.CL,
+      ymax = upper.CL
+    ),
+    width = 0.2,
+    color = "black"
+  ) +
   theme_classic() +
-  theme(legend.position="none")
+  theme(legend.position = "none")
 
 plot_lm_bw_island_emm
 ```
