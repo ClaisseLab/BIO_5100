@@ -2,7 +2,10 @@
 title: "BIO 5100/L example code w/ class notes for selected topics"
 ---
 
-
+<!--
+code/text you don't want to show up goes here (to be hidden in the final output)
+(coming soon)
+-->
 [Week 1-2 Visualize distributions & descriptive statistics](https://claisselab.github.io/BIO_5100/Distributions.html)
 
 
@@ -16,8 +19,5 @@ title: "BIO 5100/L example code w/ class notes for selected topics"
 [Week 9 Linear model to compare multiple means, make pairwise comparisons (*and run a one-way ANOVA if you must*)](https://claisselab.github.io/BIO_5100/Compare_multiple_means.html)
 
 
-Week 13 Inference from a linear model w/ 1 numeric explanatory variable (Simple Linear Regression) + correlation significance tests & assumptions checking (coming soon)
 
-<!--
 [Week 13 Inference from a linear model w/ 1 numeric explanatory variable (Simple Linear Regression) + correlation significance tests & assumptions checking](https://claisselab.github.io/BIO_5100/Correlation_Regression_Inference.html)
--->
