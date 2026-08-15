@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>BIO 5100 Resources – BIO 5100</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -32,15 +35,14 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8edd27badbef8a2287523540a24e8a68.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-9b3b12babb541c315d9ea4b5d647408d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,8 +82,6 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">BIO 5100</span>
     </a>
@@ -137,7 +137,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#r-coding" id="toc-r-coding" class="nav-link active" data-scroll-target="#r-coding">R &amp; Coding</a></li>
-  <li><a href="#coding-with-ai-help" id="toc-coding-with-ai-help" class="nav-link" data-scroll-target="#coding-with-ai-help">Coding with AI help</a></li>
+  <li><a href="#coding-in-rstudio-with-ai-help" id="toc-coding-in-rstudio-with-ai-help" class="nav-link" data-scroll-target="#coding-in-rstudio-with-ai-help">Coding in RStudio with AI help</a></li>
   <li><a href="#quarto-and-gitgithub" id="toc-quarto-and-gitgithub" class="nav-link" data-scroll-target="#quarto-and-gitgithub">Quarto and Git/GitHub</a></li>
   <li><a href="#statistics" id="toc-statistics" class="nav-link" data-scroll-target="#statistics">Statistics</a></li>
   <li><a href="#data-management" id="toc-data-management" class="nav-link" data-scroll-target="#data-management">Data Management</a></li>
@@ -205,12 +205,6 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://datacarpentry.org/genomics-workshop/">Genomics Workshop</a></li>
 </ul>
 </section>
-<section id="conding-club-tutorials" class="level4">
-<h4 class="anchored" data-anchor-id="conding-club-tutorials"><a href="https://ourcodingclub.github.io/tutorials.html">Conding Club Tutorials</a></h4>
-<ul>
-<li>A collection of coding, data science and statistics tutorials with examples, mostly with R, but also with python and other languages.</li>
-</ul>
-</section>
 <section id="youtube-channel-r-for-the-rest-of-us" class="level4">
 <h4 class="anchored" data-anchor-id="youtube-channel-r-for-the-rest-of-us"><a href="https://www.youtube.com/@rfortherestofus/videos">(Youtube Channel) R for the Rest of Us</a></h4>
 <ul>
@@ -221,13 +215,6 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="youtube-channel-playlist-introduction-to-data-science-in-r"><a href="https://youtube.com/playlist?list=PL9qLtkRkGWLeh9UNptt_734t0u1zXz5wy&amp;si=D5JDhulAbPz9s9M-">(Youtube Channel Playlist) Introduction to Data Science in R</a></h4>
 <ul>
 <li>Brief 3-8 min videos on various topics From the Duke Center for Computational Thinking covering topics like data manipulation with dplyr, data visualization with ggplot2, and using other functions from the tidyverse.</li>
-</ul>
-</section>
-<section id="r-coding-cheat-sheets" class="level4">
-<h4 class="anchored" data-anchor-id="r-coding-cheat-sheets"><a href="https://posit.co/resources/cheatsheets/">R Coding Cheat Sheets</a></h4>
-<ul>
-<li>Cheat Sheets for writing various types of R code</li>
-<li>Starting out, I’d suggest downloading (and maybe printing out) these two cheat sheets: <strong><em>Data Visualization w/ ggplot2</em></strong> &amp; <strong><em>Data Transformation w/ dplyr</em></strong></li>
 </ul>
 </section>
 <section id="tidy-data-tutor-visualize-your-dplyr-analysis-pipelines" class="level4">
@@ -244,13 +231,10 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 </section>
-<section id="coding-with-ai-help" class="level2">
-<h2 class="anchored" data-anchor-id="coding-with-ai-help">Coding with AI help</h2>
-<section id="chat-with-ai-in-rstudio" class="level4">
-<h4 class="anchored" data-anchor-id="chat-with-ai-in-rstudio"><a href="https://blogs.rstudio.com/ai/posts/2024-04-04-chat-with-llms-using-chattr/">Chat with AI in RStudio</a></h4>
-<ul>
-<li><a href="https://mlverse.github.io/chattr/">chattr package</a></li>
-</ul>
+<section id="coding-in-rstudio-with-ai-help" class="level2">
+<h2 class="anchored" data-anchor-id="coding-in-rstudio-with-ai-help">Coding in RStudio with AI help</h2>
+<section id="posit-assistant-in-rstudio-and-positron" class="level4">
+<h4 class="anchored" data-anchor-id="posit-assistant-in-rstudio-and-positron"><a href="https://posit.co/products/ai">Posit Assistant in RStudio and Positron</a></h4>
 </section>
 <section id="github-copilot-in-rstudio" class="level4">
 <h4 class="anchored" data-anchor-id="github-copilot-in-rstudio"><a href="https://docs.posit.co/ide/user/ide/guide/tools/copilot.html">GitHub Copilot in RStudio</a></h4>

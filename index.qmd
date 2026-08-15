@@ -6,126 +6,114 @@ title: "BIO 5100 Resources"
 
 #### [How to install R, RStudio, and R packages](https://www.claisselab.com/install-r-rstudio)
 
--   Videos, links and explanation for how to install, and what is R, RStudio and R Packages.
+- Videos, links and explanation for how to install, and what is R, RStudio and R Packages.
 
 #### [Posit Recipes](https://posit.cloud/learn/recipes)
 
--   Some tasty R code for how to do a variety of tasks in R.
+- Some tasty R code for how to do a variety of tasks in R.
 
 #### [R Coding (Tidyverse) Style Guide](https://style.tidyverse.org/index.html)
 
--   General style guidance for writing clear and efficient R code.
--   And additional style guidance can also be found here: <https://r4ds.hadley.nz/workflow-style.html>
+- General style guidance for writing clear and efficient R code.
+- And additional style guidance can also be found here: <https://r4ds.hadley.nz/workflow-style.html>
 
 #### [Coding Club Tutorials](https://ourcodingclub.github.io/tutorials.html)
 
--   A collection of coding, data science and statistics tutorials with examples, part of a free and self-paced online course: *Data Science for Ecologists and Environmental Scientists!*
--   Tutorials include: R basics, Data manipulation & visualization, modelling, spatial data analysis, Reproducible research (e.g., using GitHub and connecting your RStudio to GitHub) and more.
+- A collection of coding, data science and statistics tutorials with examples, part of a free and self-paced online course: *Data Science for Ecologists and Environmental Scientists!*
+- Tutorials include: R basics, Data manipulation & visualization, modelling, spatial data analysis, Reproducible research (e.g., using GitHub and connecting your RStudio to GitHub) and more.
 
 #### [Data Carpentry Workshops](https://datacarpentry.org/lessons/)
 
--   Data Carpentry develops workshops on the fundamental data skills needed to conduct research, and its lessons are domain specific (e.g., ecology, genomics, geospatial). Lessons are in the form of self-paced tutorials, and are designed for researchers to teach themselves basic concepts and skills for working with data.
--   [Ecology Workshop](https://datacarpentry.org/ecology-workshop/)
--   [Genomics Workshop](https://datacarpentry.org/genomics-workshop/)
-
-#### [Conding Club Tutorials](https://ourcodingclub.github.io/tutorials.html)
--  A collection of coding, data science and statistics tutorials with examples, mostly with R, but also with python and other languages.
+- Data Carpentry develops workshops on the fundamental data skills needed to conduct research, and its lessons are domain specific (e.g., ecology, genomics, geospatial). Lessons are in the form of self-paced tutorials, and are designed for researchers to teach themselves basic concepts and skills for working with data.
+- [Ecology Workshop](https://datacarpentry.org/ecology-workshop/)
+- [Genomics Workshop](https://datacarpentry.org/genomics-workshop/)
 
 #### [(Youtube Channel) R for the Rest of Us](https://www.youtube.com/@rfortherestofus/videos)
 
--   A great series of short videos on various R topics. I really like this one because through the videos he uses a lot of newer tidyverse functions so I'm learning new ways to do things.
+- A great series of short videos on various R topics. I really like this one because through the videos he uses a lot of newer tidyverse functions so I'm learning new ways to do things.
 
 #### [(Youtube Channel Playlist) Introduction to Data Science in R](https://youtube.com/playlist?list=PL9qLtkRkGWLeh9UNptt_734t0u1zXz5wy&si=D5JDhulAbPz9s9M-)
 
--   Brief 3-8 min videos on various topics From the Duke Center for Computational Thinking covering topics like data manipulation with dplyr, data visualization with ggplot2, and using other functions from the tidyverse.
-
-#### [R Coding Cheat Sheets](https://posit.co/resources/cheatsheets/)
-
--   Cheat Sheets for writing various types of R code
--   Starting out, I'd suggest downloading (and maybe printing out) these two cheat sheets: ***Data Visualization w/ ggplot2*** & ***Data Transformation w/ dplyr***
+- Brief 3-8 min videos on various topics From the Duke Center for Computational Thinking covering topics like data manipulation with dplyr, data visualization with ggplot2, and using other functions from the tidyverse.
 
 #### [Tidy Data Tutor: visualize your dplyr analysis pipelines](https://tidydatatutor.com/)
 
--   Visualizes dplyr code to help you understand what specific dplyr functions are doing with the data
+- Visualizes dplyr code to help you understand what specific dplyr functions are doing with the data
 
 #### [How to convert .qmd Quarto file to .R Script](https://claisselab.github.io/BIO_5100/qmd_to_R_Script)
 
--   If your adviser wants you to send them your code in a .R Script, but you originally wrote it in a .qmd file...
--   An other option is the render your .qmd file to a word doc and email them that.
+- If your adviser wants you to send them your code in a .R Script, but you originally wrote it in a .qmd file...
+- An other option is the render your .qmd file to a word doc and email them that.
 
-## Coding with AI help
+## Coding in RStudio with AI help
 
-#### [Chat with AI in RStudio](https://blogs.rstudio.com/ai/posts/2024-04-04-chat-with-llms-using-chattr/)
- - [chattr package](https://mlverse.github.io/chattr/)
+#### [Posit Assistant in RStudio and Positron](https://posit.co/products/ai)
 
 #### [GitHub Copilot in RStudio](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html)
 
--   To use GitHub Copilot, you must have a GitHub account and an active subscription to Copilot. GitHub Copilot is free for [students](https://docs.github.com/en/education/explore-the-benefits-of-teaching-and-learning-with-github-education/github-global-campus-for-students/apply-to-github-global-campus-as-a-student) and [educators](https://education.github.com/teachers).
-
+- To use GitHub Copilot, you must have a GitHub account and an active subscription to Copilot. GitHub Copilot is free for [students](https://docs.github.com/en/education/explore-the-benefits-of-teaching-and-learning-with-github-education/github-global-campus-for-students/apply-to-github-global-campus-as-a-student) and [educators](https://education.github.com/teachers).
 
 ## Quarto and Git/GitHub
 
 #### [quarto.org](https://quarto.org/)
 
--   Main reference website
+- Main reference website
 
 #### [Awesome Quarto (Github site)](https://github.com/mcanouil/awesome-quarto)
 
--   A(n awesome) curated list of Quarto talks, tools, examples & articles
+- A(n awesome) curated list of Quarto talks, tools, examples & articles
 
 #### [(Video) Getting started with Quarto](https://youtu.be/_f3latmOhew?si=uhyPfszmTX8FfwFu)
 
--   This video walks you through creating documents, presentations, and websites and publishing with Quarto. The video features authoring Quarto documents with executable R code chunks using the RStudio Visual Editor (https://quarto.org/docs/visual-editor/).
+- This video walks you through creating documents, presentations, and websites and publishing with Quarto. The video features authoring Quarto documents with executable R code chunks using the RStudio Visual Editor (https://quarto.org/docs/visual-editor/).
 
 #### [Build Websites with Quarto (Posit overview site )](https://quarto.org/docs/websites/)
 
--   If you'd like to host your Quarto Website on GitHub for free (and you've never used Git or GitHub before) there are multiple steps to do this
+- If you'd like to host your Quarto Website on GitHub for free (and you've never used Git or GitHub before) there are multiple steps to do this
 
--   **FIRST (1) get Git Installed on your computer & get your GitHub account created:**
+- **FIRST (1) get Git Installed on your computer & get your GitHub account created:**
 
-    -   **(Watch)** What is Git (version control software)? [(2 min video)](https://youtu.be/6OTy2N-rSbw?si=Jdsl4k_vdtbd5354)
+  - **(Watch)** What is Git (version control software)? [(2 min video)](https://youtu.be/6OTy2N-rSbw?si=Jdsl4k_vdtbd5354)
 
-    -   **(Watch)** What is GitHub (repository/folder hosting website)? [(3 min video)](https://youtu.be/eBMs0X5dM_k?si=GY5LnP_ascsYdr4w)
+  - **(Watch)** What is GitHub (repository/folder hosting website)? [(3 min video)](https://youtu.be/eBMs0X5dM_k?si=GY5LnP_ascsYdr4w)
 
-    -   **(Then follow this guide to**) [Setting up Git & GitHub linked w/ RStudio](https://rcdsdocs.it.northwestern.edu/tutorials/r/git-with-r.html)
-    
-        -   **AND** there's a more in-depth guide (online book) to setting up Git & GitHub linked w/ RStudio if you need it: [Happy Git and GitHub for the useR](https://happygitwithr.com/)
+  - **(Then follow this guide to**) [Setting up Git & GitHub linked w/ RStudio](https://rcdsdocs.it.northwestern.edu/tutorials/r/git-with-r.html)
 
-        -   *but note: if you do follow this guide, initially skip the install a "Git Client" (other software to manage Git) section since you are going to use RStudio for this*
+    - **AND** there's a more in-depth guide (online book) to setting up Git & GitHub linked w/ RStudio if you need it: [Happy Git and GitHub for the useR](https://happygitwithr.com/)
 
--   **THEN (2) Build your Quarto Website & host it online with GitHub Pages** 
+    - *but note: if you do follow this guide, initially skip the install a "Git Client" (other software to manage Git) section since you are going to use RStudio for this*
+
+- **THEN (2) Build your Quarto Website & host it online with GitHub Pages**
 
 - can follow [these step-by-step instructions for building a quarto website](https://jadeyryan.com/blog/2024-02-19_beginner-quarto-netlify/) BUT SKIP anything related to "Netlify" and STOP when it gets to publish to "Netlify" section, as you'll want to host your website on GitHub Pages instead - Instructions on that below
 
-    -   And more here on how you' can'll need to [host a website on GitHub Pages with the "Render to docs" method](https://quarto.org/docs/publishing/github-pages.html#render-to-docs) and here is a [7 min video walkthrough on host a website on GitHub Pages](https://www.youtube.com/watch?v=wZ9pZOFSCko)
-    
-    -   And for more details on building quarto websites [ here's a (20 min) video on that  ](https://www.youtube.com/watch?v=l7r24gTEkEY), which is part of a video playlist [which includes additional in-depth vidoes for other features for building Quarto websites](https://www.youtube.com/playlist?list=PL9HYL-VRX0oTCvag75m8yDjFoJvE-gMxp) 
+  - And more here on how you' can'll need to [host a website on GitHub Pages with the "Render to docs" method](https://quarto.org/docs/publishing/github-pages.html#render-to-docs) and here is a [7 min video walkthrough on host a website on GitHub Pages](https://www.youtube.com/watch?v=wZ9pZOFSCko)
 
-    -   And more guidance on details of [building Quarto Websites here](https://quarto.org/docs/websites/#learning-more)
-    
-    -   And here's a [whole tutorial on the whole process](https://www.cpp.edu/cba/customer-insights-lab/resources/virtual-workshops/portfolio-website-quarto.shtml)
+  - And for more details on building quarto websites [here's a (20 min) video on that](https://www.youtube.com/watch?v=l7r24gTEkEY), which is part of a video playlist [which includes additional in-depth vidoes for other features for building Quarto websites](https://www.youtube.com/playlist?list=PL9HYL-VRX0oTCvag75m8yDjFoJvE-gMxp)
 
+  - And more guidance on details of [building Quarto Websites here](https://quarto.org/docs/websites/#learning-more)
 
+  - And here's a [whole tutorial on the whole process](https://www.cpp.edu/cba/customer-insights-lab/resources/virtual-workshops/portfolio-website-quarto.shtml)
 
 ## Statistics
 
 #### [MarinStatsLectures Youtube Channel](https://www.youtube.com/@marinstatlectures/playlists)
 
--   These R Programming and Statistics videos/tutorials were originally created for Master's and PhD students at UBC by Professor Mike Marin and are now available to public. These videos provide a comprehensive and completely free set of tutorials for introductory and intermediate concepts in Statistics and Statistics with R.
+- These R Programming and Statistics videos/tutorials were originally created for Master's and PhD students at UBC by Professor Mike Marin and are now available to public. These videos provide a comprehensive and completely free set of tutorials for introductory and intermediate concepts in Statistics and Statistics with R.
 
 #### [Common statistical tests as linear models](https://lindeloev.github.io/tests-as-linear/)
 
--   Reference website showing the linear models underlying common parametric and "non-parametric" traditional statistical tests.
+- Reference website showing the linear models underlying common parametric and "non-parametric" traditional statistical tests.
 
 ## Data Management
 
 #### [Openscapes - Guidance for data organization in spreadsheets](https://openscapes.github.io/series/data-strategies#data-organization-in-spreadsheets)
 
--   Compiled (by [openscapes.org](https://www.openscapes.org/)) guidance from multiple resources for how to organize and format your data in spreadsheets so that it is ready to analyze in R and follows "tidy data" principles.
+- Compiled (by [openscapes.org](https://www.openscapes.org/)) guidance from multiple resources for how to organize and format your data in spreadsheets so that it is ready to analyze in R and follows "tidy data" principles.
 
 #### [How to name things (files) - by Jenny Bryan](https://speakerdeck.com/jennybc/how-to-name-files)
 
--   Best practices for naming your files [by Jenny Bryan](https://jennybryan.org/about/) *(& she's got lots of other great resources on her website)*
+- Best practices for naming your files [by Jenny Bryan](https://jennybryan.org/about/) *(& she's got lots of other great resources on her website)*
 
 #### [Data Carpentry - Common Mistakes Storing Data in Spreadsheets](https://datacarpentry.org/spreadsheet-ecology-lesson/02-common-mistakes.html)
 
@@ -133,15 +121,15 @@ title: "BIO 5100 Resources"
 
 #### [Scientific writing resources](https://claisselab.github.io/BIO_5800L/#scientific-writing)
 
--   Links to papers with advice on scientific writing, including specifics on how to write statistical methods and results sections
+- Links to papers with advice on scientific writing, including specifics on how to write statistical methods and results sections
 
 #### [Connect your Google Scholar to CPP Library to access pdfs of journal articles](https://libguides.library.cpp.edu/c.php?g=863498&p=6191577)
 
--   Link your CPP library account to your google scholar
+- Link your CPP library account to your google scholar
 
 #### [How to appropriately cite R and R packages](https://ropensci.org/blog/2021/11/16/how-to-cite-r-and-r-packages/)
 
--   A short primer from a popular R blog on how to cite R and R packages in your thesis, publications, etc.
+- A short primer from a popular R blog on how to cite R and R packages in your thesis, publications, etc.
 
 #### [Fisheries-Related R Packages](https://fishr-core-team.github.io/fishR/pages/packages.html)
 
@@ -149,22 +137,22 @@ title: "BIO 5100 Resources"
 
 #### [Tidy Tuesday Website](https://github.com/rfordatascience/tidytuesday)
 
--   The weekly `#TidyTuesday` event people all over the world are doing! Every week they post a raw dataset, a chart or article related to that dataset, and ask you to explore the data. Some people will then post what they come up with on Twitter. A good way to keep practicing your R skills after Bio 5100 is over, can make it weekly thing you do with fellow students...
+- The weekly `#TidyTuesday` event people all over the world are doing! Every week they post a raw dataset, a chart or article related to that dataset, and ask you to explore the data. Some people will then post what they come up with on Twitter. A good way to keep practicing your R skills after Bio 5100 is over, can make it weekly thing you do with fellow students...
 
 #### [prstatistics.com (statistics workshops)](https://www.prstatistics.com/)
 
--   Company that offers \~1 week workshops on various specific biostatistics and R coding topics.
+- Company that offers \~1 week workshops on various specific biostatistics and R coding topics.
 
 #### [Highland Statistics (advanced statistics workshops and books)](https://www.highstat.com/index.php/courses)
 
--   Company that offers "how to" textbooks and \~1 week workshops on advanced statistics topics (e.g., generalized linear models, mixed models).
+- Company that offers "how to" textbooks and \~1 week workshops on advanced statistics topics (e.g., generalized linear models, mixed models).
 
 ## Communities to join
 
 #### [R Ladies](https://rladies.org/)
 
--   Attend [events](https://rladies.org/activities/events/), or join a [Local Chapter](https://benubah.github.io/r-community-explorer/rladies.html) (e.g., [R Ladies Pasadena](https://www.meetup.com/rladies-pasadena/),[R Ladies Riverside](https://www.meetup.com/rladies-riverside/))
+- Attend [events](https://rladies.org/activities/events/), or join a [Local Chapter](https://benubah.github.io/r-community-explorer/rladies.html) (e.g., [R Ladies Pasadena](https://www.meetup.com/rladies-pasadena/),[R Ladies Riverside](https://www.meetup.com/rladies-riverside/))
 
 #### [Data Science Hangout](https://posit.co/data-science-hangout/)
 
--   Join a community of data scientists that share insights about what it means to be a responsible, effective, and inspiring leader.
+- Join a community of data scientists that share insights about what it means to be a responsible, effective, and inspiring leader.
