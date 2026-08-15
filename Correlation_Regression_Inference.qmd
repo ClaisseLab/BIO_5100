@@ -42,19 +42,19 @@ The **broom Package** is **loaded/installed as part of [[tidymodels]{.underline}
 
 The **cowplot Package** will be used here to combined multiple ggplots into a single figure. But it also contains functions for all sorts other plotting purposes (*some cool/useful, others I would not necessarily advise using*):
 
--   cowplot <https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html>
+- cowplot <https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html>
 
 ------------------------------------------------------------------------
 
 # General modeling strategy:
 
-<https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/intro-linear-models.html#modeling-strategy>
+<https://benchbiostats.com/chapters/intro-stat-modeling.html#modeling-strategy>
 
 ------------------------------------------------------------------------
 
 ## Read-in the data file
 
--   Use the `read_csv()` function to read the .csv data table file into RStudio
+- Use the `read_csv()` function to read the .csv data table file into RStudio
 
 ```{r}
 # Read-in .csv file with YT simulated data
@@ -64,7 +64,7 @@ dat_yt <- read_csv("YellowTangData_29_SEP_2016.csv")
 
 ### View (some of) the data
 
--   use glimpse`()` function to examine the structure of the data.frame named dat_yt
+- use glimpse`()` function to examine the structure of the data.frame named dat_yt
 
 ```{r}
 glimpse(dat_yt)
@@ -107,7 +107,7 @@ There's also additional options (like how to specify a certain point shape) here
 
 ### If you want to change characteristics (size, color, shape) of ALL POINTS:
 
--   Put those arguments in `geom_point()`, NOT in `aes()`:
+- Put those arguments in `geom_point()`, NOT in `aes()`:
 
 ```{r}
 ggplot(dat_yt, aes(x = length_cm, y = gonad_wt_g)) +
@@ -129,9 +129,9 @@ ggplot(dat_yt, aes(x = length_cm, y = gonad_wt_g, color = sex)) +
 
 <https://ggplot2.tidyverse.org/reference/geom_smooth.html>
 
--   `geom_smooth()` by default adds a moving average smoother line, also referred to as a LOWESS smoother curve (Locally Weighted Scatterplot Smoothing)
+- `geom_smooth()` by default adds a moving average smoother line, also referred to as a LOWESS smoother curve (Locally Weighted Scatterplot Smoothing)
 
--   we add the argument `se = FALSE` so that error bars do not plot on the line, which is not necessary here.
+- we add the argument `se = FALSE` so that error bars do not plot on the line, which is not necessary here.
 
 ```{r}
 # a smoother line (moving average) for all data
@@ -142,9 +142,9 @@ ggplot(dat_yt, aes(x = length_cm, y = gonad_wt_g)) +
   ylab("gonad weight (g)")
 ```
 
--   the `span` argument changes the range of x values over which the the moving average is done.
+- the `span` argument changes the range of x values over which the the moving average is done.
 
--   Typically use trial and error, try values between 0.3 and 1.0 for span.
+- Typically use trial and error, try values between 0.3 and 1.0 for span.
 
 ```{r}
 # span = 0.3
@@ -163,7 +163,7 @@ ggplot(dat_yt, aes(x = length_cm, y = gonad_wt_g)) +
 
 ```
 
--   if we add `color = sex` to aes, it will do a smoother line (moving average) for each sex
+- if we add `color = sex` to aes, it will do a smoother line (moving average) for each sex
 
 ```{r}
 # add color = sex to aes
@@ -188,11 +188,11 @@ ggplot(dat_yt, aes(length_cm, gonad_wt_g, color = fishing_level)) +
 
 ## `cor()` within summarize()
 
--   You can also make cor() work with the pipe operator and the `summarize()` function, similar to calculating a mean, median etc.
+- You can also make cor() work with the pipe operator and the `summarize()` function, similar to calculating a mean, median etc.
 
--   Note: the cor() function has arguments for the x and y variables in the correlation
+- Note: the cor() function has arguments for the x and y variables in the correlation
 
--   and if there are NAs in either variable you need to add the argument `use = "pairwise.complete.obs"` so the result is not an NA
+- and if there are NAs in either variable you need to add the argument `use = "pairwise.complete.obs"` so the result is not an NA
 
 ```{r}
 dat_yt |>
@@ -211,7 +211,7 @@ dat_yt |>
 
 `corrr` is a package for exploring correlations in R, focused on creating and working with data frames of correlations that can be easily explored via `corrr` functions or by leveraging other functions in the tidyverse. **It's main value is if you want to run a lot of correlations between many different variables in a data.frame, [so we won't use it much/at all in our course]{.underline}. JUST HERE FOR DEMO, don't need to install/use...**
 
--   (install if necessary, and) load the corrr package with the `library()` function
+- (install if necessary, and) load the corrr package with the `library()` function
 
 ```{r}
 # must download and install corrr package on your computer if 
@@ -221,7 +221,7 @@ dat_yt |>
 library(corrr)
 ```
 
--   `correlate()` is the function from the corrr package to produce correlation coefficients.
+- `correlate()` is the function from the corrr package to produce correlation coefficients.
 
 ```{r}
 dat_yt |> 
@@ -229,15 +229,15 @@ dat_yt |>
   correlate()
 ```
 
--   The output is similar to the one produced by the cor() function above if you just want to see the correlation coefficient for a pair of numerical variables.
+- The output is similar to the one produced by the cor() function above if you just want to see the correlation coefficient for a pair of numerical variables.
 
--   However, the `correlate()` output is a data.frame (i.e., a tidyverse "tibble") instead of being a matrix, so there are some advantages. But the real benefits come if you want to run correlations between many pairs of variables and/or visualize those.
+- However, the `correlate()` output is a data.frame (i.e., a tidyverse "tibble") instead of being a matrix, so there are some advantages. But the real benefits come if you want to run correlations between many pairs of variables and/or visualize those.
 
--   See the tidyverse help page for the corrr package if you want to see more examples of what it can do: <https://www.tidyverse.org/blog/2020/12/corrr-0-4-3/>
+- See the tidyverse help page for the corrr package if you want to see more examples of what it can do: <https://www.tidyverse.org/blog/2020/12/corrr-0-4-3/>
 
 ------------------------------------------------------------------------
 
--   Here we select all numerical columns, and then calculate correlation between all pair-wise combinations of variables.
+- Here we select all numerical columns, and then calculate correlation between all pair-wise combinations of variables.
 
 ```{r}
 dat_yt |>
@@ -255,7 +255,7 @@ dat_yt |>
 
 ## Correlation Coefficient r for each level of a variable w/ `group_by()`
 
--   Calculate the correlation coefficient each sex using the group_by function:
+- Calculate the correlation coefficient each sex using the group_by function:
 
 ```{r}
 dat_yt |>
@@ -303,19 +303,19 @@ ggplot(dat_cats, aes(y=Hwt, x=Bwt)) +
 
 **A) Linearity: data follows a linear relationship**
 
--   Can be examined by looking at a scatter plot. If the data points have approximately a straight line (and not a curve) relationship, then the data satisfies the linearity assumption.
+- Can be examined by looking at a scatter plot. If the data points have approximately a straight line (and not a curve) relationship, then the data satisfies the linearity assumption.
 
--   Can also add a geom_smooth() layer (default moving average curve) to help visualize if the relationship is linear or curved
+- Can also add a geom_smooth() layer (default moving average curve) to help visualize if the relationship is linear or curved
 
 **B) Normality: distribution of each variable approximately normal**
 
--   can assess with separate histograms for each variable
+- can assess with separate histograms for each variable
 
 **C) Homoscedasticity (equal variances along the linear relationship)**
 
--   Looking for if variance (spread or scatter) is smaller for a particular range of values and larger for another range of values, then there is a violation of homoscedasticity.
+- Looking for if variance (spread or scatter) is smaller for a particular range of values and larger for another range of values, then there is a violation of homoscedasticity.
 
--   Can check this just by looking at the scatter plot.
+- Can check this just by looking at the scatter plot.
 
 ------------------------------------------------------------------------
 
@@ -347,9 +347,9 @@ There was a strong correlation between a cat's heart weight and its body weight 
 
 **If your data or the relationship is/are:**
 
--   ordinal (ranks)
--   a non-linear relationship
--   non-Normal distributions or not equal variance across the relationship
+- ordinal (ranks)
+- a non-linear relationship
+- non-Normal distributions or not equal variance across the relationship
 
 Then a non-parametric correlation test could be used. There are multiple types, each apparently work better under certain conditions. You could Google "types of non-parametric correlation tests" and then see what best matches your data and use that one.
 
@@ -394,7 +394,7 @@ cor.test(~ Bwt + Hwt, data = dat_cats, method="kendall")
 
 For additional detail on simple linear regression analysis following a linear modeling framework see:
 
-<https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/regression.html#regression>
+<https://benchbiostats.com/chapters/continuous_x.html>
 
 ## Read in the data
 
@@ -444,7 +444,7 @@ dat_cats |>
 
 ### Initial exploratory scatter plot
 
--   Before you go through the trouble of fitting the linear model, good to start by looking at the relationship with the data to see if a linear relationship seems reasonable.
+- Before you go through the trouble of fitting the linear model, good to start by looking at the relationship with the data to see if a linear relationship seems reasonable.
 
 ```{r}
 dat_cats |> 
@@ -471,17 +471,17 @@ Does cat body weight explain (predict) cat heart weight?
 
 <https://en.wikipedia.org/wiki/General_linear_model>
 
--   Common statistical methods you are familiar with like S*imple Linear Regression, ANOVA, ANCOVA, Multiple Regression* are forms of general linear models. (*note this is different from General[**ized**]{.underline} Linear Models*)
+- Common statistical methods you are familiar with like S*imple Linear Regression, ANOVA, ANCOVA, Multiple Regression* are forms of general linear models. (*note this is different from General[**ized**]{.underline} Linear Models*)
 
--   The traditional analysis methods are just based on the type of explanatory (predictor) variable(s) in the general linear model: Regression (numerical predictor), ANOVA (categorical predictor), or ANCOVA (numerical and categorical predictors)
+- The traditional analysis methods are just based on the type of explanatory (predictor) variable(s) in the general linear model: Regression (numerical predictor), ANOVA (categorical predictor), or ANCOVA (numerical and categorical predictors)
 
--   Fit the linear model using the `lm()` function
+- Fit the linear model using the `lm()` function
 
--   define the model in lm() with a formula:
+- define the model in lm() with a formula:
 
-    -   *response_variable* \~ *predictor_variable*
+  - *response_variable* \~ *predictor_variable*
 
-    -   *y \~ x*
+  - *y \~ x*
 
 ```{r}
 lm_H_B <- lm(Hwt ~ Bwt, data=dat_cats)
@@ -503,7 +503,7 @@ lm_H_B
 
 Create a "coefficient table" in a "tidy" table format
 
--   Uses `tidy()` function from broom package, with a `conf.int = T` argument to include calculation of 95% CIs.
+- Uses `tidy()` function from broom package, with a `conf.int = T` argument to include calculation of 95% CIs.
 
 ```{r}
 # use tidy function from broom package with the 
@@ -527,7 +527,7 @@ NOTE: We do not care about the Intercept parameter in this regression analysis (
     Ha: b ≠ 0
 ```
 
-More detail on regression coefficients (slope parameter) and the associated 95% CI of the slope here: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/regression.html#inference-the-coefficient-table>
+More detail on regression coefficients (slope parameter) and the associated 95% CI of the slope here: <https://benchbiostats.com/chapters/continuous_x.html#inference-the-coefficient-table>
 
 ## Making Predictions with your linear model line equation
 
@@ -544,9 +544,9 @@ Calculate the predicted heart weight for body weight of 3 kg using the linear mo
 coef(lm_H_B)[[1]] + coef(lm_H_B)[[2]]*3
 ```
 
--   To visualize the prediction, add a vertical line to your plot with `geom_vline()` at weight = 3 kg
+- To visualize the prediction, add a vertical line to your plot with `geom_vline()` at weight = 3 kg
 
--   And a horizontal line to your plot with `geom_hline()` at the predicted heart weight value
+- And a horizontal line to your plot with `geom_hline()` at the predicted heart weight value
 
 ```{r}
 dat_cats |> 
@@ -570,9 +570,9 @@ glance(lm_H_B)
 
 **R^2^ vs Adjusted-R^2^ value? (just always use Adjusted-R^2^)**
 
--   ***Adjusted R-squared*** is an attempt to account for the phenomenon of the R^2^ automatically and spuriously increasing when extra explanatory variables are added to the model (from [\<https://en.wikipedia.org/wiki/Coefficient_of_determination\>](https://en.wikipedia.org/wiki/Coefficient_of_determination){.uri}). This is often what is actually reported in papers as the R^2^ value (and they don't note that it is the "adjusted" value). It is always going to be a little lower than the "regular" or "Multiple" R^2^ value, so it is the more conservative statistic to report.
+- ***Adjusted R-squared*** is an attempt to account for the phenomenon of the R^2^ automatically and spuriously increasing when extra explanatory variables are added to the model (from [\<https://en.wikipedia.org/wiki/Coefficient_of_determination\>](https://en.wikipedia.org/wiki/Coefficient_of_determination){.uri}). This is often what is actually reported in papers as the R^2^ value (and they don't note that it is the "adjusted" value). It is always going to be a little lower than the "regular" or "Multiple" R^2^ value, so it is the more conservative statistic to report.
 
--   For more on this see: <https://www.analyticsvidhya.com/blog/2020/07/difference-between-r-squared-and-adjusted-r-squared/>
+- For more on this see: <https://www.analyticsvidhya.com/blog/2020/07/difference-between-r-squared-and-adjusted-r-squared/>
 
 # Combined Linear Regression Results Plot(s)
 
@@ -622,7 +622,7 @@ plot_lm_H_B_regression
 
 We'll use the `plot_grid()` function from the **cowplot package** to combine our two plots above into a single results figure.
 
--   The `align = "v"` and `axis = "rl"` arguments make the axes of our 2 plots line up appropriately when combined. See help file for more detail: <https://rdrr.io/cran/cowplot/man/plot_grid.html>
+- The `align = "v"` and `axis = "rl"` arguments make the axes of our 2 plots line up appropriately when combined. See help file for more detail: <https://rdrr.io/cran/cowplot/man/plot_grid.html>
 
 ```{r}
 #| fig.height: 4.0
@@ -642,17 +642,17 @@ results_plot
 
 ## Write (save) plot to a .png file with ggsave()
 
--   the file will be saved to your "working directory" (typically [the folder where your .qmd file is]{.underline}). **You'll need to look in that folder to see the .png file!**
+- the file will be saved to your "working directory" (typically [the folder where your .qmd file is]{.underline}). **You'll need to look in that folder to see the .png file!**
 
--   **You identify the type of file format you want to save it to with the [file name extension]{.underline} at the end of the file name**. Here we use **.png** (a great default for putting images into word docs or PPT presentations). But many others are available such as: ".pdf" (easy to view or email a .pdf to someone; and good to use for uploading plot files to journals if they'll accept this format), ".eps" (another vector format some journals one), ".png", ".jpeg", ".tiff", ".svg"(use for further editing in <https://inkscape.org/> freeware on windows).
+- **You identify the type of file format you want to save it to with the [file name extension]{.underline} at the end of the file name**. Here we use **.png** (a great default for putting images into word docs or PPT presentations). But many others are available such as: ".pdf" (easy to view or email a .pdf to someone; and good to use for uploading plot files to journals if they'll accept this format), ".eps" (another vector format some journals one), ".png", ".jpeg", ".tiff", ".svg"(use for further editing in <https://inkscape.org/> freeware on windows).
 
--   You can read more about the difference between ***vector vs. raster*** image file types here: <https://guides.lib.umich.edu/c.php?g=282942&p=1885352>. And more about specific file types here: <https://guides.lib.umich.edu/c.php?g=282942&p=1885348>
+- You can read more about the difference between ***vector vs. raster*** image file types here: <https://guides.lib.umich.edu/c.php?g=282942&p=1885352>. And more about specific file types here: <https://guides.lib.umich.edu/c.php?g=282942&p=1885348>
 
--   You specify the dimensions of the plot with the `width =` and `height =` arguments, default is inches. Try different widths and heights (*keeping in mind what would fit on a 8in by 11in page size*) and see what works for the plot you making. Often a plot shows the data better when it is taller or wider (***so try different ratios of width to height***).
+- You specify the dimensions of the plot with the `width =` and `height =` arguments, default is inches. Try different widths and heights (*keeping in mind what would fit on a 8in by 11in page size*) and see what works for the plot you making. Often a plot shows the data better when it is taller or wider (***so try different ratios of width to height***).
 
--   You can also specify the image "quality" using the "dots per inch" argument `dpi =` and typically you want to use 300 or 600 for a high quality image. Depending on the file type (with .tiff for example) 600 dpi can sometimes create huge file sizes, but that is usually where I start (*then only go down to 300 if needed*).
+- You can also specify the image "quality" using the "dots per inch" argument `dpi =` and typically you want to use 300 or 600 for a high quality image. Depending on the file type (with .tiff for example) 600 dpi can sometimes create huge file sizes, but that is usually where I start (*then only go down to 300 if needed*).
 
--   *NOTE - sometimes you can get an error when running `ggsave()` repeatedly if the saved .png file is already open on your computer in your image viewer - need to close it each time you want to edit and re-output the image file.*
+- *NOTE - sometimes you can get an error when running `ggsave()` repeatedly if the saved .png file is already open on your computer in your image viewer - need to close it each time you want to edit and re-output the image file.*
 
 ```{r}
 # output plot to .png file type, set size (default is inches),
@@ -671,7 +671,7 @@ ggsave("plot_lm_H_B_regression_combined.png", results_plot,
 
 Model residuals are **the difference** (in the Y or vertical direction) between the ***observed y*** values (the data) and the ***predicted y*** values (the regression line).
 
--   We can use the `augment()` function (from broom package, loaded with tidymodels) to extract information from the model about each point in our data set
+- We can use the `augment()` function (from broom package, loaded with tidymodels) to extract information from the model about each point in our data set
 
 ```{r}
 ## use augment() function (from broom package, loaded in tidymodels) to 
@@ -747,11 +747,11 @@ And
 
 ## Plot (1) Residuals vs Fitted
 
--   *Is a linear relationship at good fit to your data?*
+- *Is a linear relationship at good fit to your data?*
 
--   *You shouldn't see any patterns in the residuals if a linear model is a good fit.*
+- *You shouldn't see any patterns in the residuals if a linear model is a good fit.*
 
--   *Also, can help to assess normality assumption and equal variance assumption.*
+- *Also, can help to assess normality assumption and equal variance assumption.*
 
 ## Plot (2) Normal Q-Q plot
 
@@ -773,17 +773,17 @@ For more info on interpreting Normal Q-Q plots to assess Normality see:
 
 **We are looking for high leverage + high residual = high Cook's distance points**
 
--   Cook's distance is a measure of "influence" - i.e., how much would the model (the line in this case) change if you removed that point.
+- Cook's distance is a measure of "influence" - i.e., how much would the model (the line in this case) change if you removed that point.
 
--   Some texts say a Cook's distance \>1 is a problem.
+- Some texts say a Cook's distance \>1 is a problem.
 
--   For more info on Outliers, Leverage Points and Influential Points see: [\<https://www2.stat.duke.edu/courses/Spring19/sta101.002/post/project/outliers.html\>](https://www2.stat.duke.edu/courses/Spring19/sta101.002/post/project/outliers.html){.uri}
+- For more info on Outliers, Leverage Points and Influential Points see: [\<https://www2.stat.duke.edu/courses/Spring19/sta101.002/post/project/outliers.html\>](https://www2.stat.duke.edu/courses/Spring19/sta101.002/post/project/outliers.html){.uri}
 
 #### Look at the lm_H_B_augment object in the data viewer (click on it in the top right environment window)
 
--   **Then sort by .cooksd (Cook's distance) and figure out which point has the highest value** (i.e., *what is its body and heart weight?*)
+- **Then sort by .cooksd (Cook's distance) and figure out which point has the highest value** (i.e., *what is its body and heart weight?*)
 
--   **Then find that point [in the scatter plot of your data]{.underline} (you made is a much earlier code chunk).**
+- **Then find that point [in the scatter plot of your data]{.underline} (you made is a much earlier code chunk).**
 
 ```{r}
 lm_H_B_augment |>
@@ -798,19 +798,19 @@ lm_H_B_augment |>
 
 **Overall you should use graphics and examine in closer detail the points with "*values that are substantially larger than the rest*".**
 
--   Unlike the other 3 plots, this time patterns are not relevant.
+- Unlike the other 3 plots, this time patterns are not relevant.
 
--   Just looking for high leverage + high residual (= high Cook's distance) points
+- Just looking for high leverage + high residual (= high Cook's distance) points
 
--   Some Texts say Cook's distance \>1 be concerned.
+- Some Texts say Cook's distance \>1 be concerned.
 
--   R will label points w/ their row number that might be an issue
+- R will label points w/ their row number that might be an issue
 
 ## Remove most influential point and plot the new line to see how much it influences the model (the line)
 
--   Remove the most influential point to see how much the results (the regression line and the statistic output) change with the point removed
+- Remove the most influential point to see how much the results (the regression line and the statistic output) change with the point removed
 
--   Then run the code to and interpret the plot.
+- Then run the code to and interpret the plot.
 
 ```{r}
 # Replace FILL_IN with the correct value to remove the most influential point
@@ -837,8 +837,8 @@ tidy(lm(Hwt ~ Bwt, data=big_cat_removed), conf.int = TRUE)
 
 ## (Demo) Label data points by their row number
 
--   if you want to see which point is which row in the dat_cats
--   Note you need to manually enter 144 in geom_text below (which is the number of rows in the dat_cats so ggplot knows how many labels to use)
+- if you want to see which point is which row in the dat_cats
+- Note you need to manually enter 144 in geom_text below (which is the number of rows in the dat_cats so ggplot knows how many labels to use)
 
 ```{r}
 # scatter plot with a regression line using the lm coefficients from model above

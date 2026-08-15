@@ -43,13 +43,13 @@ The **broom Package** is **installed as part of [[tidymodels]{.underline}](https
 
 The **emmeans Package** will be used to output means, 95% CIs, p-values and other statistics from specified `lm()` objects
 
--   Lots of vignettes here that demo what the package can do: <https://cran.r-project.org/web/packages/emmeans/index.html>
+- Lots of vignettes here that demo what the package can do: <https://cran.r-project.org/web/packages/emmeans/index.html>
 
--   This one reviews the basics: <https://cran.r-project.org/web/packages/emmeans/vignettes/AQuickStart.html>
+- This one reviews the basics: <https://cran.r-project.org/web/packages/emmeans/vignettes/AQuickStart.html>
 
 The **cowplot Package** will be used here to combined multiple ggplots into a single figure. But it also contains functions for all sorts other plotting purposes (*some cool/useful, others I would not necessarily advise using*):
 
--   cowplot <https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html>
+- cowplot <https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html>
 
 ------------------------------------------------------------------------
 
@@ -57,7 +57,7 @@ The **cowplot Package** will be used here to combined multiple ggplots into a si
 
 See here for an overall description of the approach from exploratory analysis to reporting results:
 
-<https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/intro-linear-models.html#modeling-strategy>
+<https://benchbiostats.com/chapters/intro-stat-modeling.html#modeling-strategy>
 
 ------------------------------------------------------------------------
 
@@ -126,15 +126,15 @@ dat_tg |>
 
 More details/descriptions can be found here:
 
-<https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/intro-linear-models.html#specific-assumptions-for-inference-with-a-linear-model>
+<https://benchbiostats.com/chapters/intro-stat-modeling.html#assumptions-for-inference-with-a-statistical-model>
 
 t-test assumptions are also described in (*way too much*) detail here: <https://en.wikipedia.org/wiki/Student%27s_t-test#Assumptions>
 
 *The most relevant are:*
 
--   data are independent (*e.g., not paired, grouped, or otherwise related by some other factor that the grouping variable already in your model*), collected with a random sampling approach
--   model residuals are normally distributed
--   Constant or "equal" variance or homoskedasticity
+- data are independent (*e.g., not paired, grouped, or otherwise related by some other factor that the grouping variable already in your model*), collected with a random sampling approach
+- model residuals are normally distributed
+- Constant or "equal" variance or homoskedasticity
 
 ### In practical terms just check to make sure during exploratory analysis:
 
@@ -142,15 +142,15 @@ t-test assumptions are also described in (*way too much*) detail here: <https://
 2.  **the distributions of each group are [not]{.underline} highly skewed or bimodal** (*although this is often hard to judge at small sample sizes*)
 3.  Check for **"equal" variances among groups (*homoscedasticity*)**
 
--   This assumption says that all groups (samples) of data have "the same" variance (e.g., spread, sd), but in terms of checking it's about making sure the standard deviations are not too different from each other.
+- This assumption says that all groups (samples) of data have "the same" variance (e.g., spread, sd), but in terms of checking it's about making sure the standard deviations are not too different from each other.
 
 First look at plots above (histogram, boxplot, individual value plot): ***Does the spread look similar in 2 samples?***
 
 Then assess equal variance assumption with a "*rule of thumb*":
 
--   **Primary rule:** (*When n/group \> 5 & n/groups similar*) Consider alternative approach if largest sd \> 4\*smallest sd (*i.e., variances not similar enough*)
--   **Secondary Rule:** (*When n/group NOT similar*) Be extra cautious when largest sd is associated with the group with the smallest n. In this case consider alternative approach if largest sd \> 2\*smallest sd.
--   see [Zar **Biostatistical Analysis** textbook](https://csu-cpp.primo.exlibrisgroup.com/discovery/fulldisplay?docid=alma991004980729702915&context=L&vid=01CALS_PUP:01CALS_PUP&lang=en&search_scope=everything&adaptor=Local%20Search%20Engine&tab=Everything&query=any,contains,Biostatistical%20Analysis%20%20Jerrold%20H.%20Zar&offset=0) for more info (*and/or could cite in thesis/paper if necessary*)
+- **Primary rule:** (*When n/group \> 5 & n/groups similar*) Consider alternative approach if largest sd \> 4\*smallest sd (*i.e., variances not similar enough*)
+- **Secondary Rule:** (*When n/group NOT similar*) Be extra cautious when largest sd is associated with the group with the smallest n. In this case consider alternative approach if largest sd \> 2\*smallest sd.
+- see [Zar **Biostatistical Analysis** textbook](https://csu-cpp.primo.exlibrisgroup.com/discovery/fulldisplay?docid=alma991004980729702915&context=L&vid=01CALS_PUP:01CALS_PUP&lang=en&search_scope=everything&adaptor=Local%20Search%20Engine&tab=Everything&query=any,contains,Biostatistical%20Analysis%20%20Jerrold%20H.%20Zar&offset=0) for more info (*and/or could cite in thesis/paper if necessary*)
 
 [*If there are large outliers, one/both of the distributions are very highly skewed, and/or the spread in the data is very different between groups*]{.underline}*, then can consider other options for calculating the 95% CIs (e.g., bootstrapping), using a Generalized linear model, and/or running a non-parametric test.*
 
@@ -158,11 +158,11 @@ Then assess equal variance assumption with a "*rule of thumb*":
 
 **For EACH GROUP (SAMPLE) of numerical response variable length we'll calculate:**
 
--   **mean**: `mean()`
+- **mean**: `mean()`
 
--   **standard deviation** (***spread in data***): `sd()`
+- **standard deviation** (***spread in data***): `sd()`
 
--   **sample size**: `n()`
+- **sample size**: `n()`
 
 ```{r}
 dat_tg |>
@@ -178,11 +178,11 @@ dat_tg |>
 
 We can then pull values from the calculated statistics above to make an additional calculation of the **magnitude of the effect size** (i.e., *how different are the 2 means?*)
 
--   **effect size** (difference between the means)
+- **effect size** (difference between the means)
 
--   effect size as a **percent** difference (difference between the means/smaller mean \* 100)
+- effect size as a **percent** difference (difference between the means/smaller mean \* 100)
 
--   *Note: "**Direction**" of effect size in this instance refers to indicating which mean is larger.*
+- *Note: "**Direction**" of effect size in this instance refers to indicating which mean is larger.*
 
 ```{r}
 # effect size: mean OJ - mean VC
@@ -195,16 +195,16 @@ round((22.7-16.8)/16.8*100, 0)
 
 ## Fit linear model
 
-Note this code/process is adapted from: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#oneway>
+Note this code/process is adapted from: <https://benchbiostats.com/chapters/one-factor.html>
 
--   *If you want more background, detailed explanation or need to do a more complicated analysis, that is a great resource.*
+- *If you want more background, detailed explanation or need to do a more complicated analysis, that is a great resource.*
 
 **Fit the linear model (numerical response w/ 1 categorical X value)**
 
--   in `lm()` formula:
-    -   Y \~ X
+- in `lm()` formula:
+  - Y \~ X
 
-    -   Response (*numeric variable*) \~ Explanatory (*in this case a categorical variable*)
+  - Response (*numeric variable*) \~ Explanatory (*in this case a categorical variable*)
 
 ```{r}
 lm_len_supp <- lm(len ~ supp, data = dat_tg)
@@ -216,7 +216,7 @@ lm_len_supp
 
 Create a "coefficient table" in a "tidy" table format using `tidy()` function from broom package, with a `conf.int = T` argument to include calculation of 95% CIs.
 
--   *Note: the coefficient table is not the most useful/friendly format and can include some irrelevant information. While it is a good idea to create and review it, you will mostly use/interpret the emmeans and contrast (pairs) tables below.*
+- *Note: the coefficient table is not the most useful/friendly format and can include some irrelevant information. While it is a good idea to create and review it, you will mostly use/interpret the emmeans and contrast (pairs) tables below.*
 
 ```{r}
 # use tidy function from broom package with the linear model object
@@ -229,9 +229,9 @@ lm_len_supp_coef
 
 Using `emmeans()` function from the **emmeans package**
 
--   Provides the basics: <https://cran.r-project.org/web/packages/emmeans/vignettes/AQuickStart.html>
+- Provides the basics: <https://cran.r-project.org/web/packages/emmeans/vignettes/AQuickStart.html>
 
--   & Lots of vignettes for other uses of functions in this package: <https://cran.r-project.org/web/packages/emmeans/index.html>
+- & Lots of vignettes for other uses of functions in this package: <https://cran.r-project.org/web/packages/emmeans/index.html>
 
 ```{r}
 # create emmeans table object
@@ -240,17 +240,17 @@ lm_len_supp_emm <- emmeans(lm_len_supp, ~ supp)
 lm_len_supp_emm
 ```
 
--   **The means (emmean column) in the emmeans table** are technically "modeled" means, but here, and for many linear models, these will be equal to the sampled means (the means calculated from each group of raw data). This may not be the case for some more complicated models.
+- **The means (emmean column) in the emmeans table** are technically "modeled" means, but here, and for many linear models, these will be equal to the sampled means (the means calculated from each group of raw data). This may not be the case for some more complicated models.
 
--   **The 95% CIs in the emmeans table** (lower.CL to upper.CL) are calculated using all the data in the model (using a pooled standard deviation and sample size across both groups of data). You'll notice they both have the same size:
+- **The 95% CIs in the emmeans table** (lower.CL to upper.CL) are calculated using all the data in the model (using a pooled standard deviation and sample size across both groups of data). You'll notice they both have the same size:
 
-    -   OJ: 20.5 to 24.9 = 4.4
+  - OJ: 20.5 to 24.9 = 4.4
 
-    -   VC: 14.6 to 19.0 = 4.4
+  - VC: 14.6 to 19.0 = 4.4
 
-    -   *If 95% CIs were calculated using just the OJ (or VC) data for each mean individually they would be different sizes.*
+  - *If 95% CIs were calculated using just the OJ (or VC) data for each mean individually they would be different sizes.*
 
-For more explanation see: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#the-emmeans-table-is-a-table-of-modeled-means-and-inferential-statistics>
+For more explanation see: <https://benchbiostats.com/chapters/one-factor.html#the-emmeans-table-is-a-table-of-modeled-means-and-inferential-statistics>
 
 ## Points & means plot w/ (model) 95% CIs
 
@@ -284,13 +284,13 @@ plot_lm_len_supp_emm
 
 This plot shows the raw data for each group (OJ, VC) as points. The `geom_crossbar()` plots the group means (middle line) and the 95% CIs from the associated linear model which were calculated in the emmeans table above.
 
--   Note `geom_pointrange()` could be used instead of `geom_crossbar()` if you prefer that style of plotting mean + CIs <https://ggplot2.tidyverse.org/reference/geom_linerange.html> (scroll down to bottom of page to see various examples of ways to plot error bars around a mean)
+- Note `geom_pointrange()` could be used instead of `geom_crossbar()` if you prefer that style of plotting mean + CIs <https://ggplot2.tidyverse.org/reference/geom_linerange.html> (scroll down to bottom of page to see various examples of ways to plot error bars around a mean)
 
 ## Contrasts table & corresponding "effects" plot
 
 **"Contrasts table"** using `contrast()` function from **emmeans package**
 
--   For details on the argument `method =` see help("contrast-methods")
+- For details on the argument `method =` see help("contrast-methods")
 
 ```{r}
 lm_len_supp_pairs <- contrast(lm_len_supp_emm,
@@ -304,15 +304,15 @@ lm_len_supp_pairs
 
 This table is important for reporting treatment effect and 95% CI and the object `lm_len_supp_pairs` is used in the ggplot code below to create the effects plot.
 
--   A **contrast** is a difference in means.
--   The **"estimate" column** is this difference
--   **95% CI of this difference** is lower.CL to upper.CL
--   The columns "t.ratio" and "p.value" contains the t (test statistic) and p values of the significance test of the estimate. The t-statistic is the ratio of the estimate (difference in means) to the SE of the estimate (which includes sd, the spread in the data, and the sample size). It is a signal (the estimate) to noise (SE of the estimate) ratio.
--   The p-value here can also be reported in your results, it is for the significance test: *is the difference between the 2 means significantly different from 0?*
-    -   Or a better interpretation of the p-value here is: *what is the probability of getting this data if there was no difference between the 2 means?*
-    -   And interpret it as a %: *There is only a 0.08% chance that these data came from a true population where there was no difference between the 2 means.*
+- A **contrast** is a difference in means.
+- The **"estimate" column** is this difference
+- **95% CI of this difference** is lower.CL to upper.CL
+- The columns "t.ratio" and "p.value" contains the t (test statistic) and p values of the significance test of the estimate. The t-statistic is the ratio of the estimate (difference in means) to the SE of the estimate (which includes sd, the spread in the data, and the sample size). It is a signal (the estimate) to noise (SE of the estimate) ratio.
+- The p-value here can also be reported in your results, it is for the significance test: *is the difference between the 2 means significantly different from 0?*
+  - Or a better interpretation of the p-value here is: *what is the probability of getting this data if there was no difference between the 2 means?*
+  - And interpret it as a %: *There is only a 0.08% chance that these data came from a true population where there was no difference between the 2 means.*
 
-For more explanation see: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#estimates-of-the-effects-are-in-the-contrasts-table>
+For more explanation see: <https://benchbiostats.com/chapters/one-factor.html#estimates-of-the-effects-are-in-the-contrasts-table>
 
 ## Effects plot w/ 95% CI
 
@@ -337,13 +337,13 @@ plot_lm_len_supp_pairs
 
 This plot shows the difference between the 2 means (OJ mean - VC mean = 5.9), and the 95% CI for that difference (i.e., *"if the experiment was repeated, 95% of the time you'd expect the true population mean of the difference between OJ and VC to be between 2.8 and 9.0"*).
 
--   The dashed line at 0 is there for reference since if the OJ and VC treatments produced the same tooth cell growth, the difference in their means would be 0.
+- The dashed line at 0 is there for reference since if the OJ and VC treatments produced the same tooth cell growth, the difference in their means would be 0.
 
 ## Combine plots into a single results figure
 
 We'll use the `plot_grid()` function from the **cowplot package** to combine our two plots above into a single results figure.
 
--   The `align = "v"` and `axis = "rl"` arguments make the axes of our 2 plots line up appropriately when combined. See help file for more detail: <https://rdrr.io/cran/cowplot/man/plot_grid.html>
+- The `align = "v"` and `axis = "rl"` arguments make the axes of our 2 plots line up appropriately when combined. See help file for more detail: <https://rdrr.io/cran/cowplot/man/plot_grid.html>
 
 ```{r}
 #| fig.height: 4.0
@@ -361,21 +361,21 @@ results_plot <- plot_grid(plot_lm_len_supp_pairs,
 results_plot
 ```
 
-This primary results plot is adapted from code in (the version you are using is based on regular ggplot code): <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#step-6-plot-the-model>
+This primary results plot is adapted from code in (the version you are using is based on regular ggplot code): <https://benchbiostats.com/chapters/one-factor.html#step-6-plot-the-model>
 
 ## Export (save) plot to a .png file with ggsave()
 
--   the file will be saved to your "working directory" (typically [the folder where your .qmd file is]{.underline}). **You'll need to look in that folder to see the .png file**
+- the file will be saved to your "working directory" (typically [the folder where your .qmd file is]{.underline}). **You'll need to look in that folder to see the .png file**
 
--   **You identify the type of file format you want to save it to with the [file name extension]{.underline} at the end of the file name**. Here we use **.png** (a great default for putting images into word docs or PPT presentations). But many others are available such as: ".pdf" (easy to view or email a .pdf to someone; and good to use for uploading plot files to journals if they'll accept this format), ".eps" (another vector format some journals one), ".png", ".jpeg", ".tiff", ".svg"(use for further editing in <https://inkscape.org/> freeware on windows).
+- **You identify the type of file format you want to save it to with the [file name extension]{.underline} at the end of the file name**. Here we use **.png** (a great default for putting images into word docs or PPT presentations). But many others are available such as: ".pdf" (easy to view or email a .pdf to someone; and good to use for uploading plot files to journals if they'll accept this format), ".eps" (another vector format some journals one), ".png", ".jpeg", ".tiff", ".svg"(use for further editing in <https://inkscape.org/> freeware on windows).
 
--   You can read more about the difference between ***vector vs. raster*** image file types here: <https://guides.lib.umich.edu/c.php?g=282942&p=1885352>. And more about specific file types here: <https://guides.lib.umich.edu/c.php?g=282942&p=1885348>
+- You can read more about the difference between ***vector vs. raster*** image file types here: <https://guides.lib.umich.edu/c.php?g=282942&p=1885352>. And more about specific file types here: <https://guides.lib.umich.edu/c.php?g=282942&p=1885348>
 
--   You specify the dimensions of the plot with the `width =` and `height =` arguments, default is inches. Try different widths and heights (*keeping in mind what would fit on a 8in by 11in page size*) and see what works for the plot you making. Often a plot shows the data better when it is taller or wider (***so try different ratios of width to height***).
+- You specify the dimensions of the plot with the `width =` and `height =` arguments, default is inches. Try different widths and heights (*keeping in mind what would fit on a 8in by 11in page size*) and see what works for the plot you making. Often a plot shows the data better when it is taller or wider (***so try different ratios of width to height***).
 
--   You can also specify the image "quality" using the "dots per inch" argument `dpi =` and typically you want to use 300 or 600 for a high quality image. Depending on the file type (with .tiff for example) 600 dpi can sometimes create huge file sizes, but that is usually where I start (*then only go down to 300 if needed*).
+- You can also specify the image "quality" using the "dots per inch" argument `dpi =` and typically you want to use 300 or 600 for a high quality image. Depending on the file type (with .tiff for example) 600 dpi can sometimes create huge file sizes, but that is usually where I start (*then only go down to 300 if needed*).
 
--   *NOTE - sometimes you can get an error when running `ggsave()` repeatedly if the saved .png file is already open on your computer in your image viewer - need to close it each time you want to edit and re-output the image file.*
+- *NOTE - sometimes you can get an error when running `ggsave()` repeatedly if the saved .png file is already open on your computer in your image viewer - need to close it each time you want to edit and re-output the image file.*
 
 ```{r}
 # output plot to .png file type, set size (default is inches), 300 or 600 dpi is high quality
@@ -400,7 +400,7 @@ Note:
 
 2.  *You can add the t-statistic and p-value (from the contrasts table) above or two-sample t-test output below, both are equivalent.*
 
-More explanation of why it is optional to (and advised by this author that you don't) use the word "significant" in the results can be found here (*but if you or your adviser want to, that is fine too, since p-value is \< 0.05*) and examples of writing results can be found here: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#step-7-report-the-model-results>
+More explanation of why it is optional to (and advised by this author that you don't) use the word "significant" in the results can be found here (*but if you or your adviser want to, that is fine too, since p-value is \< 0.05*) and examples of writing results can be found here: <https://benchbiostats.com/chapters/one-factor.html#step-7-report-the-model-results> and here <https://benchbiostats.com/chapters/one-factor.html#report-the-model-results>
 
 ## Two-sample t-test (hypothesis test)
 
@@ -419,17 +419,17 @@ More explanation of why it is optional to (and advised by this author that you d
 
 ### Welch's t-test is default that the `t.test()` function in R runs
 
--   **Welch's t-test [does NOT assume equal variances]{.underline} (***so you do not need to worry about that assumption of the regular/typical Student's t-test)*
--   <https://en.wikipedia.org/wiki/Welch%27s_t-test>
--   It defines the statistic *t* slightly differently, unlike in Student's t-test, the denominator is not based on a pooled variance estimate.
--   It is not recommended to pre-test for equal variances and then choose between Student's t-test or Welch's t-test \[5\]. Rather, Welch's t-test can be applied directly and without any substantial disadvantages to Student's t-test as noted above. Welch's t-test remains robust for skewed distributions at large sample sizes.\[6\] Reliability decreases for skewed distributions and smaller samples.
--   \[5\] Zimmerman, D. W. (2004). "A note on preliminary tests of equality of variances". British Journal of Mathematical and Statistical Psychology. 57: 173--181.
--   \[6\] Fagerland, M. W. (2012). "t-tests, non-parametric tests, and large studies---a paradox of statistical practice?". BioMed Central Medical Research Methodology. 12: 78. <doi:10.1186/1471-2288-12-78>.
+- **Welch's t-test [does NOT assume equal variances]{.underline} (***so you do not need to worry about that assumption of the regular/typical Student's t-test)*
+- <https://en.wikipedia.org/wiki/Welch%27s_t-test>
+- It defines the statistic *t* slightly differently, unlike in Student's t-test, the denominator is not based on a pooled variance estimate.
+- It is not recommended to pre-test for equal variances and then choose between Student's t-test or Welch's t-test \[5\]. Rather, Welch's t-test can be applied directly and without any substantial disadvantages to Student's t-test as noted above. Welch's t-test remains robust for skewed distributions at large sample sizes.\[6\] Reliability decreases for skewed distributions and smaller samples.
+- \[5\] Zimmerman, D. W. (2004). "A note on preliminary tests of equality of variances". British Journal of Mathematical and Statistical Psychology. 57: 173--181.
+- \[6\] Fagerland, M. W. (2012). "t-tests, non-parametric tests, and large studies---a paradox of statistical practice?". BioMed Central Medical Research Methodology. 12: 78. <doi:10.1186/1471-2288-12-78>.
 
 Use a formula within `t.test()` and your data object with `data =` argument.
 
--   **response \~ explanatory** (here: *length as a function of supplement type*)
--   By default it runs a two-tailed test.
+- **response \~ explanatory** (here: *length as a function of supplement type*)
+- By default it runs a two-tailed test.
 
 ```{r}
 # run default arguments (two-tailed test and assume un-equal variances, with Welch's correction)
@@ -446,9 +446,9 @@ This p-value is slightly larger than the one calculated in the contrasts table a
 
 ### Extra: Use of broom package tidy() function w/ t.test()
 
--   Can also wrap the `tidy()` function from broom package around the t.test, to get a "tidy" output with the same values organized in a data.frame
+- Can also wrap the `tidy()` function from broom package around the t.test, to get a "tidy" output with the same values organized in a data.frame
 
--   Can be useful if you want to store the results and directly output values (like p-value or CIs etc.)
+- Can be useful if you want to store the results and directly output values (like p-value or CIs etc.)
 
 <https://cran.r-project.org/web/packages/broom/vignettes/broom.html>
 
@@ -494,7 +494,7 @@ dat_paired
 
 *In output above can see the data are "paired" by patient_no.*
 
--   use glimpse`()` function to examine the structure of the data.frame named dat_yt
+- use glimpse`()` function to examine the structure of the data.frame named dat_yt
 
 ```{r}
 glimpse(dat_paired)
@@ -502,8 +502,8 @@ glimpse(dat_paired)
 
 ## Use `factor()` function to covert numeric or character to a factor
 
--   Change `patient_no` (which was by default set as numeric) to a factor since the numbers are just labels for each person, and could as easily been patient A, B, C... or their names used,
--   Change `count_type` to a factor, *with levels* (to specify the order of the two levels: *placebo*, then *drug* for plotting). Otherwise it would default to alphabetical order, with *drug* before *placebo*. In this case there's no right or wrong order, really up to researcher preference.
+- Change `patient_no` (which was by default set as numeric) to a factor since the numbers are just labels for each person, and could as easily been patient A, B, C... or their names used,
+- Change `count_type` to a factor, *with levels* (to specify the order of the two levels: *placebo*, then *drug* for plotting). Otherwise it would default to alphabetical order, with *drug* before *placebo*. In this case there's no right or wrong order, really up to researcher preference.
 
 ```{r}
 dat_paired <- dat_paired |>
@@ -524,8 +524,8 @@ Recognizing that these are paired data, we first want to see how much variabilit
 
 **Create an individual value plot**
 
--   color points by patient number (*note for this to work, patient number must be a factor - converted in code chunk above*)
--   Add lines connecting the pairs of points using the `group =` argument in within `aes()`in `geom_line()`
+- color points by patient number (*note for this to work, patient number must be a factor - converted in code chunk above*)
+- Add lines connecting the pairs of points using the `group =` argument in within `aes()`in `geom_line()`
 
 ```{r}
 # note in a code chunk above treatment and patient_no were 
@@ -544,16 +544,16 @@ plot_dat_paired <-
 plot_dat_paired
 ```
 
--   The drug appears to have an effect, lower cell counts relative to the placebo, in most, but not all individuals. This effect varies from person to person (*i.e., some cell counts decrease a lot, some very little or even increase slightly*)
+- The drug appears to have an effect, lower cell counts relative to the placebo, in most, but not all individuals. This effect varies from person to person (*i.e., some cell counts decrease a lot, some very little or even increase slightly*)
 
--   There is a lot of variability in overall cell counts among patients (ranging from 25 to over 125 for placebo, and similar for drug). This "patient-to-patient" variability is what we'll try to account for (remove) by converting these data to differences since this is a paired experimental design.
+- There is a lot of variability in overall cell counts among patients (ranging from 25 to over 125 for placebo, and similar for drug). This "patient-to-patient" variability is what we'll try to account for (remove) by converting these data to differences since this is a paired experimental design.
 
 ## Convert Paired Data to Differences (between pairs)
 
--   create a new version the data table named `dat_diff` starting from `dat_paired`
--   use `pivot_wider()` to put each treatment in its own column
--   then `mutate()` to add a column named `cell_count_diff` which is the difference between the two treatments: `drug - placebo`
-    -   *Note: subtraction can be done in either order - BUT you always must know what the order is to properly interpret the differences (i.e., in this case a negative difference means the placebo value was larger than the drug value, so the drug lowered the cell counts)*
+- create a new version the data table named `dat_diff` starting from `dat_paired`
+- use `pivot_wider()` to put each treatment in its own column
+- then `mutate()` to add a column named `cell_count_diff` which is the difference between the two treatments: `drug - placebo`
+  - *Note: subtraction can be done in either order - BUT you always must know what the order is to properly interpret the differences (i.e., in this case a negative difference means the placebo value was larger than the drug value, so the drug lowered the cell counts)*
 
 ```{r}
 # convert from long to wide format, then subtract drug - placebo values 
@@ -573,10 +573,10 @@ dat_diff
 
 Since the primary data we'll be using for the rest of the analysis is the differences (drug - placebo) we'll do the regular exploratory analyses with the differences:
 
--   Individual Value Plot (Stripchart)
--   Histogram
--   Boxplot
--   skim() descriptive statistics
+- Individual Value Plot (Stripchart)
+- Histogram
+- Boxplot
+- skim() descriptive statistics
 
 *And a horizontal or vertical line is added to represent the 0 value we want to compare our data to (to be an effect one way or the other the mean difference needs to be higher or lower than 0)*
 
@@ -611,15 +611,15 @@ dat_diff |>
 
 More details/descriptions can be found here:
 
-<https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/intro-linear-models.html#specific-assumptions-for-inference-with-a-linear-model>
+<https://benchbiostats.com/chapters/intro-stat-modeling.html#assumptions-for-inference-with-a-statistical-model>
 
 t-test assumptions are also described in (*way too much*) detail here: <https://en.wikipedia.org/wiki/Student%27s_t-test#Assumptions>
 
 **The most relevant are:**
 
--   data DIFFERENCES are independent (*e.g., the pairing/dependence was removed when we subtracted drug - placebo*), collected with a random sampling approach
--   model residuals are normally distributed
--   BUT - WE DO NOT HAVE TO WORRY ABOUT: "equal" variance assumption (*since there is only one column of data now that we've converted it to differences*)
+- data DIFFERENCES are independent (*e.g., the pairing/dependence was removed when we subtracted drug - placebo*), collected with a random sampling approach
+- model residuals are normally distributed
+- BUT - WE DO NOT HAVE TO WORRY ABOUT: "equal" variance assumption (*since there is only one column of data now that we've converted it to differences*)
 
 #### In practical terms just check to make sure during exploratory analysis:
 
@@ -636,9 +636,9 @@ t-test assumptions are also described in (*way too much*) detail here: <https://
 
 **For the numerical response variable cell_count_diff we'll calculate:**
 
--   **mean**: `mean()`
--   **standard deviation** (***spread in data***): `sd()`
--   **sample size**: `n()`
+- **mean**: `mean()`
+- **standard deviation** (***spread in data***): `sd()`
+- **sample size**: `n()`
 
 ```{r}
 dat_diff |>
@@ -649,11 +649,11 @@ dat_diff |>
 
 ## Fit linear model
 
--   in `lm()` formula:
+- in `lm()` formula:
 
-    -   Y \~ X
+  - Y \~ X
 
-    -   Response (*numeric variable*) \~ Explanatory (*in this case we just put \~1 because there is no categorical explanatory variable after we converted the data to differences*)
+  - Response (*numeric variable*) \~ Explanatory (*in this case we just put \~1 because there is no categorical explanatory variable after we converted the data to differences*)
 
 ```{r}
 lm_cell_diff <- lm(cell_count_diff ~ 1, data = dat_diff)
@@ -664,10 +664,10 @@ lm_cell_diff
 
 Create a "coefficient table" in a "tidy" table format using `tidy()` function from broom package, with a `conf.int = T` argument to include calculation of 95% CIs.
 
--   *Note: often the coefficient table for a linear model is not the most useful/friendly format and can include some irrelevant information. However, in this simplified case of a single mean of the differences (estimate column)* the 95% CIs produced are the same as those in the emmeans table below.
--   The p-value here can also be reported in your results - it is for the significance test: *Is the mean of the differences significantly different from 0?*
-    -   Or a better interpretation of the p-value here is: *what is the probability of getting this data if there was no difference between the paired cell counts?*
-    -   And interpret it as a %: *There is only a 2.7% chance that these data came from a true population where there was no difference between paired cell counts.*
+- *Note: often the coefficient table for a linear model is not the most useful/friendly format and can include some irrelevant information. However, in this simplified case of a single mean of the differences (estimate column)* the 95% CIs produced are the same as those in the emmeans table below.
+- The p-value here can also be reported in your results - it is for the significance test: *Is the mean of the differences significantly different from 0?*
+  - Or a better interpretation of the p-value here is: *what is the probability of getting this data if there was no difference between the paired cell counts?*
+  - And interpret it as a %: *There is only a 2.7% chance that these data came from a true population where there was no difference between paired cell counts.*
 
 ```{r}
 # use tidy function from broom package with the linear model object
@@ -680,9 +680,9 @@ lm_len_supp_coef
 
 Using `emmeans()` function from the **emmeans package**
 
--   Provides the basics: <https://cran.r-project.org/web/packages/emmeans/vignettes/AQuickStart.html>
+- Provides the basics: <https://cran.r-project.org/web/packages/emmeans/vignettes/AQuickStart.html>
 
--   & Lots of vignettes for other uses of functions in this package: <https://cran.r-project.org/web/packages/emmeans/index.html>
+- & Lots of vignettes for other uses of functions in this package: <https://cran.r-project.org/web/packages/emmeans/index.html>
 
 ```{r}
 #| label: emmeans table 
@@ -695,8 +695,8 @@ lm_cell_diff_emm
 
 *The drug lowered cell counts by an average of 29.6 cells relative to the placebo.* *95% CIs are from -54.8 to -4.3 (i.e., if we repeated the experiment, 95% of the time the true mean would be in this interval).* *At the same time this 95% CI is pretty wide, which is to be expected with only 9 individuals in the study and a decent about of "patient-to-patient" variability in cell count differences (including a couple cases that had 0 or positive count differences).*
 
--   **The mean (emmean column) in the emmeans table** is technically a "modeled" mean, but here, and for many linear models, these will be equal to the sampled mean (the mean of the differences calculated we calcualted from the data above). This may not be the case for some more complicated models.
--   **The 95% CIs in the emmeans table** (lower.CL to upper.CL) are calculated using all the data in the model (using a pooled standard deviation and sample size across both groups of data). However, in this case there is only one group of data so the 95% CIs here are the same as the one in the coefficient table above.
+- **The mean (emmean column) in the emmeans table** is technically a "modeled" mean, but here, and for many linear models, these will be equal to the sampled mean (the mean of the differences calculated we calcualted from the data above). This may not be the case for some more complicated models.
+- **The 95% CIs in the emmeans table** (lower.CL to upper.CL) are calculated using all the data in the model (using a pooled standard deviation and sample size across both groups of data). However, in this case there is only one group of data so the 95% CIs here are the same as the one in the coefficient table above.
 
 *NOTE: we will NOT make a "Contrasts Table" here because there is only one mean (and we are comparing that to 0). In the tooth cell length analysis above we had 2 means to compare and the contrasts table reports the difference between those 2 means and the 95% CI of that difference.*
 
@@ -738,7 +738,7 @@ plot_lm_cell_diff_emm
 
 *The mean (drug - placebo*) *difference was -29.6 (thicker vertical line). And the 95% CIs are from -54.8 to -4.3 (i.e., if we repeated the experiment, 95% of the time the true mean would be in this interval). At the same time this 95% CI is pretty wide, which is to be expected with only 9 individuals in the study and a decent about of patient to patient variability in cell count differences (including a couple cases that had 0 or positive count differences).*
 
--   The thick red line at 0 is there for reference since if both the placebo and drug treatments had the same (or no) effect on patent cell counts, the difference between them would be 0.
+- The thick red line at 0 is there for reference since if both the placebo and drug treatments had the same (or no) effect on patent cell counts, the difference between them would be 0.
 
 Note: `geom_pointrange()` could be used instead of `geom_crossbar()` if you prefer that style of plotting a mean with 95% CIs <https://ggplot2.tidyverse.org/reference/geom_linerange.html> (scroll down to bottom of page to see various examples of ways to plot error bars around a mean)
 
@@ -746,7 +746,7 @@ Note: `geom_pointrange()` could be used instead of `geom_crossbar()` if you pref
 
 We'll use the `plot_grid()` function from the **cowplot package** to combine our two plots above into a single results figure
 
--   The `align = "v"` and `axis = "rl"` arguments make the axes of our 2 plots line up appropriately when combined. See help file for more detail: <https://rdrr.io/cran/cowplot/man/plot_grid.html>
+- The `align = "v"` and `axis = "rl"` arguments make the axes of our 2 plots line up appropriately when combined. See help file for more detail: <https://rdrr.io/cran/cowplot/man/plot_grid.html>
 
 ```{r}
 #| fig.height: 5.0
@@ -770,17 +770,17 @@ results_plot
 
 ## Export (save) plot to a .png file with ggsave()
 
--   the file will be saved to your "working directory" (typically [the folder where your .qmd file is]{.underline}). **You'll need to look in that folder to see the .png file!**
+- the file will be saved to your "working directory" (typically [the folder where your .qmd file is]{.underline}). **You'll need to look in that folder to see the .png file!**
 
--   **You identify the type of file format you want to save it to with the [file name extension]{.underline} at the end of the file name**. Here we use **.png** (a great default for putting images into word docs or PPT presentations). But many others are available such as: ".pdf" (easy to view or email a .pdf to someone; and good to use for uploading plot files to journals if they'll accept this format), ".eps" (another vector format some journals one), ".png", ".jpeg", ".tiff", ".svg"(use for further editing in <https://inkscape.org/> freeware on windows).
+- **You identify the type of file format you want to save it to with the [file name extension]{.underline} at the end of the file name**. Here we use **.png** (a great default for putting images into word docs or PPT presentations). But many others are available such as: ".pdf" (easy to view or email a .pdf to someone; and good to use for uploading plot files to journals if they'll accept this format), ".eps" (another vector format some journals one), ".png", ".jpeg", ".tiff", ".svg"(use for further editing in <https://inkscape.org/> freeware on windows).
 
--   You can read more about the difference between ***vector vs. raster*** image file types here: <https://guides.lib.umich.edu/c.php?g=282942&p=1885352>. And more about specific file types here: <https://guides.lib.umich.edu/c.php?g=282942&p=1885348>
+- You can read more about the difference between ***vector vs. raster*** image file types here: <https://guides.lib.umich.edu/c.php?g=282942&p=1885352>. And more about specific file types here: <https://guides.lib.umich.edu/c.php?g=282942&p=1885348>
 
--   You specify the dimensions of the plot with the `width =` and `height =` arguments, default is inches. Try different widths and heights (*keeping in mind what would fit on a 8in by 11in page size*) and see what works for the plot you making. Often a plot shows the data better when it is taller or wider (***so try different ratios of width to height***).
+- You specify the dimensions of the plot with the `width =` and `height =` arguments, default is inches. Try different widths and heights (*keeping in mind what would fit on a 8in by 11in page size*) and see what works for the plot you making. Often a plot shows the data better when it is taller or wider (***so try different ratios of width to height***).
 
--   You can also specify the image "quality" using the "dots per inch" argument `dpi =` and typically you want to use 300 or 600 for a high quality image. Depending on the file type (with .tiff for example) 600 dpi can sometimes create huge file sizes, but that is usually where I start (*then only go down to 300 if needed*).
+- You can also specify the image "quality" using the "dots per inch" argument `dpi =` and typically you want to use 300 or 600 for a high quality image. Depending on the file type (with .tiff for example) 600 dpi can sometimes create huge file sizes, but that is usually where I start (*then only go down to 300 if needed*).
 
--   *NOTE - sometimes you can get an error when running `ggsave()` repeatedly if the saved .png file is already open on your computer in your image viewer - need to close it each time you want to edit and re-output the image file.*
+- *NOTE - sometimes you can get an error when running `ggsave()` repeatedly if the saved .png file is already open on your computer in your image viewer - need to close it each time you want to edit and re-output the image file.*
 
 ```{r}
 # output plot to .png file type, set size (default is inches), 300 or 600 dpi is high quality
@@ -795,15 +795,15 @@ ggsave(
 
 ## Results sentence
 
--   You should include both the **magnitude (effect size)** and **direction** of difference
--   Focus on the biology and *do not make a statistical result the subject of the sentence*.
+- You should include both the **magnitude (effect size)** and **direction** of difference
+- Focus on the biology and *do not make a statistical result the subject of the sentence*.
 
 **The drug decreased cell counts by an average of 29.6 cells (95% CI: 4.3 to 54.8, p = 0.027) compared to taking a placebo (Fig. X).**
 
--   Figure X would be combined results plot above with effects plot on top (w/ 95% CI of mean differences) and plot witht he original data points on the bottom.
--   the p-value could be found in the contrasts table above or in the t-test outputs below.
+- Figure X would be combined results plot above with effects plot on top (w/ 95% CI of mean differences) and plot witht he original data points on the bottom.
+- the p-value could be found in the contrasts table above or in the t-test outputs below.
 
-More explanation of why it is optional to (and why this author advises you don't need to) use the word "significant" in the results can be found here (*but if you or your adviser want to, that is fine too, since p-value is \< 0.05*) and other examples of writing results can be found here: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#step-7-report-the-model-results>
+More explanation of why it is optional to (and why this author advises you don't need to) use the word "significant" in the results can be found here (*but if you or your adviser want to, that is fine too, since p-value is \< 0.05*) and other examples of writing results can be found here: found here: <https://benchbiostats.com/chapters/one-factor.html#step-7-report-the-model-results> and here <https://benchbiostats.com/chapters/one-factor.html#report-the-model-results>
 
 ## Paired-Sample t-test (or one-sample t-test w/ mu = 0)
 
@@ -819,8 +819,8 @@ There are two ways to specify a paired-t-test using the `t.test()` function both
 
 (my preferred method) Calculate the differences, then run a one-sample t-test with the constant = 0 (*that you are comparing the mean of the differences to*):
 
--   **differences_variable \~ 1** (*use 1 since there is no explanatory variable*)
--   then set the *a prior* constant to 0 with argument `mu = 0`
+- **differences_variable \~ 1** (*use 1 since there is no explanatory variable*)
+- then set the *a prior* constant to 0 with argument `mu = 0`
 
 ```{r}
 # using differences data table, run as one-sample t-test compared to 0
@@ -829,9 +829,9 @@ t.test(cell_count_diff ~ 1, mu=0, data = dat_diff)
 
 Or w/ Paired Data:
 
--   **specify with formula: response \~ explanatory**
--   then add argument `paired = TRUE` (which then has the t.test function calculate the differences for you)
--   ***NOTE - DATA MUST BE SORTED so each pair is in the same order by explanatory variable, here data was entered that way, but you could use the dplyr function `arrange()` to sort rows if necessary*** <https://dplyr.tidyverse.org/reference/arrange.html>
+- **specify with formula: response \~ explanatory**
+- then add argument `paired = TRUE` (which then has the t.test function calculate the differences for you)
+- ***NOTE - DATA MUST BE SORTED so each pair is in the same order by explanatory variable, here data was entered that way, but you could use the dplyr function `arrange()` to sort rows if necessary*** <https://dplyr.tidyverse.org/reference/arrange.html>
 
 ```{r}
 # using paired data table, run as actual paired-sample t-test
@@ -844,9 +844,9 @@ t.test(cell_count~treatment, data = dat_paired, pair = TRUE)
 
 ### Extra: Use of broom package tidy() function w/ t.test()
 
--   Can also wrap the `tidy()` function from broom package around the t.test, to get a "tidy" output with the same values organized in a data.frame
+- Can also wrap the `tidy()` function from broom package around the t.test, to get a "tidy" output with the same values organized in a data.frame
 
--   Can be useful if you want to store the results and directly output values (like p-value or CIs etc.)
+- Can be useful if you want to store the results and directly output values (like p-value or CIs etc.)
 
 <https://cran.r-project.org/web/packages/broom/vignettes/broom.html>
 

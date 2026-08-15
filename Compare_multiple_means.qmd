@@ -45,19 +45,19 @@ The **broom Package** is **loaded/installed as part of [[tidymodels]{.underline}
 
 The **emmeans Package** will be used to output means, 95% CIs, p-values and other statistics from specified `lm()` objects
 
--   Lots of vignettes here that demo what the package can do: <https://cran.r-project.org/web/packages/emmeans/index.html>
+- Lots of vignettes here that demo what the package can do: <https://cran.r-project.org/web/packages/emmeans/index.html>
 
--   This one reviews the basics: <https://cran.r-project.org/web/packages/emmeans/vignettes/AQuickStart.html>
+- This one reviews the basics: <https://cran.r-project.org/web/packages/emmeans/vignettes/AQuickStart.html>
 
 The **cowplot Package** will be used here to combined multiple ggplots into a single figure. But it also contains functions for all sorts other plotting purposes (*some cool/useful, others I would not necessarily advise using*):
 
--   cowplot <https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html>
+- cowplot <https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html>
 
 ------------------------------------------------------------------------
 
 # General modeling strategy:
 
-<https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/intro-linear-models.html#modeling-strategy>
+<https://benchbiostats.com/chapters/intro-stat-modeling.html#modeling-strategy>
 
 ------------------------------------------------------------------------
 
@@ -82,8 +82,8 @@ glimpse(dat_bw)
 
 Convert the island variable (column) to a factor and use the argument `levels =` to set the order that the levels will be arranged in a plot or output table. Here we will put Laysan Island first since that is where the birds originally came from when they were translocated to Southeast Island and North Island.
 
--   NOTE:
--   *the order of your levels will affect their order in the **emmeans** and **contrast** tables you'll create below, so if you change the level here, you may need to revise that code accordingly as well.*
+- NOTE:
+- *the order of your levels will affect their order in the **emmeans** and **contrast** tables you'll create below, so if you change the level here, you may need to revise that code accordingly as well.*
 
 ```{r}
 # Can first see what the different values are 
@@ -103,19 +103,19 @@ levels(dat_bw$island)
 
 **Biological Question: Do the beak widths differ, on average, among the three populations, and in particular, between the source population (Laysan) and the two Southeast and North Island populations?**
 
--   **Response Variable**: *Beak Width (mm)*
--   **Factor (Independent Variable)**: *Island*
--   **Levels (groups/samples) in the Factor:** *Laysan Island, Southeast Island, North Island*
+- **Response Variable**: *Beak Width (mm)*
+- **Factor (Independent Variable)**: *Island*
+- **Levels (groups/samples) in the Factor:** *Laysan Island, Southeast Island, North Island*
 
 ------------------------------------------------------------------------
 
 # Initial Exploratory Analysis
 
--   **NEW**: **argument `scales = "free_y"`** within `facet_grid()` allows each histogram to have different y-axis limits (range). Although this potentially could be used with other types of faceted plots, not just histograms.
+- **NEW**: **argument `scales = "free_y"`** within `facet_grid()` allows each histogram to have different y-axis limits (range). Although this potentially could be used with other types of faceted plots, not just histograms.
 
-    -   Because sample sizes are so different among the 3 islands, without this, the bar heights for the small sample island would appear very short and hard to interpret.
+  - Because sample sizes are so different among the 3 islands, without this, the bar heights for the small sample island would appear very short and hard to interpret.
 
-    -   **However**, it is also often good to keep the default (all histograms have same y-axis range) as that shows the difference in sample sizes more easily across samples, so it really depends on the type of message your are trying to communicate with the plot. In an exploratory analysis it can be good to do both.
+  - **However**, it is also often good to keep the default (all histograms have same y-axis range) as that shows the difference in sample sizes more easily across samples, so it really depends on the type of message your are trying to communicate with the plot. In an exploratory analysis it can be good to do both.
 
 ```{r}
 # Individual Value Plot (Stripchart) beakwid_mm by island
@@ -159,13 +159,13 @@ dat_bw |>
 
 # Define the Linear Model
 
-Note this code/process is adapted from: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#oneway>
+Note this code/process is adapted from: <https://benchbiostats.com/chapters/one-factor.html>
 
--   *If you want more background, detailed explanation or need to do a more complicated analysis, that is a great resource.*
+- *If you want more background, detailed explanation or need to do a more complicated analysis, that is a great resource.*
 
 Use a formula within `lm()` and your data object with `data =` argument.
 
--   **response \~ explanatory** (here: "*beak width as a function of island"*)
+- **response \~ explanatory** (here: "*beak width as a function of island"*)
 
 ```{r}
 # linear model
@@ -181,7 +181,7 @@ lm_bw_island
 
 More details/descriptions can be found here:
 
-<https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/intro-linear-models.html#specific-assumptions-for-inference-with-a-linear-model>
+<https://benchbiostats.com/chapters/intro-stat-modeling.html#assumptions-for-inference-with-a-statistical-model>
 
 One-way (one-factor) ANOVA assumptions are also described further here:
 
@@ -189,19 +189,19 @@ One-way (one-factor) ANOVA assumptions are also described further here:
 
 ### A. simple random sample (SRS) from each population (group or treatment) & B. Observations are independent
 
--   The potential for bias arises from the fact that which of the birds were in the sample was not determined randomly. If by some chance elusive birds which were not caught differ in their beak dimensions from the less-elusive birds which are in the sample, this undercoverage would produce samples unrepresentative of the entire population. This would be something the researchers would need assess based on previous published research, their own experience, and ultimately it comes down to "best professional judgement".
+- The potential for bias arises from the fact that which of the birds were in the sample was not determined randomly. If by some chance elusive birds which were not caught differ in their beak dimensions from the less-elusive birds which are in the sample, this undercoverage would produce samples unrepresentative of the entire population. This would be something the researchers would need assess based on previous published research, their own experience, and ultimately it comes down to "best professional judgement".
 
 ### C. Residuals follow a normal distribution
 
--   Same as "The distribution of Y within each group is normally distributed."
+- Same as "The distribution of Y within each group is normally distributed."
 
 *Assess "normality" assumption for this example:*
 
--   **Start by using the exploratory analysis plots you already made above** *(Histograms, Individual Value Plots, Boxplots):*
+- **Start by using the exploratory analysis plots you already made above** *(Histograms, Individual Value Plots, Boxplots):*
 
-    -   *You can see in those plots that the distribution of data for each group (Island) are pretty symmetrical. The distribution for North island might look a little right skewed (positive tail) however the sample size is small (n = 10) so that skewness is just due to a couple bird widths being a little smaller, so not something I'd be concerned about.*
+  - *You can see in those plots that the distribution of data for each group (Island) are pretty symmetrical. The distribution for North island might look a little right skewed (positive tail) however the sample size is small (n = 10) so that skewness is just due to a couple bird widths being a little smaller, so not something I'd be concerned about.*
 
--   *We can also assess the assumption more formally by extracting the model residuals like we did in a regression context earlier in the semester using the `augment()` function with the linear model object (residuals = difference between the predicted mean for each group and the actual data points) and then plotting those residuals.*
+- *We can also assess the assumption more formally by extracting the model residuals like we did in a regression context earlier in the semester using the `augment()` function with the linear model object (residuals = difference between the predicted mean for each group and the actual data points) and then plotting those residuals.*
 
 ```{r}
 # use augment function (in broom package loaded with tidymodels)
@@ -215,20 +215,20 @@ ggplot(lm_bw_island_augment, aes(x =  island, y = .resid)) +
   geom_point()
 ```
 
--   *As expected the histogram of the residuals looks pretty symmetrical (i.e., "Normal" enough).*
--   *And the residuals vs. predictor (x-values) plot (what is typically used for regression model assumption checking) looks fine (symmetrical around y = 0) as well.*
+- *As expected the histogram of the residuals looks pretty symmetrical (i.e., "Normal" enough).*
+- *And the residuals vs. predictor (x-values) plot (what is typically used for regression model assumption checking) looks fine (symmetrical around y = 0) as well.*
 
 ### D. Check for **"equal" variances among groups (*homoscedasticity*)**
 
--   This assumption says that all groups (samples) of data have "the same" variance (e.g., spread, sd), but in terms of checking it's about making sure the standard deviations are not too different from each other.
+- This assumption says that all groups (samples) of data have "the same" variance (e.g., spread, sd), but in terms of checking it's about making sure the standard deviations are not too different from each other.
 
 First look at plots above (histogram, boxplot, individual value plot): ***Does the spread look similar in 2 samples?***
 
 Then assess equal variance assumption with a "*rule of thumb*":
 
--   **Primary rule:** (*When n/group \> 5 & n/groups similar*) Consider alternative approach if largest sd \> 4\*smallest sd (*i.e., variances not similar enough*)
--   **Secondary Rule:** (*When n/group NOT similar*) Be extra cautious when largest sd is associated with the group with the smallest n. In this case consider alternative approach if largest sd \> 2\*smallest sd.
--   see [Zar **Biostatistical Analysis** textbook](https://csu-cpp.primo.exlibrisgroup.com/discovery/fulldisplay?docid=alma991004980729702915&context=L&vid=01CALS_PUP:01CALS_PUP&lang=en&search_scope=everything&adaptor=Local%20Search%20Engine&tab=Everything&query=any,contains,Biostatistical%20Analysis%20%20Jerrold%20H.%20Zar&offset=0) for more info (*and/or could cite in thesis/paper if necessary*)
+- **Primary rule:** (*When n/group \> 5 & n/groups similar*) Consider alternative approach if largest sd \> 4\*smallest sd (*i.e., variances not similar enough*)
+- **Secondary Rule:** (*When n/group NOT similar*) Be extra cautious when largest sd is associated with the group with the smallest n. In this case consider alternative approach if largest sd \> 2\*smallest sd.
+- see [Zar **Biostatistical Analysis** textbook](https://csu-cpp.primo.exlibrisgroup.com/discovery/fulldisplay?docid=alma991004980729702915&context=L&vid=01CALS_PUP:01CALS_PUP&lang=en&search_scope=everything&adaptor=Local%20Search%20Engine&tab=Everything&query=any,contains,Biostatistical%20Analysis%20%20Jerrold%20H.%20Zar&offset=0) for more info (*and/or could cite in thesis/paper if necessary*)
 
 [*If there are large outliers, one/both of the distributions are very highly skewed, and/or the spread in the data is very different between groups*]{.underline}*, then can consider other options for calculating the 95% CIs (e.g., bootstrapping), using a Generalized linear model, and/or running a non-parametric test.*
 
@@ -244,16 +244,16 @@ dat_bw |>
             n_beakwid_mm = n())
 ```
 
--   *sample sizes are very different ("not similar") 62 vs. 20 and 10, so would want to be more cautious, but*
--   *largest sd (SouthEast Island 0.31 ) is NOT 2\*sd of smallest sd (Laysan 0.22) - SO WE ARE OK, Variances are "equal enough"*
-    -   Also smallest n (North w/ 10) does not have smalled sd (0.24)
--   *also interesting that in comparison to what you see in the plots, North actually has a larger sd than Laysan -- since spread/range looks wider for Laysan in the plots - but remember the sd in-class activity - more points close to mean (in Laysan sample) results Laysan having a smaller [average deviation]{.underline} from mean.*
+- *sample sizes are very different ("not similar") 62 vs. 20 and 10, so would want to be more cautious, but*
+- *largest sd (SouthEast Island 0.31 ) is NOT 2\*sd of smallest sd (Laysan 0.22) - SO WE ARE OK, Variances are "equal enough"*
+  - Also smallest n (North w/ 10) does not have smalled sd (0.24)
+- *also interesting that in comparison to what you see in the plots, North actually has a larger sd than Laysan -- since spread/range looks wider for Laysan in the plots - but remember the sd in-class activity - more points close to mean (in Laysan sample) results Laysan having a smaller [average deviation]{.underline} from mean.*
 
 ## **What you can write in thesis or paper methods *about assumptions checking*:**
 
 **"Data distributions and model residuals were assessed to confirm that they met linear model assumptions."**
 
--   *Then, if pushed by thesis adviser/committee or paper reviewers, you could add the specific details they are requesting.*
+- *Then, if pushed by thesis adviser/committee or paper reviewers, you could add the specific details they are requesting.*
 
 ## What if data do not meet assumptions?
 
@@ -261,15 +261,15 @@ dat_bw |>
 
 **You could choose to:**
 
--   Use a General**ized** Linear Model *that assumes a different (than Normal) distribution*
+- Use a General**ized** Linear Model *that assumes a different (than Normal) distribution*
 
-    -   If you are going to be working a lot with data that doesn't typically meet normality assumptions (for example, if data are counts of things with mostly very small counts, but then sometimes very large counts, *i.e., data strongly skewed right*) then this could be a good approach to learn and use.
+  - If you are going to be working a lot with data that doesn't typically meet normality assumptions (for example, if data are counts of things with mostly very small counts, but then sometimes very large counts, *i.e., data strongly skewed right*) then this could be a good approach to learn and use.
 
--   Use other methods that do not assume normal residual distributions and/or similar variances (e.g., bootstrap confidence intervals or permutation tests). We will discuss some of these later in the semester.
+- Use other methods that do not assume normal residual distributions and/or similar variances (e.g., bootstrap confidence intervals or permutation tests). We will discuss some of these later in the semester.
 
--   (*if you must just get a p-value*) A nonparametric alternative test for one-way ANOVA using the Kruskal-Wallis test `kruskal.test()` (base R package). However, nonparametric tests do not provide effect sizes so this is not a preferred method.
+- (*if you must just get a p-value*) A nonparametric alternative test for one-way ANOVA using the Kruskal-Wallis test `kruskal.test()` (base R package). However, nonparametric tests do not provide effect sizes so this is not a preferred method.
 
--   (*also easy, but not preferred*) Transform your data (e.g., Log10 or square-root transform the response variable) to try to have the transformed variable meet regular model assumptions. However this means your inference will be based on the transformed version of the variable which is often hard(er) to interpret.
+- (*also easy, but not preferred*) Transform your data (e.g., Log10 or square-root transform the response variable) to try to have the transformed variable meet regular model assumptions. However this means your inference will be based on the transformed version of the variable which is often hard(er) to interpret.
 
 ------------------------------------------------------------------------
 
@@ -277,9 +277,9 @@ dat_bw |>
 
 Create a "coefficient table" in a "tidy" table format
 
--   Uses `tidy()` function from broom package, with a `conf.int = T` argument to include calculation of 95% CIs.
+- Uses `tidy()` function from broom package, with a `conf.int = T` argument to include calculation of 95% CIs.
 
--   *Note: the coefficient table is not the most useful/friendly format and can include some irrelevant information. While it is a good idea to create and review it, but you will mostly use/interpret the emmeans and contrast (pairs) tables below.*
+- *Note: the coefficient table is not the most useful/friendly format and can include some irrelevant information. While it is a good idea to create and review it, but you will mostly use/interpret the emmeans and contrast (pairs) tables below.*
 
 ```{r}
 # use tidy function from broom package with the 
@@ -289,7 +289,7 @@ lm_bw_island_coef <- tidy(lm_bw_island, conf.int = TRUE)
 lm_bw_island_coef
 ```
 
-More detail on what is in the coefficient table here: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#oneway-what-coefs-are>
+More detail on what is in the coefficient table here: <https://benchbiostats.com/chapters/one-factor.html#the-estimates-in-the-coefficient-table-are-estimates-of-the-parameters-of-the-linear-model-fit-to-the-data.>
 
 ------------------------------------------------------------------------
 
@@ -299,9 +299,9 @@ Calculate a mean and 95% confidence interval for each group (island) of beak wid
 
 Using `emmeans()` function from the **emmeans package**
 
--   Provides the basics: <https://cran.r-project.org/web/packages/emmeans/vignettes/AQuickStart.html>
+- Provides the basics: <https://cran.r-project.org/web/packages/emmeans/vignettes/AQuickStart.html>
 
--   & Lots of vignettes for other uses of functions in this package: <https://cran.r-project.org/web/packages/emmeans/index.html>
+- & Lots of vignettes for other uses of functions in this package: <https://cran.r-project.org/web/packages/emmeans/index.html>
 
 ```{r}
 # create emmeans table object
@@ -310,11 +310,11 @@ lm_bw_island_emm <- emmeans(lm_bw_island, ~ island)
 lm_bw_island_emm
 ```
 
--   **The means (emmean column) in the emmeans table** are technically "modeled" means, but here, and for many linear models, these will be equal to the sampled means (the means calculated from each group of raw data). This may not be the case for some more complicated models.
+- **The means (emmean column) in the emmeans table** are technically "modeled" means, but here, and for many linear models, these will be equal to the sampled means (the means calculated from each group of raw data). This may not be the case for some more complicated models.
 
--   **The 95% CIs in the emmeans table** (lower.CL to upper.CL) are calculated using all the data in the model (using a pooled standard deviation and sample size across both groups of data).
+- **The 95% CIs in the emmeans table** (lower.CL to upper.CL) are calculated using all the data in the model (using a pooled standard deviation and sample size across both groups of data).
 
-For more explanation see: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#the-emmeans-table-is-a-table-of-modeled-means-and-inferential-statistics>
+For more explanation see: <https://benchbiostats.com/chapters/one-factor.html#the-emmeans-table-is-a-table-of-modeled-means-and-inferential-statistics>
 
 ------------------------------------------------------------------------
 
@@ -322,7 +322,7 @@ For more explanation see: <https://www.middleprofessor.com/files/applied-biostat
 
 (The bottom part of) your final results plot for this type of analysis should show all the raw data points in each group (island) so the reader can see the distributions of data along with the means and 95% CIs for each group that are calculated from those data.
 
--   *Note: This will be the bottom part of your final results plot regardless of what option you choose in the next steps to do the pairwise comparisons of the means.*
+- *Note: This will be the bottom part of your final results plot regardless of what option you choose in the next steps to do the pairwise comparisons of the means.*
 
 ```{r}
 #| fig.height: 3.0
@@ -356,7 +356,7 @@ plot_lm_bw_island_emm
 
 This plot shows the raw data for each group (Island). The `geom_crossbar()` plots the group means (middle line) and the 95% CIs from the associated linear model which were calculated in the emmeans table above.
 
--   Note `geom_pointrange()` could be used instead of `geom_crossbar()` if you prefer that style of plotting mean + CIs <https://ggplot2.tidyverse.org/reference/geom_linerange.html> (scroll down to bottom of page to see various error bar plotting examples)
+- Note `geom_pointrange()` could be used instead of `geom_crossbar()` if you prefer that style of plotting mean + CIs <https://ggplot2.tidyverse.org/reference/geom_linerange.html> (scroll down to bottom of page to see various error bar plotting examples)
 
 ------------------------------------------------------------------------
 
@@ -372,36 +372,36 @@ This plot shows the raw data for each group (Island). The `geom_crossbar()` plot
 
 2.  **one type of post-hoc (multiple comparisons) procedure that seems most appropriate for the question/experiment/data.**
 
--   Here we'll first demo the **Tukey HSD** procedure which is one of the most common "post-hoc" (*i.e., after the fact*) procedures. This is an "all possible" pairwise comparisons approach that is appropriate if your analysis is exploratory (i.e., you didn't have specific hypotheses from the outset that you'd expect certain effects and just want to compare all the treatments to see what the data shows).
--   Next we'll demo the **pre-planned contrast** approach advocated by the author of the text linked to below. This is for a situation where you expected certain treatments may have specific effects and your study is most focused on those specific treatments.
--   But you should NOT use both in your own data analysis or your class assignment (***just pick the most appropriate one to use, and use only that approach***).
-    -   *i.e., you SHOULD NOT first do the Tukey HSD procedure, and if you find that the results were not significant, then do the less conservative pre-planned contrasts procedure.*
+- Here we'll first demo the **Tukey HSD** procedure which is one of the most common "post-hoc" (*i.e., after the fact*) procedures. This is an "all possible" pairwise comparisons approach that is appropriate if your analysis is exploratory (i.e., you didn't have specific hypotheses from the outset that you'd expect certain effects and just want to compare all the treatments to see what the data shows).
+- Next we'll demo the **pre-planned contrast** approach advocated by the author of the text linked to below. This is for a situation where you expected certain treatments may have specific effects and your study is most focused on those specific treatments.
+- But you should NOT use both in your own data analysis or your class assignment (***just pick the most appropriate one to use, and use only that approach***).
+  - *i.e., you SHOULD NOT first do the Tukey HSD procedure, and if you find that the results were not significant, then do the less conservative pre-planned contrasts procedure.*
 
 For more detail on different types (other options when analyzing your own data) of multiple testing/adjustment procedures see:
 
-<https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#adjustment-for-multiple-tests>
+<https://benchbiostats.com/chapters/multiple-testing.html>
 
-And see:
+And see for specific posthoc tests:
 
-<https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/factorial.html#twoway-multiple-tests>
+<https://benchbiostats.com/chapters/two-factors.html#twoway-multiple-tests>
 
 ## **Option 1: Tukey Honestly Significant Difference (HSD)** contrasts table & corresponding "effects" plot w/ adjusted 95% CIs and p-values
 
 <https://en.wikipedia.org/wiki/Tukey%27s_range_test>
 
--   runs all possible pairwise tests by default, but the more tests (*determined by the number of levels within your factor variable*), the more conservative each test becomes (i.e., more each p-value is adjusted larger)
+- runs all possible pairwise tests by default, but the more tests (*determined by the number of levels within your factor variable*), the more conservative each test becomes (i.e., more each p-value is adjusted larger)
 
 **"Contrasts table"** using `contrast()` function from **emmeans package**
 
--   For details on the argument `method =` see help("contrast-methods")
+- For details on the argument `method =` see help("contrast-methods")
 
 <https://cran.r-project.org/web/packages/emmeans/vignettes/comparisons.html>
 
--   The Tukey HSD procedure is specified in the `contrast()` function by using both arguments:
-    -   `method = "revpairwise"` or `method = "pairwise"` which will do "all possible" pairwise comparisons.
-        -   The choice of pairwise vs. revpairwise depends on which groups (islands) you want to be first in the difference calculation (switching them with make positive differences become negative and viceversa).
-        -   How many pairwise comparisons it does depends on how many groups/levels are in your categorical variable.
-    -   `adjust = "tukey"` specifies that the Tukey HSD adjustment will be made to the pairwise 95% CIs and p-values. They will be adjusted larger, and how big that adjustment is depends on the total number of pairwise comparisons being done.
+- The Tukey HSD procedure is specified in the `contrast()` function by using both arguments:
+  - `method = "revpairwise"` or `method = "pairwise"` which will do "all possible" pairwise comparisons.
+    - The choice of pairwise vs. revpairwise depends on which groups (islands) you want to be first in the difference calculation (switching them with make positive differences become negative and viceversa).
+    - How many pairwise comparisons it does depends on how many groups/levels are in your categorical variable.
+  - `adjust = "tukey"` specifies that the Tukey HSD adjustment will be made to the pairwise 95% CIs and p-values. They will be adjusted larger, and how big that adjustment is depends on the total number of pairwise comparisons being done.
 
 ```{r}
 lm_bw_island_pairs <- contrast(lm_bw_island_emm,
@@ -417,16 +417,16 @@ lm_bw_island_pairs
 
 This table is important for reporting treatment effects and 95% CI and it `lm_len_supp_pairs` is used in the ggplot code below to create the effects plot.
 
--   A **contrast** is a difference in means.
--   The **"estimate" column** is this difference
--   **95% CI of this difference** is lower.CL to upper.CL
--   The columns "t.ratio" and "p.value" contains the t (test statistic) and p values of the significance test of the estimate. The t-statistic is the ratio of the estimate (difference in means) to the SE of the estimate (which includes sd, the spread in the data, and the sample size). It is a signal (the estimate) to noise (SE of the estimate) ratio.
--   The p-values here can also be reported in your results, it is for the significance test: *is the difference between the 2 means significantly different from 0?*
-    -   Or a better interpretation of the p-value here is: *what is the probability of getting this data if there was no difference between the 2 means?*
-    -   And interpret it as a %: *There is only a 3.3%, \<.01%, or 5.1% chance that these data came from a true population where there was no difference between the respective pairs of means.*
--   *The the p-values are adjusted (made larger) because you are running 3 different pairwise t-tests simultaneously.*
+- A **contrast** is a difference in means.
+- The **"estimate" column** is this difference
+- **95% CI of this difference** is lower.CL to upper.CL
+- The columns "t.ratio" and "p.value" contains the t (test statistic) and p values of the significance test of the estimate. The t-statistic is the ratio of the estimate (difference in means) to the SE of the estimate (which includes sd, the spread in the data, and the sample size). It is a signal (the estimate) to noise (SE of the estimate) ratio.
+- The p-values here can also be reported in your results, it is for the significance test: *is the difference between the 2 means significantly different from 0?*
+  - Or a better interpretation of the p-value here is: *what is the probability of getting this data if there was no difference between the 2 means?*
+  - And interpret it as a %: *There is only a 3.3%, \<.01%, or 5.1% chance that these data came from a true population where there was no difference between the respective pairs of means.*
+- *The the p-values are adjusted (made larger) because you are running 3 different pairwise t-tests simultaneously.*
 
-For more explanation see: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#estimates-of-the-effects-are-in-the-contrasts-table>
+For more explanation see: <https://benchbiostats.com/chapters/one-factor.html#estimates-of-the-effects-are-in-the-contrasts-table>
 
 ### Effects plot w/ 95% CI (Tukey HSD all pairwise comparisons version)
 
@@ -460,22 +460,22 @@ plot_lm_bw_island_pairs
 
 This plot shows the 3 pairwise differences between the 3 means (each combination of 2 islands), and the 95% CI for those differences (i.e., *"if the experiment was repeated, 95% of the time you'd expect the true population mean of the difference between those 95% CIs"*).
 
--   The dashed line at 0 is there for reference since if the islands had the same average beak width, the difference in their means would be 0.
+- The dashed line at 0 is there for reference since if the islands had the same average beak width, the difference in their means would be 0.
 
--   *The pairwise difference between North & Laysan was the largest (and it's 95% CI was not close to crossing 0), it also had the smallest Tukey HSD adjusted p-value in the output above.*
+- *The pairwise difference between North & Laysan was the largest (and it's 95% CI was not close to crossing 0), it also had the smallest Tukey HSD adjusted p-value in the output above.*
 
--   *Note for (Southeast - Laysan, and North - Southeast) the two with p-values in the output above close to 0.05, the lower limit of their 95% CIs are close to 0 (i.e. 0 = no difference in beak widths)*
+- *Note for (Southeast - Laysan, and North - Southeast) the two with p-values in the output above close to 0.05, the lower limit of their 95% CIs are close to 0 (i.e. 0 = no difference in beak widths)*
 
 ## Option 2: Pre-planned contrasts (no adjustments) contrasts table & corresponding "effects" plot w/ 95% CI and p-values
 
 "Pre-planned contrasts" are typically used if you know in advance that you are primarily interested in just some of the specific pairwise comparisons and these do not have the 95% CIs and p-values "adjusted." However, the author of the text below advocates for using a version of this approach in most situations (*see more below*).
 
--   Biological question: Do the beak widths differ, on average, among the three populations, **and in particular, between the source population (Laysan) and the two Southeast and North Island populations**?
--   So we'll focus on 2 (of the three possible) pairwise comparisons:
-    -   SE - Laysan
-    -   N - Laysan
+- Biological question: Do the beak widths differ, on average, among the three populations, **and in particular, between the source population (Laysan) and the two Southeast and North Island populations**?
+- So we'll focus on 2 (of the three possible) pairwise comparisons:
+  - SE - Laysan
+  - N - Laysan
 
-According to: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/factorial.html#twoway-multiple-tests>
+According to: <https://benchbiostats.com/chapters/two-factors.html#twoway-multiple-tests>
 
 "*The most transparent best practice is to report all, **unadjusted p-values**. Reporting all unadjusted p-values allows a reader to compute whatever adjustment they deem appropriate for the question they are addressing. Reporting all p-values could overwhelm the principal message of a figure. Instead, **report focal (planned comparison) p-values in the figure and a table of all p-values in the supplement**. There should be a table of these for every experiment in the supplement.*"
 
@@ -518,15 +518,15 @@ lm_bw_island_planned
 
 This table is important for reporting treatment effects and 95% CI and it `lm_bw_island_planned` is used in the ggplot code below to create the effects plot.
 
--   A **contrast** is a difference in means.
--   The **"estimate" column** is this difference
--   **95% CI of this difference** is lower.CL to upper.CL
--   The columns "t.ratio" and "p.value" contains the t (test statistic) and p values of the significance test of the estimate. The t-statistic is the ratio of the estimate (difference in means) to the SE of the estimate (which includes sd, the spread in the data, and the sample size). It is a signal (the estimate) to noise (SE of the estimate) ratio.
--   The p-values here can also be reported in your results, it is for the significance test: *is the difference between the 2 means significantly different from 0?*
-    -   Or a better interpretation of the p-value here is: *what is the probability of getting this data if there was no difference between the 2 means?*
-    -   And interpret it as a %: *There is only a 1.3% and \<.01% chance that these data came from a true population where there was no difference between the respective pairs of means.*
+- A **contrast** is a difference in means.
+- The **"estimate" column** is this difference
+- **95% CI of this difference** is lower.CL to upper.CL
+- The columns "t.ratio" and "p.value" contains the t (test statistic) and p values of the significance test of the estimate. The t-statistic is the ratio of the estimate (difference in means) to the SE of the estimate (which includes sd, the spread in the data, and the sample size). It is a signal (the estimate) to noise (SE of the estimate) ratio.
+- The p-values here can also be reported in your results, it is for the significance test: *is the difference between the 2 means significantly different from 0?*
+  - Or a better interpretation of the p-value here is: *what is the probability of getting this data if there was no difference between the 2 means?*
+  - And interpret it as a %: *There is only a 1.3% and \<.01% chance that these data came from a true population where there was no difference between the respective pairs of means.*
 
-For more explanation see: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#estimates-of-the-effects-are-in-the-contrasts-table>
+For more explanation see: <https://benchbiostats.com/chapters/one-factor.html#estimates-of-the-effects-are-in-the-contrasts-table>
 
 ### Effects plot w/ 95% CI (preplanned contrasts version)
 
@@ -565,7 +565,7 @@ The dashed line at 0 is there for reference since if the islands had the same av
 
 ### Table of all pairwise contrasts no adjustments (to include in appendix etc.)
 
-According to: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/factorial.html#twoway-multiple-tests>
+According to: <https://benchbiostats.com/chapters/two-factors.html#twoway-multiple-tests>
 
 "The most transparent best practice is to **report all, unadjusted p-values**. Reporting all unadjusted p-values allows a reader to compute whatever adjustment they deem appropriate for the question they are addressing. Reporting all p-values could overwhelm the principal message of a figure. Instead, report focal (planned comparison) p-values in the figure and **a table of all p-values in the supplement. There should be a table of these for every experiment in the supplement.**"
 
@@ -590,7 +590,7 @@ Use the effects plot above (Tukey HSD or pre-planned contrasts) for the **approa
 
 We'll use the `plot_grid()` function from the **cowplot package** to combine our two plots above into a single results figure.
 
--   The `align = "v"` and `axis = "rl"` arguments make the axes of our 2 plots line up appropriately when combined. See help file for more detail: <https://rdrr.io/cran/cowplot/man/plot_grid.html>
+- The `align = "v"` and `axis = "rl"` arguments make the axes of our 2 plots line up appropriately when combined. See help file for more detail: <https://rdrr.io/cran/cowplot/man/plot_grid.html>
 
 ```{r}
 #| fig.height: 4.0
@@ -613,7 +613,7 @@ results_plot
 
 We'll use the `plot_grid()` function from the **cowplot package** to combine our two plots above into a single results figure.
 
--   The `align = "v"` and `axis = "rl"` arguments make the axes of our 2 plots line up appropriately when combined. See help file for more detail: <https://rdrr.io/cran/cowplot/man/plot_grid.html>
+- The `align = "v"` and `axis = "rl"` arguments make the axes of our 2 plots line up appropriately when combined. See help file for more detail: <https://rdrr.io/cran/cowplot/man/plot_grid.html>
 
 ```{r}
 #| fig.height: 4.0
@@ -632,23 +632,23 @@ results_plot <- plot_grid(
 results_plot
 ```
 
-This primary results plot is adapted from code in (the version you are using is based on regular ggplot code): <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#step-6-plot-the-model>
+This primary results plot is adapted from code in (the version you are using is based on regular ggplot code): <https://benchbiostats.com/chapters/one-factor.html#step-6-plot-the-model>
 
 ------------------------------------------------------------------------
 
 # Write (save) plot to a .png file with ggsave()
 
--   the file will be saved to your "working directory" (typically [the folder where your .qmd file is]{.underline}). **You'll need to look in that folder to see the .png file!**
+- the file will be saved to your "working directory" (typically [the folder where your .qmd file is]{.underline}). **You'll need to look in that folder to see the .png file!**
 
--   **You identify the type of file format you want to save it to with the [file name extension]{.underline} at the end of the file name**. Here we use **.png** (a great default for putting images into word docs or PPT presentations). But many others are available such as: ".pdf" (easy to view or email a .pdf to someone; and good to use for uploading plot files to journals if they'll accept this format), ".eps" (another vector format some journals one), ".png", ".jpeg", ".tiff", ".svg"(use for further editing in <https://inkscape.org/> freeware on windows).
+- **You identify the type of file format you want to save it to with the [file name extension]{.underline} at the end of the file name**. Here we use **.png** (a great default for putting images into word docs or PPT presentations). But many others are available such as: ".pdf" (easy to view or email a .pdf to someone; and good to use for uploading plot files to journals if they'll accept this format), ".eps" (another vector format some journals one), ".png", ".jpeg", ".tiff", ".svg"(use for further editing in <https://inkscape.org/> freeware on windows).
 
--   You can read more about the difference between ***vector vs. raster*** image file types here: <https://guides.lib.umich.edu/c.php?g=282942&p=1885352>. And more about specific file types here: <https://guides.lib.umich.edu/c.php?g=282942&p=1885348>
+- You can read more about the difference between ***vector vs. raster*** image file types here: <https://guides.lib.umich.edu/c.php?g=282942&p=1885352>. And more about specific file types here: <https://guides.lib.umich.edu/c.php?g=282942&p=1885348>
 
--   You specify the dimensions of the plot with the `width =` and `height =` arguments, default is inches. Try different widths and heights (*keeping in mind what would fit on a 8in by 11in page size*) and see what works for the plot you making. Often a plot shows the data better when it is taller or wider (***so try different ratios of width to height***).
+- You specify the dimensions of the plot with the `width =` and `height =` arguments, default is inches. Try different widths and heights (*keeping in mind what would fit on a 8in by 11in page size*) and see what works for the plot you making. Often a plot shows the data better when it is taller or wider (***so try different ratios of width to height***).
 
--   You can also specify the image "quality" using the "dots per inch" argument `dpi =` and typically you want to use 300 or 600 for a high quality image. Depending on the file type (with .tiff for example) 600 dpi can sometimes create huge file sizes, but that is usually where I start (*then only go down to 300 if needed*).
+- You can also specify the image "quality" using the "dots per inch" argument `dpi =` and typically you want to use 300 or 600 for a high quality image. Depending on the file type (with .tiff for example) 600 dpi can sometimes create huge file sizes, but that is usually where I start (*then only go down to 300 if needed*).
 
--   *NOTE - sometimes you can get an error when running `ggsave()` repeatedly if the saved .png file is already open on your computer in your image viewer - need to close it each time you want to edit and re-output the image file.*
+- *NOTE - sometimes you can get an error when running `ggsave()` repeatedly if the saved .png file is already open on your computer in your image viewer - need to close it each time you want to edit and re-output the image file.*
 
 ```{r}
 # output plot to .png file type, set size (default is inches),
@@ -668,9 +668,9 @@ ggsave(
 
 When writing your results it sometimes, especially for readers that are not super familiar with the study system, can help to scale effect sizes (pairwise differences between means in this case) as a percentage.
 
--   Pull the appropriate mean difference and island mean values from the contrast and emmeans tables above.
--   effect size as a **percent difference** (difference between the means/smaller mean \* 100)
--   *Note: "**Direction**" of effect size in this instance refers to indicating which mean is larger.*
+- Pull the appropriate mean difference and island mean values from the contrast and emmeans tables above.
+- effect size as a **percent difference** (difference between the means/smaller mean \* 100)
+- *Note: "**Direction**" of effect size in this instance refers to indicating which mean is larger.*
 
 ```{r}
 # effect size: Southeast - Laysan expressed as 
@@ -710,27 +710,27 @@ Note:
 
 1.  *(Fig. X) would be citing the combined results figure for the preplanned contrasts option that includes (top) the pre-planned contrasts effects plot and (below) plot w/ the data points, means and the 95% CIs for each group.*
 
-More explanation of why it is advised you don't use the word "significant" in the results can be found here (*but if you or your adviser want to, that is fine too, since p-values were \< 0.05*) and examples of writing results can be found here: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#step-7-report-the-model-results>
+More explanation of why it is advised you don't use the word "significant" in the results can be found here (*but if you or your adviser want to, that is fine too, since p-values were \< 0.05*) and examples of writing results can be found here: <https://benchbiostats.com/chapters/one-factor.html#step-7-report-the-model-results>
 
 ------------------------------------------------------------------------
 
 # (Optional) One-way ANOVA (hypothesis test)
 
-[This Author](https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#how-to-generate-anova-tables) advocates that you only run an ANOVA "*if your PI, manager, thesis committee, or journal editor insists that you do ANOVA, and you cannot convince them otherwise.... Note that even though we are generating that table, the computation of the contrast table and all inference from that is not part of the ANOVA.*"
+[This Author](https://benchbiostats.com/chapters/one-factor.html#how-to-generate-anova-tables) advocates that you only run an ANOVA "*if your PI, manager, thesis committee, or journal editor insists that you do ANOVA, and you cannot convince them otherwise.... Note that even though we are generating that table, the computation of the contrast table and all inference from that is not part of the ANOVA.*"
 
 Null Hypothesis: there is **no difference** (*i.e., they are equal*) in the population mean beak widths of the birds from the 3 islands
 
 Alternative Hypothesis: **at least one** population mean **is different** from the others
 
--   *Note: this doesn't mean all 3 are different from each other in this example (only one needs to be different)*
+- *Note: this doesn't mean all 3 are different from each other in this example (only one needs to be different)*
 
 ### ANOVA Table w/ `anova()` function using linear model object
 
--   **use the `anova()` function with the linear model object created in the code chunk above**
+- **use the `anova()` function with the linear model object created in the code chunk above**
 
-For more background see: <https://www.middleprofessor.com/files/applied-biostatistics_bookdown/_book/oneway.html#how-to-generate-anova-tables>
+For more background see: <https://benchbiostats.com/chapters/one-factor.html#how-to-generate-anova-tables>
 
--   This text discusses other options for running various "flavors" of ANOVA in R (i.e., different "types" of sums-of-squares that can be used etc.
+- This text discusses other options for running various "flavors" of ANOVA in R (i.e., different "types" of sums-of-squares that can be used etc.
 
 ```{r}
 # anova function
@@ -751,7 +751,7 @@ Using statistics produced ***just in the one-way ANOVA output***, what you can s
 
 **Island had a significant effect on mean beak width (one-way ANOVA, F~2,89~ = 12.1, p \< 0.001, Fig. X).**
 
--   *Note: with just the ANOVA result you can't say anything about which specific means are different from another.*
+- *Note: with just the ANOVA result you can't say anything about which specific means are different from another.*
 
 ------------------------------------------------------------------------
 
@@ -765,4 +765,4 @@ In statistics, the false discovery rate (FDR) is a method of conceptualizing the
 
 FDR-controlling procedures are designed to control the expected proportion of "discoveries" (rejected null hypotheses) that are false (incorrect rejections of the null). FDR-controlling procedures provide less stringent control of Type I errors compared to **familywise error rate (FWER) controlling procedures** (such as the p-value adjustments or corrections we did above with Tukey's HSD post-hoc tests), which control the probability of at least one Type I error. Thus, FDR-controlling procedures have greater power (i.e., won't raise your p-values as much), at the cost of increased numbers of Type I errors.
 
--   *This type of procedure is now being used in ecological or other studies (albeit still rarely) in situations where there are a lot of different variables being compared using repeated statistical tests and the researchers want to try to control for the multiple comparisons issue in some fashion, but the more conservative methods (e.g., Tukey's HSD used above) either don't seem appropriate or would adjust the p-values so much (so high) that it wouldn't seem reasonable.*
+- *This type of procedure is now being used in ecological or other studies (albeit still rarely) in situations where there are a lot of different variables being compared using repeated statistical tests and the researchers want to try to control for the multiple comparisons issue in some fashion, but the more conservative methods (e.g., Tukey's HSD used above) either don't seem appropriate or would adjust the p-values so much (so high) that it wouldn't seem reasonable.*
