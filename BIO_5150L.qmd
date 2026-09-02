@@ -1,0 +1,9 @@
+---
+title: "BIO 5150L Resources and Tutorials"
+---
+
+<!--
+code/text you don't want to show up goes here (to be hidden in the final output)
+(coming soon)
+-->
+[Using Git & GitHub Tutorial](https://claisselab.github.io/BIO_5100/Distributions.html)
