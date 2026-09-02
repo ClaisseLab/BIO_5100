@@ -2,6 +2,9 @@
 title: "BIO 5150L Resources and Tutorials"
 ---
 
+[Download the .R script organization template](downloads/Organized_Script.R){download="BIO_5150L_R_script_template.R"}
+- You can download and then use this template as a starting point for new R scripts and as a guide for organizing your code.
+
 <!--
 code/text you don't want to show up goes here (to be hidden in the final output)
 (coming soon)
