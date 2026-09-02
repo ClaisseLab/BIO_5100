@@ -1299,7 +1299,7 @@
     "href": "BIO_5150L.html",
     "title": "BIO 5150L Resources and Tutorials",
     "section": "",
-    "text": "Download a .R script organization template - You can download and then use this template as a starting point for new R scripts and as a guide for organizing your code.\n\nUsing Git & GitHub Tutorial"
+    "text": "Download a .R script organization template - You can download and then use this template as a starting point for new R scripts and as a guide for organizing your code.\nUsing Git & GitHub Tutorial - Guides you through installing (software) Git on your computer, creating a GitHub.com account, connecting it to RStudio, and creating a repository (i.e., a folder). - Describes workflows for personal version control, student–PI code review, and publicly sharing analysis code. - Provides guidance for organizing projects, excluding and backing up data, and other uses, issues, and organization."
   },
   {
     "objectID": "git-github-rstudio.html",
