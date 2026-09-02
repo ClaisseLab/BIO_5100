@@ -9,8 +9,8 @@ toc: true
 Git and GitHub help you keep a history of changes to your R code, return to an earlier version when something breaks, and share a project with collaborators. For many biologists, the most common uses are:
 
 1. **Personal version control and an off-computer copy:** Keep the R scripts, Quarto documents, and other project files in an RStudio Project, record useful checkpoints with Git, and push those commits to GitHub.
-2. **Code review and collaboration:** Exchange revisions between a student and PI, or among members of a lab, without emailing files named `analysis_final_v2_revised.R`.
-3. **Sharing and reuse:** Make a well-documented repository public as part of your professional portfolio, share the complete analysis associated with a paper, or allow another researcher to fork the repository and adapt the code for a new project.
+2. **Code review and collaboration:** Exchange revisions between a student and PI, or among members of a lab, without emailing (overly complicated) files named `analysis_final_v2_revised.R`.
+3. **Sharing and reuse:** Make a well-documented repository public as part of your professional portfolio (e.g., add link to your GitHub profile to your CV), share the complete analysis associated with a published paper, or allow another researcher to fork the repository and adapt the code for a new project.
 
 You do not need to become a command-line Git expert. RStudio provides buttons for the core operations you will use most often: stage, commit, pull, push, and view history.
 
