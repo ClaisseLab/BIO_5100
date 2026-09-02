@@ -2,13 +2,17 @@
 title: "BIO 5150L Resources and Tutorials"
 ---
 
-[Download a .R script organization template](downloads/Organized_Script.R){download="Organized_Script.R"}
+## [Download a .R script organization template](downloads/Organized_Script.R){download="Organized_Script.R"}
+
 - You can download and then use this template as a starting point for new R scripts and as a guide for organizing your code.
 
 
-[Using Git & GitHub Tutorial](https://claisselab.github.io/BIO_5100/git_github_rstudio.html)
+## [Using Git & GitHub Tutorial](https://claisselab.github.io/BIO_5100/git_github_rstudio.html)
+
 - Guides you through installing (software) Git on your computer, creating a GitHub.com account, connecting it to RStudio, and creating a repository (i.e., a folder).
+
 - Describes workflows for personal version control, student–PI code review, and publicly sharing analysis code.
+
 - Provides guidance for organizing projects, excluding and backing up data, and other uses, issues, and organization.
 
 

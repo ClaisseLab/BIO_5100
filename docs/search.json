@@ -1299,7 +1299,7 @@
     "href": "BIO_5150L.html",
     "title": "BIO 5150L Resources and Tutorials",
     "section": "",
-    "text": "Download a .R script organization template - You can download and then use this template as a starting point for new R scripts and as a guide for organizing your code.\nUsing Git & GitHub Tutorial - Guides you through installing (software) Git on your computer, creating a GitHub.com account, connecting it to RStudio, and creating a repository (i.e., a folder). - Describes workflows for personal version control, student–PI code review, and publicly sharing analysis code. - Provides guidance for organizing projects, excluding and backing up data, and other uses, issues, and organization."
+    "text": "You can download and then use this template as a starting point for new R scripts and as a guide for organizing your code."
   },
   {
     "objectID": "git-github-rstudio.html",
@@ -1496,5 +1496,19 @@
     "title": "Git, GitHub, and RStudio",
     "section": "The main habits to remember",
     "text": "The main habits to remember\n\nUse an RStudio Project for each Git repository.\nPull before you begin working.\nCommit small, meaningful sets of changes with informative messages.\nPush regularly and before handing the project to someone else.\nDo not put credentials, restricted data, or large raw files in a repository.\nWhen Git reports a conflict, slow down and determine which content should be retained.\nDocument the project well enough that a collaborator or your future self can understand how to run it.\nWhen appropriate, make a clean repository public so the analysis can support your portfolio, accompany a paper, or be forked and reused by others."
+  },
+  {
+    "objectID": "BIO_5150L.html#download-a-.r-script-organization-template",
+    "href": "BIO_5150L.html#download-a-.r-script-organization-template",
+    "title": "BIO 5150L Resources and Tutorials",
+    "section": "",
+    "text": "You can download and then use this template as a starting point for new R scripts and as a guide for organizing your code."
+  },
+  {
+    "objectID": "BIO_5150L.html#using-git-github-tutorial",
+    "href": "BIO_5150L.html#using-git-github-tutorial",
+    "title": "BIO 5150L Resources and Tutorials",
+    "section": "Using Git & GitHub Tutorial",
+    "text": "Using Git & GitHub Tutorial\n\nGuides you through installing (software) Git on your computer, creating a GitHub.com account, connecting it to RStudio, and creating a repository (i.e., a folder).\nDescribes workflows for personal version control, student–PI code review, and publicly sharing analysis code.\nProvides guidance for organizing projects, excluding and backing up data, and other uses, issues, and organization."
   }
 ]
