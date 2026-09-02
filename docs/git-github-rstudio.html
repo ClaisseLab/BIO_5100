@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Git, GitHub, and RStudio – BIO 5100</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9b3b12babb541c315d9ea4b5d647408d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">BIO 5100</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Online_Books.html"> 
+<span class="menu-text">Online Books</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://claisselab.github.io/BIO_5100/Example_Code.html"> 
+<span class="menu-text">Example Code</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://claisselab.github.io/BIO_5100/BIO_5150L.html"> 
+<span class="menu-text">BIO 5150L</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://claisselab.github.io/BIO_5800L/"> 
+<span class="menu-text">BIO 5800L</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://claisselab.com"> <i class="bi bi-house-fill" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ClaisseLab"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#why-use-git-and-github" id="toc-why-use-git-and-github" class="nav-link active" data-scroll-target="#why-use-git-and-github">Why use Git and GitHub?</a>
+  <ul class="collapse">
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
+  </ul></li>
+  <li><a href="#first-understand-the-basic-idea" id="toc-first-understand-the-basic-idea" class="nav-link" data-scroll-target="#first-understand-the-basic-idea">First, understand the basic idea</a></li>
+  <li><a href="#plain-language-glossary" id="toc-plain-language-glossary" class="nav-link" data-scroll-target="#plain-language-glossary">Plain-language glossary</a></li>
+  <li><a href="#set-up-git-github-and-rstudio" id="toc-set-up-git-github-and-rstudio" class="nav-link" data-scroll-target="#set-up-git-github-and-rstudio">Set up Git, GitHub, and RStudio</a>
+  <ul class="collapse">
+  <li><a href="#github-education" id="toc-github-education" class="nav-link" data-scroll-target="#github-education">GitHub Education</a></li>
+  <li><a href="#install-github-desktop-as-a-troubleshooting-tool" id="toc-install-github-desktop-as-a-troubleshooting-tool" class="nav-link" data-scroll-target="#install-github-desktop-as-a-troubleshooting-tool">Install GitHub Desktop as a troubleshooting tool</a></li>
+  <li><a href="#confirm-that-your-setup-works" id="toc-confirm-that-your-setup-works" class="nav-link" data-scroll-target="#confirm-that-your-setup-works">Confirm that your setup works</a></li>
+  </ul></li>
+  <li><a href="#create-a-new-github-repo-for-an-rstudio-project" id="toc-create-a-new-github-repo-for-an-rstudio-project" class="nav-link" data-scroll-target="#create-a-new-github-repo-for-an-rstudio-project">Create a new GitHub repo for an RStudio Project</a></li>
+  <li><a href="#organize-an-r-analysis-repository" id="toc-organize-an-r-analysis-repository" class="nav-link" data-scroll-target="#organize-an-r-analysis-repository">Organize an R analysis repository</a>
+  <ul class="collapse">
+  <li><a href="#exclude-data-files-with-.gitignore" id="toc-exclude-data-files-with-.gitignore" class="nav-link" data-scroll-target="#exclude-data-files-with-.gitignore">Exclude data files with <code>.gitignore</code></a></li>
+  <li><a href="#back-up-and-share-data-separately" id="toc-back-up-and-share-data-separately" class="nav-link" data-scroll-target="#back-up-and-share-data-separately">Back up and share data separately</a></li>
+  </ul></li>
+  <li><a href="#the-everyday-rstudio-workflow" id="toc-the-everyday-rstudio-workflow" class="nav-link" data-scroll-target="#the-everyday-rstudio-workflow">The everyday RStudio workflow</a></li>
+  <li><a href="#scenario-1-personal-version-control-and-an-off-computer-copy" id="toc-scenario-1-personal-version-control-and-an-off-computer-copy" class="nav-link" data-scroll-target="#scenario-1-personal-version-control-and-an-off-computer-copy">Scenario 1: Personal version control and an off-computer copy</a>
+  <ul class="collapse">
+  <li><a href="#what-should-be-tracked" id="toc-what-should-be-tracked" class="nav-link" data-scroll-target="#what-should-be-tracked">What should be tracked?</a></li>
+  </ul></li>
+  <li><a href="#scenario-2-student-and-pi-code-review" id="toc-scenario-2-student-and-pi-code-review" class="nav-link" data-scroll-target="#scenario-2-student-and-pi-code-review">Scenario 2: Student and PI code review</a></li>
+  <li><a href="#scenario-3-public-portfolio-paper-repository-and-code-reuse" id="toc-scenario-3-public-portfolio-paper-repository-and-code-reuse" class="nav-link" data-scroll-target="#scenario-3-public-portfolio-paper-repository-and-code-reuse">Scenario 3: Public portfolio, paper repository, and code reuse</a></li>
+  <li><a href="#preventing-and-handling-merge-conflicts" id="toc-preventing-and-handling-merge-conflicts" class="nav-link" data-scroll-target="#preventing-and-handling-merge-conflicts">Preventing and handling merge conflicts</a></li>
+  <li><a href="#practice-the-complete-cycle" id="toc-practice-the-complete-cycle" class="nav-link" data-scroll-target="#practice-the-complete-cycle">Practice the complete cycle</a></li>
+  <li><a href="#the-main-habits-to-remember" id="toc-the-main-habits-to-remember" class="nav-link" data-scroll-target="#the-main-habits-to-remember">The main habits to remember</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Git, GitHub, and RStudio</h1>
+<p class="subtitle lead">Setup and everyday version-control workflows for R projects</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="why-use-git-and-github" class="level2">
+<h2 class="anchored" data-anchor-id="why-use-git-and-github">Why use Git and GitHub?</h2>
+<p>Git and GitHub help you keep a history of changes to your R code, return to an earlier version when something breaks, and share a project with collaborators. For many biologists, the most common uses are:</p>
+<ol type="1">
+<li><strong>Personal version control and an off-computer copy:</strong> Keep the R scripts, Quarto documents, and other project files in an RStudio Project, record useful checkpoints with Git, and push those commits to GitHub.</li>
+<li><strong>Code review and collaboration:</strong> Exchange revisions between a student and PI, or among members of a lab, without emailing files named <code>analysis_final_v2_revised.R</code>.</li>
+<li><strong>Sharing and reuse:</strong> Make a well-documented repository public as part of your professional portfolio, share the complete analysis associated with a paper, or allow another researcher to fork the repository and adapt the code for a new project.</li>
+</ol>
+<p>You do not need to become a command-line Git expert. RStudio provides buttons for the core operations you will use most often: stage, commit, pull, push, and view history.</p>
+<section id="learning-objectives" class="level3">
+<h3 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h3>
+<p>By the end of this tutorial, you should be able to:</p>
+<ul>
+<li>explain the difference between Git and GitHub;</li>
+<li>install Git and connect RStudio to your GitHub account;</li>
+<li>create or clone a GitHub repository as an RStudio Project;</li>
+<li>use the basic <strong>pull → edit → stage → commit → push</strong> workflow; and</li>
+<li>exchange code revisions with a collaborator; and</li>
+<li>explain how cloning, forking, and public repositories support reproducible and reusable research.</li>
+</ul>
+</section>
+</section>
+<section id="first-understand-the-basic-idea" class="level2">
+<h2 class="anchored" data-anchor-id="first-understand-the-basic-idea">First, understand the basic idea</h2>
+<ul>
+<li><strong>Watch:</strong> <a href="https://youtu.be/6OTy2N-rSbw?si=Jdsl4k_vdtbd5354">What is Git? (2 min)</a></li>
+<li><strong>Watch:</strong> <a href="https://youtu.be/eBMs0X5dM_k?si=GY5LnP_ascsYdr4w">What is GitHub? (3 min)</a></li>
+<li><strong>Optional RStudio walkthrough:</strong> <a href="https://opensource.posit.co/resources/videos/2022-10-25_first-steps-in-learning-the-use-of-git-github-in-rstudio/">First Steps in Learning the Use of Git &amp; GitHub in RStudio</a> is a longer, chaptered Posit workshop. The chapters on creating an RStudio project, pushing to GitHub, and cloning a GitHub repository are the most relevant for this tutorial.</li>
+<li><strong>More research-focused context:</strong> The <a href="https://openscapes.github.io/series/core-lessons/github/">Openscapes GitHub Strategies</a> lesson explains how research groups use GitHub for collaboration, open science, project organization, and reuse. Its GitHub Clinic includes short recordings on <a href="https://youtu.be/anrZwE3pIwQ">publishing</a> and <a href="https://youtu.be/dDRDma-5_ww">project management</a>.</li>
+</ul>
+</section>
+<section id="plain-language-glossary" class="level2">
+<h2 class="anchored" data-anchor-id="plain-language-glossary">Plain-language glossary</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>Plain-language meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Git</strong></td>
+<td>Version-control software installed on your computer. It records the history of a project locally.</td>
+</tr>
+<tr class="even">
+<td><strong>GitHub</strong></td>
+<td>A website that hosts Git repositories online so they can be accessed, shared, and collaborated on. Git and GitHub are related, but they are not the same thing.</td>
+</tr>
+<tr class="odd">
+<td><strong>RStudio Project</strong></td>
+<td>The <code>.Rproj</code>-based working environment for an analysis. Using one project per analysis keeps its files, paths, settings, and Git repository together.</td>
+</tr>
+<tr class="even">
+<td><strong>Repository (repo)</strong></td>
+<td>A project folder whose files and change history are tracked by Git. The <strong>local repo</strong> is on your computer; the <strong>remote repo</strong> is its connected copy on GitHub.</td>
+</tr>
+<tr class="odd">
+<td><strong>Clone</strong></td>
+<td>Make a local copy of an existing GitHub repo on your computer and connect that local copy to the same remote repo. You normally clone a repo only once per computer, then use pull and push to keep it synchronized.</td>
+</tr>
+<tr class="even">
+<td><strong>Fork</strong></td>
+<td>Create a new GitHub repo under your account or organization based on someone else’s repo. Your fork is your own GitHub copy, which you can modify for a new project or use to propose changes back to the original repo. To work on it in RStudio, you then clone your fork to your computer.</td>
+</tr>
+<tr class="odd">
+<td><strong>Stage</strong></td>
+<td>Select which saved file changes will be included in the next commit. In RStudio, you stage a file by checking its box in the Git pane.</td>
+</tr>
+<tr class="even">
+<td><strong>Commit</strong></td>
+<td>Save a named checkpoint in the Git history on your computer. A commit does not automatically send anything to GitHub.</td>
+</tr>
+<tr class="odd">
+<td><strong>Push</strong></td>
+<td>Send your local commits to the remote repo on GitHub.</td>
+</tr>
+<tr class="even">
+<td><strong>Pull</strong></td>
+<td>Bring commits from GitHub into your local repo and combine them with your local version.</td>
+</tr>
+<tr class="odd">
+<td><strong>Diff</strong></td>
+<td>A line-by-line display of what changed in a file. Review the diff before committing so you know what you are recording.</td>
+</tr>
+<tr class="even">
+<td><strong><code>main</code></strong></td>
+<td>The default branch, or primary line of development, for most repositories.</td>
+</tr>
+<tr class="odd">
+<td><strong>Branch</strong></td>
+<td>A separate line of development used to work on changes without immediately altering <code>main</code>. You do not need branches for the initial tutorial.</td>
+</tr>
+<tr class="even">
+<td><strong>Merge</strong></td>
+<td>Combine changes from different branches or copies of a repository. A pull may include a merge.</td>
+</tr>
+<tr class="odd">
+<td><strong>Merge conflict</strong></td>
+<td>Git found competing changes that it cannot safely combine, often because two people changed the same lines. A person must decide what the final text or code should be.</td>
+</tr>
+<tr class="even">
+<td><strong><code>.gitignore</code></strong></td>
+<td>A text file listing files or folders Git should not track, such as temporary files, credentials, or large generated outputs.</td>
+</tr>
+<tr class="odd">
+<td><strong>README</strong></td>
+<td>The project’s front page on GitHub. It should briefly explain the project, its organization, and how someone can use it.</td>
+</tr>
+<tr class="even">
+<td><strong>Public/private</strong></td>
+<td>A public repo can be viewed by anyone; a private repo is limited to people who have been granted access. A private repo can be made public later after its contents are reviewed.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="set-up-git-github-and-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="set-up-git-github-and-rstudio">Set up Git, GitHub, and RStudio</h2>
+<p>Follow the <a href="https://rcdsdocs.it.northwestern.edu/tutorials/r/git-with-r.html">Northwestern University guide to using Git with RStudio</a>. It provides current instructions for Windows, macOS, and Linux and covers the full setup process:</p>
+<ol type="1">
+<li>Create a personal GitHub account.</li>
+<li>Install Git on your computer.</li>
+<li>Make sure RStudio is current and install the <code>usethis</code> package.</li>
+<li>Confirm that RStudio detects Git.</li>
+<li>Set the name and email associated with your commits.</li>
+<li>Authenticate RStudio with GitHub.</li>
+<li>Create or clone a repository as an RStudio Project.</li>
+</ol>
+<p>Use a professional GitHub username that you will be comfortable sharing with collaborators or listing on a CV. GitHub accounts are free, including private repositories.</p>
+<section id="github-education" class="level3">
+<h3 class="anchored" data-anchor-id="github-education">GitHub Education</h3>
+<p>Students can also <a href="https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student">apply for GitHub Education benefits</a>. Start with a personal GitHub account, add and verify your university email address if requested, and provide proof of current enrollment. Approved students receive access to the <a href="https://education.github.com/pack">GitHub Student Developer Pack</a>, which includes additional developer tools and services. These benefits are useful but are not required for this course.</p>
+</section>
+<section id="install-github-desktop-as-a-troubleshooting-tool" class="level3">
+<h3 class="anchored" data-anchor-id="install-github-desktop-as-a-troubleshooting-tool">Install GitHub Desktop as a troubleshooting tool</h3>
+<p>Also install <a href="https://desktop.github.com/">GitHub Desktop</a> and sign in to the same GitHub account. It is available for both Windows and macOS. We will normally work through the Git pane in RStudio, so you may rarely open GitHub Desktop. However, its visual interface can be helpful when checking repository status, viewing history, or working through a merge problem.</p>
+<p>GitHub Desktop does not replace the separate Git installation required by the setup guide, and it cannot decide how competing scientific or analytical changes should be reconciled.</p>
+<p>For additional setup details or troubleshooting, use:</p>
+<ul>
+<li><a href="https://happygitwithr.com/">Happy Git and GitHub for the useR</a>, the most comprehensive R-focused guide;</li>
+<li><a href="https://docs.posit.co/ide/user/ide/guide/tools/version-control.html">RStudio Version Control documentation</a>, for the Git tools built into RStudio; and</li>
+<li><a href="https://docs.github.com/en/desktop">GitHub Desktop documentation</a>, for help with the desktop application;</li>
+<li><a href="https://openscapes.github.io/series/how-do-i/setup-rstudio-github.html">Openscapes: Setup RStudio and GitHub</a>, for another concise research-focused setup and practice pathway; and</li>
+<li><a href="https://openscapes.github.io/series/how-do-i/do-fix-git-things.html">Openscapes: Do and Fix Things in Git</a>, for a curated collection of RStudio, Git, and troubleshooting resources.</li>
+</ul>
+</section>
+<section id="confirm-that-your-setup-works" class="level3">
+<h3 class="anchored" data-anchor-id="confirm-that-your-setup-works">Confirm that your setup works</h3>
+<p>Before continuing, verify that you can:</p>
+<ul>
+<li>open an RStudio Project connected to a Git repository;</li>
+<li>see the <strong>Git</strong> pane in RStudio;</li>
+<li>commit a small change locally;</li>
+<li>push the commit to GitHub and see it on the repository webpage; and</li>
+<li>pull a change from GitHub back to your computer.</li>
+</ul>
+</section>
+</section>
+<section id="create-a-new-github-repo-for-an-rstudio-project" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-new-github-repo-for-an-rstudio-project">Create a new GitHub repo for an RStudio Project</h2>
+<p>The simplest beginner workflow is to create the remote repo on GitHub first and then clone it with RStudio. This keeps GitHub and the local RStudio Project connected from the beginning.</p>
+<ol type="1">
+<li>On GitHub, select <strong>New repository</strong>.</li>
+<li>Enter a short, descriptive repository name and choose whether it will initially be private or public.</li>
+<li>Select <strong>Add a README file</strong>.</li>
+<li>Under <strong>Add <code>.gitignore</code></strong>, choose the <strong>R</strong> template. The <code>.gitignore</code> file tells Git which common R and RStudio files should not be tracked.</li>
+<li>Create the repository, select <strong>Code</strong>, and copy its HTTPS URL.</li>
+<li>In RStudio, select <strong>File → New Project → Version Control → Git</strong>, paste the URL, choose where the project will be stored, and select <strong>Create Project</strong>.</li>
+</ol>
+<p>RStudio will clone the GitHub repo, create its <code>.Rproj</code> file, and open the local project. From then on, open the project using the <code>.Rproj</code> file.</p>
+<p>The <code>.gitignore</code> is therefore a Git file, but you can create it in several ways. GitHub can add the standard R template when you create a repo. For a local RStudio Project that already exists, <code>usethis::use_git()</code> initializes Git and creates a <code>.gitignore</code>; after making the first commit, <code>usethis::use_github(private = TRUE)</code> can create and connect the GitHub repo. Use one starting workflow or the other rather than independently creating both repos and then trying to join them.</p>
+</section>
+<section id="organize-an-r-analysis-repository" class="level2">
+<h2 class="anchored" data-anchor-id="organize-an-r-analysis-repository">Organize an R analysis repository</h2>
+<p>A consistent folder structure makes an analysis easier to understand, rerun, review, and eventually share. One useful starting structure is:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>File or folder</th>
+<th>Purpose</th>
+<th>Usually tracked by Git?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>project-name.Rproj</code></td>
+<td>Opens the analysis as an RStudio Project</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td><code>README.md</code></td>
+<td>Describes the project, file organization, data access, and how to run the analysis</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td><code>.gitignore</code></td>
+<td>Records which files and folders Git should exclude</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td><code>R/</code></td>
+<td>R scripts and functions, optionally numbered in workflow order, such as <code>import_clean.R</code> and <code>analysis.R</code></td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td><code>data files/</code></td>
+<td>Raw and processed data used by the scripts</td>
+<td>Usually no; back up and share separately</td>
+</tr>
+<tr class="even">
+<td><code>figures/</code></td>
+<td>Figures produced by the analysis</td>
+<td>Track final products; intermediate files may be ignored</td>
+</tr>
+<tr class="odd">
+<td><code>tables/</code></td>
+<td>Tables produced by the analysis</td>
+<td>Track final products; intermediate files may be ignored</td>
+</tr>
+</tbody>
+</table>
+<p>This example uses <code>data files</code>, <code>figures</code>, and <code>tables</code> as folder names.</p>
+<p>You can create the folders from the R console:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the standard project folders if they do not already exist</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_create</span>(<span class="fu">c</span>(<span class="st">"R"</span>, <span class="st">"data files"</span>, <span class="st">"figures"</span>, <span class="st">"tables"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use project-relative paths in your code rather than computer-specific absolute paths. For example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read a file using a path relative to the RStudio Project</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"Data Files"</span>, <span class="st">"survey_data.csv"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="exclude-data-files-with-.gitignore" class="level3">
+<h3 class="anchored" data-anchor-id="exclude-data-files-with-.gitignore">Exclude data files with <code>.gitignore</code></h3>
+<p>To keep the contents of <code>Data Files/</code> out of GitHub while retaining a small README that explains how to obtain the data, add these lines to the project’s <code>.gitignore</code> file:</p>
+<pre class="text"><code># Ignore project data, but retain data-access documentation
+/Data Files/*
+!/Data Files/README.md</code></pre>
+<p>Add these rules before the data files are first committed. A <code>.gitignore</code> rule does not automatically remove a file that Git is already tracking.</p>
+<p>In <code>README.md</code>, document:</p>
+<ul>
+<li>what datasets the analysis requires;</li>
+<li>where each dataset is stored or can be obtained;</li>
+<li>any permissions or access restrictions;</li>
+<li>the expected filenames and folder organization; and</li>
+<li>any processing needed before running the analysis.</li>
+</ul>
+<p>Git does not track empty folders, so retaining this README also ensures that collaborators receive the <code>Data Files/</code> folder and its setup instructions when they clone the repo.</p>
+</section>
+<section id="back-up-and-share-data-separately" class="level3">
+<h3 class="anchored" data-anchor-id="back-up-and-share-data-separately">Back up and share data separately</h3>
+<p>GitHub can store small, non-sensitive data files, and doing so can make an analysis easier to reproduce. However, Git and GitHub are optimized for versioning text-based source files, not large datasets, images, video, GIS rasters, or frequently changing binary files. GitHub blocks regular Git files larger than 100 MB and recommends keeping repositories substantially smaller than a general research-data archive.</p>
+<p>Depending on the data and project stage, use one or more of the following instead:</p>
+<ul>
+<li>approved university or agency cloud storage, network storage, or a lab server for active project data;</li>
+<li>a separate external or institutional backup so the raw data exist in more than one location;</li>
+<li>an appropriate discipline-specific data repository, Dryad, Zenodo, or OSF for publication and long-term access; or</li>
+<li><a href="https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage">Git Large File Storage</a> when large files genuinely need to be versioned with Git, recognizing that Git LFS has storage and transfer limits and is not a substitute for a research-data repository.</li>
+</ul>
+<p>The <a href="https://openscapes.github.io/series/core-lessons/data-strategies.html">Openscapes Data Strategies</a> lesson provides more guidance on separating raw data from analysis, maintaining multiple backups, documenting data, and depositing data in an appropriate citable repository.</p>
+</section>
+</section>
+<section id="the-everyday-rstudio-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="the-everyday-rstudio-workflow">The everyday RStudio workflow</h2>
+<p>The key distinction is that <strong>commit</strong> and <strong>push</strong> are two separate actions. A commit records a checkpoint on your computer. A push sends one or more commits to GitHub.</p>
+<p>When you begin a work session:</p>
+<ol type="1">
+<li>Open the project using its <code>.Rproj</code> file.</li>
+<li><strong>Pull</strong> before editing, especially if the repository is shared or you use more than one computer.</li>
+<li>Edit your R scripts, Quarto documents, or other project files and save them.</li>
+<li>Review the changed files and their diffs in the Git pane.</li>
+<li><strong>Stage</strong> the related files that belong in one checkpoint.</li>
+<li><strong>Commit</strong> them with a short, informative message, such as <code>Add kelp bass size filtering</code> or <code>Revise model diagnostics</code>.</li>
+<li>Repeat the edit, stage, and commit cycle as you complete meaningful pieces of work.</li>
+<li>Pull again before pushing if someone else may have updated the shared repo.</li>
+<li><strong>Push</strong> your commits to GitHub before you finish the work session or hand the project to a collaborator.</li>
+</ol>
+<p>In short: <strong>pull → work → stage → commit → pull → push</strong>.</p>
+</section>
+<section id="scenario-1-personal-version-control-and-an-off-computer-copy" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-1-personal-version-control-and-an-off-computer-copy">Scenario 1: Personal version control and an off-computer copy</h2>
+<p>For an individual analysis, keep the project in a local RStudio Project that is connected to a private or public GitHub repository. Commit whenever you complete a meaningful step, such as importing and checking the data, adding a figure, fitting a model, or revising the interpretation. Push regularly, and at least at the end of each work session.</p>
+<p>This approach provides:</p>
+<ul>
+<li>a chronological record of how the analysis changed;</li>
+<li>informative checkpoints that you can compare or return to;</li>
+<li>an off-computer copy of committed project files; and</li>
+<li>a straightforward way to move between computers by cloning once and then pulling and pushing changes.</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>GitHub is not a complete research-data backup
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>GitHub is especially useful for text-based files such as R scripts, Quarto documents, Markdown files, and small data files. It should not be your only backup, and it is generally not the right location for large raw datasets, collections of images, GIS rasters, confidential information, credentials, or sensitive species-locality data. Use an approved research-data storage and backup system for those files.</p>
+</div>
+</div>
+<section id="what-should-be-tracked" class="level3">
+<h3 class="anchored" data-anchor-id="what-should-be-tracked">What should be tracked?</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Usually track with Git</th>
+<th>Usually exclude with <code>.gitignore</code> or store elsewhere</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>R scripts and functions (<code>.R</code>)</td>
+<td>Passwords, tokens, API keys, and other credentials</td>
+</tr>
+<tr class="even">
+<td>Quarto source files <code>.qmd</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>README files and other documentation</td>
+<td>Large raw data, imagery, video, and GIS rasters</td>
+</tr>
+<tr class="even">
+<td>Small, non-sensitive data needed to reproduce the analysis</td>
+<td>Confidential or restricted data</td>
+</tr>
+<tr class="odd">
+<td>Project configuration and dependency files</td>
+<td>Large or easily regenerated output files</td>
+</tr>
+</tbody>
+</table>
+<p>Git works best with text files because it can show exactly which lines changed. Before adding data to a repository, consider file size, permissions, confidentiality, and whether the data can ethically and legally be shared. See GitHub’s <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/repository-limits">repository limits</a> for current file and repository restrictions.</p>
+</section>
+</section>
+<section id="scenario-2-student-and-pi-code-review" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-2-student-and-pi-code-review">Scenario 2: Student and PI code review</h2>
+<p>For a simple one-to-one workflow, the student and PI can both be collaborators on a private repository, ideally one owned by the lab or its GitHub organization so the project remains accessible as lab membership changes.</p>
+<p>A typical review cycle is:</p>
+<ol type="1">
+<li><strong>Student:</strong> Pulls the latest version, completes a defined piece of work, reviews the changes, commits them with clear messages, and pushes to GitHub.</li>
+<li><strong>Handoff:</strong> The student tells the PI what is ready for review and identifies any questions or incomplete sections.</li>
+<li><strong>PI:</strong> Pulls the project, reviews the code and commit history, and discusses the analysis with the student. The PI may edit the code directly or add guidance in comments or a review document.</li>
+<li><strong>PI:</strong> Commits the revisions or guidance with a clear message and pushes them to GitHub.</li>
+<li><strong>Student:</strong> Pulls the reviewed version, reads the changes, and continues the analysis.</li>
+</ol>
+<p>The cycle can then repeat. The Git history records who changed what, when it changed, and why.</p>
+<p>For this simple workflow, both people may work directly on <code>main</code>, but they should coordinate the handoff and avoid editing the same files at the same time. For larger groups, simultaneous work, or more formal review, using separate branches and GitHub pull requests rather than having everyone edit <code>main</code> directly, however this is beyond what a lot of biologists (and I) do.</p>
+</section>
+<section id="scenario-3-public-portfolio-paper-repository-and-code-reuse" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-3-public-portfolio-paper-repository-and-code-reuse">Scenario 3: Public portfolio, paper repository, and code reuse</h2>
+<p>Once an analysis is working well and the code and documentation have been cleaned, a repository can be changed from private to public. Public repositories can serve as a portfolio of your analytical work, allowing potential collaborators, employers, or graduate programs to see examples of the questions you have addressed and how you organize and document an analysis.</p>
+<p>Researchers also commonly create one public GitHub repository containing the scripts, documentation, and reproducible outputs associated with a single paper. The paper can link to the repository, and the repository README can link back to the paper. A useful paper repository should explain:</p>
+<ul>
+<li>the scientific purpose of the analysis;</li>
+<li>the order in which scripts should be run;</li>
+<li>software and package requirements;</li>
+<li>where permitted data can be obtained; and</li>
+<li>which scripts produce each table and figure.</li>
+</ul>
+<p>Before making a repo public, review its complete Git history as well as its current files. Removing a password, restricted dataset, or sensitive location from the current version does not necessarily remove it from earlier commits. Also confirm that you have permission to share the code, data, and other materials and add an appropriate license if you want others to know how they may reuse them.</p>
+<p>A colleague can <strong>fork</strong> a public repository to create their own GitHub copy and adapt it for a different species, site, dataset, or research question without changing the original. They can then <strong>clone</strong> their fork to RStudio, revise the analysis, and push their changes to their own repo. If they develop a useful improvement for the original project, they can propose it through a pull request.</p>
+<p>See <a href="https://openscapes.github.io/series/core-lessons/github/github-pub.html">Openscapes: GitHub for Publishing</a> for more examples of using GitHub to communicate and publish scientific work. For a stable, citable version associated with a publication, a GitHub release can also be archived through <a href="https://help.zenodo.org/docs/github/">Zenodo’s GitHub integration</a> to obtain a DOI.</p>
+</section>
+<section id="preventing-and-handling-merge-conflicts" class="level2">
+<h2 class="anchored" data-anchor-id="preventing-and-handling-merge-conflicts">Preventing and handling merge conflicts</h2>
+<p>Merge conflicts are less common when collaborators:</p>
+<ul>
+<li>pull before beginning work;</li>
+<li>push before handing the project to someone else;</li>
+<li>communicate about who is editing which files; and</li>
+<li>make focused commits with clear messages.</li>
+</ul>
+<p>If a conflict occurs, Git is protecting both versions rather than silently overwriting one. Stop and inspect the conflict before making additional changes. Git marks the competing sections in the affected file. You must decide which code or text to retain, remove the conflict markers, save the file, stage it, and commit the resolution. GitHub Desktop may make the repository state easier to see, but it cannot determine which analytical change is correct.</p>
+<p>For help, see the relevant sections of <a href="https://happygitwithr.com/">Happy Git and GitHub for the useR</a>, especially <strong>Dealing with push rejection</strong> and <strong>Pull, but you have local work</strong>.</p>
+</section>
+<section id="practice-the-complete-cycle" class="level2">
+<h2 class="anchored" data-anchor-id="practice-the-complete-cycle">Practice the complete cycle</h2>
+<p>After completing the setup guide, create a small practice repository and complete this cycle at least once:</p>
+<ol type="1">
+<li>Clone or create the repository as an RStudio Project.</li>
+<li>Add or edit an R script or <code>README.md</code> file.</li>
+<li>Review the diff, stage the file, and commit the change.</li>
+<li>Push the commit and confirm that it appears on GitHub.</li>
+<li>Make a small edit to <code>README.md</code> on GitHub, commit it there, and pull it into RStudio.</li>
+<li>Open the Git history in RStudio and identify both commits.</li>
+</ol>
+<p>For a guided version of this exercise, including an optional practice merge conflict, use <a href="https://d2m-r.github.io/materials/guides/walkthrough-github-rstudio.html">Create and Sync a GitHub Repo with RStudio</a>.</p>
+</section>
+<section id="the-main-habits-to-remember" class="level2">
+<h2 class="anchored" data-anchor-id="the-main-habits-to-remember">The main habits to remember</h2>
+<ol type="1">
+<li>Use an RStudio Project for each Git repository.</li>
+<li>Pull before you begin working.</li>
+<li>Commit small, meaningful sets of changes with informative messages.</li>
+<li>Push regularly and before handing the project to someone else.</li>
+<li>Do not put credentials, restricted data, or large raw files in a repository.</li>
+<li>When Git reports a conflict, slow down and determine which content should be retained.</li>
+<li>Document the project well enough that a collaborator or your future self can understand how to run it.</li>
+<li>When appropriate, make a clean repository public so the analysis can support your portfolio, accompany a paper, or be forked and reused by others.</li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>This is a quarto built website <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://claisselab.com">
+      <i class="bi bi-house-fill" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ClaisseLab">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

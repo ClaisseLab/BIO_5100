@@ -121,18 +121,18 @@ A consistent folder structure makes an analysis easier to understand, rerun, rev
 | `project-name.Rproj` | Opens the analysis as an RStudio Project | Yes |
 | `README.md` | Describes the project, file organization, data access, and how to run the analysis | Yes |
 | `.gitignore` | Records which files and folders Git should exclude | Yes |
-| `R/` | R scripts and functions, optionally numbered in workflow order, such as `01_import_clean.R` and `02_analysis.R` | Yes |
-| `Data Files/` | Raw and processed data used by the scripts | Usually no; back up and share separately |
-| `Figures/` | Figures produced by the analysis | Track final products; intermediate files may be ignored |
-| `Tables/` | Tables produced by the analysis | Track final products; intermediate files may be ignored |
+| `R/` | R scripts and functions, optionally numbered in workflow order, such as `import_clean.R` and `analysis.R` | Yes |
+| `data files/` | Raw and processed data used by the scripts | Usually no; back up and share separately |
+| `figures/` | Figures produced by the analysis | Track final products; intermediate files may be ignored |
+| `tables/` | Tables produced by the analysis | Track final products; intermediate files may be ignored |
 
-This example uses `Data Files`, `Figures`, and `Tables` as folder names. Lowercase names without spaces, such as `data`, `figures`, and `tables`, are also common and slightly easier to type in code. Whichever style you choose, use it consistently.
+This example uses `data files`, `figures`, and `tables` as folder names.
 
 You can create the folders from the R console:
 
 ```r
 # Create the standard project folders if they do not already exist
-fs::dir_create(c("R", "Data Files", "Figures", "Tables"))
+fs::dir_create(c("R", "data files", "figures", "tables"))
 ```
 
 Use project-relative paths in your code rather than computer-specific absolute paths. For example:
@@ -156,7 +156,7 @@ To keep the contents of `Data Files/` out of GitHub while retaining a small READ
 
 Add these rules before the data files are first committed. A `.gitignore` rule does not automatically remove a file that Git is already tracking.
 
-In `Data Files/README.md`, document:
+In `README.md`, document:
 
 - what datasets the analysis requires;
 - where each dataset is stored or can be obtained;
@@ -219,7 +219,7 @@ GitHub is especially useful for text-based files such as R scripts, Quarto docum
 | Usually track with Git | Usually exclude with `.gitignore` or store elsewhere |
 |---|---|
 | R scripts and functions (`.R`) | Passwords, tokens, API keys, and other credentials |
-| Quarto and R Markdown source files (`.qmd`, `.Rmd`) | `.RData`, `.Rhistory`, and temporary files |
+| Quarto source files `.qmd`|
 | README files and other documentation | Large raw data, imagery, video, and GIS rasters |
 | Small, non-sensitive data needed to reproduce the analysis | Confidential or restricted data |
 | Project configuration and dependency files | Large or easily regenerated output files |
@@ -240,7 +240,7 @@ A typical review cycle is:
 
 The cycle can then repeat. The Git history records who changed what, when it changed, and why.
 
-For this simple workflow, both people may work directly on `main`, but they should coordinate the handoff and avoid editing the same files at the same time. For larger groups, simultaneous work, or more formal review, use separate branches and GitHub pull requests rather than having everyone edit `main` directly.
+For this simple workflow, both people may work directly on `main`, but they should coordinate the handoff and avoid editing the same files at the same time. For larger groups, simultaneous work, or more formal review, using separate branches and GitHub pull requests rather than having everyone edit `main` directly, however this is beyond what a lot of biologists (and I) do.
 
 ## Scenario 3: Public portfolio, paper repository, and code reuse
 
