@@ -8,11 +8,14 @@ toc: true
 
 Git and GitHub help you keep a history of changes to your R code, return to an earlier version when something breaks, and share a project with collaborators. For many biologists, the most common uses are:
 
-1. **Personal version control and an off-computer copy:** Keep the R scripts, Quarto documents, and other project files in an RStudio Project, record useful checkpoints with Git, and push those commits to GitHub.
-2. **Code review and collaboration:** Exchange revisions between a student and PI, or among members of a lab, without emailing (overly complicated) files named `analysis_final_v2_revised.R`.
-3. **Sharing and reuse:** Make a well-documented repository public as part of your professional portfolio (e.g., add link to your GitHub profile to your CV), share the complete analysis associated with a published paper, or allow another researcher to fork the repository and adapt the code for a new project.
+1.  **Personal version control and an off-computer copy (back-up, sharing):** Keep the R scripts, Quarto documents, and other project files in an RStudio Project, record useful checkpoints with Git, and push those commits to GitHub.com.
+2.  **Code review and collaboration:** Exchange revisions between a student and PI or colleagues, or among members of a lab, without emailing (overly complicated) files named `analysis_final_v2_revised.R`.
+3.  **Sharing and reuse:** Make a well-documented repository public as part of your professional portfolio (e.g., add link to your GitHub.com profile to your CV), share the complete analysis associated with a published paper, or allow another researcher to fork the repository and adapt the code for a new project.
 
-You do not need to become a command-line Git expert. RStudio provides buttons for the core operations you will use most often: stage, commit, pull, push, and view history.
+- Here's an [example of personal github for Dr. Zoë Kitchel](https://github.com/zoekitchel)
+- Here's an [example of lab github for Dr. Malin Pinsky's lab](https://github.com/pinskylab)
+
+Git & Github was originally designed for computer programmers, and there are tons of features that I (and I imagine most biologists) never use. I primarily use it through RStudio, which provides buttons for the core operations you will use most often: *stage, commit, push and pull*.
 
 ### Learning objectives
 
@@ -35,9 +38,9 @@ By the end of this tutorial, you should be able to:
 ## Plain-language glossary
 
 | Term | Plain-language meaning |
-|---|---|
+|------------------------------------|------------------------------------|
 | **Git** | Version-control software installed on your computer. It records the history of a project locally. |
-| **GitHub** | A website that hosts Git repositories online so they can be accessed, shared, and collaborated on. Git and GitHub are related, but they are not the same thing. |
+| **GitHub** | A website that hosts Git repositories (folders) online so they can be accessed, shared, and collaborated on. Git and GitHub are related, but they are not the same thing. |
 | **RStudio Project** | The `.Rproj`-based working environment for an analysis. Using one project per analysis keeps its files, paths, settings, and Git repository together. |
 | **Repository (repo)** | A project folder whose files and change history are tracked by Git. The **local repo** is on your computer; the **remote repo** is its connected copy on GitHub. |
 | **Clone** | Make a local copy of an existing GitHub repo on your computer and connect that local copy to the same remote repo. You normally clone a repo only once per computer, then use pull and push to keep it synchronized. |
@@ -59,15 +62,15 @@ By the end of this tutorial, you should be able to:
 
 Follow the [Northwestern University guide to using Git with RStudio](https://rcdsdocs.it.northwestern.edu/tutorials/r/git-with-r.html). It provides current instructions for Windows, macOS, and Linux and covers the full setup process:
 
-1. Create a personal GitHub account.
-2. Install Git on your computer.
-3. Make sure RStudio is current and install the `usethis` package.
-4. Confirm that RStudio detects Git.
-5. Set the name and email associated with your commits.
-6. Authenticate RStudio with GitHub.
-7. Create or clone a repository as an RStudio Project.
+1.  Create a personal GitHub account.
+2.  Install Git on your computer.
+3.  Make sure RStudio is current and install the `usethis` package.
+4.  Confirm that RStudio detects Git.
+5.  Set the name and email associated with your commits.
+6.  Authenticate RStudio with GitHub.
+7.  Create or clone a repository as an RStudio Project.
 
-Use a professional GitHub username that you will be comfortable sharing with collaborators or listing on a CV. GitHub accounts are free, including private repositories.
+Use a *professional GitHub username* that you will be comfortable sharing with collaborators or listing on a CV. GitHub accounts are free, including private repositories.
 
 ### GitHub Education
 
@@ -87,57 +90,68 @@ For additional setup details or troubleshooting, use:
 - [Openscapes: Setup RStudio and GitHub](https://openscapes.github.io/series/how-do-i/setup-rstudio-github.html), for another concise research-focused setup and practice pathway; and
 - [Openscapes: Do and Fix Things in Git](https://openscapes.github.io/series/how-do-i/do-fix-git-things.html), for a curated collection of RStudio, Git, and troubleshooting resources.
 
-### Confirm that your setup works
-
-Before continuing, verify that you can:
-
-- open an RStudio Project connected to a Git repository;
-- see the **Git** pane in RStudio;
-- commit a small change locally;
-- push the commit to GitHub and see it on the repository webpage; and
-- pull a change from GitHub back to your computer.
-
 ## Create a new GitHub repo for an RStudio Project
 
 The simplest beginner workflow is to create the remote repo on GitHub first and then clone it with RStudio. This keeps GitHub and the local RStudio Project connected from the beginning.
 
-1. On GitHub, select **New repository**.
-2. Enter a short, descriptive repository name and choose whether it will initially be private or public.
-3. Select **Add a README file**.
-4. Under **Add `.gitignore`**, choose the **R** template. The `.gitignore` file tells Git which common R and RStudio files should not be tracked.
-5. Create the repository, select **Code**, and copy its HTTPS URL.
-6. In RStudio, select **File → New Project → Version Control → Git**, paste the URL, choose where the project will be stored, and select **Create Project**.
+Before a repository exists, you can confirm only that Git is installed and detected by RStudio. Under **Tools → Global Options → Git/SVN**, the **Git executable** field should contain a file path. You can also enter `git --version` in the RStudio Terminal and confirm that it returns a version number. The complete test comes after you create and clone a repository.
+
+1. On GitHub (*logged in to your personal GitHub account that you've already created*) select **New repository**.
+2. Choose a short, descriptive **repository name**. Use lowercase letters and hyphens instead of spaces, and name the analysis or project rather than using something vague such as `project1`. Examples include `kelp-bass-growth` or `Matt-thesis-analysis`.
+3. Add a brief **description** stating what the repository contains. You can revise it later.
+4. Choose **Private** while the analysis is being developed or contains material that is not ready to share. You can change it to **Public** later.
+5. Under **Initialize this repository with**:
+   - Select **Add a README file**. The README will become the repository’s front page and can be expanded as the project develops.
+   - Under **Add `.gitignore`**, choose the **R** template. This prevents common temporary R and RStudio files from being tracked.
+   - Under **Choose a license**, select the [**MIT License**](https://choosealicense.com/licenses/mit/). This short, permissive license is a good default for open R analysis code because it allows others to use, modify, and redistribute the code as long as they retain the copyright and license notice. It also states that the code is provided without warranty. The license applies only to material you have the right to share; any included or separately distributed data may have their own permissions or license.
+6. Select **Create repository**
+8. Once the repo is created, select **Code** and copy its HTTPS URL.
+9. In RStudio, select **File → New Project → Version Control → Git**, paste the URL, choose where the project will be stored (*a folder on your computer - I suggest creating a new overall folder named "github repos" where all your github repositories moving forward will be stored*), and select **Create Project**.
 
 RStudio will clone the GitHub repo, create its `.Rproj` file, and open the local project. From then on, open the project using the `.Rproj` file.
 
 The `.gitignore` is therefore a Git file, but you can create it in several ways. GitHub can add the standard R template when you create a repo. For a local RStudio Project that already exists, `usethis::use_git()` initializes Git and creates a `.gitignore`; after making the first commit, `usethis::use_github(private = TRUE)` can create and connect the GitHub repo. Use one starting workflow or the other rather than independently creating both repos and then trying to join them.
+
+### Test your setup using the new repo
+
+Creating and cloning the first repository provides the best end-to-end test that Git, GitHub, and RStudio are connected correctly:
+
+1. Confirm that the cloned project opens in RStudio and that the **Git** pane is visible.
+2. Open `README.md`, add a short sentence, and save the file.
+3. In the Git pane, check the box next to `README.md` to stage it, then select **Commit**.
+4. Enter a message such as `Test Git and GitHub connection` and complete the commit.
+5. Select **Push**. Complete any GitHub authentication prompt that appears.
+6. Refresh the repository page on GitHub and confirm that the README change and commit appear.
+7. To test pulling, edit `README.md` on GitHub, commit the change there, then return to RStudio and select **Pull**. Confirm that the GitHub change now appears in the local file.
+
+If all seven steps work, the setup is complete. This practice repository can become the student’s first analysis repository or remain a small test repository for practicing Git operations.
 
 ## Organize an R analysis repository
 
 A consistent folder structure makes an analysis easier to understand, rerun, review, and eventually share. One useful starting structure is:
 
 | File or folder | Purpose | Usually tracked by Git? |
-|---|---|---|
+|------------------------|------------------------|------------------------|
 | `project-name.Rproj` | Opens the analysis as an RStudio Project | Yes |
 | `README.md` | Describes the project, file organization, data access, and how to run the analysis | Yes |
 | `.gitignore` | Records which files and folders Git should exclude | Yes |
 | `R/` | R scripts and functions, optionally numbered in workflow order, such as `import_clean.R` and `analysis.R` | Yes |
-| `data files/` | Raw and processed data used by the scripts | Usually no; back up and share separately |
-| `figures/` | Figures produced by the analysis | Track final products; intermediate files may be ignored |
-| `tables/` | Tables produced by the analysis | Track final products; intermediate files may be ignored |
+| `data files/` | Raw and processed data used by the scripts | Usually no; back up and share separately, but if data files are small, probably the case with your theis data, ok to include in the repository and store on github |
+| `figures/` | Figures produced by the analysis | Yes |
+| `tables/` | Tables produced by the analysis | Yes |
 
 This example uses `data files`, `figures`, and `tables` as folder names.
 
-You can create the folders from the R console:
+You can create the folders manually (i.e., new folder, but make sure you name them correctly) or from the R console:
 
-```r
+``` r
 # Create the standard project folders if they do not already exist
 fs::dir_create(c("R", "data files", "figures", "tables"))
 ```
 
 Use project-relative paths in your code rather than computer-specific absolute paths. For example:
 
-```r
+``` r
 # Read a file using a path relative to the RStudio Project
 survey_data <- readr::read_csv(
   here::here("Data Files", "survey_data.csv")
@@ -146,12 +160,11 @@ survey_data <- readr::read_csv(
 
 ### Exclude data files with `.gitignore`
 
-To keep the contents of `Data Files/` out of GitHub while retaining a small README that explains how to obtain the data, add these lines to the project’s `.gitignore` file:
+If you want to keep the contents of `data files/` out of GitHub (they are huge data files and/or you should not share them, ask me if unsure) add these lines to the project’s `.gitignore` file (which you can open and edit in RStudio):
 
-```text
-# Ignore project data, but retain data-access documentation
-/Data Files/*
-!/Data Files/README.md
+``` text
+# Other folders etc.
+Data Tables/
 ```
 
 Add these rules before the data files are first committed. A `.gitignore` rule does not automatically remove a file that Git is already tracking.
@@ -163,8 +176,6 @@ In `README.md`, document:
 - any permissions or access restrictions;
 - the expected filenames and folder organization; and
 - any processing needed before running the analysis.
-
-Git does not track empty folders, so retaining this README also ensures that collaborators receive the `Data Files/` folder and its setup instructions when they clone the repo.
 
 ### Back up and share data separately
 
@@ -185,15 +196,15 @@ The key distinction is that **commit** and **push** are two separate actions. A 
 
 When you begin a work session:
 
-1. Open the project using its `.Rproj` file.
-2. **Pull** before editing, especially if the repository is shared or you use more than one computer.
-3. Edit your R scripts, Quarto documents, or other project files and save them.
-4. Review the changed files and their diffs in the Git pane.
-5. **Stage** the related files that belong in one checkpoint.
-6. **Commit** them with a short, informative message, such as `Add kelp bass size filtering` or `Revise model diagnostics`.
-7. Repeat the edit, stage, and commit cycle as you complete meaningful pieces of work.
-8. Pull again before pushing if someone else may have updated the shared repo.
-9. **Push** your commits to GitHub before you finish the work session or hand the project to a collaborator.
+1.  Open the project using its `.Rproj` file.
+2.  **Pull** before editing, especially if the repository is shared or you use more than one computer.
+3.  Edit your R scripts, Quarto documents, or other project files and save them.
+4.  Review the changed files and their diffs in the Git pane.
+5.  **Stage** the related files that belong in one checkpoint.
+6.  **Commit** them with a short, informative message, such as `Add kelp bass size filtering` or `Revise model diagnostics`.
+7.  Repeat the edit, stage, and commit cycle as you complete meaningful pieces of work.
+8.  Pull again before pushing if someone else may have updated the shared repo.
+9.  **Push** your commits to GitHub before you finish the work session or hand the project to a collaborator.
 
 In short: **pull → work → stage → commit → pull → push**.
 
@@ -208,7 +219,7 @@ This approach provides:
 - an off-computer copy of committed project files; and
 - a straightforward way to move between computers by cloning once and then pulling and pushing changes.
 
-::: {.callout-important}
+::: callout-important
 ## GitHub is not a complete research-data backup
 
 GitHub is especially useful for text-based files such as R scripts, Quarto documents, Markdown files, and small data files. It should not be your only backup, and it is generally not the right location for large raw datasets, collections of images, GIS rasters, confidential information, credentials, or sensitive species-locality data. Use an approved research-data storage and backup system for those files.
@@ -217,9 +228,9 @@ GitHub is especially useful for text-based files such as R scripts, Quarto docum
 ### What should be tracked?
 
 | Usually track with Git | Usually exclude with `.gitignore` or store elsewhere |
-|---|---|
+|------------------------------------|------------------------------------|
 | R scripts and functions (`.R`) | Passwords, tokens, API keys, and other credentials |
-| Quarto source files `.qmd`|
+| Quarto source files `.qmd` |  |
 | README files and other documentation | Large raw data, imagery, video, and GIS rasters |
 | Small, non-sensitive data needed to reproduce the analysis | Confidential or restricted data |
 | Project configuration and dependency files | Large or easily regenerated output files |
@@ -232,11 +243,11 @@ For a simple one-to-one workflow, the student and PI can both be collaborators o
 
 A typical review cycle is:
 
-1. **Student:** Pulls the latest version, completes a defined piece of work, reviews the changes, commits them with clear messages, and pushes to GitHub.
-2. **Handoff:** The student tells the PI what is ready for review and identifies any questions or incomplete sections.
-3. **PI:** Pulls the project, reviews the code and commit history, and discusses the analysis with the student. The PI may edit the code directly or add guidance in comments or a review document.
-4. **PI:** Commits the revisions or guidance with a clear message and pushes them to GitHub.
-5. **Student:** Pulls the reviewed version, reads the changes, and continues the analysis.
+1.  **Student:** Pulls the latest version, completes a defined piece of work, reviews the changes, commits them with clear messages, and pushes to GitHub.
+2.  **Handoff:** The student tells the PI what is ready for review and identifies any questions or incomplete sections.
+3.  **PI:** Pulls the project, reviews the code and commit history, and discusses the analysis with the student. The PI may edit the code directly or add guidance in comments or a review document.
+4.  **PI:** Commits the revisions or guidance with a clear message and pushes them to GitHub.
+5.  **Student:** Pulls the reviewed version, reads the changes, and continues the analysis.
 
 The cycle can then repeat. The Git history records who changed what, when it changed, and why.
 
@@ -277,22 +288,22 @@ For help, see the relevant sections of [Happy Git and GitHub for the useR](https
 
 After completing the setup guide, create a small practice repository and complete this cycle at least once:
 
-1. Clone or create the repository as an RStudio Project.
-2. Add or edit an R script or `README.md` file.
-3. Review the diff, stage the file, and commit the change.
-4. Push the commit and confirm that it appears on GitHub.
-5. Make a small edit to `README.md` on GitHub, commit it there, and pull it into RStudio.
-6. Open the Git history in RStudio and identify both commits.
+1.  Clone or create the repository as an RStudio Project.
+2.  Add or edit an R script or `README.md` file.
+3.  Review the diff, stage the file, and commit the change.
+4.  Push the commit and confirm that it appears on GitHub.
+5.  Make a small edit to `README.md` on GitHub, commit it there, and pull it into RStudio.
+6.  Open the Git history in RStudio and identify both commits.
 
 For a guided version of this exercise, including an optional practice merge conflict, use [Create and Sync a GitHub Repo with RStudio](https://d2m-r.github.io/materials/guides/walkthrough-github-rstudio.html).
 
 ## The main habits to remember
 
-1. Use an RStudio Project for each Git repository.
-2. Pull before you begin working.
-3. Commit small, meaningful sets of changes with informative messages.
-4. Push regularly and before handing the project to someone else.
-5. Do not put credentials, restricted data, or large raw files in a repository.
-6. When Git reports a conflict, slow down and determine which content should be retained.
-7. Document the project well enough that a collaborator or your future self can understand how to run it.
-8. When appropriate, make a clean repository public so the analysis can support your portfolio, accompany a paper, or be forked and reused by others.
+1.  Use an RStudio Project for each Git repository.
+2.  Pull before you begin working.
+3.  Commit small, meaningful sets of changes with informative messages.
+4.  Push regularly and before handing the project to someone else.
+5.  Do not put credentials, restricted data, or large raw files in a repository.
+6.  When Git reports a conflict, slow down and determine which content should be retained.
+7.  Document the project well enough that a collaborator or your future self can understand how to run it.
+8.  When appropriate, make a clean repository public so the analysis can support your portfolio, accompany a paper, or be forked and reused by others.

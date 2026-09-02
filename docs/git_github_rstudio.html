@@ -185,9 +185,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#github-education" id="toc-github-education" class="nav-link" data-scroll-target="#github-education">GitHub Education</a></li>
   <li><a href="#install-github-desktop-as-a-troubleshooting-tool" id="toc-install-github-desktop-as-a-troubleshooting-tool" class="nav-link" data-scroll-target="#install-github-desktop-as-a-troubleshooting-tool">Install GitHub Desktop as a troubleshooting tool</a></li>
-  <li><a href="#confirm-that-your-setup-works" id="toc-confirm-that-your-setup-works" class="nav-link" data-scroll-target="#confirm-that-your-setup-works">Confirm that your setup works</a></li>
   </ul></li>
-  <li><a href="#create-a-new-github-repo-for-an-rstudio-project" id="toc-create-a-new-github-repo-for-an-rstudio-project" class="nav-link" data-scroll-target="#create-a-new-github-repo-for-an-rstudio-project">Create a new GitHub repo for an RStudio Project</a></li>
+  <li><a href="#create-a-new-github-repo-for-an-rstudio-project" id="toc-create-a-new-github-repo-for-an-rstudio-project" class="nav-link" data-scroll-target="#create-a-new-github-repo-for-an-rstudio-project">Create a new GitHub repo for an RStudio Project</a>
+  <ul class="collapse">
+  <li><a href="#test-your-setup-using-the-new-repo" id="toc-test-your-setup-using-the-new-repo" class="nav-link" data-scroll-target="#test-your-setup-using-the-new-repo">Test your setup using the new repo</a></li>
+  </ul></li>
   <li><a href="#organize-an-r-analysis-repository" id="toc-organize-an-r-analysis-repository" class="nav-link" data-scroll-target="#organize-an-r-analysis-repository">Organize an R analysis repository</a>
   <ul class="collapse">
   <li><a href="#exclude-data-files-with-.gitignore" id="toc-exclude-data-files-with-.gitignore" class="nav-link" data-scroll-target="#exclude-data-files-with-.gitignore">Exclude data files with <code>.gitignore</code></a></li>
@@ -233,11 +235,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="why-use-git-and-github">Why use Git and GitHub?</h2>
 <p>Git and GitHub help you keep a history of changes to your R code, return to an earlier version when something breaks, and share a project with collaborators. For many biologists, the most common uses are:</p>
 <ol type="1">
-<li><strong>Personal version control and an off-computer copy:</strong> Keep the R scripts, Quarto documents, and other project files in an RStudio Project, record useful checkpoints with Git, and push those commits to GitHub.</li>
-<li><strong>Code review and collaboration:</strong> Exchange revisions between a student and PI, or among members of a lab, without emailing (overly complicated) files named <code>analysis_final_v2_revised.R</code>.</li>
-<li><strong>Sharing and reuse:</strong> Make a well-documented repository public as part of your professional portfolio (e.g., add link to your GitHub profile to your CV), share the complete analysis associated with a published paper, or allow another researcher to fork the repository and adapt the code for a new project.</li>
+<li><strong>Personal version control and an off-computer copy (back-up, sharing):</strong> Keep the R scripts, Quarto documents, and other project files in an RStudio Project, record useful checkpoints with Git, and push those commits to GitHub.com.</li>
+<li><strong>Code review and collaboration:</strong> Exchange revisions between a student and PI or colleagues, or among members of a lab, without emailing (overly complicated) files named <code>analysis_final_v2_revised.R</code>.</li>
+<li><strong>Sharing and reuse:</strong> Make a well-documented repository public as part of your professional portfolio (e.g., add link to your GitHub.com profile to your CV), share the complete analysis associated with a published paper, or allow another researcher to fork the repository and adapt the code for a new project.</li>
 </ol>
-<p>You do not need to become a command-line Git expert. RStudio provides buttons for the core operations you will use most often: stage, commit, pull, push, and view history.</p>
+<ul>
+<li>Here’s an <a href="https://github.com/zoekitchel">example of personal github for Dr.&nbsp;Zoë Kitchel</a></li>
+<li>Here’s an <a href="https://github.com/pinskylab">example of lab github for Dr.&nbsp;Malin Pinsky’s lab</a></li>
+</ul>
+<p>Git &amp; Github was originally designed for computer programmers, and there are tons of features that I (and I imagine most biologists) never use. I primarily use it through RStudio, which provides buttons for the core operations you will use most often: <em>stage, commit, push and pull</em>.</p>
 <section id="learning-objectives" class="level3">
 <h3 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h3>
 <p>By the end of this tutorial, you should be able to:</p>
@@ -280,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td><strong>GitHub</strong></td>
-<td>A website that hosts Git repositories online so they can be accessed, shared, and collaborated on. Git and GitHub are related, but they are not the same thing.</td>
+<td>A website that hosts Git repositories (folders) online so they can be accessed, shared, and collaborated on. Git and GitHub are related, but they are not the same thing.</td>
 </tr>
 <tr class="odd">
 <td><strong>RStudio Project</strong></td>
@@ -361,7 +367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Authenticate RStudio with GitHub.</li>
 <li>Create or clone a repository as an RStudio Project.</li>
 </ol>
-<p>Use a professional GitHub username that you will be comfortable sharing with collaborators or listing on a CV. GitHub accounts are free, including private repositories.</p>
+<p>Use a <em>professional GitHub username</em> that you will be comfortable sharing with collaborators or listing on a CV. GitHub accounts are free, including private repositories.</p>
 <section id="github-education" class="level3">
 <h3 class="anchored" data-anchor-id="github-education">GitHub Education</h3>
 <p>Students can also <a href="https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student">apply for GitHub Education benefits</a>. Start with a personal GitHub account, add and verify your university email address if requested, and provide proof of current enrollment. Approved students receive access to the <a href="https://education.github.com/pack">GitHub Student Developer Pack</a>, which includes additional developer tools and services. These benefits are useful but are not required for this course.</p>
@@ -379,31 +385,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://openscapes.github.io/series/how-do-i/do-fix-git-things.html">Openscapes: Do and Fix Things in Git</a>, for a curated collection of RStudio, Git, and troubleshooting resources.</li>
 </ul>
 </section>
-<section id="confirm-that-your-setup-works" class="level3">
-<h3 class="anchored" data-anchor-id="confirm-that-your-setup-works">Confirm that your setup works</h3>
-<p>Before continuing, verify that you can:</p>
-<ul>
-<li>open an RStudio Project connected to a Git repository;</li>
-<li>see the <strong>Git</strong> pane in RStudio;</li>
-<li>commit a small change locally;</li>
-<li>push the commit to GitHub and see it on the repository webpage; and</li>
-<li>pull a change from GitHub back to your computer.</li>
-</ul>
-</section>
 </section>
 <section id="create-a-new-github-repo-for-an-rstudio-project" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-new-github-repo-for-an-rstudio-project">Create a new GitHub repo for an RStudio Project</h2>
 <p>The simplest beginner workflow is to create the remote repo on GitHub first and then clone it with RStudio. This keeps GitHub and the local RStudio Project connected from the beginning.</p>
+<p>Before a repository exists, you can confirm only that Git is installed and detected by RStudio. Under <strong>Tools → Global Options → Git/SVN</strong>, the <strong>Git executable</strong> field should contain a file path. You can also enter <code>git --version</code> in the RStudio Terminal and confirm that it returns a version number. The complete test comes after you create and clone a repository.</p>
 <ol type="1">
-<li>On GitHub, select <strong>New repository</strong>.</li>
-<li>Enter a short, descriptive repository name and choose whether it will initially be private or public.</li>
-<li>Select <strong>Add a README file</strong>.</li>
-<li>Under <strong>Add <code>.gitignore</code></strong>, choose the <strong>R</strong> template. The <code>.gitignore</code> file tells Git which common R and RStudio files should not be tracked.</li>
-<li>Create the repository, select <strong>Code</strong>, and copy its HTTPS URL.</li>
-<li>In RStudio, select <strong>File → New Project → Version Control → Git</strong>, paste the URL, choose where the project will be stored, and select <strong>Create Project</strong>.</li>
+<li>On GitHub (<em>logged in to your personal GitHub account that you’ve already created</em>) select <strong>New repository</strong>.</li>
+<li>Choose a short, descriptive <strong>repository name</strong>. Use lowercase letters and hyphens instead of spaces, and name the analysis or project rather than using something vague such as <code>project1</code>. Examples include <code>kelp-bass-growth</code> or <code>Matt-thesis-analysis</code>.</li>
+<li>Add a brief <strong>description</strong> stating what the repository contains. You can revise it later.</li>
+<li>Choose <strong>Private</strong> while the analysis is being developed or contains material that is not ready to share. You can change it to <strong>Public</strong> later.</li>
+<li>Under <strong>Initialize this repository with</strong>:
+<ul>
+<li>Select <strong>Add a README file</strong>. The README will become the repository’s front page and can be expanded as the project develops.</li>
+<li>Under <strong>Add <code>.gitignore</code></strong>, choose the <strong>R</strong> template. This prevents common temporary R and RStudio files from being tracked.</li>
+<li>Under <strong>Choose a license</strong>, select the <a href="https://choosealicense.com/licenses/mit/"><strong>MIT License</strong></a>. This short, permissive license is a good default for open R analysis code because it allows others to use, modify, and redistribute the code as long as they retain the copyright and license notice. It also states that the code is provided without warranty. The license applies only to material you have the right to share; any included or separately distributed data may have their own permissions or license.</li>
+</ul></li>
+<li>Select <strong>Create repository</strong></li>
+<li>Once the repo is created, select <strong>Code</strong> and copy its HTTPS URL.</li>
+<li>In RStudio, select <strong>File → New Project → Version Control → Git</strong>, paste the URL, choose where the project will be stored (<em>a folder on your computer - I suggest creating a new overall folder named “github repos” where all your github repositories moving forward will be stored</em>), and select <strong>Create Project</strong>.</li>
 </ol>
 <p>RStudio will clone the GitHub repo, create its <code>.Rproj</code> file, and open the local project. From then on, open the project using the <code>.Rproj</code> file.</p>
 <p>The <code>.gitignore</code> is therefore a Git file, but you can create it in several ways. GitHub can add the standard R template when you create a repo. For a local RStudio Project that already exists, <code>usethis::use_git()</code> initializes Git and creates a <code>.gitignore</code>; after making the first commit, <code>usethis::use_github(private = TRUE)</code> can create and connect the GitHub repo. Use one starting workflow or the other rather than independently creating both repos and then trying to join them.</p>
+<section id="test-your-setup-using-the-new-repo" class="level3">
+<h3 class="anchored" data-anchor-id="test-your-setup-using-the-new-repo">Test your setup using the new repo</h3>
+<p>Creating and cloning the first repository provides the best end-to-end test that Git, GitHub, and RStudio are connected correctly:</p>
+<ol type="1">
+<li>Confirm that the cloned project opens in RStudio and that the <strong>Git</strong> pane is visible.</li>
+<li>Open <code>README.md</code>, add a short sentence, and save the file.</li>
+<li>In the Git pane, check the box next to <code>README.md</code> to stage it, then select <strong>Commit</strong>.</li>
+<li>Enter a message such as <code>Test Git and GitHub connection</code> and complete the commit.</li>
+<li>Select <strong>Push</strong>. Complete any GitHub authentication prompt that appears.</li>
+<li>Refresh the repository page on GitHub and confirm that the README change and commit appear.</li>
+<li>To test pulling, edit <code>README.md</code> on GitHub, commit the change there, then return to RStudio and select <strong>Pull</strong>. Confirm that the GitHub change now appears in the local file.</li>
+</ol>
+<p>If all seven steps work, the setup is complete. This practice repository can become the student’s first analysis repository or remain a small test repository for practicing Git operations.</p>
+</section>
 </section>
 <section id="organize-an-r-analysis-repository" class="level2">
 <h2 class="anchored" data-anchor-id="organize-an-r-analysis-repository">Organize an R analysis repository</h2>
@@ -445,22 +462,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td><code>data files/</code></td>
 <td>Raw and processed data used by the scripts</td>
-<td>Usually no; back up and share separately</td>
+<td>Usually no; back up and share separately, but if data files are small, probably the case with your theis data, ok to include in the repository and store on github</td>
 </tr>
 <tr class="even">
 <td><code>figures/</code></td>
 <td>Figures produced by the analysis</td>
-<td>Track final products; intermediate files may be ignored</td>
+<td>Yes</td>
 </tr>
 <tr class="odd">
 <td><code>tables/</code></td>
 <td>Tables produced by the analysis</td>
-<td>Track final products; intermediate files may be ignored</td>
+<td>Yes</td>
 </tr>
 </tbody>
 </table>
 <p>This example uses <code>data files</code>, <code>figures</code>, and <code>tables</code> as folder names.</p>
-<p>You can create the folders from the R console:</p>
+<p>You can create the folders manually (i.e., new folder, but make sure you name them correctly) or from the R console:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the standard project folders if they do not already exist</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_create</span>(<span class="fu">c</span>(<span class="st">"R"</span>, <span class="st">"data files"</span>, <span class="st">"figures"</span>, <span class="st">"tables"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Use project-relative paths in your code rather than computer-specific absolute paths. For example:</p>
@@ -470,10 +487,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="exclude-data-files-with-.gitignore" class="level3">
 <h3 class="anchored" data-anchor-id="exclude-data-files-with-.gitignore">Exclude data files with <code>.gitignore</code></h3>
-<p>To keep the contents of <code>Data Files/</code> out of GitHub while retaining a small README that explains how to obtain the data, add these lines to the project’s <code>.gitignore</code> file:</p>
-<pre class="text"><code># Ignore project data, but retain data-access documentation
-/Data Files/*
-!/Data Files/README.md</code></pre>
+<p>If you want to keep the contents of <code>data files/</code> out of GitHub (they are huge data files and/or you should not share them, ask me if unsure) add these lines to the project’s <code>.gitignore</code> file (which you can open and edit in RStudio):</p>
+<pre class="text"><code># Other folders etc.
+Data Tables/</code></pre>
 <p>Add these rules before the data files are first committed. A <code>.gitignore</code> rule does not automatically remove a file that Git is already tracking.</p>
 <p>In <code>README.md</code>, document:</p>
 <ul>
@@ -483,7 +499,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>the expected filenames and folder organization; and</li>
 <li>any processing needed before running the analysis.</li>
 </ul>
-<p>Git does not track empty folders, so retaining this README also ensures that collaborators receive the <code>Data Files/</code> folder and its setup instructions when they clone the repo.</p>
 </section>
 <section id="back-up-and-share-data-separately" class="level3">
 <h3 class="anchored" data-anchor-id="back-up-and-share-data-separately">Back up and share data separately</h3>
