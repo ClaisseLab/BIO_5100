@@ -17,7 +17,7 @@ execute:
 ```{r}
 #| label: load packages
 # load tidyverse packages
-library(tidyverse)
+library(tidyverse) 
 
 # load broom package (for linear model related functions)
 # note broom package is installed as part of tidymodels package

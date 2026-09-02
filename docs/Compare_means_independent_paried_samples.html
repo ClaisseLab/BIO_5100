@@ -5,7 +5,6 @@
 <meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Jeremy Claisse">
-<meta name="dcterms.date" content="2026-08-15">
 <title>BIO 5100 Comparing Means from independent and paired samples – BIO 5100</title>
 <style>
 /* Default styles provided by pandoc.
@@ -127,12 +126,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Online Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://claisselab.github.io/BIO_5800L/"> 
-<span class="menu-text">BIO 5800L</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="https://claisselab.github.io/BIO_5100/Example_Code.html"> 
 <span class="menu-text">Example Code</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://claisselab.github.io/BIO_5100/BIO_5150L.html"> 
+<span class="menu-text">BIO 5150L</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://claisselab.github.io/BIO_5800L/"> 
+<span class="menu-text">BIO 5800L</span></a>
   </li>  
 </ul>
 <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -244,7 +247,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">15 Aug 2026</p>
+      <p class="date">2 Sep 2026</p>
     </div>
   </div>
   
@@ -256,7 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header><section id="load-packages" class="level1"><h1>Load Packages</h1>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># load tidyverse packages</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> </span>
 <span></span>
 <span><span class="co"># load broom package (for linear model related functions)</span></span>
 <span><span class="co"># note broom package is installed as part of tidymodels package</span></span>
