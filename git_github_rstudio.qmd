@@ -157,9 +157,9 @@ survey_data <- readr::read_csv(
 )
 ```
 
-### Exclude data files with `.gitignore`
+### Exclude data files by editing your .gitignore file
 
-If you want to keep the contents of `data files/` out of GitHub (they are huge data files and/or you should not share them, ask me if unsure) add these lines to the project’s `.gitignore` file (which you can open and edit in RStudio):
+If you want to keep the contents of `data files/` out of GitHub (not tracked by git and not pushed to GitHub) add these lines to the project’s `.gitignore` file (which you can open and edit in RStudio):
 
 ``` text
 # Other folders etc.
@@ -178,7 +178,7 @@ In `README.md`, document:
 
 ### Back up and share data separately
 
-GitHub can store small, non-sensitive data files, and doing so can make an analysis easier to reproduce. However, Git and GitHub are optimized for versioning text-based source files, not large datasets, images, video, GIS rasters, or frequently changing binary files. GitHub blocks regular Git files larger than 100 MB and recommends keeping repositories substantially smaller than a general research-data archive.
+GitHub can store small, non-sensitive data files, and doing so can make an analysis easier to reproduce. For typical thesis data a student collects it is often fine and beneficial to keep it on GitHub. However, Git and GitHub are not optimized for storing and/or keeping track of changes in very large datasets, images, video, GIS rasters. GitHub blocks regular Git files larger than 100 MB and recommends keeping repositories substantially smaller than a general research-data archive.
 
 Depending on the data and project stage, use one or more of the following instead:
 

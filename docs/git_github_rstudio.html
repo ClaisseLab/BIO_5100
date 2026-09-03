@@ -192,7 +192,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#organize-an-r-analysis-repository" id="toc-organize-an-r-analysis-repository" class="nav-link" data-scroll-target="#organize-an-r-analysis-repository">Organize an R analysis repository</a>
   <ul class="collapse">
-  <li><a href="#exclude-data-files-with-.gitignore" id="toc-exclude-data-files-with-.gitignore" class="nav-link" data-scroll-target="#exclude-data-files-with-.gitignore">Exclude data files with <code>.gitignore</code></a></li>
+  <li><a href="#exclude-data-files-by-editing-your-.gitignore-file" id="toc-exclude-data-files-by-editing-your-.gitignore-file" class="nav-link" data-scroll-target="#exclude-data-files-by-editing-your-.gitignore-file">Exclude data files by editing your .gitignore file</a></li>
   <li><a href="#back-up-and-share-data-separately" id="toc-back-up-and-share-data-separately" class="nav-link" data-scroll-target="#back-up-and-share-data-separately">Back up and share data separately</a></li>
   </ul></li>
   <li><a href="#the-everyday-rstudio-workflow" id="toc-the-everyday-rstudio-workflow" class="nav-link" data-scroll-target="#the-everyday-rstudio-workflow">The everyday RStudio workflow</a></li>
@@ -480,9 +480,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"Data Files"</span>, <span class="st">"survey_data.csv"</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<section id="exclude-data-files-with-.gitignore" class="level3">
-<h3 class="anchored" data-anchor-id="exclude-data-files-with-.gitignore">Exclude data files with <code>.gitignore</code></h3>
-<p>If you want to keep the contents of <code>data files/</code> out of GitHub (they are huge data files and/or you should not share them, ask me if unsure) add these lines to the project’s <code>.gitignore</code> file (which you can open and edit in RStudio):</p>
+<section id="exclude-data-files-by-editing-your-.gitignore-file" class="level3">
+<h3 class="anchored" data-anchor-id="exclude-data-files-by-editing-your-.gitignore-file">Exclude data files by editing your .gitignore file</h3>
+<p>If you want to keep the contents of <code>data files/</code> out of GitHub (not tracked by git and not pushed to GitHub) add these lines to the project’s <code>.gitignore</code> file (which you can open and edit in RStudio):</p>
 <pre class="text"><code># Other folders etc.
 data tables/</code></pre>
 <p>Add these rules before the data files are first committed. A <code>.gitignore</code> rule does not automatically remove a file that Git is already tracking.</p>
@@ -497,7 +497,7 @@ data tables/</code></pre>
 </section>
 <section id="back-up-and-share-data-separately" class="level3">
 <h3 class="anchored" data-anchor-id="back-up-and-share-data-separately">Back up and share data separately</h3>
-<p>GitHub can store small, non-sensitive data files, and doing so can make an analysis easier to reproduce. However, Git and GitHub are optimized for versioning text-based source files, not large datasets, images, video, GIS rasters, or frequently changing binary files. GitHub blocks regular Git files larger than 100 MB and recommends keeping repositories substantially smaller than a general research-data archive.</p>
+<p>GitHub can store small, non-sensitive data files, and doing so can make an analysis easier to reproduce. For typical thesis data a student collects it is often fine and beneficial to keep it on GitHub. However, Git and GitHub are not optimized for storing and/or keeping track of changes in very large datasets, images, video, GIS rasters. GitHub blocks regular Git files larger than 100 MB and recommends keeping repositories substantially smaller than a general research-data archive.</p>
 <p>Depending on the data and project stage, use one or more of the following instead:</p>
 <ul>
 <li>approved university or agency cloud storage, network storage, or a lab server for active project data;</li>
