@@ -455,21 +455,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Yes</td>
 </tr>
 <tr class="even">
-<td><code>R/</code></td>
-<td>R scripts and functions, optionally numbered in workflow order, such as <code>import_clean.R</code> and <code>analysis.R</code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
 <td><code>data files/</code></td>
 <td>Raw and processed data used by the scripts</td>
 <td>Usually no; back up and share separately, but if data files are small, probably the case with your theis data, ok to include in the repository and store on github</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>figures/</code></td>
 <td>Figures produced by the analysis</td>
 <td>Yes</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>tables/</code></td>
 <td>Tables produced by the analysis</td>
 <td>Yes</td>
@@ -489,7 +484,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="exclude-data-files-with-.gitignore">Exclude data files with <code>.gitignore</code></h3>
 <p>If you want to keep the contents of <code>data files/</code> out of GitHub (they are huge data files and/or you should not share them, ask me if unsure) add these lines to the project’s <code>.gitignore</code> file (which you can open and edit in RStudio):</p>
 <pre class="text"><code># Other folders etc.
-Data Tables/</code></pre>
+data tables/</code></pre>
 <p>Add these rules before the data files are first committed. A <code>.gitignore</code> rule does not automatically remove a file that Git is already tracking.</p>
 <p>In <code>README.md</code>, document:</p>
 <ul>
@@ -630,8 +625,8 @@ Data Tables/</code></pre>
 <li>communicate about who is editing which files; and</li>
 <li>make focused commits with clear messages.</li>
 </ul>
-<p>If a conflict occurs, Git is protecting both versions rather than silently overwriting one. Stop and inspect the conflict before making additional changes. Git marks the competing sections in the affected file. You must decide which code or text to retain, remove the conflict markers, save the file, stage it, and commit the resolution. GitHub Desktop may make the repository state easier to see, but it cannot determine which analytical change is correct.</p>
-<p>For help, see the relevant sections of <a href="https://happygitwithr.com/">Happy Git and GitHub for the useR</a>, especially <strong>Dealing with push rejection</strong> and <strong>Pull, but you have local work</strong>.</p>
+<p>If a conflict occurs, Git is protecting both versions rather than silently overwriting one. Stop and inspect the conflict before making additional changes. Git marks the competing sections in the affected file. Use GitHub Desktop to resolve merge conflicts, sometimes it is able to automatically merge the changes. Other times you may need to pick one version and manually add the other version’s content back in. After resolving the conflict, stage and commit the file, then push to GitHub.</p>
+<p>Try to see if you can resolve the conflict using GitHub Desktop. And if that doesn’t work then see the relevant sections of <a href="https://happygitwithr.com/">Happy Git and GitHub for the useR</a>, especially <strong>Dealing with push rejection</strong> and <strong>Pull, but you have local work</strong>.</p>
 </section>
 <section id="practice-the-complete-cycle" class="level2">
 <h2 class="anchored" data-anchor-id="practice-the-complete-cycle">Practice the complete cycle</h2>
