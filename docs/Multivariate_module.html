@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>multivariate ecological data analysis module – BIO 5100</title>
+<title>Multivariate Data Analysis Module – BIO 5100</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -140,11 +140,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#summarizing-and-exploring-the-your-data" id="toc-summarizing-and-exploring-the-your-data" class="nav-link active" data-scroll-target="#summarizing-and-exploring-the-your-data">Summarizing and exploring the your data</a>
-  <ul class="collapse">
-  <li><a href="#tutorial-files" id="toc-tutorial-files" class="nav-link" data-scroll-target="#tutorial-files">Tutorial files</a></li>
-  </ul></li>
-  <li><a href="#nmds-ordination-tutorial-info" id="toc-nmds-ordination-tutorial-info" class="nav-link" data-scroll-target="#nmds-ordination-tutorial-info">nMDS Ordination Tutorial &amp; Info</a>
+  <li><a href="#summarizing-exploring-your-data" id="toc-summarizing-exploring-your-data" class="nav-link active" data-scroll-target="#summarizing-exploring-your-data">1) Summarizing &amp; Exploring Your Data</a></li>
+  <li><a href="#nmds-ordination-tutorial-info" id="toc-nmds-ordination-tutorial-info" class="nav-link" data-scroll-target="#nmds-ordination-tutorial-info">2) nMDS Ordination Tutorial &amp; Info</a>
   <ul class="collapse">
   <li><a href="#before-class" id="toc-before-class" class="nav-link" data-scroll-target="#before-class">Before class</a></li>
   <li><a href="#nmds-tutorial-files" id="toc-nmds-tutorial-files" class="nav-link" data-scroll-target="#nmds-tutorial-files">nMDS Tutorial files</a></li>
@@ -168,7 +165,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">multivariate ecological data analysis module</h1>
+<h1 class="title">Multivariate Data Analysis Module</h1>
 </div>
 
 
@@ -185,10 +182,16 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="summarizing-and-exploring-the-your-data" class="level1">
-<h1>Summarizing and exploring the your data</h1>
+<section id="summarizing-exploring-your-data" class="level1">
+<h1>1) Summarizing &amp; Exploring Your Data</h1>
 <p>Before conducting a multivariate analysis, first examine the structure and quality of the data, summarize sampling effort, and visualize the main abundance patterns. This helps identify missing observations, unequal sampling effort, dominant or uncommon taxa, and other features that may influence later analytical decisions.</p>
-<p>The introductory script demonstrates how to:</p>
+<p>(<em>Download the tutorial script, data and look-up files to the same folder before running the tutorial</em>)</p>
+<ul>
+<li><a href="downloads/multivariate_data_summary_diversity_tutorial.R">Download the data-summary and diversity tutorial</a>{download}</li>
+<li><a href="downloads/Coral_Reef_Data_2014_to_2025.xlsx">Download Coral_Reef_Data_2014_to_2025.xlsx</a>{download}</li>
+<li><a href="downloads/invertebrate_taxonomy_lookup.csv">Download invertebrate_taxonomy_lookup.csv</a>{download}</li>
+</ul>
+<p>This script demonstrates how to:</p>
 <ul>
 <li>Reshape community data between wide and long formats.</li>
 <li>Check data quality and sampling effort.</li>
@@ -197,19 +200,9 @@ ul.task-list li input[type="checkbox"] {
 <li>Create stacked abundance bar plots and proportional-composition plots.</li>
 <li>Calculate univariate diversity metrics with the vegan package</li>
 </ul>
-<section id="tutorial-files" class="level2">
-<h2 class="anchored" data-anchor-id="tutorial-files">Tutorial files</h2>
-<p>(<em>Download the tutorial script, data and look-up files to the same folder before running the tutorial</em>)</p>
-<ul>
-<li><a href="downloads/multivariate_data_summary_diversity_tutorial.R">Download the data-summary and diversity tutorial</a>{download}</li>
-<li><a href="downloads/Coral_Reef_Data_2014_to_2025.xlsx">Download Coral_Reef_Data_2014_to_2025.xlsx</a>{download}</li>
-<li><a href="downloads/invertebrate_taxonomy_lookup.csv">Download invertebrate_taxonomy_lookup.csv</a>{download}</li>
-</ul>
-<hr>
-</section>
 </section>
 <section id="nmds-ordination-tutorial-info" class="level1">
-<h1>nMDS Ordination Tutorial &amp; Info</h1>
+<h1>2) nMDS Ordination Tutorial &amp; Info</h1>
 <p>Nonmetric multidimensional scaling, or nMDS, creates a two-dimensional map of differences in community composition. Points plotted close together have more similar assemblages, while those farther apart have more different assemblages.</p>
 <p>The tutorial also introduces PERMANOVA (at the end) as a companion analysis for testing differences in multivariate composition.</p>
 <section id="before-class" class="level2">

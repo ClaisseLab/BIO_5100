@@ -1,14 +1,20 @@
 ---
-title: "multivariate ecological data analysis module"
+title: "Multivariate Data Analysis Module"
 toc: true
 toc-title: "On this page"
 ---
 
-# Summarizing and exploring the your data
+# 1) Summarizing & Exploring Your Data
 
 Before conducting a multivariate analysis, first examine the structure and quality of the data, summarize sampling effort, and visualize the main abundance patterns. This helps identify missing observations, unequal sampling effort, dominant or uncommon taxa, and other features that may influence later analytical decisions.
 
-The introductory script demonstrates how to:
+(*Download the tutorial script, data and look-up files to the same folder before running the tutorial*)
+
+- [Download the data-summary and diversity tutorial](downloads/multivariate_data_summary_diversity_tutorial.R){download}
+- [Download Coral_Reef_Data_2014_to_2025.xlsx](downloads/Coral_Reef_Data_2014_to_2025.xlsx){download}
+- [Download invertebrate_taxonomy_lookup.csv](downloads/invertebrate_taxonomy_lookup.csv){download}
+
+This script demonstrates how to:
 
 - Reshape community data between wide and long formats.
 - Check data quality and sampling effort.
@@ -17,17 +23,11 @@ The introductory script demonstrates how to:
 - Create stacked abundance bar plots and proportional-composition plots.
 - Calculate univariate diversity metrics with the vegan package
 
-## Tutorial files
 
-(*Download the tutorial script, data and look-up files to the same folder before running the tutorial*)
 
-- [Download the data-summary and diversity tutorial](downloads/multivariate_data_summary_diversity_tutorial.R){download}
-- [Download Coral_Reef_Data_2014_to_2025.xlsx](downloads/Coral_Reef_Data_2014_to_2025.xlsx){download}
-- [Download invertebrate_taxonomy_lookup.csv](downloads/invertebrate_taxonomy_lookup.csv){download}
 
-------------------------------------------------------------------------
 
-# nMDS Ordination Tutorial & Info
+# 2) nMDS Ordination Tutorial & Info
 
 Nonmetric multidimensional scaling, or nMDS, creates a two-dimensional map of differences in community composition. Points plotted close together have more similar assemblages, while those farther apart have more different assemblages.
 
