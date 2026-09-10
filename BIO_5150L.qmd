@@ -16,6 +16,11 @@ title: "BIO 5150L Resources and Tutorials"
 - Provides guidance for organizing projects, excluding and backing up data, and other uses, issues, and organization.
 
 
+## [Multivariate Module (in development)](https://claisselab.github.io/BIO_5100/Multivariate_module.html)
+
+- Working with multivariate data.
+
+
 <!--
 code/text you don't want to show up goes here (to be hidden in the final output)
 (coming soon)

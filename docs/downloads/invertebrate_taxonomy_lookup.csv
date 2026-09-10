@@ -1,0 +1,23 @@
+Taxa,Taxonomic_Group,Genus,Species,Family,Order,Class
+Banded Urchin,Sea urchins,Echinothrix,calamaris,Diadematidae,Diadematoida,Echinoidea
+Blue-black Urchin,Sea urchins,Echinothrix,diadema,Diadematidae,Diadematoida,Echinoidea
+Shingle Urchin,Sea urchins,Colobocentrotus,atratus,Echinometridae,Camarodonta,Echinoidea
+Pale Rock-boring Urchin,Sea urchins,Echinometra,mathaei,Echinometridae,Camarodonta,Echinoidea
+Red Slate Pencil Urchin,Sea urchins,Heterocentrotus,mammillatus,Echinometridae,Camarodonta,Echinoidea
+Collector Urchin,Sea urchins,Tripneustes,gratilla,Toxopneustidae,Camarodonta,Echinoidea
+Crown-of-Thorns Sea Star,Sea stars,Acanthaster,planci,Acanthasteridae,Valvatida,Asteroidea
+Linckia Sea Star,Sea stars,Linckia,multifora,Ophidiasteridae,Valvatida,Asteroidea
+Cushion Star,Sea stars,Culcita,novaeguineae,Oreasteridae,Valvatida,Asteroidea
+Brittle Star,Brittle stars,,,,,Ophiuroidea
+Sea Cucumber,Sea cucumbers,,,,,Holothuroidea
+Sea Slug,Gastropods,,,,,Gastropoda
+Top Snail,Gastropods,,,Trochidae,Trochida,Gastropoda
+Cowry,Gastropods,,,Cypraeidae,Littorinimorpha,Gastropoda
+Octopus,Cephalopods,Octopus,spp,Octopodidae,Octopoda,Cephalopoda
+Shrimp,Crustaceans,,,,Decapoda,Malacostraca
+Lobster,Crustaceans,,,,Decapoda,Malacostraca
+Hermit Crab,Crustaceans,,,,Decapoda,Malacostraca
+Crab,Crustaceans,,,,Decapoda,Malacostraca
+Fireworm,Polychaete worms,Eurythoe,complanata,Amphinomidae,Amphinomida,Polychaeta
+Christmas Tree Worm,Polychaete worms,Spirobranchus,corniculatus,Serpulidae,Sabellida,Polychaeta
+Cone Snail,Gastropods,,,Conidae,Neogastropoda,Gastropoda
