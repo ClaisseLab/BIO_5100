@@ -1600,7 +1600,7 @@
     "href": "Multivariate_module.html#nmds-tutorial-files",
     "title": "Multivariate Data Analysis Module",
     "section": "nMDS Tutorial files",
-    "text": "nMDS Tutorial files\n\nDownload the nMDS tutorial R script{download}\nDownload the coral reef dataset{download}\nDownload invertebrate_taxonomy_lookup.csv{download}\n\nPlace the R script and Excel workbook in the same folder before running the tutorial."
+    "text": "nMDS Tutorial files\n\nDownload the nMDS tutorial R script{download}\nDownload the coral reef dataset{download}\n\nPlace the R script and Excel workbook in the same folder before running the tutorial."
   },
   {
     "objectID": "Multivariate_module.html#additional-resources",

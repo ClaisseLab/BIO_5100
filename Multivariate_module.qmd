@@ -51,7 +51,7 @@ Watch these two videos before beginning the tutorial:
 
 - [Download the nMDS tutorial R script](downloads/nMDS_community_composition_tutorial.R){download}
 - [Download the coral reef dataset](downloads/Coral_Reef_Data_2014_to_2025.xlsx){download}
-- [Download invertebrate_taxonomy_lookup.csv](downloads/invertebrate_taxonomy_lookup.csv){download}
+
 
 Place the R script and Excel workbook in the same folder before running the tutorial.
 
