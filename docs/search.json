@@ -1299,7 +1299,7 @@
     "href": "BIO_5150L.html",
     "title": "BIO 5150L Resources and Tutorials",
     "section": "",
-    "text": "You can download and then use this template as a starting point for new R scripts and as a guide for organizing your code."
+    "text": "Download a .R script organization template\n\nYou can download and then use this template as a starting point for new R scripts and as a guide for organizing your code.\n\n\n\nUsing Git & GitHub Tutorial\n\nGuides you through installing (software) Git on your computer, creating a GitHub.com account, connecting it to RStudio, and creating a repository (i.e., a folder).\nDescribes workflows for personal version control, student–PI code review, and publicly sharing analysis code.\nProvides guidance for organizing projects, excluding and backing up data, and other uses, issues, and organization.\n\n\n\nMultivariate Module (in development)\nMultiple tutorials and resources for working with and anlyzing multivariate data. - Summarizing & Exploring Your Multivariate Data - nMDS Ordination"
   },
   {
     "objectID": "git-github-rstudio.html",
@@ -1579,7 +1579,7 @@
     "href": "Multivariate_module.html",
     "title": "Multivariate Data Analysis Module",
     "section": "",
-    "text": "Before conducting a multivariate analysis, first examine the structure and quality of the data, summarize sampling effort, and visualize the main abundance patterns. This helps identify missing observations, unequal sampling effort, dominant or uncommon taxa, and other features that may influence later analytical decisions.\n(Download the tutorial script, data and look-up files to the same folder before running the tutorial)\n\nDownload the data-summary and diversity tutorial{download}\nDownload Coral_Reef_Data_2014_to_2025.xlsx{download}\nDownload invertebrate_taxonomy_lookup.csv{download}\n\nThis script demonstrates how to:\n\nReshape community data between wide and long formats.\nCheck data quality and sampling effort.\nConsolidate taxonomic categories.\nCalculate abundance summaries across different sampling units.\nCreate stacked abundance bar plots and proportional-composition plots.\nCalculate univariate diversity metrics with the vegan package"
+    "text": "Before conducting a multivariate analysis, first examine the structure and quality of the data, summarize sampling effort, and visualize the main abundance patterns. This helps identify missing observations, unequal sampling effort, dominant or uncommon taxa, and other features that may influence later analytical decisions.\n(Download the tutorial script, data and look-up files to the same folder before running the tutorial)\n\nDownload the data-summary and diversity tutorial{download}\nDownload Coral_Reef_Data_2014_to_2025.xlsx{download}\nDownload invertebrate_taxonomy_lookup.csv{download}\n\nThis script demonstrates how to:\n\nReshape community data between wide and long formats.\nCheck data quality and sampling effort.\nConsolidate taxonomic categories.\nCalculate abundance summaries across different sampling units.\nCreate stacked abundance bar plots and proportional-composition plots.\nCalculate univariate diversity metrics with the vegan package\n\n\n\n\nApplied Multivariate Statistics in R: data preparation part of online course that provides a more detailed guide to preparing multivariate data sets.\nCleaning Biodiversity Data in R A practical guide to cleaning ecological biodiversity data in R (includes aspects of geospatial data prep)"
   },
   {
     "objectID": "Multivariate_module.html#tutorial-files",
@@ -1635,7 +1635,7 @@
     "href": "BIO_5150L.html#multivariate-module-in-development",
     "title": "BIO 5150L Resources and Tutorials",
     "section": "Multivariate Module (in development)",
-    "text": "Multivariate Module (in development)\n\nWorking with multivariate data."
+    "text": "Multivariate Module (in development)\nMultiple tutorials and resources for working with and anlyzing multivariate data. - Summarizing & Exploring Your Multivariate Data - nMDS Ordination"
   },
   {
     "objectID": "Multivariate_module.html#permanova-using-adonis2-from-vegan",

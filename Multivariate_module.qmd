@@ -23,6 +23,12 @@ This script demonstrates how to:
 - Create stacked abundance bar plots and proportional-composition plots.
 - Calculate univariate diversity metrics with the vegan package
 
+### Additional multivariate data prep and summarization resources
+
+- [Applied Multivariate Statistics in R: data preparation](https://uw.pressbooks.pub/appliedmultivariatestatistics/chapter/data-adjustments/) part of online course that provides a more detailed guide to preparing multivariate data sets.
+
+- [Cleaning Biodiversity Data in R](https://cleaning-data-r.ala.org.au/) A practical guide to cleaning ecological biodiversity data in R (includes aspects of geospatial data prep)
+
 # 2) nMDS Ordination Tutorial & Info
 
 Nonmetric multidimensional scaling, or nMDS, creates a two-dimensional map of differences in community composition. Points plotted close together have more similar assemblages, while those farther apart have more different assemblages.
