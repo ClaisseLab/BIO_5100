@@ -1299,7 +1299,7 @@
     "href": "BIO_5150L.html",
     "title": "BIO 5150L Resources and Tutorials",
     "section": "",
-    "text": "Download a .R script organization template\n\nYou can download and then use this template as a starting point for new R scripts and as a guide for organizing your code.\n\n\n\nUsing Git & GitHub Tutorial\n\nGuides you through installing (software) Git on your computer, creating a GitHub.com account, connecting it to RStudio, and creating a repository (i.e., a folder).\nDescribes workflows for personal version control, student–PI code review, and publicly sharing analysis code.\nProvides guidance for organizing projects, excluding and backing up data, and other uses, issues, and organization.\n\n\n\nMultivariate Module (in development)\nMultiple tutorials and resources for working with and anlyzing multivariate data. - Summarizing & Exploring Your Multivariate Data - nMDS Ordination"
+    "text": "Download a .R script organization template\n\nYou can download and then use this template as a starting point for new R scripts and as a guide for organizing your code.\n\n\n\nUsing Git & GitHub Tutorial\n\nGuides you through installing (software) Git on your computer, creating a GitHub.com account, connecting it to RStudio, and creating a repository (i.e., a folder).\nDescribes workflows for personal version control, student–PI code review, and publicly sharing analysis code.\nProvides guidance for organizing projects, excluding and backing up data, and other uses, issues, and organization.\n\n\n\nMultivariate Module (in development)\nMultiple tutorials and resources for working with and anlyzing multivariate data.\n\nSummarizing & Exploring Your Multivariate Data\nnMDS Ordination"
   },
   {
     "objectID": "git-github-rstudio.html",

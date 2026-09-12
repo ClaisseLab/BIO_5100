@@ -6,7 +6,6 @@ title: "BIO 5150L Resources and Tutorials"
 
 - You can download and then use this template as a starting point for new R scripts and as a guide for organizing your code.
 
-
 ### [Using Git & GitHub Tutorial](https://claisselab.github.io/BIO_5100/git_github_rstudio.html)
 
 - Guides you through installing (software) Git on your computer, creating a GitHub.com account, connecting it to RStudio, and creating a repository (i.e., a folder).
@@ -15,12 +14,14 @@ title: "BIO 5150L Resources and Tutorials"
 
 - Provides guidance for organizing projects, excluding and backing up data, and other uses, issues, and organization.
 
-
 ### [Multivariate Module](https://claisselab.github.io/BIO_5100/Multivariate_module.html) *(in development)*
 
 Multiple tutorials and resources for working with and anlyzing multivariate data.
+
 - Summarizing & Exploring Your Multivariate Data
+
 - nMDS Ordination
+
 
 
 <!--
