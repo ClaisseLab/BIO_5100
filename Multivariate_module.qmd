@@ -23,10 +23,6 @@ This script demonstrates how to:
 - Create stacked abundance bar plots and proportional-composition plots.
 - Calculate univariate diversity metrics with the vegan package
 
-
-
-
-
 # 2) nMDS Ordination Tutorial & Info
 
 Nonmetric multidimensional scaling, or nMDS, creates a two-dimensional map of differences in community composition. Points plotted close together have more similar assemblages, while those farther apart have more different assemblages.
@@ -47,23 +43,26 @@ Watch these two videos before beginning the tutorial:
 
 [Riffomonas](https://www.youtube.com/@Riffomonas) is also a useful channel for tidyverse and `ggplot2` examples from a microbial ecologist. Microbial and molecular datasets have additional characteristics and challenges, so not every choice will transfer directly to other ecological community data.
 
-## nMDS Tutorial files
+### nMDS Tutorial files
 
 - [Download the nMDS tutorial R script](downloads/nMDS_community_composition_tutorial.R){download}
 - [Download the coral reef dataset](downloads/Coral_Reef_Data_2014_to_2025.xlsx){download}
 
-
 Place the R script and Excel workbook in the same folder before running the tutorial.
 
-## Additional resources
+### Additional resources
 
 *(don't need to review before class)*
 
-- [Introduction to multivariate data analysis using vegan](https://www.youtube.com/live/tVnnG7mFeqA) is a roughly three-hour workshop by a `vegan` author demonstrating what the package can do. The nMDS material begins around 2:00:00
-- [Applied Multivariate Statistics in R: nMDS](https://uw.pressbooks.pub/appliedmultivariatestatistics/chapter/nmds/) provides a more detailed explanation.
+- [Applied Multivariate Statistics in R: nMDS](https://uw.pressbooks.pub/appliedmultivariatestatistics/chapter/nmds/) part of online course that provides a more detailed nMDS explanation.
+
 - [David Zeleny's PCoA and nMDS notes](https://www.davidzeleny.net/anadat-r/doku.php/en:pcoa_nmds) provide additional background and examples.
 
-## What the tutorial covers
+- [(Video) Introduction to multivariate data analysis using vegan](https://www.youtube.com/live/tVnnG7mFeqA) a 3hr workshop by one of the `vegan` package authors demonstrating what the package can do. The nMDS material begins around 2:00
+
+- [(Video) Advanced community ecological data analysis using vegan](https://www.youtube.com/live/PR1B_JkO49s) 2nd 3hr workshop by one of the `vegan` package authors demonstrating advanced features of vegan. The PERMANOVA material begins around 2:00
+
+### What the tutorial covers
 
 The guided analysis uses the invertebrate worksheet from the coral reef dataset and follows this sequence:
 
@@ -129,7 +128,7 @@ These are general guidelines, not strict thresholds:
 
 Values near zero should also be checked because they can result from too few samples, duplicate samples, or limited variation. Interpret stress alongside convergence and the Shepard plot.
 
-##PERMANOVA
+## PERMANOVA (using adonis2 from vegan)
 
 Permutational multivariate analysis of variance, or PERMANOVA, tests whether community composition differs among groups or along continuous gradients. It uses a community dissimilarity matrix and permutations rather than assuming multivariate normality. In R, PERMANOVA can be implemented with vegan::adonis2().
 

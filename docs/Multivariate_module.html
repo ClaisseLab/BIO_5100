@@ -146,10 +146,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#summarizing-exploring-your-data" id="toc-summarizing-exploring-your-data" class="nav-link active" data-scroll-target="#summarizing-exploring-your-data">1) Summarizing &amp; Exploring Your Data</a></li>
   <li><a href="#nmds-ordination-tutorial-info" id="toc-nmds-ordination-tutorial-info" class="nav-link" data-scroll-target="#nmds-ordination-tutorial-info">2) nMDS Ordination Tutorial &amp; Info</a>
   <ul class="collapse">
-  <li><a href="#before-class" id="toc-before-class" class="nav-link" data-scroll-target="#before-class">Before class</a></li>
+  <li><a href="#before-class" id="toc-before-class" class="nav-link" data-scroll-target="#before-class">Before class</a>
+  <ul class="collapse">
   <li><a href="#nmds-tutorial-files" id="toc-nmds-tutorial-files" class="nav-link" data-scroll-target="#nmds-tutorial-files">nMDS Tutorial files</a></li>
   <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional resources</a></li>
   <li><a href="#what-the-tutorial-covers" id="toc-what-the-tutorial-covers" class="nav-link" data-scroll-target="#what-the-tutorial-covers">What the tutorial covers</a></li>
+  </ul></li>
   <li><a href="#main-analytical-choices" id="toc-main-analytical-choices" class="nav-link" data-scroll-target="#main-analytical-choices">Main analytical choices</a>
   <ul class="collapse">
   <li><a href="#sampling-unit" id="toc-sampling-unit" class="nav-link" data-scroll-target="#sampling-unit">Sampling unit</a></li>
@@ -158,6 +160,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#interpreting-an-nmds" id="toc-interpreting-an-nmds" class="nav-link" data-scroll-target="#interpreting-an-nmds">Interpreting an nMDS</a></li>
   <li><a href="#stress" id="toc-stress" class="nav-link" data-scroll-target="#stress">Stress</a></li>
   </ul></li>
+  <li><a href="#permanova-using-adonis2-from-vegan" id="toc-permanova-using-adonis2-from-vegan" class="nav-link" data-scroll-target="#permanova-using-adonis2-from-vegan">PERMANOVA (using adonis2 from vegan)</a></li>
   <li><a href="#what-to-report-in-a-methods-section" id="toc-what-to-report-in-a-methods-section" class="nav-link" data-scroll-target="#what-to-report-in-a-methods-section">What to report in a Methods section</a></li>
   </ul></li>
   </ul>
@@ -218,26 +221,26 @@ ul.task-list li input[type="checkbox"] {
 <p>Provides examples of plotting nMDS using <code>ggplot2</code> and <code>vegan</code>.</p></li>
 </ol>
 <p><a href="https://www.youtube.com/@Riffomonas">Riffomonas</a> is also a useful channel for tidyverse and <code>ggplot2</code> examples from a microbial ecologist. Microbial and molecular datasets have additional characteristics and challenges, so not every choice will transfer directly to other ecological community data.</p>
-</section>
-<section id="nmds-tutorial-files" class="level2">
-<h2 class="anchored" data-anchor-id="nmds-tutorial-files">nMDS Tutorial files</h2>
+<section id="nmds-tutorial-files" class="level3">
+<h3 class="anchored" data-anchor-id="nmds-tutorial-files">nMDS Tutorial files</h3>
 <ul>
 <li><a href="downloads/nMDS_community_composition_tutorial.R">Download the nMDS tutorial R script</a>{download}</li>
 <li><a href="downloads/Coral_Reef_Data_2014_to_2025.xlsx">Download the coral reef dataset</a>{download}</li>
 </ul>
 <p>Place the R script and Excel workbook in the same folder before running the tutorial.</p>
 </section>
-<section id="additional-resources" class="level2">
-<h2 class="anchored" data-anchor-id="additional-resources">Additional resources</h2>
+<section id="additional-resources" class="level3">
+<h3 class="anchored" data-anchor-id="additional-resources">Additional resources</h3>
 <p><em>(don’t need to review before class)</em></p>
 <ul>
-<li><a href="https://www.youtube.com/live/tVnnG7mFeqA">Introduction to multivariate data analysis using vegan</a> is a roughly three-hour workshop by a <code>vegan</code> author demonstrating what the package can do. The nMDS material begins around 2:00:00</li>
-<li><a href="https://uw.pressbooks.pub/appliedmultivariatestatistics/chapter/nmds/">Applied Multivariate Statistics in R: nMDS</a> provides a more detailed explanation.</li>
-<li><a href="https://www.davidzeleny.net/anadat-r/doku.php/en:pcoa_nmds">David Zeleny’s PCoA and nMDS notes</a> provide additional background and examples.</li>
+<li><p><a href="https://uw.pressbooks.pub/appliedmultivariatestatistics/chapter/nmds/">Applied Multivariate Statistics in R: nMDS</a> part of online course that provides a more detailed nMDS explanation.</p></li>
+<li><p><a href="https://www.davidzeleny.net/anadat-r/doku.php/en:pcoa_nmds">David Zeleny’s PCoA and nMDS notes</a> provide additional background and examples.</p></li>
+<li><p><a href="https://www.youtube.com/live/tVnnG7mFeqA">(Video) Introduction to multivariate data analysis using vegan</a> a 3hr workshop by one of the <code>vegan</code> package authors demonstrating what the package can do. The nMDS material begins around 2:00</p></li>
+<li><p><a href="https://www.youtube.com/live/PR1B_JkO49s">(Video) Advanced community ecological data analysis using vegan</a> 2nd 3hr workshop by one of the <code>vegan</code> package authors demonstrating advanced features of vegan. The PERMANOVA material begins around 2:00</p></li>
 </ul>
 </section>
-<section id="what-the-tutorial-covers" class="level2">
-<h2 class="anchored" data-anchor-id="what-the-tutorial-covers">What the tutorial covers</h2>
+<section id="what-the-tutorial-covers" class="level3">
+<h3 class="anchored" data-anchor-id="what-the-tutorial-covers">What the tutorial covers</h3>
 <p>The guided analysis uses the invertebrate worksheet from the coral reef dataset and follows this sequence:</p>
 <ol type="1">
 <li>Inspect community data and sampling effort.</li>
@@ -250,6 +253,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Relate assemblage patterns to selected taxa, fitted vectors, species scores, and a stacked abundance plot.</li>
 <li>Run introductory PERMANOVA models with <code>vegan::adonis2()</code>.</li>
 </ol>
+</section>
 </section>
 <section id="main-analytical-choices" class="level2">
 <h2 class="anchored" data-anchor-id="main-analytical-choices">Main analytical choices</h2>
@@ -326,10 +330,12 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>Greater than 0.30:</strong> Poor</p></li>
 </ul>
 <p>Values near zero should also be checked because they can result from too few samples, duplicate samples, or limited variation. Interpret stress alongside convergence and the Shepard plot.</p>
-<p>##PERMANOVA</p>
+</section>
+</section>
+<section id="permanova-using-adonis2-from-vegan" class="level2">
+<h2 class="anchored" data-anchor-id="permanova-using-adonis2-from-vegan">PERMANOVA (using adonis2 from vegan)</h2>
 <p>Permutational multivariate analysis of variance, or PERMANOVA, tests whether community composition differs among groups or along continuous gradients. It uses a community dissimilarity matrix and permutations rather than assuming multivariate normality. In R, PERMANOVA can be implemented with vegan::adonis2().</p>
 <p>Models can include one or multiple predictors. For models with multiple predictors, by = “margin” tests each term after accounting for the others. The sampling unit and permutation structure must match the study design, including any blocking, nesting, or repeated sampling. Because PERMANOVA can also be influenced by differences in within-group dispersion, group dispersions should be examined when interpreting the results.</p>
-</section>
 </section>
 <section id="what-to-report-in-a-methods-section" class="level2">
 <h2 class="anchored" data-anchor-id="what-to-report-in-a-methods-section">What to report in a Methods section</h2>
