@@ -147,3 +147,11 @@ A Methods description should identify the sampling unit and averaging procedure;
 Here's example methods text from my grad students paper [Calderon et. al 2024](https://www.sciencedirect.com/science/article/pii/S0022098124000637):
 
 To quantify the overall diet composition of Garibaldi, the weight for each diet content category was averaged across specimens within a given location, reef type, and sex. A similarity matrix was constructed with the Bray-Curtis similarity coefficient using square-root transformed weight values. These relationships were visualized with a two-dimensional non-metric multidimensional scaling plot (nMDS) using the metaMDS function in the ‘vegan’ package (Oksanen et al., 2022). Ordination scores were then visualized as vectors on the nMDS for individual stomach content categories that significantly (p \< 0.05) correlated with the diet composition patterns in the nMDS, with arrow length indicating the relative strength of each correlation. The effect of reef type, temperature, and sex on the observed variation in diet composition was assessed using a permutational multivariate analysis of variance (PERMANOVA) with the adonis2 function in the ‘vegan’ package (Oksanen et al., 2022). Because our dataset was unbalanced (i.e., artificial reef types were only present at some locations), the by = “margin” argument was included in the function to analyze the marginal effects of each variable in the model after accounting for all other variables.
+
+
+### Practice adapting the nMDS analysis code to a new data set
+
+Use the terrestrial oribatid mite dataset to practice adapting the tutorial workflow to new community and environmental data. The code in the script provides and prepares the mite data, and gives guidance for exploring categorical and continuous environmental predictors.
+
+- [Download the mite nMDS practice script](downloads/mite_nMDS_practice.R){download}
+
