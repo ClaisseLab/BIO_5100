@@ -16,11 +16,13 @@ title: "BIO 5150L Resources and Tutorials"
 
 ### [Multivariate Module](https://claisselab.github.io/BIO_5100/Multivariate_module.html) *(in development)*
 
-Multiple tutorials and resources for working with and anlyzing multivariate data.
+Multiple tutorials and resources for working with and analyzing multivariate data.
 
 - Summarizing & Exploring Your Multivariate Data
 
-- nMDS Ordination
+- nMDS Ordination & PERMANOVA
+
+- PCA (Principal Components Analysis)
 
 
 
