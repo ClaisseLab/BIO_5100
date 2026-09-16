@@ -171,13 +171,11 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#pca-principal-component-analysis" id="toc-pca-principal-component-analysis" class="nav-link" data-scroll-target="#pca-principal-component-analysis">3) (PCA) Principal component analysis</a>
   <ul class="collapse">
-  <li><a href="#before-class-1" id="toc-before-class-1" class="nav-link" data-scroll-target="#before-class-1">Before class</a>
-  <ul class="collapse">
+  <li><a href="#before-class-1" id="toc-before-class-1" class="nav-link" data-scroll-target="#before-class-1">Before class</a></li>
   <li><a href="#tutorial-files" id="toc-tutorial-files" class="nav-link" data-scroll-target="#tutorial-files">Tutorial files</a></li>
   <li><a href="#optional-practice" id="toc-optional-practice" class="nav-link" data-scroll-target="#optional-practice">Optional practice</a></li>
   <li><a href="#additional-resources-1" id="toc-additional-resources-1" class="nav-link" data-scroll-target="#additional-resources-1">Additional resources</a></li>
   <li><a href="#reporting-pca-methods-and-results" id="toc-reporting-pca-methods-and-results" class="nav-link" data-scroll-target="#reporting-pca-methods-and-results">Reporting PCA methods and results</a></li>
-  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -209,9 +207,9 @@ ul.task-list li input[type="checkbox"] {
 <p>Before conducting a multivariate analysis, first examine the structure and quality of the data, summarize sampling effort, and visualize the main abundance patterns. This helps identify missing observations, unequal sampling effort, dominant or uncommon taxa, and other features that may influence later analytical decisions.</p>
 <p>(<em>Download the tutorial script, data and look-up files to the same folder before running the tutorial</em>)</p>
 <ul>
-<li><a href="downloads/multivariate_data_summary_diversity_tutorial.R">Download the data-summary and diversity tutorial</a>{download}</li>
-<li><a href="downloads/Coral_Reef_Data_2014_to_2025.xlsx">Download Coral_Reef_Data_2014_to_2025.xlsx</a>{download}</li>
-<li><a href="downloads/invertebrate_taxonomy_lookup.csv">Download invertebrate_taxonomy_lookup.csv</a>{download}</li>
+<li><a href="downloads/multivariate_data_summary_diversity_tutorial.R">Download the data-summary and diversity tutorial</a></li>
+<li><a href="downloads/Coral_Reef_Data_2014_to_2025.xlsx">Download Coral_Reef_Data_2014_to_2025.xlsx</a></li>
+<li><a href="downloads/invertebrate_taxonomy_lookup.csv">Download invertebrate_taxonomy_lookup.csv</a></li>
 </ul>
 <p>This script demonstrates how to:</p>
 <ul>
@@ -370,7 +368,7 @@ Here’s example methods text from my grad students paper <a href="https://www.s
 <h3 class="anchored" data-anchor-id="practice-adapting-the-nmds-analysis-code-to-a-new-data-set">Practice adapting the nMDS analysis code to a new data set</h3>
 <p>Use the terrestrial oribatid mite dataset to practice adapting the tutorial workflow to new community and environmental data. The code in the script provides and prepares the mite data, and gives guidance for exploring categorical and continuous environmental predictors.</p>
 <ul>
-<li><a href="downloads/mite_nMDS_practice.R">Download the mite nMDS practice script</a>{download}</li>
+<li><a href="downloads/mite_nMDS_practice.R">Download the mite nMDS practice script</a></li>
 </ul>
 </section>
 </section>
@@ -384,8 +382,9 @@ Here’s example methods text from my grad students paper <a href="https://www.s
 <li><a href="https://youtu.be/Tjxgd9FLeYc">Longer PCA example using <code>rda()</code> and <code>ggplot2</code></a> — watch at least the first 20-30 minutes before class. Continue through the remaining plotting examples if you have time.</li>
 </ul>
 <p>For an additional conceptual review of PCA (if/when you want further details of how PCA works), see <a href="https://www.youtube.com/watch?v=FgakZw6K1QQ">StatQuest: PCA step-by-step</a>.</p>
-<section id="tutorial-files" class="level3">
-<h3 class="anchored" data-anchor-id="tutorial-files">Tutorial files</h3>
+</section>
+<section id="tutorial-files" class="level2">
+<h2 class="anchored" data-anchor-id="tutorial-files">Tutorial files</h2>
 <p>Download both files into the same folder before opening the R script:</p>
 <ul>
 <li><a href="downloads/PCA_continuous_variables_tutorial.R" download="PCA_continuous_variables_tutorial.R">Download the PCA tutorial R script</a></li>
@@ -393,23 +392,23 @@ Here’s example methods text from my grad students paper <a href="https://www.s
 </ul>
 <p>The tutorial covers data inspection, correlations among variables, centering and scaling, fitting a PCA with <code>vegan::rda()</code>, variance explained, sample and variable scores, biplot (w/vectors) interpretation, and retaining PC scores as combined metrics.</p>
 </section>
-<section id="optional-practice" class="level3">
-<h3 class="anchored" data-anchor-id="optional-practice">Optional practice</h3>
+<section id="optional-practice" class="level2">
+<h2 class="anchored" data-anchor-id="optional-practice">Optional practice</h2>
 <p>Use the following starter script to practice adapting the tutorial workflow to the <code>varechem</code> soil-chemistry data included with the <code>vegan</code> package:</p>
 <ul>
 <li><a href="downloads/PCA_varechem_practice.R" download="PCA_varechem_practice.R">Download the <code>varechem</code> PCA practice script</a></li>
 </ul>
 </section>
-<section id="additional-resources-1" class="level3">
-<h3 class="anchored" data-anchor-id="additional-resources-1">Additional resources</h3>
+<section id="additional-resources-1" class="level2">
+<h2 class="anchored" data-anchor-id="additional-resources-1">Additional resources</h2>
 <ul>
 <li><a href="https://uw.pressbooks.pub/appliedmultivariatestatistics/chapter/pca/">PCA chapter in <em>Applied Multivariate Statistics in R</em></a></li>
 <li><a href="https://www.davidzeleny.net/anadat-r/doku.php/en:pca">PCA concepts, interpretation, and scaling</a></li>
 <li><a href="https://www.davidzeleny.net/anadat-r/doku.php/en:pca_r">Additional packages to create PCAs in R</a></li>
 </ul>
 </section>
-<section id="reporting-pca-methods-and-results" class="level3">
-<h3 class="anchored" data-anchor-id="reporting-pca-methods-and-results">Reporting PCA methods and results</h3>
+<section id="reporting-pca-methods-and-results" class="level2">
+<h2 class="anchored" data-anchor-id="reporting-pca-methods-and-results">Reporting PCA methods and results</h2>
 <p>A PCA methods description should report:</p>
 <ul>
 <li>The analytical unit (what points represent) and number of samples.</li>
@@ -430,7 +429,6 @@ Here’s example methods text from my grad students paper <a href="https://www.s
 <p>Describe the broad biological/environmental variable patterns first, followed by quantitative support from the variance explained and variable-PC correlations. Visually separated groups should not be presented as a formal statistical result unless they were evaluated using an analysis appropriate for the study design.</p>
 
 
-</section>
 </section>
 </section>
 

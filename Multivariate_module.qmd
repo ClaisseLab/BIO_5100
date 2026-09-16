@@ -10,9 +10,9 @@ Before conducting a multivariate analysis, first examine the structure and quali
 
 (*Download the tutorial script, data and look-up files to the same folder before running the tutorial*)
 
-- [Download the data-summary and diversity tutorial](downloads/multivariate_data_summary_diversity_tutorial.R){download}
-- [Download Coral_Reef_Data_2014_to_2025.xlsx](downloads/Coral_Reef_Data_2014_to_2025.xlsx){download}
-- [Download invertebrate_taxonomy_lookup.csv](downloads/invertebrate_taxonomy_lookup.csv){download}
+- [Download the data-summary and diversity tutorial](downloads/multivariate_data_summary_diversity_tutorial.R)
+- [Download Coral_Reef_Data_2014_to_2025.xlsx](downloads/Coral_Reef_Data_2014_to_2025.xlsx)
+- [Download invertebrate_taxonomy_lookup.csv](downloads/invertebrate_taxonomy_lookup.csv)
 
 This script demonstrates how to:
 
@@ -152,7 +152,7 @@ To quantify the overall diet composition of Garibaldi, the weight for each diet 
 
 Use the terrestrial oribatid mite dataset to practice adapting the tutorial workflow to new community and environmental data. The code in the script provides and prepares the mite data, and gives guidance for exploring categorical and continuous environmental predictors.
 
-- [Download the mite nMDS practice script](downloads/mite_nMDS_practice.R){download}
+- [Download the mite nMDS practice script](downloads/mite_nMDS_practice.R)
 
 # 3) (PCA) Principal component analysis
 
@@ -164,7 +164,7 @@ Principal component analysis summarizes patterns among multiple correlated conti
 
 For an additional conceptual review of PCA (if/when you want further details of how PCA works), see [StatQuest: PCA step-by-step](https://www.youtube.com/watch?v=FgakZw6K1QQ).
 
-### Tutorial files
+## Tutorial files
 
 Download both files into the same folder before opening the R script:
 
@@ -173,19 +173,19 @@ Download both files into the same folder before opening the R script:
 
 The tutorial covers data inspection, correlations among variables, centering and scaling, fitting a PCA with `vegan::rda()`, variance explained, sample and variable scores, biplot (w/vectors) interpretation, and retaining PC scores as combined metrics.
 
-### Optional practice
+## Optional practice
 
 Use the following starter script to practice adapting the tutorial workflow to the `varechem` soil-chemistry data included with the `vegan` package:
 
 - [Download the `varechem` PCA practice script](downloads/PCA_varechem_practice.R){download="PCA_varechem_practice.R"}
 
-### Additional resources
+## Additional resources
 
 - [PCA chapter in *Applied Multivariate Statistics in R*](https://uw.pressbooks.pub/appliedmultivariatestatistics/chapter/pca/)
 - [PCA concepts, interpretation, and scaling](https://www.davidzeleny.net/anadat-r/doku.php/en:pca)
 - [Additional packages to create PCAs in R](https://www.davidzeleny.net/anadat-r/doku.php/en:pca_r)
 
-### Reporting PCA methods and results
+## Reporting PCA methods and results
 
 A PCA methods description should report:
 
