@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -39,10 +42,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9b3b12babb541c315d9ea4b5d647408d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-f2558efa4a24a56a075ba32e1830b902.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -161,9 +164,19 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#stress" id="toc-stress" class="nav-link" data-scroll-target="#stress">Stress</a></li>
   </ul></li>
   <li><a href="#permanova-using-adonis2-from-vegan" id="toc-permanova-using-adonis2-from-vegan" class="nav-link" data-scroll-target="#permanova-using-adonis2-from-vegan">PERMANOVA (using adonis2 from vegan)</a></li>
-  <li><a href="#what-to-report-in-a-methods-section" id="toc-what-to-report-in-a-methods-section" class="nav-link" data-scroll-target="#what-to-report-in-a-methods-section">What to report in a Methods section</a>
+  <li><a href="#what-to-report-in-methods-section-about-nmds-and-permanova" id="toc-what-to-report-in-methods-section-about-nmds-and-permanova" class="nav-link" data-scroll-target="#what-to-report-in-methods-section-about-nmds-and-permanova">What to report in Methods section about nMDS and PERMANOVA</a>
   <ul class="collapse">
   <li><a href="#practice-adapting-the-nmds-analysis-code-to-a-new-data-set" id="toc-practice-adapting-the-nmds-analysis-code-to-a-new-data-set" class="nav-link" data-scroll-target="#practice-adapting-the-nmds-analysis-code-to-a-new-data-set">Practice adapting the nMDS analysis code to a new data set</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#pca-principal-component-analysis" id="toc-pca-principal-component-analysis" class="nav-link" data-scroll-target="#pca-principal-component-analysis">3) (PCA) Principal component analysis</a>
+  <ul class="collapse">
+  <li><a href="#before-class-1" id="toc-before-class-1" class="nav-link" data-scroll-target="#before-class-1">Before class</a>
+  <ul class="collapse">
+  <li><a href="#tutorial-files" id="toc-tutorial-files" class="nav-link" data-scroll-target="#tutorial-files">Tutorial files</a></li>
+  <li><a href="#optional-practice" id="toc-optional-practice" class="nav-link" data-scroll-target="#optional-practice">Optional practice</a></li>
+  <li><a href="#additional-resources-1" id="toc-additional-resources-1" class="nav-link" data-scroll-target="#additional-resources-1">Additional resources</a></li>
+  <li><a href="#reporting-pca-methods-and-results" id="toc-reporting-pca-methods-and-results" class="nav-link" data-scroll-target="#reporting-pca-methods-and-results">Reporting PCA methods and results</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -233,11 +246,11 @@ ul.task-list li input[type="checkbox"] {
 <p><a href="https://www.youtube.com/@Riffomonas">Riffomonas</a> is also a useful channel for tidyverse and <code>ggplot2</code> examples from a microbial ecologist. Microbial and molecular datasets have additional characteristics and challenges, so not every choice will transfer directly to other ecological community data.</p>
 <section id="nmds-tutorial-files" class="level3">
 <h3 class="anchored" data-anchor-id="nmds-tutorial-files">nMDS Tutorial files</h3>
+<p>Download both files into the same folder before opening the R script:</p>
 <ul>
-<li><a href="downloads/nMDS_community_composition_tutorial.R">Download the nMDS tutorial R script</a>{download}</li>
-<li><a href="downloads/Coral_Reef_Data_2014_to_2025.xlsx">Download the coral reef dataset</a>{download}</li>
+<li><a href="downloads/nMDS_community_composition_tutorial.R">Download the nMDS tutorial R script</a></li>
+<li><a href="downloads/Coral_Reef_Data_2014_to_2025.xlsx">Download the coral reef dataset</a></li>
 </ul>
-<p>Place the R script and Excel workbook in the same folder before running the tutorial.</p>
 </section>
 <section id="additional-resources" class="level3">
 <h3 class="anchored" data-anchor-id="additional-resources">Additional resources</h3>
@@ -347,8 +360,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Permutational multivariate analysis of variance, or PERMANOVA, tests whether community composition differs among groups or along continuous gradients. It uses a community dissimilarity matrix and permutations rather than assuming multivariate normality. In R, PERMANOVA can be implemented with vegan::adonis2().</p>
 <p>Models can include one or multiple predictors. For models with multiple predictors, by = “margin” tests each term after accounting for the others. The sampling unit and permutation structure must match the study design, including any blocking, nesting, or repeated sampling. Because PERMANOVA can also be influenced by differences in within-group dispersion, group dispersions should be examined when interpreting the results.</p>
 </section>
-<section id="what-to-report-in-a-methods-section" class="level2">
-<h2 class="anchored" data-anchor-id="what-to-report-in-a-methods-section">What to report in a Methods section</h2>
+<section id="what-to-report-in-methods-section-about-nmds-and-permanova" class="level2">
+<h2 class="anchored" data-anchor-id="what-to-report-in-methods-section-about-nmds-and-permanova">What to report in Methods section about nMDS and PERMANOVA</h2>
 <p>A Methods description should identify the sampling unit and averaging procedure; taxon consolidation and filtering; transformation (square or 4th root); Bray-Curtis dissimilarity; final stress (typically on the plot); (if applicable) species-vector display criteria; PERMANOVA terms and number of permutations;<br>
 <br>
 Here’s example methods text from my grad students paper <a href="https://www.sciencedirect.com/science/article/pii/S0022098124000637">Calderon et. al 2024</a>:</p>
@@ -359,6 +372,62 @@ Here’s example methods text from my grad students paper <a href="https://www.s
 <ul>
 <li><a href="downloads/mite_nMDS_practice.R">Download the mite nMDS practice script</a>{download}</li>
 </ul>
+</section>
+</section>
+</section>
+<section id="pca-principal-component-analysis" class="level1">
+<h1>3) (PCA) Principal component analysis</h1>
+<p>Principal component analysis summarizes patterns among multiple correlated continuous variables, such as environmental, habitat, morphological, or physiological measurements. In this tutorial, we will use PCA to examine plant morphology and biomass, interpret the major multivariate gradients, and create a PCA biplot with <code>vegan::rda()</code> and <code>ggplot2</code>.</p>
+<section id="before-class-1" class="level2">
+<h2 class="anchored" data-anchor-id="before-class-1">Before class</h2>
+<ul>
+<li><a href="https://youtu.be/Tjxgd9FLeYc">Longer PCA example using <code>rda()</code> and <code>ggplot2</code></a> — watch at least the first 20-30 minutes before class. Continue through the remaining plotting examples if you have time.</li>
+</ul>
+<p>For an additional conceptual review of PCA (if/when you want further details of how PCA works), see <a href="https://www.youtube.com/watch?v=FgakZw6K1QQ">StatQuest: PCA step-by-step</a>.</p>
+<section id="tutorial-files" class="level3">
+<h3 class="anchored" data-anchor-id="tutorial-files">Tutorial files</h3>
+<p>Download both files into the same folder before opening the R script:</p>
+<ul>
+<li><a href="downloads/PCA_continuous_variables_tutorial.R" download="PCA_continuous_variables_tutorial.R">Download the PCA tutorial R script</a></li>
+<li><a href="downloads/Darlingtonia_GE_Table12.1.csv" download="Darlingtonia_GE_Table12.1.csv">Download the <em>Darlingtonia</em> morphology data</a></li>
+</ul>
+<p>The tutorial covers data inspection, correlations among variables, centering and scaling, fitting a PCA with <code>vegan::rda()</code>, variance explained, sample and variable scores, biplot (w/vectors) interpretation, and retaining PC scores as combined metrics.</p>
+</section>
+<section id="optional-practice" class="level3">
+<h3 class="anchored" data-anchor-id="optional-practice">Optional practice</h3>
+<p>Use the following starter script to practice adapting the tutorial workflow to the <code>varechem</code> soil-chemistry data included with the <code>vegan</code> package:</p>
+<ul>
+<li><a href="downloads/PCA_varechem_practice.R" download="PCA_varechem_practice.R">Download the <code>varechem</code> PCA practice script</a></li>
+</ul>
+</section>
+<section id="additional-resources-1" class="level3">
+<h3 class="anchored" data-anchor-id="additional-resources-1">Additional resources</h3>
+<ul>
+<li><a href="https://uw.pressbooks.pub/appliedmultivariatestatistics/chapter/pca/">PCA chapter in <em>Applied Multivariate Statistics in R</em></a></li>
+<li><a href="https://www.davidzeleny.net/anadat-r/doku.php/en:pca">PCA concepts, interpretation, and scaling</a></li>
+<li><a href="https://www.davidzeleny.net/anadat-r/doku.php/en:pca_r">Additional packages to create PCAs in R</a></li>
+</ul>
+</section>
+<section id="reporting-pca-methods-and-results" class="level3">
+<h3 class="anchored" data-anchor-id="reporting-pca-methods-and-results">Reporting PCA methods and results</h3>
+<p>A PCA methods description should report:</p>
+<ul>
+<li>The analytical unit (what points represent) and number of samples.</li>
+<li>The continuous variables included in the PCA and any variables excluded.</li>
+<li>Any transformations applied before the PCA and the biological justification for each.</li>
+<li>Whether the variables were centered and scaled prior to calculating PCA.</li>
+<li>The use of <code>vegan::rda()</code> to fit the PCA, with a citation for the <code>vegan</code> package. Run <code>citation("vegan")</code> in R to obtain the current citation.</li>
+<li>Whether any retained PC scores were used in later analyses, such as using PC1 as a predictor in a subsequent model.</li>
+</ul>
+<p>A PCA results description should report:</p>
+<ul>
+<li>The percentage of variation explained by PC1 and PC2.</li>
+<li>The variables most strongly associated with each displayed PC.</li>
+<li>A biological interpretation of the primary multivariate gradient.</li>
+<li>Separation, overlap, and within-group variation among samples (grouping/clustering of points).</li>
+<li>Important exceptions or unusual samples.</li>
+</ul>
+<p>Describe the broad biological/environmental variable patterns first, followed by quantitative support from the variance explained and variable-PC correlations. Visually separated groups should not be presented as a formal statistical result unless they were evaluated using an analysis appropriate for the study design.</p>
 
 
 </section>

@@ -51,10 +51,10 @@ Watch these two videos before beginning the tutorial:
 
 ### nMDS Tutorial files
 
-- [Download the nMDS tutorial R script](downloads/nMDS_community_composition_tutorial.R){download}
-- [Download the coral reef dataset](downloads/Coral_Reef_Data_2014_to_2025.xlsx){download}
+Download both files into the same folder before opening the R script:
 
-Place the R script and Excel workbook in the same folder before running the tutorial.
+- [Download the nMDS tutorial R script](downloads/nMDS_community_composition_tutorial.R)
+- [Download the coral reef dataset](downloads/Coral_Reef_Data_2014_to_2025.xlsx)
 
 ### Additional resources
 
@@ -140,7 +140,7 @@ Permutational multivariate analysis of variance, or PERMANOVA, tests whether com
 
 Models can include one or multiple predictors. For models with multiple predictors, by = "margin" tests each term after accounting for the others. The sampling unit and permutation structure must match the study design, including any blocking, nesting, or repeated sampling. Because PERMANOVA can also be influenced by differences in within-group dispersion, group dispersions should be examined when interpreting the results.
 
-## What to report in a Methods section
+## What to report in Methods section about nMDS and PERMANOVA
 
 A Methods description should identify the sampling unit and averaging procedure; taxon consolidation and filtering; transformation (square or 4th root); Bray-Curtis dissimilarity; final stress (typically on the plot); (if applicable) species-vector display criteria; PERMANOVA terms and number of permutations;\
 \
@@ -148,10 +148,60 @@ Here's example methods text from my grad students paper [Calderon et. al 2024](h
 
 To quantify the overall diet composition of Garibaldi, the weight for each diet content category was averaged across specimens within a given location, reef type, and sex. A similarity matrix was constructed with the Bray-Curtis similarity coefficient using square-root transformed weight values. These relationships were visualized with a two-dimensional non-metric multidimensional scaling plot (nMDS) using the metaMDS function in the ‘vegan’ package (Oksanen et al., 2022). Ordination scores were then visualized as vectors on the nMDS for individual stomach content categories that significantly (p \< 0.05) correlated with the diet composition patterns in the nMDS, with arrow length indicating the relative strength of each correlation. The effect of reef type, temperature, and sex on the observed variation in diet composition was assessed using a permutational multivariate analysis of variance (PERMANOVA) with the adonis2 function in the ‘vegan’ package (Oksanen et al., 2022). Because our dataset was unbalanced (i.e., artificial reef types were only present at some locations), the by = “margin” argument was included in the function to analyze the marginal effects of each variable in the model after accounting for all other variables.
 
-
 ### Practice adapting the nMDS analysis code to a new data set
 
 Use the terrestrial oribatid mite dataset to practice adapting the tutorial workflow to new community and environmental data. The code in the script provides and prepares the mite data, and gives guidance for exploring categorical and continuous environmental predictors.
 
 - [Download the mite nMDS practice script](downloads/mite_nMDS_practice.R){download}
 
+# 3) (PCA) Principal component analysis
+
+Principal component analysis summarizes patterns among multiple correlated continuous variables, such as environmental, habitat, morphological, or physiological measurements. In this tutorial, we will use PCA to examine plant morphology and biomass, interpret the major multivariate gradients, and create a PCA biplot with `vegan::rda()` and `ggplot2`.
+
+## Before class
+
+- [Longer PCA example using `rda()` and `ggplot2`](https://youtu.be/Tjxgd9FLeYc) — watch at least the first 20-30 minutes before class. Continue through the remaining plotting examples if you have time.
+
+For an additional conceptual review of PCA (if/when you want further details of how PCA works), see [StatQuest: PCA step-by-step](https://www.youtube.com/watch?v=FgakZw6K1QQ).
+
+### Tutorial files
+
+Download both files into the same folder before opening the R script:
+
+- [Download the PCA tutorial R script](downloads/PCA_continuous_variables_tutorial.R){download="PCA_continuous_variables_tutorial.R"}
+- [Download the *Darlingtonia* morphology data](downloads/Darlingtonia_GE_Table12.1.csv){download="Darlingtonia_GE_Table12.1.csv"}
+
+The tutorial covers data inspection, correlations among variables, centering and scaling, fitting a PCA with `vegan::rda()`, variance explained, sample and variable scores, biplot (w/vectors) interpretation, and retaining PC scores as combined metrics.
+
+### Optional practice
+
+Use the following starter script to practice adapting the tutorial workflow to the `varechem` soil-chemistry data included with the `vegan` package:
+
+- [Download the `varechem` PCA practice script](downloads/PCA_varechem_practice.R){download="PCA_varechem_practice.R"}
+
+### Additional resources
+
+- [PCA chapter in *Applied Multivariate Statistics in R*](https://uw.pressbooks.pub/appliedmultivariatestatistics/chapter/pca/)
+- [PCA concepts, interpretation, and scaling](https://www.davidzeleny.net/anadat-r/doku.php/en:pca)
+- [Additional packages to create PCAs in R](https://www.davidzeleny.net/anadat-r/doku.php/en:pca_r)
+
+### Reporting PCA methods and results
+
+A PCA methods description should report:
+
+- The analytical unit (what points represent) and number of samples.
+- The continuous variables included in the PCA and any variables excluded.
+- Any transformations applied before the PCA and the biological justification for each.
+- Whether the variables were centered and scaled prior to calculating PCA.
+- The use of `vegan::rda()` to fit the PCA, with a citation for the `vegan` package. Run `citation("vegan")` in R to obtain the current citation.
+- Whether any retained PC scores were used in later analyses, such as using PC1 as a predictor in a subsequent model.
+
+A PCA results description should report:
+
+- The percentage of variation explained by PC1 and PC2.
+- The variables most strongly associated with each displayed PC.
+- A biological interpretation of the primary multivariate gradient.
+- Separation, overlap, and within-group variation  among samples (grouping/clustering of points).
+- Important exceptions or unusual samples.
+
+Describe the broad biological/environmental variable patterns first, followed by quantitative support from the variance explained and variable-PC correlations. Visually separated groups should not be presented as a formal statistical result unless they were evaluated using an analysis appropriate for the study design.

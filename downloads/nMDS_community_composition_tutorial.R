@@ -718,6 +718,9 @@ plot_nmds_year_polygons
 
 # Add site ellipses -------------------------------------------------------
 
+# possibly useful if you have lots of points per group to summarize
+# not suggested if you have a more limited number of points per group in your nMDS plot (maybe less than 10 or even 20 points per group).
+
 plot_nmds_ellipses <- nmds_scores_inv |>
   ggplot(aes(x = NMDS1, y = NMDS2)) +
   # Draw transparent fills first.
