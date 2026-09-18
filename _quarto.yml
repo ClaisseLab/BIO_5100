@@ -2,39 +2,56 @@ project:
   type: website
   output-dir: docs
   resources:
-      - downloads/*
+    - downloads/*
 
 website:
   title: "BIO 5100"
+  site-url: https://claisselab.github.io/BIO_5100
+  back-to-top-navigation: true
+
+  # Provides links to the source files beside the table of contents
+  repo-url: https://github.com/ClaisseLab/BIO_5100
+  repo-actions: [source]
+
   navbar:
     background: primary
+    pinned: true
+    search: true
+
     left:
       - text: "Resources"
-        file: index.qmd
-      - Online_Books.qmd
+        href: index.qmd
+      - text: "Online Books"
+        href: Online_Books.qmd
       - text: "Example Code"
-        href: https://claisselab.github.io/BIO_5100/Example_Code.html
+        href: Example_Code.qmd
       - text: "BIO 5150L"
-        href: https://claisselab.github.io/BIO_5100/BIO_5150L.html        
+        href: BIO_5150L.qmd
       - text: "BIO 5800L"
         href: https://claisselab.github.io/BIO_5800L/
-    right:
+
+    tools:
       - icon: house-fill
         href: https://claisselab.com
+        aria-label: "Claisse Lab website"
       - icon: github
-        href: https://github.com/ClaisseLab
+        href: https://github.com/ClaisseLab/BIO_5100
+        aria-label: "BIO 5100 GitHub repository"
+
   page-footer:
-    left: This is a quarto built website <https://quarto.org/docs/websites>.
-    right:  
-      - icon: house-fill
-        href: https://claisselab.com
-      - icon: github
-        href: https://github.com/ClaisseLab
+    left: "Claisse BIO Course Resources"
+    right: "Built with [Quarto](https://quarto.org/)"
+
 format:
   html:
-    theme: darkly
+    theme:
+      light: flatly
+      dark: darkly
+    respect-user-color-scheme: true
     css: styles.css
     toc: true
-    code-link: true
-editor: visual
+    smooth-scroll: true
+    link-external-icon: true
+    link-external-newwindow: true
 
+editor: visual

@@ -161,15 +161,15 @@ Principal component analysis summarizes patterns among multiple correlated conti
 
 ## Before class
 
-1.  [(12 min overview video) Principal Component Analysis (PCA) - easy and practical explanation](https://youtu.be/5vgP05YpKdE)
+1.  [Principal Component Analysis (PCA) - easy and practical explanation (11 min overview video)](https://youtu.be/5vgP05YpKdE)
 
     Watch this video for a quick overview of PCA concepts, interpretation, and scaling. It is a good conceptual introduction to PCA, but does not cover the R code used in the tutorial.
 
-2.  [Longer (45 min) PCA example using `rda()` and `ggplot2`](https://youtu.be/Tjxgd9FLeYc)
+2.  [PCA example using `rda()` and `ggplot2`(Longer 40 min video) ](https://youtu.be/Tjxgd9FLeYc)
 
-    Watch at least the first 15-20 minutes before class. Continue through the remaining plotting examples if you have time.
+    Watch at least the first ~15 minutes before class. Continue through the remaining plotting examples if you have time.
 
-For an additional conceptual review of PCA (if/when you want further details of how PCA works), see [StatQuest: PCA step-by-step](https://www.youtube.com/watch?v=FgakZw6K1QQ).
+For an additional conceptual review of PCA (if/when you want further details on how PCA works) see [StatQuest: PCA step-by-step](https://www.youtube.com/watch?v=FgakZw6K1QQ).
 
 ## Tutorial files
 
