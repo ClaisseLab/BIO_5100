@@ -78,7 +78,7 @@ main.content h4 a:hover {
 /* In light mode, indicate that clicking switches to dark mode */
 .quarto-navbar-tools
   .quarto-color-scheme-toggle:not(.alternate)::after {
-  content: "Dark mode";
+  content: "Dark";
   font-size: 0.82rem;
   font-weight: 500;
   white-space: nowrap;
@@ -87,7 +87,7 @@ main.content h4 a:hover {
 /* In dark mode, indicate that clicking switches to light mode */
 .quarto-navbar-tools
   .quarto-color-scheme-toggle.alternate::after {
-  content: "Light mode";
+  content: "Light";
   font-size: 0.82rem;
   font-weight: 500;
   white-space: nowrap;
@@ -109,4 +109,10 @@ main.content h4 a:hover {
     margin-right: 0.2rem;
     padding: 0.25rem !important;
   }
+}
+
+/* Arrange navbar tools so their order can be controlled */
+.navbar .quarto-navbar-tools {
+  display: flex;
+  align-items: center;
 }
