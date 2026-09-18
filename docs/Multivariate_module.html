@@ -242,6 +242,10 @@ ul.task-list li input[type="checkbox"] {
 <p>Provides examples of plotting nMDS using <code>ggplot2</code> and <code>vegan</code>.</p></li>
 </ol>
 <p><a href="https://www.youtube.com/@Riffomonas">Riffomonas</a> is also a useful channel for tidyverse and <code>ggplot2</code> examples from a microbial ecologist. Microbial and molecular datasets have additional characteristics and challenges, so not every choice will transfer directly to other ecological community data.</p>
+<ol start="3" type="1">
+<li><p><a href="https://youtu.be/4JDJuMe9yFI">(Optional) Beta diversity: Jaccard, Bray-Curtis, NMDS, PCoA and PERMANOVA</a></p>
+<p>(25 min video) Additional background on beta diversity, dissimilarity metrics, and ordination methods. Don’t need to watch before doing the turtorial but watch at some point if you are going to use these methods for your own research.</p></li>
+</ol>
 <section id="nmds-tutorial-files" class="level3">
 <h3 class="anchored" data-anchor-id="nmds-tutorial-files">nMDS Tutorial files</h3>
 <p>Download both files into the same folder before opening the R script:</p>
@@ -345,10 +349,10 @@ ul.task-list li input[type="checkbox"] {
 <p>Community composition is multidimensional because each taxon represents a separate dimension. A two-dimensional nMDS compresses these relationships into a flat plot. Stress measures the resulting distortion, with lower values indicating a better representation.</p>
 <p>These are general guidelines, not strict thresholds:</p>
 <ul>
-<li><p><strong>0 to 0.10:</strong> Good</p></li>
-<li><p><strong>0.10 to 0.20:</strong> Acceptable</p></li>
-<li><p><strong>0.20 to 0.30:</strong> Potentially acceptable for complex ecological data, but interpret cautiously</p></li>
-<li><p><strong>Greater than 0.30:</strong> Poor</p></li>
+<li><strong>0 to 0.10:</strong> Good</li>
+<li><strong>0.10 to 0.20:</strong> Acceptable</li>
+<li><strong>0.20 to 0.30:</strong> Potentially acceptable for complex ecological data, but interpret cautiously</li>
+<li><strong>Greater than 0.30:</strong> Poor</li>
 </ul>
 <p>Values near zero should also be checked because they can result from too few samples, duplicate samples, or limited variation. Interpret stress alongside convergence and the Shepard plot.</p>
 </section>
@@ -378,9 +382,12 @@ Here’s example methods text from my grad students paper <a href="https://www.s
 <p>Principal component analysis summarizes patterns among multiple correlated continuous variables, such as environmental, habitat, morphological, or physiological measurements. In this tutorial, we will use PCA to examine plant morphology and biomass, interpret the major multivariate gradients, and create a PCA biplot with <code>vegan::rda()</code> and <code>ggplot2</code>.</p>
 <section id="before-class-1" class="level2">
 <h2 class="anchored" data-anchor-id="before-class-1">Before class</h2>
-<ul>
-<li><a href="https://youtu.be/Tjxgd9FLeYc">Longer PCA example using <code>rda()</code> and <code>ggplot2</code></a> — watch at least the first 20-30 minutes before class. Continue through the remaining plotting examples if you have time.</li>
-</ul>
+<ol type="1">
+<li><p><a href="https://youtu.be/5vgP05YpKdE">(12 min overview video) Principal Component Analysis (PCA) - easy and practical explanation</a></p>
+<p>Watch this video for a quick overview of PCA concepts, interpretation, and scaling. It is a good conceptual introduction to PCA, but does not cover the R code used in the tutorial.</p></li>
+<li><p><a href="https://youtu.be/Tjxgd9FLeYc">Longer (45 min) PCA example using <code>rda()</code> and <code>ggplot2</code></a></p>
+<p>Watch at least the first 15-20 minutes before class. Continue through the remaining plotting examples if you have time.</p></li>
+</ol>
 <p>For an additional conceptual review of PCA (if/when you want further details of how PCA works), see <a href="https://www.youtube.com/watch?v=FgakZw6K1QQ">StatQuest: PCA step-by-step</a>.</p>
 </section>
 <section id="tutorial-files" class="level2">
