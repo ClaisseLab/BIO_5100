@@ -57,3 +57,56 @@ main.content h4 a:hover {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+
+
+/* Light/dark-mode control --------------------------------------------- */
+
+/* Move the control before the home and GitHub icons and style it */
+.quarto-navbar-tools .quarto-color-scheme-toggle {
+  order: -1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: auto;
+  margin-right: 0.5rem;
+  padding: 0.3rem 0.55rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 0.4rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* In light mode, indicate that clicking switches to dark mode */
+.quarto-navbar-tools
+  .quarto-color-scheme-toggle:not(.alternate)::after {
+  content: "Dark mode";
+  font-size: 0.82rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* In dark mode, indicate that clicking switches to light mode */
+.quarto-navbar-tools
+  .quarto-color-scheme-toggle.alternate::after {
+  content: "Light mode";
+  font-size: 0.82rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Provide clearer hover feedback */
+.quarto-navbar-tools .quarto-color-scheme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+/* Hide the text on smaller screens to prevent navbar crowding */
+@media (max-width: 991.98px) {
+  .quarto-navbar-tools .quarto-color-scheme-toggle::after {
+    display: none;
+  }
+
+  .quarto-navbar-tools .quarto-color-scheme-toggle {
+    margin-right: 0.2rem;
+    padding: 0.25rem !important;
+  }
+}

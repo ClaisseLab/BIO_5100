@@ -6,11 +6,9 @@ A curated collection of course resources for learning R, statistical analysis,
 data management, reproducible research, and scientific communication.
 
 
-::: {.callout-tip appearance="simple" title="Start here"}
-
-- **Looking for BIO 5100 Example Code?** Visit the [Example Code](Example_Code.qmd) page.
-- **Looking for Advanced R Coding and Statistics Topics (BIO 5150L)?** Go to [BIO 5150L](BIO_5150L.qmd).
-
+::: {.callout-tip appearance="simple" title=""}
+- **Looking for BIO 5100 Example Code?** *Visit the [Example Code](Example_Code.qmd) page.*
+- **Looking for Advanced R Coding and Statistics Topics (BIO 5150L)?** *Go to [BIO 5150L](BIO_5150L.qmd).*
 :::
 
 ## R & Coding
