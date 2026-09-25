@@ -14,16 +14,17 @@ title: "BIO 5150L Resources and Tutorials"
 
 - Provides guidance for organizing projects, excluding and backing up data, and other uses, issues, and organization.
 
-### [Multivariate Module](https://claisselab.github.io/BIO_5100/Multivariate_module.html) *(in development)*
+### [Multivariate Module](https://claisselab.github.io/BIO_5100/Multivariate_module.html)
 
-Multiple tutorials and resources for working with and analyzing multivariate data.
+Tutorials and resources for preparing, visualizing, and analyzing multivariate ecological data.
 
-- Summarizing & Exploring Your Multivariate Data
+- Summarizing and exploring multivariate data
 
-- nMDS Ordination & PERMANOVA
+- nMDS ordination and PERMANOVA for community composition
 
-- PCA (Principal Components Analysis)
+- PCA for continuous environmental, morphological, or physiological variables
 
+- Hierarchical cluster analysis for species assemblages or continuous variables
 
 
 <!--

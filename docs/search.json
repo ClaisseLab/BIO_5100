@@ -641,7 +641,7 @@
     "href": "BIO_5150L.html",
     "title": "BIO 5150L Resources and Tutorials",
     "section": "",
-    "text": "Download a .R script organization template\n\nYou can download and then use this template as a starting point for new R scripts and as a guide for organizing your code.\n\n\n\nUsing Git & GitHub Tutorial\n\nGuides you through installing (software) Git on your computer, creating a GitHub.com account, connecting it to RStudio, and creating a repository (i.e., a folder).\nDescribes workflows for personal version control, student–PI code review, and publicly sharing analysis code.\nProvides guidance for organizing projects, excluding and backing up data, and other uses, issues, and organization.\n\n\n\nMultivariate Module (in development)\nMultiple tutorials and resources for working with and analyzing multivariate data.\n\nSummarizing & Exploring Your Multivariate Data\nnMDS Ordination & PERMANOVA\nPCA (Principal Components Analysis)\n\n\n\n\n\n\n Back to top"
+    "text": "Download a .R script organization template\n\nYou can download and then use this template as a starting point for new R scripts and as a guide for organizing your code.\n\n\n\nUsing Git & GitHub Tutorial\n\nGuides you through installing (software) Git on your computer, creating a GitHub.com account, connecting it to RStudio, and creating a repository (i.e., a folder).\nDescribes workflows for personal version control, student–PI code review, and publicly sharing analysis code.\nProvides guidance for organizing projects, excluding and backing up data, and other uses, issues, and organization.\n\n\n\nMultivariate Module\nTutorials and resources for preparing, visualizing, and analyzing multivariate ecological data.\n\nSummarizing and exploring multivariate data\nnMDS ordination and PERMANOVA for community composition\nPCA for continuous environmental, morphological, or physiological variables\nHierarchical cluster analysis for species assemblages or continuous variables\n\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "Compare_multiple_means.html",
@@ -999,6 +999,27 @@
     "title": "Multivariate Data Analysis Module",
     "section": "Reporting PCA methods and results",
     "text": "Reporting PCA methods and results\nA PCA methods description should report:\n\nThe analytical unit (what points represent) and number of samples.\nThe continuous variables included in the PCA and any variables excluded.\nAny transformations applied before the PCA and the biological justification for each.\nWhether the variables were centered and scaled prior to calculating PCA.\nThe use of vegan::rda() to fit the PCA, with a citation for the vegan package. Run citation(\"vegan\") in R to obtain the current citation.\nWhether any retained PC scores were used in later analyses, such as using PC1 as a predictor in a subsequent model.\n\nA PCA results description should report:\n\nThe percentage of variation explained by PC1 and PC2.\nThe variables most strongly associated with each displayed PC.\nA biological interpretation of the primary multivariate gradient.\nSeparation, overlap, and within-group variation among samples (grouping/clustering of points).\nImportant exceptions or unusual samples.\n\nDescribe the broad biological/environmental variable patterns first, followed by quantitative support from the variance explained and variable-PC correlations. Visually separated groups should not be presented as a formal statistical result unless they were evaluated using an analysis appropriate for the study design."
+  },
+  {
+    "objectID": "Multivariate_module.html#before-class-2",
+    "href": "Multivariate_module.html#before-class-2",
+    "title": "Multivariate Data Analysis Module",
+    "section": "Before class",
+    "text": "Before class\n\nWatch StatQuest: Hierarchical Clustering before class (approximately 11 minutes). Focus on how samples are progressively joined, how linkage affects the tree, and how to interpret dendrogram height."
+  },
+  {
+    "objectID": "Multivariate_module.html#tutorial-files-1",
+    "href": "Multivariate_module.html#tutorial-files-1",
+    "title": "Multivariate Data Analysis Module",
+    "section": "Tutorial files",
+    "text": "Tutorial files\nDownload the R script and both datasets into the same folder:\n\nDownload the hierarchical cluster analysis tutorial\nDownload the coral reef dataset\nDownload the Darlingtonia morphology dataset\n\nThe coral reef example uses Bray-Curtis dissimilarity and average linkage for the cluster analysis with the same transformed assemblage data used for the nMDS. The Darlingtonia example uses Euclidean distance and Ward’s ward.D2 linkage for the cluster analysis after centering and scaling the continuous measurements.\nThe tutorial demonstrates how to create and interpret a dendrogram, compare candidate numbers of clusters using mean silhouette width, add sample metadata to a ggplot2 dendrogram, and create optional heatmaps with sample and variable dendrograms. The silhouette maximum is a useful starting point, but the final number of clusters should also be biologically interpretable and appropriate for the study objective. Cluster analysis is an exploratory classification method rather than a statistical test."
+  },
+  {
+    "objectID": "Multivariate_module.html#additional-resources-2",
+    "href": "Multivariate_module.html#additional-resources-2",
+    "title": "Multivariate Data Analysis Module",
+    "section": "Additional resources",
+    "text": "Additional resources\n\nTypes of cluster analyses\nHierarchical cluster analysis\nfactoextra::fviz_nbclust() for comparing numbers of clusters\nggalign heatmap and dendrogram examples"
   },
   {
     "objectID": "qmd_to_R_Script.html",

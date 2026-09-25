@@ -343,6 +343,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#additional-resources-1" id="toc-additional-resources-1" class="nav-link" data-scroll-target="#additional-resources-1">Additional resources</a></li>
   <li><a href="#reporting-pca-methods-and-results" id="toc-reporting-pca-methods-and-results" class="nav-link" data-scroll-target="#reporting-pca-methods-and-results">Reporting PCA methods and results</a></li>
   </ul></li>
+  <li><a href="#hierarchical-cluster-analysis" id="toc-hierarchical-cluster-analysis" class="nav-link" data-scroll-target="#hierarchical-cluster-analysis">4) Hierarchical cluster analysis</a>
+  <ul class="collapse">
+  <li><a href="#before-class-2" id="toc-before-class-2" class="nav-link" data-scroll-target="#before-class-2">Before class</a></li>
+  <li><a href="#tutorial-files-1" id="toc-tutorial-files-1" class="nav-link" data-scroll-target="#tutorial-files-1">Tutorial files</a></li>
+  <li><a href="#additional-resources-2" id="toc-additional-resources-2" class="nav-link" data-scroll-target="#additional-resources-2">Additional resources</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ClaisseLab/BIO_5100/blob/main/Multivariate_module.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
     </div>
@@ -601,6 +607,36 @@ Here’s example methods text from my grad students paper <a href="https://www.s
 <li>Important exceptions or unusual samples.</li>
 </ul>
 <p>Describe the broad biological/environmental variable patterns first, followed by quantitative support from the variance explained and variable-PC correlations. Visually separated groups should not be presented as a formal statistical result unless they were evaluated using an analysis appropriate for the study design.</p>
+</section>
+</section>
+<section id="hierarchical-cluster-analysis" class="level1">
+<h1>4) Hierarchical cluster analysis</h1>
+<p>Hierarchical cluster analysis groups samples that are similar in multivariate space and displays their nested relationships in a dendrogram. It is often used as a complementary analysis alongside an nMDS or PCA because it provides a different way to visualize and classify multivariate patterns. Depending on the study objectives, cluster analysis may also be used instead of an ordination when identifying and describing groups is the primary goal. This tutorial applies the approach to two types of data: coral reef invertebrate assemblages and continuous <em>Darlingtonia</em> morphology and biomass measurements.</p>
+<section id="before-class-2" class="level2">
+<h2 class="anchored" data-anchor-id="before-class-2">Before class</h2>
+<ul>
+<li>Watch <a href="https://www.youtube.com/watch?v=7xHsRkOdVwo">StatQuest: Hierarchical Clustering</a> before class (approximately 11 minutes). Focus on how samples are progressively joined, how linkage affects the tree, and how to interpret dendrogram height.</li>
+</ul>
+</section>
+<section id="tutorial-files-1" class="level2">
+<h2 class="anchored" data-anchor-id="tutorial-files-1">Tutorial files</h2>
+<p>Download the R script and both datasets into the same folder:</p>
+<ul>
+<li><a href="downloads/hierarchical_cluster_analysis_tutorial.R" download="cluster_analysis_tutorial.R">Download the hierarchical cluster analysis tutorial</a></li>
+<li><a href="downloads/Coral_Reef_Data_2014_to_2025.xlsx" download="Coral_Reef_Data_2014_to_2025.xlsx">Download the coral reef dataset</a></li>
+<li><a href="downloads/Darlingtonia_GE_Table12.1.csv" download="Darlingtonia_GE_Table12.1.csv">Download the <em>Darlingtonia</em> morphology dataset</a></li>
+</ul>
+<p>The coral reef example uses Bray-Curtis dissimilarity and average linkage for the cluster analysis with the same transformed assemblage data used for the nMDS. The <em>Darlingtonia</em> example uses Euclidean distance and Ward’s <code>ward.D2</code> linkage for the cluster analysis after centering and scaling the continuous measurements.</p>
+<p>The tutorial demonstrates how to create and interpret a dendrogram, compare candidate numbers of clusters using mean silhouette width, add sample metadata to a <code>ggplot2</code> dendrogram, and create optional heatmaps with sample and variable dendrograms. The silhouette maximum is a useful starting point, but the final number of clusters should also be biologically interpretable and appropriate for the study objective. Cluster analysis is an exploratory classification method rather than a statistical test.</p>
+</section>
+<section id="additional-resources-2" class="level2">
+<h2 class="anchored" data-anchor-id="additional-resources-2">Additional resources</h2>
+<ul>
+<li><a href="https://uw.pressbooks.pub/appliedmultivariatestatistics/chapter/types-of-cluster-analyses/">Types of cluster analyses</a></li>
+<li><a href="https://uw.pressbooks.pub/appliedmultivariatestatistics/chapter/hierarchical-cluster-analysis/">Hierarchical cluster analysis</a></li>
+<li><a href="https://rpkgs.datanovia.com/factoextra/reference/fviz_nbclust.html"><code>factoextra::fviz_nbclust()</code> for comparing numbers of clusters</a></li>
+<li><a href="https://yunuuuu.github.io/ggalign-book/"><code>ggalign</code> heatmap and dendrogram examples</a></li>
+</ul>
 
 
 </section>
