@@ -348,10 +348,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
   </ul></li>
-  <li><a href="#first-understand-the-basic-idea" id="toc-first-understand-the-basic-idea" class="nav-link" data-scroll-target="#first-understand-the-basic-idea">First, understand the basic idea</a></li>
+  <li><a href="#before-class-understand-the-basic-idea" id="toc-before-class-understand-the-basic-idea" class="nav-link" data-scroll-target="#before-class-understand-the-basic-idea">Before class: understand the basic idea</a></li>
   <li><a href="#plain-language-glossary" id="toc-plain-language-glossary" class="nav-link" data-scroll-target="#plain-language-glossary">Plain-language glossary</a></li>
   <li><a href="#set-up-git-github-and-rstudio" id="toc-set-up-git-github-and-rstudio" class="nav-link" data-scroll-target="#set-up-git-github-and-rstudio">Set up Git, GitHub, and RStudio</a>
   <ul class="collapse">
+  <li><a href="#create-a-github-account" id="toc-create-a-github-account" class="nav-link" data-scroll-target="#create-a-github-account">1. Create a GitHub account</a></li>
+  <li><a href="#check-for-git-then-install-or-update-it-if-needed" id="toc-check-for-git-then-install-or-update-it-if-needed" class="nav-link" data-scroll-target="#check-for-git-then-install-or-update-it-if-needed">2. Check for Git, then install or update it if needed</a></li>
+  <li><a href="#install-the-r-packages-used-for-setup" id="toc-install-the-r-packages-used-for-setup" class="nav-link" data-scroll-target="#install-the-r-packages-used-for-setup">3. Install the R packages used for setup</a></li>
+  <li><a href="#tell-git-your-name-and-email-address" id="toc-tell-git-your-name-and-email-address" class="nav-link" data-scroll-target="#tell-git-your-name-and-email-address">4. Tell Git your name and email address</a></li>
+  <li><a href="#create-and-securely-store-a-personal-access-token" id="toc-create-and-securely-store-a-personal-access-token" class="nav-link" data-scroll-target="#create-and-securely-store-a-personal-access-token">5. Create and securely store a personal access token</a></li>
+  <li><a href="#confirm-that-rstudio-detects-git" id="toc-confirm-that-rstudio-detects-git" class="nav-link" data-scroll-target="#confirm-that-rstudio-detects-git">6. Confirm that RStudio detects Git</a></li>
   <li><a href="#github-education" id="toc-github-education" class="nav-link" data-scroll-target="#github-education">GitHub Education</a></li>
   <li><a href="#install-github-desktop-as-a-troubleshooting-tool" id="toc-install-github-desktop-as-a-troubleshooting-tool" class="nav-link" data-scroll-target="#install-github-desktop-as-a-troubleshooting-tool">Install GitHub Desktop as a troubleshooting tool</a></li>
   </ul></li>
@@ -427,13 +433,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="first-understand-the-basic-idea" class="level2">
-<h2 class="anchored" data-anchor-id="first-understand-the-basic-idea">First, understand the basic idea</h2>
+<section id="before-class-understand-the-basic-idea" class="level2">
+<h2 class="anchored" data-anchor-id="before-class-understand-the-basic-idea">Before class: understand the basic idea</h2>
 <ul>
 <li><strong>Watch:</strong> <a href="https://youtu.be/6OTy2N-rSbw?si=Jdsl4k_vdtbd5354">What is Git? (2 min)</a></li>
 <li><strong>Watch:</strong> <a href="https://youtu.be/eBMs0X5dM_k?si=GY5LnP_ascsYdr4w">What is GitHub? (3 min)</a></li>
-<li><strong>Optional RStudio walkthrough:</strong> <a href="https://opensource.posit.co/resources/videos/2022-10-25_first-steps-in-learning-the-use-of-git-github-in-rstudio/">First Steps in Learning the Use of Git &amp; GitHub in RStudio</a> is a longer, chaptered Posit workshop. The chapters on creating an RStudio project, pushing to GitHub, and cloning a GitHub repository are the most relevant for this tutorial.</li>
-<li><strong>More research-focused context:</strong> The <a href="https://openscapes.github.io/series/core-lessons/github/">Openscapes GitHub Strategies</a> lesson explains how research groups use GitHub for collaboration, open science, project organization, and reuse. Its GitHub Clinic includes short recordings on <a href="https://youtu.be/anrZwE3pIwQ">publishing</a> and <a href="https://youtu.be/dDRDma-5_ww">project management</a>.</li>
+<li><strong>Watch:</strong> <a href="https://www.youtube.com/watch?v=d5dUkO5lXds">Git and GitHub with RStudio</a> (<strong>watch at least the first 7 minutes</strong>).</li>
+<li><strong>Optional background:</strong> <a href="https://www.youtube.com/watch?v=anrZwE3pIwQ">Openscapes GitHub Clinic Part 1: Publishing</a> provides more background on what Git and GitHub are and how researchers use them for collaboration and publishing.</li>
+<li><strong>Optional longer RStudio walkthrough:</strong> <a href="https://opensource.posit.co/resources/videos/2022-10-25_first-steps-in-learning-the-use-of-git-github-in-rstudio/">First Steps in Learning the Use of Git &amp; GitHub in RStudio</a> is a chaptered Posit workshop. The chapters on creating an RStudio project, pushing to GitHub, and cloning a GitHub repository are the most relevant here.</li>
+<li><strong>More research-focused context:</strong> The <a href="https://openscapes.github.io/series/core-lessons/github/">Openscapes GitHub Strategies</a> lesson explains how research groups use GitHub for collaboration, open science, project organization, and reuse. Its GitHub Clinic also includes a short recording on <a href="https://youtu.be/dDRDma-5_ww">project management</a>.</li>
 </ul>
 </section>
 <section id="plain-language-glossary" class="level2">
@@ -527,17 +535,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="set-up-git-github-and-rstudio" class="level2">
 <h2 class="anchored" data-anchor-id="set-up-git-github-and-rstudio">Set up Git, GitHub, and RStudio</h2>
-<p>Follow the <a href="https://rcdsdocs.it.northwestern.edu/tutorials/r/git-with-r.html">Northwestern University guide to using Git with RStudio</a>. It provides current instructions for Windows, macOS, and Linux and covers the full setup process:</p>
+<p>The steps below use the R-focused workflow from <a href="https://happygitwithr.com/">Happy Git and GitHub for the useR</a>. Complete them in order on each computer you plan to use with GitHub.</p>
+<section id="create-a-github-account" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-github-account">1. Create a GitHub account</h3>
+<p>Create a free personal account at <a href="https://github.com/signup">GitHub.com</a>. Choose a <em>professional GitHub username</em> that you will be comfortable sharing with collaborators or listing on a CV. GitHub accounts include both public and private repositories.</p>
+</section>
+<section id="check-for-git-then-install-or-update-it-if-needed" class="level3">
+<h3 class="anchored" data-anchor-id="check-for-git-then-install-or-update-it-if-needed">2. Check for Git, then install or update it if needed</h3>
+<p>In RStudio, open <strong>Tools → Terminal</strong> and enter:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If the command returns a Git version number, Git is installed. If it is not found, follow the instructions for your operating system below. After installing or updating Git, completely quit and reopen RStudio, then run <code>git --version</code> again.</p>
+<section id="windows" class="level4">
+<h4 class="anchored" data-anchor-id="windows">Windows</h4>
+<p>Download and install <a href="https://git-scm.com/download/win">Git for Windows</a>. Accept the default installer choices, except make sure <strong>Git from the command line and also from 3rd-party software</strong> is selected when asked about the PATH environment. This helps RStudio find Git.</p>
+<p>If Git for Windows is already installed, you can update it from the RStudio Terminal with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> update-git-for-windows</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="macos" class="level4">
+<h4 class="anchored" data-anchor-id="macos">macOS</h4>
+<p>Git is <strong>not guaranteed to be ready to use on every Mac</strong>. In the RStudio Terminal, run <code>git --version</code>. If macOS offers to install the Apple command line developer tools, accept the installation. You can also request the same installation with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">xcode-select</span> <span class="at">--install</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If <code>git --version</code> already works, that version is sufficient for this course; no separate installation is normally needed. After a major macOS update, you may need to reinstall or reactivate the command line tools.</p>
+<p>See <a href="https://happygitwithr.com/install-git">Happy Git: Install Git</a> if you need more detail or use Linux.</p>
+</section>
+</section>
+<section id="install-the-r-packages-used-for-setup" class="level3">
+<h3 class="anchored" data-anchor-id="install-the-r-packages-used-for-setup">3. Install the R packages used for setup</h3>
+<p>Run this once in the RStudio <strong>Console</strong> (not the Terminal):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"usethis"</span>, <span class="st">"gitcreds"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="tell-git-your-name-and-email-address" class="level3">
+<h3 class="anchored" data-anchor-id="tell-git-your-name-and-email-address">4. Tell Git your name and email address</h3>
+<p>In the RStudio Console, replace the example name and email with your own information:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git_config</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">user.name =</span> <span class="st">"Jane Doe"</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">user.email =</span> <span class="st">"jane@example.edu"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use the name you want displayed beside your work and an email address associated with your GitHub account. This information labels your commits; it is not your GitHub login. See <a href="https://happygitwithr.com/hello-git">Happy Git: Introduce yourself to Git</a> for more detail.</p>
+</section>
+<section id="create-and-securely-store-a-personal-access-token" class="level3">
+<h3 class="anchored" data-anchor-id="create-and-securely-store-a-personal-access-token">5. Create and securely store a personal access token</h3>
+<p>For this course, use an HTTPS connection to GitHub. A <strong>personal access token (PAT)</strong> takes the place of your GitHub password when Git communicates with GitHub.</p>
+<p>In the RStudio Console, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This opens GitHub in your browser with recommended permissions preselected. Give the token a descriptive name for this computer, such as <code>personal-laptop</code>, choose an expiration date, and select <strong>Generate token</strong>. Then:</p>
 <ol type="1">
-<li>Create a personal GitHub account.</li>
-<li>Install Git on your computer.</li>
-<li>Make sure RStudio is current and install the <code>usethis</code> package.</li>
-<li>Confirm that RStudio detects Git.</li>
-<li>Set the name and email associated with your commits.</li>
-<li>Authenticate RStudio with GitHub.</li>
-<li>Create or clone a repository as an RStudio Project.</li>
+<li><p>Copy the token immediately; GitHub will not display it again.</p></li>
+<li><p>Return to the RStudio Console and run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Paste the token when prompted, then press Enter. <strong>Do not put the token inside the parentheses or save it in an R script.</strong> If an older credential is found, choose <strong>Replace these credentials</strong>.</p></li>
 </ol>
-<p>Use a <em>professional GitHub username</em> that you will be comfortable sharing with collaborators or listing on a CV. GitHub accounts are free, including private repositories.</p>
+<p>Create a separate, descriptively named PAT for each computer you use. This makes it possible to revoke access for one lost or replaced computer without disrupting the others. For more explanation and troubleshooting, see <a href="https://happygitwithr.com/https-pat">Happy Git: Personal access token for HTTPS</a>.</p>
+<p>To confirm that a credential is stored and review the overall setup, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_get</span>()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">git_sitrep</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The stored token should be hidden in the output. Never paste a PAT into a document, screenshot, email, or help request.</p>
+</section>
+<section id="confirm-that-rstudio-detects-git" class="level3">
+<h3 class="anchored" data-anchor-id="confirm-that-rstudio-detects-git">6. Confirm that RStudio detects Git</h3>
+<p>In RStudio, open <strong>Tools → Global Options → Git/SVN</strong>. The <strong>Git executable</strong> field should contain a path to Git, such as <code>C:/Program Files/Git/bin/git.exe</code> on Windows or <code>/usr/bin/git</code> on macOS. If you just installed Git or changed this setting, completely quit and reopen RStudio.</p>
+<p>These checks confirm that the individual pieces are installed and configured. Creating, cloning, and pushing from your first repository below provides the complete end-to-end test.</p>
+</section>
 <section id="github-education" class="level3">
 <h3 class="anchored" data-anchor-id="github-education">GitHub Education</h3>
 <p>Students can also <a href="https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student">apply for GitHub Education benefits</a>. Start with a personal GitHub account, add and verify your university email address if requested, and provide proof of current enrollment. Approved students receive access to the <a href="https://education.github.com/pack">GitHub Student Developer Pack</a>, which includes additional developer tools and services. These benefits are useful but are not required for this course.</p>
@@ -549,6 +607,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>For additional setup details or troubleshooting, use:</p>
 <ul>
 <li><a href="https://happygitwithr.com/">Happy Git and GitHub for the useR</a>, the most comprehensive R-focused guide;</li>
+<li><a href="https://rcdsdocs.it.northwestern.edu/tutorials/r/git-with-r.html">Northwestern University: Using Git with RStudio</a>, for another step-by-step setup reference if you need more detail;</li>
 <li><a href="https://docs.posit.co/ide/user/ide/guide/tools/version-control.html">RStudio Version Control documentation</a>, for the Git tools built into RStudio; and</li>
 <li><a href="https://docs.github.com/en/desktop">GitHub Desktop documentation</a>, for help with the desktop application;</li>
 <li><a href="https://openscapes.github.io/series/how-do-i/setup-rstudio-github.html">Openscapes: Setup RStudio and GitHub</a>, for another concise research-focused setup and practice pathway; and</li>
@@ -558,8 +617,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="create-a-new-github-repo-for-an-rstudio-project" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-new-github-repo-for-an-rstudio-project">Create a new GitHub repo for an RStudio Project</h2>
-<p>The simplest beginner workflow is to create the remote repo on GitHub first and then clone it with RStudio. This keeps GitHub and the local RStudio Project connected from the beginning.</p>
-<p>Before a repository exists, you can confirm only that Git is installed and detected by RStudio. Under <strong>Tools → Global Options → Git/SVN</strong>, the <strong>Git executable</strong> field should contain a file path. You can also enter <code>git --version</code> in the RStudio Terminal and confirm that it returns a version number. The complete test comes after you create and clone a repository.</p>
+<p>The simplest beginner workflow is to create the remote repo on GitHub first and then clone it with RStudio. This keeps GitHub and the local RStudio Project connected from the beginning and completes the setup test described above.</p>
 <ol type="1">
 <li>On GitHub (<em>logged in to your personal GitHub account that you’ve already created</em>) select <strong>New repository</strong>.</li>
 <li>Choose a short, descriptive <strong>repository name</strong>. Use lowercase letters and hyphens instead of spaces, and name the analysis or project rather than using something vague such as <code>project1</code>. Examples include <code>kelp-bass-growth</code> or <code>Matt-thesis-analysis</code>.</li>
@@ -571,7 +629,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Under <strong>Add <code>.gitignore</code></strong>, choose the <strong>R</strong> template. This prevents common temporary R and RStudio files from being tracked.</li>
 <li>Under <strong>Choose a license</strong>, select the <a href="https://choosealicense.com/licenses/mit/"><strong>MIT License</strong></a>. This short, permissive license is a good default for open R analysis code because it allows others to use, modify, and redistribute the code as long as they retain the copyright and license notice. It also states that the code is provided without warranty. The license applies only to material you have the right to share; any included or separately distributed data may have their own permissions or license.</li>
 </ul></li>
-<li>Select <strong>Create repository</strong></li>
+<li>Select <strong>Create repository</strong>.</li>
 <li>Once the repo is created, select <strong>Code</strong> and copy its HTTPS URL.</li>
 <li>In RStudio, select <strong>File → New Project → Version Control → Git</strong>, paste the URL, choose where the project will be stored (<em>a folder on your computer - I suggest creating a new overall folder named “github repos” where all your github repositories moving forward will be stored</em>), and select <strong>Create Project</strong>.</li>
 </ol>
@@ -643,13 +701,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>This example uses <code>data files</code>, <code>figures</code>, and <code>tables</code> as folder names.</p>
 <p>You can create the folders manually (i.e., new folder, but make sure you name them correctly) or from the R console:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the standard project folders if they do not already exist</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_create</span>(<span class="fu">c</span>(<span class="st">"R"</span>, <span class="st">"data files"</span>, <span class="st">"figures"</span>, <span class="st">"tables"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the standard project folders if they do not already exist</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_create</span>(<span class="fu">c</span>(<span class="st">"R"</span>, <span class="st">"data files"</span>, <span class="st">"figures"</span>, <span class="st">"tables"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Use project-relative paths in your code rather than computer-specific absolute paths. For example:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read a file using a path relative to the RStudio Project</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"Data Files"</span>, <span class="st">"survey_data.csv"</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read a file using a path relative to the RStudio Project</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"Data Files"</span>, <span class="st">"survey_data.csv"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="exclude-data-files-by-editing-your-.gitignore-file" class="level3">
 <h3 class="anchored" data-anchor-id="exclude-data-files-by-editing-your-.gitignore-file">Exclude data files by editing your .gitignore file</h3>
 <p>If you want to keep the contents of <code>data files/</code> out of GitHub (not tracked by git and not pushed to GitHub) add these lines to the project’s <code>.gitignore</code> file (which you can open and edit in RStudio):</p>

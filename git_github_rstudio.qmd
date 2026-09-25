@@ -28,12 +28,14 @@ By the end of this tutorial, you should be able to:
 - exchange code revisions with a collaborator; and
 - explain how cloning, forking, and public repositories support reproducible and reusable research.
 
-## First, understand the basic idea
+## Before class: understand the basic idea
 
 - **Watch:** [What is Git? (2 min)](https://youtu.be/6OTy2N-rSbw?si=Jdsl4k_vdtbd5354)
 - **Watch:** [What is GitHub? (3 min)](https://youtu.be/eBMs0X5dM_k?si=GY5LnP_ascsYdr4w)
-- **Optional RStudio walkthrough:** [First Steps in Learning the Use of Git & GitHub in RStudio](https://opensource.posit.co/resources/videos/2022-10-25_first-steps-in-learning-the-use-of-git-github-in-rstudio/) is a longer, chaptered Posit workshop. The chapters on creating an RStudio project, pushing to GitHub, and cloning a GitHub repository are the most relevant for this tutorial.
-- **More research-focused context:** The [Openscapes GitHub Strategies](https://openscapes.github.io/series/core-lessons/github/) lesson explains how research groups use GitHub for collaboration, open science, project organization, and reuse. Its GitHub Clinic includes short recordings on [publishing](https://youtu.be/anrZwE3pIwQ) and [project management](https://youtu.be/dDRDma-5_ww).
+- **Watch:** [Git and GitHub with RStudio](https://www.youtube.com/watch?v=d5dUkO5lXds) (**watch at least the first 7 minutes**).
+- **Optional background:** [Openscapes GitHub Clinic Part 1: Publishing](https://www.youtube.com/watch?v=anrZwE3pIwQ) provides more background on what Git and GitHub are and how researchers use them for collaboration and publishing.
+- **Optional longer RStudio walkthrough:** [First Steps in Learning the Use of Git & GitHub in RStudio](https://opensource.posit.co/resources/videos/2022-10-25_first-steps-in-learning-the-use-of-git-github-in-rstudio/) is a chaptered Posit workshop. The chapters on creating an RStudio project, pushing to GitHub, and cloning a GitHub repository are the most relevant here.
+- **More research-focused context:** The [Openscapes GitHub Strategies](https://openscapes.github.io/series/core-lessons/github/) lesson explains how research groups use GitHub for collaboration, open science, project organization, and reuse. Its GitHub Clinic also includes a short recording on [project management](https://youtu.be/dDRDma-5_ww).
 
 ## Plain-language glossary
 
@@ -60,17 +62,103 @@ By the end of this tutorial, you should be able to:
 
 ## Set up Git, GitHub, and RStudio
 
-Follow the [Northwestern University guide to using Git with RStudio](https://rcdsdocs.it.northwestern.edu/tutorials/r/git-with-r.html). It provides current instructions for Windows, macOS, and Linux and covers the full setup process:
+The steps below use the R-focused workflow from [Happy Git and GitHub for the useR](https://happygitwithr.com/). Complete them in order on each computer you plan to use with GitHub.
 
-1.  Create a personal GitHub account.
-2.  Install Git on your computer.
-3.  Make sure RStudio is current and install the `usethis` package.
-4.  Confirm that RStudio detects Git.
-5.  Set the name and email associated with your commits.
-6.  Authenticate RStudio with GitHub.
-7.  Create or clone a repository as an RStudio Project.
+### 1. Create a GitHub account
 
-Use a *professional GitHub username* that you will be comfortable sharing with collaborators or listing on a CV. GitHub accounts are free, including private repositories.
+Create a free personal account at [GitHub.com](https://github.com/signup). Choose a *professional GitHub username* that you will be comfortable sharing with collaborators or listing on a CV. GitHub accounts include both public and private repositories.
+
+### 2. Check for Git, then install or update it if needed
+
+In RStudio, open **Tools → Terminal** and enter:
+
+``` bash
+git --version
+```
+
+If the command returns a Git version number, Git is installed. If it is not found, follow the instructions for your operating system below. After installing or updating Git, completely quit and reopen RStudio, then run `git --version` again.
+
+#### Windows
+
+Download and install [Git for Windows](https://git-scm.com/download/win). Accept the default installer choices, except make sure **Git from the command line and also from 3rd-party software** is selected when asked about the PATH environment. This helps RStudio find Git.
+
+If Git for Windows is already installed, you can update it from the RStudio Terminal with:
+
+``` bash
+git update-git-for-windows
+```
+
+#### macOS
+
+Git is **not guaranteed to be ready to use on every Mac**. In the RStudio Terminal, run `git --version`. If macOS offers to install the Apple command line developer tools, accept the installation. You can also request the same installation with:
+
+``` bash
+xcode-select --install
+```
+
+If `git --version` already works, that version is sufficient for this course; no separate installation is normally needed. After a major macOS update, you may need to reinstall or reactivate the command line tools.
+
+See [Happy Git: Install Git](https://happygitwithr.com/install-git) if you need more detail or use Linux.
+
+### 3. Install the R packages used for setup
+
+Run this once in the RStudio **Console** (not the Terminal):
+
+``` r
+install.packages(c("usethis", "gitcreds"))
+```
+
+### 4. Tell Git your name and email address
+
+In the RStudio Console, replace the example name and email with your own information:
+
+``` r
+usethis::use_git_config(
+  user.name = "Jane Doe",
+  user.email = "jane@example.edu"
+)
+```
+
+Use the name you want displayed beside your work and an email address associated with your GitHub account. This information labels your commits; it is not your GitHub login. See [Happy Git: Introduce yourself to Git](https://happygitwithr.com/hello-git) for more detail.
+
+### 5. Create and securely store a personal access token
+
+For this course, use an HTTPS connection to GitHub. A **personal access token (PAT)** takes the place of your GitHub password when Git communicates with GitHub.
+
+In the RStudio Console, run:
+
+``` r
+usethis::create_github_token()
+```
+
+This opens GitHub in your browser with recommended permissions preselected. Give the token a descriptive name for this computer, such as `personal-laptop`, choose an expiration date, and select **Generate token**. Then:
+
+1.  Copy the token immediately; GitHub will not display it again.
+
+2.  Return to the RStudio Console and run:
+
+    ``` r
+    gitcreds::gitcreds_set()
+    ```
+
+3.  Paste the token when prompted, then press Enter. **Do not put the token inside the parentheses or save it in an R script.** If an older credential is found, choose **Replace these credentials**.
+
+Create a separate, descriptively named PAT for each computer you use. This makes it possible to revoke access for one lost or replaced computer without disrupting the others. For more explanation and troubleshooting, see [Happy Git: Personal access token for HTTPS](https://happygitwithr.com/https-pat).
+
+To confirm that a credential is stored and review the overall setup, run:
+
+``` r
+gitcreds::gitcreds_get()
+usethis::git_sitrep()
+```
+
+The stored token should be hidden in the output. Never paste a PAT into a document, screenshot, email, or help request.
+
+### 6. Confirm that RStudio detects Git
+
+In RStudio, open **Tools → Global Options → Git/SVN**. The **Git executable** field should contain a path to Git, such as `C:/Program Files/Git/bin/git.exe` on Windows or `/usr/bin/git` on macOS. If you just installed Git or changed this setting, completely quit and reopen RStudio.
+
+These checks confirm that the individual pieces are installed and configured. Creating, cloning, and pushing from your first repository below provides the complete end-to-end test.
 
 ### GitHub Education
 
@@ -85,6 +173,7 @@ GitHub Desktop does not replace the separate Git installation required by the se
 For additional setup details or troubleshooting, use:
 
 - [Happy Git and GitHub for the useR](https://happygitwithr.com/), the most comprehensive R-focused guide;
+- [Northwestern University: Using Git with RStudio](https://rcdsdocs.it.northwestern.edu/tutorials/r/git-with-r.html), for another step-by-step setup reference if you need more detail;
 - [RStudio Version Control documentation](https://docs.posit.co/ide/user/ide/guide/tools/version-control.html), for the Git tools built into RStudio; and
 - [GitHub Desktop documentation](https://docs.github.com/en/desktop), for help with the desktop application;
 - [Openscapes: Setup RStudio and GitHub](https://openscapes.github.io/series/how-do-i/setup-rstudio-github.html), for another concise research-focused setup and practice pathway; and
@@ -92,21 +181,19 @@ For additional setup details or troubleshooting, use:
 
 ## Create a new GitHub repo for an RStudio Project
 
-The simplest beginner workflow is to create the remote repo on GitHub first and then clone it with RStudio. This keeps GitHub and the local RStudio Project connected from the beginning.
+The simplest beginner workflow is to create the remote repo on GitHub first and then clone it with RStudio. This keeps GitHub and the local RStudio Project connected from the beginning and completes the setup test described above.
 
-Before a repository exists, you can confirm only that Git is installed and detected by RStudio. Under **Tools → Global Options → Git/SVN**, the **Git executable** field should contain a file path. You can also enter `git --version` in the RStudio Terminal and confirm that it returns a version number. The complete test comes after you create and clone a repository.
-
-1. On GitHub (*logged in to your personal GitHub account that you've already created*) select **New repository**.
-2. Choose a short, descriptive **repository name**. Use lowercase letters and hyphens instead of spaces, and name the analysis or project rather than using something vague such as `project1`. Examples include `kelp-bass-growth` or `Matt-thesis-analysis`.
-3. Add a brief **description** stating what the repository contains. You can revise it later.
-4. Choose **Private** while the analysis is being developed or contains material that is not ready to share. You can change it to **Public** later.
-5. Under **Initialize this repository with**:
-   - Select **Add a README file**. The README will become the repository’s front page and can be expanded as the project develops.
-   - Under **Add `.gitignore`**, choose the **R** template. This prevents common temporary R and RStudio files from being tracked.
-   - Under **Choose a license**, select the [**MIT License**](https://choosealicense.com/licenses/mit/). This short, permissive license is a good default for open R analysis code because it allows others to use, modify, and redistribute the code as long as they retain the copyright and license notice. It also states that the code is provided without warranty. The license applies only to material you have the right to share; any included or separately distributed data may have their own permissions or license.
-6. Select **Create repository**
-8. Once the repo is created, select **Code** and copy its HTTPS URL.
-9. In RStudio, select **File → New Project → Version Control → Git**, paste the URL, choose where the project will be stored (*a folder on your computer - I suggest creating a new overall folder named "github repos" where all your github repositories moving forward will be stored*), and select **Create Project**.
+1.  On GitHub (*logged in to your personal GitHub account that you've already created*) select **New repository**.
+2.  Choose a short, descriptive **repository name**. Use lowercase letters and hyphens instead of spaces, and name the analysis or project rather than using something vague such as `project1`. Examples include `kelp-bass-growth` or `Matt-thesis-analysis`.
+3.  Add a brief **description** stating what the repository contains. You can revise it later.
+4.  Choose **Private** while the analysis is being developed or contains material that is not ready to share. You can change it to **Public** later.
+5.  Under **Initialize this repository with**:
+    - Select **Add a README file**. The README will become the repository’s front page and can be expanded as the project develops.
+    - Under **Add `.gitignore`**, choose the **R** template. This prevents common temporary R and RStudio files from being tracked.
+    - Under **Choose a license**, select the [**MIT License**](https://choosealicense.com/licenses/mit/). This short, permissive license is a good default for open R analysis code because it allows others to use, modify, and redistribute the code as long as they retain the copyright and license notice. It also states that the code is provided without warranty. The license applies only to material you have the right to share; any included or separately distributed data may have their own permissions or license.
+6.  Select **Create repository**.
+7.  Once the repo is created, select **Code** and copy its HTTPS URL.
+8.  In RStudio, select **File → New Project → Version Control → Git**, paste the URL, choose where the project will be stored (*a folder on your computer - I suggest creating a new overall folder named "github repos" where all your github repositories moving forward will be stored*), and select **Create Project**.
 
 RStudio will clone the GitHub repo, create its `.Rproj` file, and open the local project. From then on, open the project using the `.Rproj` file.
 
@@ -116,13 +203,13 @@ The `.gitignore` is therefore a Git file, but you can create it in several ways.
 
 Creating and cloning the first repository provides the best end-to-end test that Git, GitHub, and RStudio are connected correctly:
 
-1. Confirm that the cloned project opens in RStudio and that the **Git** pane is visible.
-2. Open `README.md`, add a short sentence, and save the file.
-3. In the Git pane, check the box next to `README.md` to stage it, then select **Commit**.
-4. Enter a message such as `Test Git and GitHub connection` and complete the commit.
-5. Select **Push**. Complete any GitHub authentication prompt that appears.
-6. Refresh the repository page on GitHub and confirm that the README change and commit appear.
-7. To test pulling, edit `README.md` on GitHub, commit the change there, then return to RStudio and select **Pull**. Confirm that the GitHub change now appears in the local file.
+1.  Confirm that the cloned project opens in RStudio and that the **Git** pane is visible.
+2.  Open `README.md`, add a short sentence, and save the file.
+3.  In the Git pane, check the box next to `README.md` to stage it, then select **Commit**.
+4.  Enter a message such as `Test Git and GitHub connection` and complete the commit.
+5.  Select **Push**. Complete any GitHub authentication prompt that appears.
+6.  Refresh the repository page on GitHub and confirm that the README change and commit appear.
+7.  To test pulling, edit `README.md` on GitHub, commit the change there, then return to RStudio and select **Pull**. Confirm that the GitHub change now appears in the local file.
 
 If all seven steps work, the setup is complete. This practice repository can become the student’s first analysis repository or remain a small test repository for practicing Git operations.
 
