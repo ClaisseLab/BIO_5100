@@ -367,7 +367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#organize-an-r-analysis-repository" id="toc-organize-an-r-analysis-repository" class="nav-link" data-scroll-target="#organize-an-r-analysis-repository">Organize an R analysis repository</a>
   <ul class="collapse">
-  <li><a href="#exclude-data-files-by-editing-your-.gitignore-file" id="toc-exclude-data-files-by-editing-your-.gitignore-file" class="nav-link" data-scroll-target="#exclude-data-files-by-editing-your-.gitignore-file">Exclude data files by editing your .gitignore file</a></li>
+  <li><a href="#optional-exclude-data-files-by-editing-your-.gitignore-file" id="toc-optional-exclude-data-files-by-editing-your-.gitignore-file" class="nav-link" data-scroll-target="#optional-exclude-data-files-by-editing-your-.gitignore-file">(Optional) Exclude data files by editing your .gitignore file</a></li>
   <li><a href="#back-up-and-share-data-separately" id="toc-back-up-and-share-data-separately" class="nav-link" data-scroll-target="#back-up-and-share-data-separately">Back up and share data separately</a></li>
   </ul></li>
   <li><a href="#the-everyday-rstudio-workflow" id="toc-the-everyday-rstudio-workflow" class="nav-link" data-scroll-target="#the-everyday-rstudio-workflow">The everyday RStudio workflow</a></li>
@@ -553,10 +553,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="macos" class="level4">
 <h4 class="anchored" data-anchor-id="macos">macOS</h4>
-<p>Git is <strong>not guaranteed to be ready to use on every Mac</strong>. In the RStudio Terminal, run <code>git --version</code>. If macOS offers to install the Apple command line developer tools, accept the installation. You can also request the same installation with:</p>
+<p>Git is <strong>sometimes already installed on some versions of Mac opperating systems</strong>. In the RStudio Terminal, run <code>git --version</code>. If macOS offers to install the Apple command line developer tools, accept the installation. You can also request the same installation with:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">xcode-select</span> <span class="at">--install</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>If <code>git --version</code> already works, that version is sufficient for this course; no separate installation is normally needed. After a major macOS update, you may need to reinstall or reactivate the command line tools.</p>
-<p>See <a href="https://happygitwithr.com/install-git">Happy Git: Install Git</a> if you need more detail or use Linux.</p>
+<p>If <code>git --version</code> already works, you have git installed already; no separate installation is normally needed. After a major macOS update, you may need to reinstall or reactivate the command line tools.</p>
+<p>See <a href="https://happygitwithr.com/install-git">Happy Git: Install Git</a> if the above doesn’t work or you need more detail on how to install Git.</p>
 </section>
 </section>
 <section id="install-the-r-packages-used-for-setup" class="level3">
@@ -566,16 +566,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="tell-git-your-name-and-email-address" class="level3">
 <h3 class="anchored" data-anchor-id="tell-git-your-name-and-email-address">4. Tell Git your name and email address</h3>
-<p>In the RStudio Console, replace the example name and email with your own information:</p>
+<p>In the RStudio Console, replace the example name and the email associated with your github.com account:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git_config</span>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">user.name =</span> <span class="st">"Jane Doe"</span>,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">user.email =</span> <span class="st">"jane@example.edu"</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Use the name you want displayed beside your work and an email address associated with your GitHub account. This information labels your commits; it is not your GitHub login. See <a href="https://happygitwithr.com/hello-git">Happy Git: Introduce yourself to Git</a> for more detail.</p>
+<p>Use the name you want displayed beside your work and the <strong>email address associated with your GitHub account</strong>. See <a href="https://happygitwithr.com/hello-git">Happy Git: Introduce yourself to Git</a> for more detail.</p>
 </section>
 <section id="create-and-securely-store-a-personal-access-token" class="level3">
 <h3 class="anchored" data-anchor-id="create-and-securely-store-a-personal-access-token">5. Create and securely store a personal access token</h3>
-<p>For this course, use an HTTPS connection to GitHub. A <strong>personal access token (PAT)</strong> takes the place of your GitHub password when Git communicates with GitHub.</p>
+<p>A <strong>personal access token (PAT)</strong> takes the place of your GitHub password when Git communicates with GitHub.</p>
 <p>In the RStudio Console, run:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This opens GitHub in your browser with recommended permissions preselected. Give the token a descriptive name for this computer, such as <code>personal-laptop</code>, choose an expiration date, and select <strong>Generate token</strong>. Then:</p>
@@ -598,7 +598,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="github-education" class="level3">
 <h3 class="anchored" data-anchor-id="github-education">GitHub Education</h3>
-<p>Students can also <a href="https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student">apply for GitHub Education benefits</a>. Start with a personal GitHub account, add and verify your university email address if requested, and provide proof of current enrollment. Approved students receive access to the <a href="https://education.github.com/pack">GitHub Student Developer Pack</a>, which includes additional developer tools and services. These benefits are useful but are not required for this course.</p>
+<p>Students can also <a href="https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student">apply for GitHub Education benefits</a>. Start with a personal GitHub account, add and verify your university email address if requested, and provide proof of current enrollment. Approved students receive access to the <a href="https://education.github.com/pack">GitHub Student Developer Pack</a>, which includes additional developer tools and services. These benefits are useful but not required.</p>
 </section>
 <section id="install-github-desktop-as-a-troubleshooting-tool" class="level3">
 <h3 class="anchored" data-anchor-id="install-github-desktop-as-a-troubleshooting-tool">Install GitHub Desktop as a troubleshooting tool</h3>
@@ -700,19 +700,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>This example uses <code>data files</code>, <code>figures</code>, and <code>tables</code> as folder names.</p>
-<p>You can create the folders manually (i.e., new folder, but make sure you name them correctly) or from the R console:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the standard project folders if they do not already exist</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_create</span>(<span class="fu">c</span>(<span class="st">"R"</span>, <span class="st">"data files"</span>, <span class="st">"figures"</span>, <span class="st">"tables"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Use project-relative paths in your code rather than computer-specific absolute paths. For example:</p>
+<p>Create these 3 folders manually in your project folder on your computer (i.e., new folder, but make sure you name them correctly)</p>
+<p>Then when writing code to work within this project you’ll need to <strong>use project-relative paths to read in data</strong>. For example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read a file using a path relative to the RStudio Project</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>dat_survey <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data files/survey_data.csv"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="er">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>or using the <code>here</code> package, which is a convenient way to construct paths:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read a file using a path relative to the RStudio Project</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"Data Files"</span>, <span class="st">"survey_data.csv"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>dat_survey <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data files"</span>, <span class="st">"survey_data.csv"</span>)</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<section id="exclude-data-files-by-editing-your-.gitignore-file" class="level3">
-<h3 class="anchored" data-anchor-id="exclude-data-files-by-editing-your-.gitignore-file">Exclude data files by editing your .gitignore file</h3>
+<section id="optional-exclude-data-files-by-editing-your-.gitignore-file" class="level3">
+<h3 class="anchored" data-anchor-id="optional-exclude-data-files-by-editing-your-.gitignore-file">(Optional) Exclude data files by editing your .gitignore file</h3>
+<p>If you have really large data files (.e.g, giant tables or GIS raster layers), or if you have sensitive data that should not be shared, you can exclude the <code>data files/</code> folder from being uploaded to GitHub. However if your thesis data files are not huge it probably makes sense to have them sync and back-up to GitHub. Plus it makes it easier for your PI to review your code if they can access the the current version of your data files when they pull your project from GitHub.com to their computer.</p>
 <p>If you want to keep the contents of <code>data files/</code> out of GitHub (not tracked by git and not pushed to GitHub) add these lines to the project’s <code>.gitignore</code> file (which you can open and edit in RStudio):</p>
 <pre class="text"><code># Other folders etc.
-data tables/</code></pre>
+data files/</code></pre>
 <p>Add these rules before the data files are first committed. A <code>.gitignore</code> rule does not automatically remove a file that Git is already tracking.</p>
 <p>In <code>README.md</code>, document:</p>
 <ul>
@@ -746,7 +749,7 @@ data tables/</code></pre>
 <li>Edit your R scripts, Quarto documents, or other project files and save them.</li>
 <li>Review the changed files and their diffs in the Git pane.</li>
 <li><strong>Stage</strong> the related files that belong in one checkpoint.</li>
-<li><strong>Commit</strong> them with a short, informative message, such as <code>Add kelp bass size filtering</code> or <code>Revise model diagnostics</code>.</li>
+<li><strong>Commit</strong> them with a short, informative message, such as <code>Added kelp bass size filtering</code> or <code>changed plot colors</code>.</li>
 <li>Repeat the edit, stage, and commit cycle as you complete meaningful pieces of work.</li>
 <li>Pull again before pushing if someone else may have updated the shared repo.</li>
 <li><strong>Push</strong> your commits to GitHub before you finish the work session or hand the project to a collaborator.</li>

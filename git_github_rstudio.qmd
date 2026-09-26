@@ -90,15 +90,15 @@ git update-git-for-windows
 
 #### macOS
 
-Git is **not guaranteed to be ready to use on every Mac**. In the RStudio Terminal, run `git --version`. If macOS offers to install the Apple command line developer tools, accept the installation. You can also request the same installation with:
+Git is **sometimes already installed on some versions of Mac opperating systems**. In the RStudio Terminal, run `git --version`. If macOS offers to install the Apple command line developer tools, accept the installation. You can also request the same installation with:
 
 ``` bash
 xcode-select --install
 ```
 
-If `git --version` already works, that version is sufficient for this course; no separate installation is normally needed. After a major macOS update, you may need to reinstall or reactivate the command line tools.
+If `git --version` already works, you have git installed already; no separate installation is normally needed. After a major macOS update, you may need to reinstall or reactivate the command line tools.
 
-See [Happy Git: Install Git](https://happygitwithr.com/install-git) if you need more detail or use Linux.
+See [Happy Git: Install Git](https://happygitwithr.com/install-git) if the above doesn't work or you need more detail on how to install Git.
 
 ### 3. Install the R packages used for setup
 
@@ -110,7 +110,7 @@ install.packages(c("usethis", "gitcreds"))
 
 ### 4. Tell Git your name and email address
 
-In the RStudio Console, replace the example name and email with your own information:
+In the RStudio Console, replace the example name and the email associated with your github.com account:
 
 ``` r
 usethis::use_git_config(
@@ -119,11 +119,11 @@ usethis::use_git_config(
 )
 ```
 
-Use the name you want displayed beside your work and an email address associated with your GitHub account. This information labels your commits; it is not your GitHub login. See [Happy Git: Introduce yourself to Git](https://happygitwithr.com/hello-git) for more detail.
+Use the name you want displayed beside your work and the **email address associated with your GitHub account**. See [Happy Git: Introduce yourself to Git](https://happygitwithr.com/hello-git) for more detail.
 
 ### 5. Create and securely store a personal access token
 
-For this course, use an HTTPS connection to GitHub. A **personal access token (PAT)** takes the place of your GitHub password when Git communicates with GitHub.
+A **personal access token (PAT)** takes the place of your GitHub password when Git communicates with GitHub.
 
 In the RStudio Console, run:
 
@@ -162,7 +162,7 @@ These checks confirm that the individual pieces are installed and configured. Cr
 
 ### GitHub Education
 
-Students can also [apply for GitHub Education benefits](https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student). Start with a personal GitHub account, add and verify your university email address if requested, and provide proof of current enrollment. Approved students receive access to the [GitHub Student Developer Pack](https://education.github.com/pack), which includes additional developer tools and services. These benefits are useful but are not required for this course.
+Students can also [apply for GitHub Education benefits](https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student). Start with a personal GitHub account, add and verify your university email address if requested, and provide proof of current enrollment. Approved students receive access to the [GitHub Student Developer Pack](https://education.github.com/pack), which includes additional developer tools and services. These benefits are useful but not required.
 
 ### Install GitHub Desktop as a troubleshooting tool
 
@@ -228,29 +228,34 @@ A consistent folder structure makes an analysis easier to understand, rerun, rev
 
 This example uses `data files`, `figures`, and `tables` as folder names.
 
-You can create the folders manually (i.e., new folder, but make sure you name them correctly) or from the R console:
+Create these 3 folders manually in your project folder on your computer (i.e., new folder, but make sure you name them correctly) 
 
-``` r
-# Create the standard project folders if they do not already exist
-fs::dir_create(c("R", "data files", "figures", "tables"))
-```
-
-Use project-relative paths in your code rather than computer-specific absolute paths. For example:
+Then when writing code to work within this project you'll need to **use project-relative paths to read in data**. For example:
 
 ``` r
 # Read a file using a path relative to the RStudio Project
-survey_data <- readr::read_csv(
-  here::here("Data Files", "survey_data.csv")
+dat_survey <- read_csv("data files/survey_data.csv")
 )
 ```
 
-### Exclude data files by editing your .gitignore file
+or using the `here` package, which is a convenient way to construct paths:
+
+``` r
+# Read a file using a path relative to the RStudio Project
+dat_survey <- read_csv(
+  here::here("data files", "survey_data.csv")
+)
+```
+
+### (Optional) Exclude data files by editing your .gitignore file
+
+If you have really large data files (.e.g, giant tables or GIS raster layers), or if you have sensitive data that should not be shared, you can exclude the `data files/` folder from being uploaded to GitHub. However if your thesis data files are not huge it probably makes sense to have them sync and back-up to GitHub. Plus it makes it easier for your PI to review your code if they can access the the current version of your data files when they pull your project from GitHub.com to their computer.
 
 If you want to keep the contents of `data files/` out of GitHub (not tracked by git and not pushed to GitHub) add these lines to the project’s `.gitignore` file (which you can open and edit in RStudio):
 
 ``` text
 # Other folders etc.
-data tables/
+data files/
 ```
 
 Add these rules before the data files are first committed. A `.gitignore` rule does not automatically remove a file that Git is already tracking.
@@ -287,7 +292,7 @@ When you begin a work session:
 3.  Edit your R scripts, Quarto documents, or other project files and save them.
 4.  Review the changed files and their diffs in the Git pane.
 5.  **Stage** the related files that belong in one checkpoint.
-6.  **Commit** them with a short, informative message, such as `Add kelp bass size filtering` or `Revise model diagnostics`.
+6.  **Commit** them with a short, informative message, such as `Added kelp bass size filtering` or `changed plot colors`.
 7.  Repeat the edit, stage, and commit cycle as you complete meaningful pieces of work.
 8.  Pull again before pushing if someone else may have updated the shared repo.
 9.  **Push** your commits to GitHub before you finish the work session or hand the project to a collaborator.
