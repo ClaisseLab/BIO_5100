@@ -222,22 +222,21 @@ A consistent folder structure makes an analysis easier to understand, rerun, rev
 | `project-name.Rproj` | Opens the analysis as an RStudio Project | Yes |
 | `README.md` | Describes the project, file organization, data access, and how to run the analysis | Yes |
 | `.gitignore` | Records which files and folders Git should exclude | Yes |
-| `data files/` | Raw and processed data used by the scripts | Usually no; back up and share separately, but if data files are small, probably the case with your theis data, ok to include in the repository and store on github |
+| `data files/` | Raw and processed data used by the scripts | It depends; if files are very large then back up and share separately, but if data files are not too big, probably the case with your thesis data, ok to include in the repository and store/back-up on github |
 | `figures/` | Figures produced by the analysis | Yes |
 | `tables/` | Tables produced by the analysis | Yes |
 
-This example uses `data files`, `figures`, and `tables` as folder names.
+This example uses `data files`, `figures`, and `tables` as folder (directory) names.
 
-Create these 3 folders manually in your project folder on your computer (i.e., new folder, but make sure you name them correctly) 
+1) To create this structure, you can just **create these 3 folders manually in your project folder on your computer** (i.e., *right-click > new folder*, but make sure you name them correctly).
 
-Then when writing code to work within this project you'll need to **use project-relative paths to read in data**. For example:
+2) Then when writing code to work within this project you'll need to **use project-relative paths to read in data**. Because your .R scripts will typically be in your main project folder (and that will be the "working directory"), you'll need to tell R to look in the *data files* folder to find the data file. For example:
 
 ``` r
 # Read a file using a path relative to the RStudio Project
 dat_survey <- read_csv("data files/survey_data.csv")
 )
 ```
-
 or using the `here` package, which is a convenient way to construct paths:
 
 ``` r

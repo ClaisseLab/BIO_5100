@@ -685,7 +685,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td><code>data files/</code></td>
 <td>Raw and processed data used by the scripts</td>
-<td>Usually no; back up and share separately, but if data files are small, probably the case with your theis data, ok to include in the repository and store on github</td>
+<td>It depends; if files are very large then back up and share separately, but if data files are not too big, probably the case with your thesis data, ok to include in the repository and store/back-up on github</td>
 </tr>
 <tr class="odd">
 <td><code>figures/</code></td>
@@ -699,9 +699,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p>This example uses <code>data files</code>, <code>figures</code>, and <code>tables</code> as folder names.</p>
-<p>Create these 3 folders manually in your project folder on your computer (i.e., new folder, but make sure you name them correctly)</p>
-<p>Then when writing code to work within this project you’ll need to <strong>use project-relative paths to read in data</strong>. For example:</p>
+<p>This example uses <code>data files</code>, <code>figures</code>, and <code>tables</code> as folder (directory) names.</p>
+<ol type="1">
+<li><p>To create this structure, you can just <strong>create these 3 folders manually in your project folder on your computer</strong> (i.e., <em>right-click &gt; new folder</em>, but make sure you name them correctly).</p></li>
+<li><p>Then when writing code to work within this project you’ll need to <strong>use project-relative paths to read in data</strong>. Because your .R scripts will typically be in your main project folder (and that will be the “working directory”), you’ll need to tell R to look in the <em>data files</em> folder to find the data file. For example:</p></li>
+</ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read a file using a path relative to the RStudio Project</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>dat_survey <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data files/survey_data.csv"</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="er">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
