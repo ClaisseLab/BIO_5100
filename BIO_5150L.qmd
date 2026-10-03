@@ -19,12 +19,20 @@ title: "BIO 5150L Resources and Tutorials"
 Tutorials and resources for preparing, visualizing, and analyzing multivariate ecological data.
 
 - Summarizing and exploring multivariate data
-
 - nMDS ordination and PERMANOVA for community composition
-
 - PCA for continuous environmental, morphological, or physiological variables
-
 - Hierarchical cluster analysis for species assemblages or continuous variables
+
+### [Generalized Linear Models (GLMs) Module](https://claisselab.github.io/BIO_5100/GLM_module.html) *(in development)*
+
+A developing set of resources and tutorials for fitting and interpreting generalized linear models in R.
+
+- Overview of common GLM distributions and link functions
+- Poisson and negative binomial regression for biological count data
+- Model diagnostics using DHARMa and model comparison using AICc
+- Interpreting and plotting predictions, estimated means, response ratios, confidence intervals, and interactions
+- R code that can be adapted for analyzing your own count data
+
 
 
 <!--

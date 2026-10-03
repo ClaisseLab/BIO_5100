@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>BIO 5150L Resources and Tutorials – BIO 5100</title>
+<title>Generalized Linear Models (GLMs) Module – BIO 5100</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -283,7 +283,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Example Code</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./BIO_5150L.html" aria-current="page"> 
+    <a class="nav-link" href="./BIO_5150L.html"> 
 <span class="menu-text">BIO 5150L</span></a>
   </li>  
   <li class="nav-item">
@@ -309,12 +309,38 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#download-a-.r-script-organization-template" id="toc-download-a-.r-script-organization-template" class="nav-link active" data-scroll-target="#download-a-.r-script-organization-template">Download a .R script organization template</a></li>
-  <li><a href="#using-git-github-tutorial" id="toc-using-git-github-tutorial" class="nav-link" data-scroll-target="#using-git-github-tutorial">Using Git &amp; GitHub Tutorial</a></li>
-  <li><a href="#multivariate-module" id="toc-multivariate-module" class="nav-link" data-scroll-target="#multivariate-module">Multivariate Module</a></li>
-  <li><a href="#generalized-linear-models-glms-module-in-development" id="toc-generalized-linear-models-glms-module-in-development" class="nav-link" data-scroll-target="#generalized-linear-models-glms-module-in-development">Generalized Linear Models (GLMs) Module <em>(in development)</em></a></li>
+  <li><a href="#generalized-linear-models-overview" id="toc-generalized-linear-models-overview" class="nav-link active" data-scroll-target="#generalized-linear-models-overview">1) Generalized Linear Models: Overview</a>
+  <ul class="collapse">
+  <li><a href="#common-glm-response-distributions" id="toc-common-glm-response-distributions" class="nav-link" data-scroll-target="#common-glm-response-distributions">Common GLM response distributions</a></li>
+  </ul></li>
+  <li><a href="#count-data-tutorial-poisson-and-negative-binomial-regression" id="toc-count-data-tutorial-poisson-and-negative-binomial-regression" class="nav-link" data-scroll-target="#count-data-tutorial-poisson-and-negative-binomial-regression">2) Count Data Tutorial: Poisson and Negative Binomial Regression</a>
+  <ul class="collapse">
+  <li><a href="#before-class" id="toc-before-class" class="nav-link" data-scroll-target="#before-class">Before class</a>
+  <ul class="collapse">
+  <li><a href="#tutorial-files" id="toc-tutorial-files" class="nav-link" data-scroll-target="#tutorial-files">Tutorial files</a></li>
+  <li><a href="#what-the-tutorial-covers" id="toc-what-the-tutorial-covers" class="nav-link" data-scroll-target="#what-the-tutorial-covers">What the tutorial covers</a></li>
+  </ul></li>
+  <li><a href="#main-analytical-choices" id="toc-main-analytical-choices" class="nav-link" data-scroll-target="#main-analytical-choices">Main analytical choices</a>
+  <ul class="collapse">
+  <li><a href="#response-distribution" id="toc-response-distribution" class="nav-link" data-scroll-target="#response-distribution">Response distribution</a></li>
+  <li><a href="#link-function" id="toc-link-function" class="nav-link" data-scroll-target="#link-function">Link function</a></li>
+  <li><a href="#continuous-and-categorical-predictors" id="toc-continuous-and-categorical-predictors" class="nav-link" data-scroll-target="#continuous-and-categorical-predictors">Continuous and categorical predictors</a></li>
+  <li><a href="#model-diagnostics" id="toc-model-diagnostics" class="nav-link" data-scroll-target="#model-diagnostics">Model diagnostics</a></li>
+  <li><a href="#comparing-models" id="toc-comparing-models" class="nav-link" data-scroll-target="#comparing-models">Comparing models</a></li>
+  <li><a href="#interpreting-model-predictions" id="toc-interpreting-model-predictions" class="nav-link" data-scroll-target="#interpreting-model-predictions">Interpreting model predictions</a></li>
+  </ul></li>
+  <li><a href="#what-to-report" id="toc-what-to-report" class="nav-link" data-scroll-target="#what-to-report">What to report</a></li>
+  </ul></li>
+  <li><a href="#additional-glm-tutorials-planned" id="toc-additional-glm-tutorials-planned" class="nav-link" data-scroll-target="#additional-glm-tutorials-planned">3) Additional GLM tutorials planned</a>
+  <ul class="collapse">
+  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional resources</a>
+  <ul class="collapse">
+  <li><a href="#count-data-and-diagnostic-resources" id="toc-count-data-and-diagnostic-resources" class="nav-link" data-scroll-target="#count-data-and-diagnostic-resources">Count-data and diagnostic resources</a></li>
+  <li><a href="#online-books-and-courses" id="toc-online-books-and-courses" class="nav-link" data-scroll-target="#online-books-and-courses">Online books and courses</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/ClaisseLab/BIO_5100/blob/main/BIO_5150L.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/ClaisseLab/BIO_5100/blob/main/GLM_module.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -322,7 +348,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">BIO 5150L Resources and Tutorials</h1>
+<h1 class="title">Generalized Linear Models (GLMs) Module</h1>
 </div>
 
 
@@ -339,46 +365,193 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="download-a-.r-script-organization-template" class="level3">
-<h3 class="anchored" data-anchor-id="download-a-.r-script-organization-template"><a href="downloads/Organized_Script.R" download="Organized_Script.R">Download a .R script organization template</a></h3>
+<section id="generalized-linear-models-overview" class="level1">
+<h1>1) Generalized Linear Models: Overview</h1>
+<p>Generalized linear models (GLMs) extend ordinary linear models to response variables that do not follow a normal distribution. They are useful when the response is a count, a proportion, or a continuous measurement with a strongly non-normal distribution.</p>
+<p>This module is a work in progress. It currently focuses on count data and introduces Poisson and negative binomial regression. Additional tutorials for other GLM types will be added later.</p>
+<section id="common-glm-response-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="common-glm-response-distributions">Common GLM response distributions</h2>
+<p>The response distribution should match the type of data being modeled. The table below gives common examples and the link function most often used with each model type.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Distribution</th>
+<th>Typical data</th>
+<th>Common link</th>
+<th>Example application</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Gaussian (normal)</td>
+<td>Continuous measurements that are approximately symmetric</td>
+<td>Identity</td>
+<td>Body size or temperature measurements</td>
+</tr>
+<tr class="even">
+<td>Poisson</td>
+<td>Non-negative integer counts</td>
+<td>Log</td>
+<td>Number of individuals, species, or events</td>
+</tr>
+<tr class="odd">
+<td>Negative binomial</td>
+<td>Non-negative integer counts with more variation than a Poisson model can accommodate</td>
+<td>Log</td>
+<td>Abundance counts that vary substantially among samples</td>
+</tr>
+<tr class="even">
+<td>Binomial</td>
+<td>Proportions, successes out of trials, or two-category outcomes</td>
+<td>Logit</td>
+<td>Survival, infection status, or germination</td>
+</tr>
+<tr class="odd">
+<td>Gamma</td>
+<td>Positive continuous measurements, often right-skewed</td>
+<td>Log</td>
+<td>Biomass, growth rate, or time to an event when zero is not possible</td>
+</tr>
+<tr class="even">
+<td>Tweedie</td>
+<td>Non-negative continuous measurements, including many zeros</td>
+<td>Log</td>
+<td>Biomass or productivity measurements with many zero observations</td>
+</tr>
+</tbody>
+</table>
+<p>The link function connects the predictors to the expected response. With the log link used for Poisson and negative binomial models, predictions remain positive and effects are multiplicative on the response scale. The tutorial introduces these ideas using plain-language interpretation rather than mathematical notation.</p>
+</section>
+</section>
+<section id="count-data-tutorial-poisson-and-negative-binomial-regression" class="level1">
+<h1>2) Count Data Tutorial: Poisson and Negative Binomial Regression</h1>
+<p>The first tutorial uses crab count data. The response is the number of male crabs associated with each female crab. Female width is a continuous predictor, and female color is a categorical predictor. The tutorial works through a complete applied workflow, from exploring the data to checking model fit, comparing Poisson and negative binomial models, and plotting predictions on the original response scale.</p>
+<section id="before-class" class="level2">
+<h2 class="anchored" data-anchor-id="before-class">Before class</h2>
+<p>Watch or review the following resources before working through the R tutorial.</p>
+<ol type="1">
+<li><p><a href="https://youtu.be/6Nfv0Xr44y8">GLM Part 1: A New Perspective</a><br>
+A conceptual introduction to why generalized linear models are useful.</p></li>
+<li><p><a href="https://youtu.be/i62gffPrZYA">GLM Part 2: Count Regression</a><br>
+An introduction to modelling count data.</p></li>
+<li><p><a href="https://youtu.be/FfBnX5dfxXw">Poisson Regression in R</a><br>
+An R tidyverse coding example working through a Poisson GLM analysis that also demonstrates useful data wrangling and plotting tasks.</p></li>
+</ol>
+<p>The first 2 videos are part of a larger <a href="https://www.youtube.com/playlist?list=PLl4b1XM725Oc8g3V9p98UeRTOXoAlGEYw">GLM video series</a>. The full series includes additional material that may be useful as you continue learning about GLMs.</p>
+<p>Also work through these two background pages (work through questions etc.):</p>
 <ul>
-<li>You can download and then use this template as a starting point for new R scripts and as a guide for organizing your code.</li>
+<li><a href="https://fransrodenburg.github.io/Applied-Statistics/poissondistribution.html">Poisson distribution</a></li>
+<li><a href="https://fransrodenburg.github.io/Applied-Statistics/GLM.html">Generalized linear models</a></li>
+</ul>
+<p>These pages use more base R code than the tutorial below. For now, focus on the concepts and the questions at the end of the pages. You will use a more tidyverse-focused workflow in the tutorial.</p>
+<section id="tutorial-files" class="level3">
+<h3 class="anchored" data-anchor-id="tutorial-files">Tutorial files</h3>
+<p>Download the tutorial script into a folder before working through it:</p>
+<ul>
+<li><a href="downloads/GLM_count_data_tutorial.R" download="GLM_count_data_tutorial.R">Download the initial GLM count-data R script</a></li>
 </ul>
 </section>
-<section id="using-git-github-tutorial" class="level3">
-<h3 class="anchored" data-anchor-id="using-git-github-tutorial"><a href="https://claisselab.github.io/BIO_5100/git_github_rstudio.html">Using Git &amp; GitHub Tutorial</a></h3>
+<section id="what-the-tutorial-covers" class="level3">
+<h3 class="anchored" data-anchor-id="what-the-tutorial-covers">What the tutorial covers</h3>
+<p>The tutorial asks you to apply the following workflow to your own data:</p>
+<ol type="1">
+<li>Load and tidy the crab data, then explore the response and explanatory variables with summary statistics and <code>ggplot2</code> graphics.</li>
+<li>Fit a Poisson regression model with a continuous predictor and interpret the model output.</li>
+<li>Use DHARMa simulations and diagnostic plots to assess whether the model describes the data adequately.</li>
+<li>Fit a negative binomial model when the count data are more variable than expected under a Poisson model.</li>
+<li>Compare the Poisson and negative binomial models using AICc, while also considering diagnostics and biological plausibility.</li>
+<li>Plot model predictions and 95% confidence intervals on the original response scale.</li>
+<li>Estimate and plot means for the light and dark color groups, including their contrast as a response ratio.</li>
+<li>Fit a full model with separate width relationships for the two colors and compare the alternative predictor structures.</li>
+</ol>
+</section>
+</section>
+<section id="main-analytical-choices" class="level2">
+<h2 class="anchored" data-anchor-id="main-analytical-choices">Main analytical choices</h2>
+<section id="response-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="response-distribution">Response distribution</h3>
+<p>The response is a count, so the first candidate model is Poisson regression. A Poisson model assumes that the mean and variance are closely related. Ecological count data often vary more than this assumption allows. When that happens, a negative binomial model can provide a better description of the extra variation.</p>
+</section>
+<section id="link-function" class="level3">
+<h3 class="anchored" data-anchor-id="link-function">Link function</h3>
+<p>Poisson and negative binomial regression normally use a log link. This ensures that predicted counts are positive. Coefficients are estimated on the log scale, but predictions and effect estimates can be back-transformed to the original count scale for interpretation.</p>
+<p>Because the back-transformation is nonlinear, confidence intervals on the response scale are often not symmetrical around the estimate. This is expected for count models and is one reason to show the confidence intervals in plots rather than relying only on coefficient tables.</p>
+</section>
+<section id="continuous-and-categorical-predictors" class="level3">
+<h3 class="anchored" data-anchor-id="continuous-and-categorical-predictors">Continuous and categorical predictors</h3>
+<p>Female width is a continuous predictor, so the tutorial first evaluates whether the expected number of male crabs changes with width. Female color is a categorical predictor, so the tutorial estimates and compares the expected counts for the two color groups.</p>
+<p>The full model asks whether the relationship between female width and the number of males differs between light and dark females. In a plot, this produces a separate fitted curve for each color.</p>
+</section>
+<section id="model-diagnostics" class="level3">
+<h3 class="anchored" data-anchor-id="model-diagnostics">Model diagnostics</h3>
+<p>Watch these videos before or during the diagnostic sections:</p>
 <ul>
-<li><p>Guides you through installing (software) Git on your computer, creating a GitHub.com account, connecting it to RStudio, and creating a repository (i.e., a folder).</p></li>
-<li><p>Describes workflows for personal version control, student–PI code review, and publicly sharing analysis code.</p></li>
-<li><p>Provides guidance for organizing projects, excluding and backing up data, and other uses, issues, and organization.</p></li>
+<li><p><a href="https://youtu.be/xJm6eN5ZDzk">GLM Part 4: Overdispersion</a></p></li>
+<li><p><a href="https://youtu.be/SnZDysPBaW4">GLM Part 5: Diagnostics</a></p></li>
+</ul>
+<p>The tutorial uses the <code>DHARMa</code> package to simulate residuals and evaluate model fit. The most important checks are whether the residuals show an overall departure from the expected distribution and whether the model has too much or too little variation relative to the data.</p>
+<p>A significant DHARMa test is a signal to investigate, not an automatic reason to discard a model. Look at the diagnostic plots, consider which feature of the data is causing the signal, and decide whether the problem matters for the biological question. A model can be useful even when a test detects a small departure, particularly when the main conclusions are stable and no important pattern remains in the residual plots.</p>
+<p>For count models, also consider whether the data contain more zeros than expected. If zero inflation is substantial, a zero-inflated or hurdle model may be appropriate, but those models are beyond the scope of this first tutorial.</p>
+<p>And for more detail, read the <a href="https://cran.r-project.org/web/packages/DHARMa/vignettes/DHARMa.html">DHARMa vignettes</a></p>
+</section>
+<section id="comparing-models" class="level3">
+<h3 class="anchored" data-anchor-id="comparing-models">Comparing models</h3>
+<p>AICc is used to compare models fitted to the same response variable and the same observations. Lower AICc indicates more support from the models being compared. AICc does not prove that one model is biologically correct, so use it together with diagnostics, effect estimates, plots, and knowledge of the sampling process.</p>
+</section>
+<section id="interpreting-model-predictions" class="level3">
+<h3 class="anchored" data-anchor-id="interpreting-model-predictions">Interpreting model predictions</h3>
+<p>The tutorial uses <code>ggeffects</code> to plot predictions for continuous predictors and their 95% confidence intervals on the response scale. It uses <code>emmeans</code> to estimate and compare means for the categorical predictor. These plots make it easier to describe expected counts rather than interpreting log-scale coefficients directly.</p>
+<p>Because Poisson and negative binomial models use a log link, model coefficients and predictions are initially estimated on the log scale. The tutorial back-transforms them to the original count scale so they can be interpreted as expected numbers of males. Exponentiating a coefficient gives a multiplicative effect, or rate ratio, rather than an additive change in counts.</p>
+<p>For the categorical comparison, the two group means are compared as a response ratio for the same reason. A response ratio of 1 indicates equal expected counts, whereas values above or below 1 indicate proportionally higher or lower counts in one group. The back-transformation also means that confidence intervals on the response scale are often asymmetric.</p>
+</section>
+</section>
+<section id="what-to-report" class="level2">
+<h2 class="anchored" data-anchor-id="what-to-report">What to report</h2>
+<p>In a methods section, report the response variable and its sampling unit, describe the relevant distributions of the response variable (i.e., why you used a Poisson or negative binomial GLM), the predictors and interactions, and how model diagnostics and model comparisons were used. Include the relevant R packages and functions when this helps readers reproduce the analysis.</p>
+<p>In a results section, emphasize estimates on the original response scale, 95% confidence intervals, and plots of the fitted relationships. Explain any important diagnostic signal and how it affected the analysis. Avoid reporting only a list of p-values or treating AICc as a substitute for biological interpretation.</p>
+</section>
+</section>
+<section id="additional-glm-tutorials-planned" class="level1">
+<h1>3) Additional GLM tutorials planned</h1>
+<p>Future tutorials may introduce:</p>
+<ul>
+<li>Binomial models for proportions and two-category responses.</li>
+<li>Tweedie models for non-negative continuous responses such as biomass when many observations are zero.</li>
+</ul>
+<section id="additional-resources" class="level2">
+<h2 class="anchored" data-anchor-id="additional-resources">Additional resources</h2>
+<section id="count-data-and-diagnostic-resources" class="level3">
+<h3 class="anchored" data-anchor-id="count-data-and-diagnostic-resources">Count-data and diagnostic resources</h3>
+<ul>
+<li><a href="https://www.youtube.com/playlist?list=PLl4b1XM725Oc8g3V9p98UeRTOXoAlGEYw">GLM Part 4: Overdispersion</a><br>
+Use the series link to locate the section on overdispersion.</li>
+<li><a href="https://www.youtube.com/playlist?list=PLl4b1XM725Oc8g3V9p98UeRTOXoAlGEYw">GLM Part 5: Diagnostics</a><br>
+Use the series link to locate the section on model diagnostics.</li>
+<li><a href="https://cran.r-project.org/web/packages/DHARMa/vignettes/DHARMa.html">DHARMa vignettes and documentation</a></li>
+<li><a href="https://youtu.be/uGKnoAw-PFQ">Regression with Count Data: Poisson and Negative Binomial</a><br>
+Additional non-R background on count-data regression.</li>
 </ul>
 </section>
-<section id="multivariate-module" class="level3">
-<h3 class="anchored" data-anchor-id="multivariate-module"><a href="https://claisselab.github.io/BIO_5100/Multivariate_module.html">Multivariate Module</a></h3>
-<p>Tutorials and resources for preparing, visualizing, and analyzing multivariate ecological data.</p>
+<section id="online-books-and-courses" class="level3">
+<h3 class="anchored" data-anchor-id="online-books-and-courses">Online books and courses</h3>
 <ul>
-<li>Summarizing and exploring multivariate data</li>
-<li>nMDS ordination and PERMANOVA for community composition</li>
-<li>PCA for continuous environmental, morphological, or physiological variables</li>
-<li>Hierarchical cluster analysis for species assemblages or continuous variables</li>
+<li><a href="https://fransrodenburg.github.io/Applied-Statistics/GLM.html">Frans Rodenburg, Applied Statistics: Generalized Linear Models</a><br>
+Background explanations and worked examples. Some examples use base R code.</li>
+<li><a href="https://qerm514.github.io/website/labs/week_08/fitting_count_models.html">QERM 514: Fitting count models</a><br>
+Examples of more advanced count-model options.</li>
+<li><a href="https://www.highstat.com/index.php/books2?catid=18&amp;id=21&amp;view=article">Zuur, Ieno, and Elphick, A Beginner’s Guide to GLM and GLMM with R</a><br>
+See this book for additional detail and extended case studies applying GLMs and GLMMs. <a href="https://csu-cpp.primo.exlibrisgroup.com/permalink/01CALS_PUP/1fn8cvg/alma991008774460302915">Can also get it from the CPP Library</a></li>
 </ul>
-</section>
-<section id="generalized-linear-models-glms-module-in-development" class="level3">
-<h3 class="anchored" data-anchor-id="generalized-linear-models-glms-module-in-development"><a href="https://claisselab.github.io/BIO_5100/GLM_module.html">Generalized Linear Models (GLMs) Module</a> <em>(in development)</em></h3>
-<p>A developing set of resources and tutorials for fitting and interpreting generalized linear models in R.</p>
-<ul>
-<li>Overview of common GLM distributions and link functions</li>
-<li>Poisson and negative binomial regression for biological count data</li>
-<li>Model diagnostics using DHARMa and model comparison using AICc</li>
-<li>Interpreting and plotting predictions, estimated means, response ratios, confidence intervals, and interactions</li>
-<li>R code that can be adapted for analyzing your own count data</li>
-</ul>
-<!--
-code/text you don't want to show up goes here (to be hidden in the final output)
-(coming soon)
--->
 
 
+</section>
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -810,7 +983,7 @@ code/text you don't want to show up goes here (to be hidden in the final output)
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ClaisseLab/BIO_5100/blob/main/BIO_5150L.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ClaisseLab/BIO_5100/blob/main/GLM_module.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Built with <a href="https://quarto.org/">Quarto</a></p>
 </div>
