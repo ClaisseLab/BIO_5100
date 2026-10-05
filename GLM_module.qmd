@@ -31,7 +31,7 @@ The first tutorial uses crab count data. The response is the number of male crab
 
 ## Before class
 
-Watch or review the following resources before working through the R tutorial.
+Watch the following 3 videos before working through the R tutorial.
 
 1.  [GLM Part 1: A New Perspective](https://youtu.be/6Nfv0Xr44y8)\
     A conceptual introduction to why generalized linear models are useful.
@@ -44,12 +44,11 @@ Watch or review the following resources before working through the R tutorial.
 
 The first 2 videos are part of a larger [GLM video series](https://www.youtube.com/playlist?list=PLl4b1XM725Oc8g3V9p98UeRTOXoAlGEYw). The full series includes additional material that may be useful as you continue learning about GLMs.
 
-Also work through these two background pages (work through questions etc.):
 
-- [Poisson distribution](https://fransrodenburg.github.io/Applied-Statistics/poissondistribution.html)
-- [Generalized linear models](https://fransrodenburg.github.io/Applied-Statistics/GLM.html)
+Also Here's another (~20 min) video if want to hear another explanation of working with count data and GLMs:
+- [Regression with Count Data: Poisson and Negative Binomial](https://youtu.be/uGKnoAw-PFQ)  
+  *A concise, non-R overview of Poisson, quasi-Poisson, and negative binomial regression, including overdispersion and underdispersion. It also briefly introduces more advanced count-data models for cases with too many zeros (zero-inflated models) or when zero counts are impossible (zero-truncated models). These extensions are beyond the scope of this tutorial but provide useful context for choosing among count-data models.*
 
-These pages use more base R code than the tutorial below. For now, focus on the concepts and the questions at the end of the pages. You will use a more tidyverse-focused workflow in the tutorial.
 
 ### Tutorial files
 
@@ -138,8 +137,10 @@ Future tutorials may introduce:
 - [GLM Part 5: Diagnostics](https://www.youtube.com/playlist?list=PLl4b1XM725Oc8g3V9p98UeRTOXoAlGEYw)\
   Use the series link to locate the section on model diagnostics.
 - [DHARMa vignettes and documentation](https://cran.r-project.org/web/packages/DHARMa/vignettes/DHARMa.html)
-- [Regression with Count Data: Poisson and Negative Binomial](https://youtu.be/uGKnoAw-PFQ)\
-  Additional non-R background on count-data regression.
+
+
+- [(Video) Regression with Count Data: Poisson and Negative Binomial](https://youtu.be/uGKnoAw-PFQ)  
+  A concise, non-R overview of Poisson, quasi-Poisson, and negative binomial regression, including overdispersion and underdispersion. It also briefly introduces more advanced count-data models for cases with too many zeros (zero-inflated models) or when zero counts are impossible (zero-truncated models). These extensions are beyond the scope of this tutorial but provide useful context for choosing among count-data models. 
 
 ### Online books and courses
 

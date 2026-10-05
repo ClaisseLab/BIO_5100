@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,13 +12,10 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -41,14 +38,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-27b9f889d6e109d015426ac4f274b7e7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-1242ccc02940432acd87c1b818d9cd49.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-27b9f889d6e109d015426ac4f274b7e7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-f9da83f35c8a9777c3928170ebd7038e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-b82a8e178c632e86601320a4062c3b24.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-f9da83f35c8a9777c3928170ebd7038e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -434,7 +431,7 @@ ul.task-list li input[type="checkbox"] {
 <p>The first tutorial uses crab count data. The response is the number of male crabs associated with each female crab. Female width is a continuous predictor, and female color is a categorical predictor. The tutorial works through a complete applied workflow, from exploring the data to checking model fit, comparing Poisson and negative binomial models, and plotting predictions on the original response scale.</p>
 <section id="before-class" class="level2">
 <h2 class="anchored" data-anchor-id="before-class">Before class</h2>
-<p>Watch or review the following resources before working through the R tutorial.</p>
+<p>Watch the following 3 videos before working through the R tutorial.</p>
 <ol type="1">
 <li><p><a href="https://youtu.be/6Nfv0Xr44y8">GLM Part 1: A New Perspective</a><br>
 A conceptual introduction to why generalized linear models are useful.</p></li>
@@ -444,12 +441,8 @@ An introduction to modelling count data.</p></li>
 An R tidyverse coding example working through a Poisson GLM analysis that also demonstrates useful data wrangling and plotting tasks.</p></li>
 </ol>
 <p>The first 2 videos are part of a larger <a href="https://www.youtube.com/playlist?list=PLl4b1XM725Oc8g3V9p98UeRTOXoAlGEYw">GLM video series</a>. The full series includes additional material that may be useful as you continue learning about GLMs.</p>
-<p>Also work through these two background pages (work through questions etc.):</p>
-<ul>
-<li><a href="https://fransrodenburg.github.io/Applied-Statistics/poissondistribution.html">Poisson distribution</a></li>
-<li><a href="https://fransrodenburg.github.io/Applied-Statistics/GLM.html">Generalized linear models</a></li>
-</ul>
-<p>These pages use more base R code than the tutorial below. For now, focus on the concepts and the questions at the end of the pages. You will use a more tidyverse-focused workflow in the tutorial.</p>
+<p>Also Here’s another (~20 min) video if want to hear another explanation of working with count data and GLMs: - <a href="https://youtu.be/uGKnoAw-PFQ">Regression with Count Data: Poisson and Negative Binomial</a><br>
+<em>A concise, non-R overview of Poisson, quasi-Poisson, and negative binomial regression, including overdispersion and underdispersion. It also briefly introduces more advanced count-data models for cases with too many zeros (zero-inflated models) or when zero counts are impossible (zero-truncated models). These extensions are beyond the scope of this tutorial but provide useful context for choosing among count-data models.</em></p>
 <section id="tutorial-files" class="level3">
 <h3 class="anchored" data-anchor-id="tutorial-files">Tutorial files</h3>
 <p>Download the tutorial script into a folder before working through it:</p>
@@ -529,13 +522,13 @@ An R tidyverse coding example working through a Poisson GLM analysis that also d
 <section id="count-data-and-diagnostic-resources" class="level3">
 <h3 class="anchored" data-anchor-id="count-data-and-diagnostic-resources">Count-data and diagnostic resources</h3>
 <ul>
-<li><a href="https://www.youtube.com/playlist?list=PLl4b1XM725Oc8g3V9p98UeRTOXoAlGEYw">GLM Part 4: Overdispersion</a><br>
-Use the series link to locate the section on overdispersion.</li>
-<li><a href="https://www.youtube.com/playlist?list=PLl4b1XM725Oc8g3V9p98UeRTOXoAlGEYw">GLM Part 5: Diagnostics</a><br>
-Use the series link to locate the section on model diagnostics.</li>
-<li><a href="https://cran.r-project.org/web/packages/DHARMa/vignettes/DHARMa.html">DHARMa vignettes and documentation</a></li>
-<li><a href="https://youtu.be/uGKnoAw-PFQ">Regression with Count Data: Poisson and Negative Binomial</a><br>
-Additional non-R background on count-data regression.</li>
+<li><p><a href="https://www.youtube.com/playlist?list=PLl4b1XM725Oc8g3V9p98UeRTOXoAlGEYw">GLM Part 4: Overdispersion</a><br>
+Use the series link to locate the section on overdispersion.</p></li>
+<li><p><a href="https://www.youtube.com/playlist?list=PLl4b1XM725Oc8g3V9p98UeRTOXoAlGEYw">GLM Part 5: Diagnostics</a><br>
+Use the series link to locate the section on model diagnostics.</p></li>
+<li><p><a href="https://cran.r-project.org/web/packages/DHARMa/vignettes/DHARMa.html">DHARMa vignettes and documentation</a></p></li>
+<li><p><a href="https://youtu.be/uGKnoAw-PFQ">(Video) Regression with Count Data: Poisson and Negative Binomial</a><br>
+A concise, non-R overview of Poisson, quasi-Poisson, and negative binomial regression, including overdispersion and underdispersion. It also briefly introduces more advanced count-data models for cases with too many zeros (zero-inflated models) or when zero counts are impossible (zero-truncated models). These extensions are beyond the scope of this tutorial but provide useful context for choosing among count-data models.</p></li>
 </ul>
 </section>
 <section id="online-books-and-courses" class="level3">
