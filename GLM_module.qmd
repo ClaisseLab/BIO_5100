@@ -16,7 +16,7 @@ The response distribution should match the type of data being modeled. The table
 
 | Distribution | Typical data | Common link | Example application |
 |------------------|------------------|------------------|------------------|
-| Gaussian (normal) | Continuous measurements that are approximately symmetric | Identity | Body size or temperature measurements |
+| Gaussian (normal) | Continuous measurements that are approximately symmetric | Identity (i.e., multiple by 1, don't do any) | Body size or temperature measurements |
 | Poisson | Non-negative integer counts | Log | Number of individuals, species, or events |
 | Negative binomial | Non-negative integer counts with more variation than a Poisson model can accommodate | Log | Abundance counts that vary substantially among samples |
 | Binomial | Proportions, successes out of trials, or two-category outcomes | Logit | Survival, infection status, or germination |

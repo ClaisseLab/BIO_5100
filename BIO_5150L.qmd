@@ -14,6 +14,12 @@ title: "BIO 5150L Resources and Tutorials"
 
 - Provides guidance for organizing projects, excluding and backing up data, and other uses, issues, and organization.
 
+### [Mapping with ggplot2 in R and Spatial Data Analysis](Mapping_spatial_analysis_module.html)
+
+- An introduction to making maps in R and plotting them with ggplot2. Links to tutorials for mapping vector (GIS shapefile) and raster spatial data in R using `ggplot2`, `sf`, and `terra`.
+- Includes intro videos, basic to advanced tutorials, & links to comprehensive mapping and spatial analysis online textbooks.
+
+
 ### [Multivariate Module](https://claisselab.github.io/BIO_5100/Multivariate_module.html)
 
 Tutorials and resources for preparing, visualizing, and analyzing multivariate ecological data.

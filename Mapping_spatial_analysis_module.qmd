@@ -1,0 +1,245 @@
+---
+title: "Mapping with ggplot2 in R and Spatial Data Analysis"
+subtitle: "Working with vector and raster spatial data"
+format:
+  html:
+    toc: true
+    code-link: true
+    smooth-scroll: true
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+This module links to resources that provide a practical workflow for
+making maps in R with [`ggplot2`](https://ggplot2.tidyverse.org/) and
+modern spatial packages. The main focus is on vector data represented as
+`sf` objects, including polygon boundaries, lines, and point locations.
+It also introduces raster data and the `terra` package.
+
+The goal is not to provide a complete GIS course. Instead, these
+resources provide a starting point for mapping sampling locations,
+adding spatial layers to figures, displaying spatial patterns in
+biological data, and connecting observations to environmental data.
+
+## Learning objectives
+
+By the end of this module, you should be able to:
+
+- distinguish vector data (points, lines, and polygons) from raster data
+- read common spatial data formats into R using functions from the
+  packages `sf` and `terra`
+- convert longitude and latitude columns into an `sf` point object
+- add points, lines, and polygons as layers in a `ggplot2` map
+- map variables to point and polygon aesthetics such as color, fill, and
+  size
+- identify the coordinate reference system (CRS) of a spatial object and
+  transform objects when necessary
+
+## Before class: overview video
+
+Watch this introductory video before working through the tutorials
+below. - [(10 min video) Create maps using the `sf` package in
+R](https://www.youtube.com/watch?v=F0ZRYo4SUb8)\
+An extended introduction to creating and customizing maps with `sf` in
+R.
+
+Then here's a more complete walk through you can watch later as
+needed: - [(1 hr video) You Should Probably Map That: Introduction to
+Geospatial Analysis in R](https://www.youtube.com/watch?v=eSZ9FB5Dqnk)\
+A broader introduction to spatial data and geospatial analysis,
+including mapping with `ggplot2`, `sf`, and other R packages.
+
+## Start here: layering spatial data with *sf* and *ggplot2*
+
+Here's a first broad introduction to mapping in R [Drawing beautiful
+maps programmatically with R, `sf`, and `ggplot2`, Part 1:
+Basics](https://r-spatial.org/r/2018/10/25/ggplot2-sf.html)
+
+Then here's another example you can work through, that does additional
+things you may want to do: [Drawing maps with `sf` and `ggplot2`, Part
+2: Layers](https://r-spatial.org/r/2018/10/25/ggplot2-sf-2.html)
+
+These are good starting resources for the basic workflow for things you
+may want to do when making maps in R. They demonstrates how to:
+
+- create point data from longitude and latitude values (i.e., map your
+  sites)
+- convert a regular data frame to an `sf` object with `st_as_sf()`
+- add point locations to polygon maps
+- obtain and plot U.S. state and county boundaries
+- label map features
+- map an attribute to polygon fill
+
+The examples use the `rnaturalearth` package for a world map and the
+`maps` package for U.S. states and counties.
+
+### Important reminder GIS shapefiles
+
+- A GIS "shapefile" is actually a group of related files, not just the
+  `.shp` file. You need to keep all the files `.shp`, `.shx`, `.dbf`,
+  and `.prj` together in the same folder.
+
+## Raster data with *terra*
+
+Raster data represent spatially continuous information as a grid of
+cells. Examples include elevation, temperature, precipitation, land
+cover, and remote-sensing imagery. Each raster has important spatial
+properties, including its extent, resolution, number of layers, and CRS.
+
+### [(Tutorial) Introduction to Working with Raster Data in R](https://www.neonscience.org/resources/learning-hub/tutorials/introduction-working-raster-data-r#toggle-0)
+
+This current NEON tutorial introduces raster structure, GeoTIFF files,
+and the modern `terra` package. Students download a small LiDAR-derived
+elevation raster, inspect its metadata, and plot it in R.
+
+The tutorial currently requires a NEON API token for downloading the
+example data. Follow the setup instructions on the tutorial page, and do
+not place an API token directly in an R script that will be shared.
+
+For the next step, work through [Raster 01: Plot Raster Data in
+R](https://www.neonscience.org/resources/learning-hub/tutorials/plot-raster-data-r),
+which focuses on exploring raster values and improving raster plots.
+
+An ecology-focused alternative is [R-GIS for Ecology: Chapter 4, Raster
+Data (`terra`
+basics)](https://aterui.github.io/rgis-for-ecology/raster-data-terra-basics.html).
+It uses `terra` and demonstrates how raster and vector layers can be
+plotted together with `ggplot2`.
+
+### [(Another Tutorial) Introduction to rasters with `terra` from a lab at UCSB](https://emlab-ucsb.github.io/intro-terra/)
+
+### [tidyterra Official Vignettes & Reference](https://dieghernan.github.io/tidyterra/)
+
+- In older tutorials, plotting a raster in ggplot2 required converting
+  the raster to a massive data frame via as.data.frame(r, xy = TRUE) and
+  calling geom_raster(). Modern workflows use the tidyterra package to
+  plot SpatRaster objects directly—automatically handling CRS alignment,
+  downsampling for large grids, and color scales.
+
+## Additional mapping resources
+
+### [Maps: `ggplot2`, Elegant Graphics for Data Analysis](https://ggplot2-book.org/maps.html)
+
+This chapter from the current online edition of the *ggplot2* book
+provides a concise reference for the plotting concepts used in the
+earlier tutorial. It covers:
+
+- polygon maps and simple-feature maps;
+- layered maps using multiple `geom_sf()` calls;
+- labels with `geom_sf_text()` and `geom_sf_label()`;
+- adding ordinary `ggplot2` layers such as `geom_point()` to a spatial
+  map;
+- map projections and coordinate reference systems; and
+- working with raster maps.
+
+## Obtaining map boundaries (country/state outlines) in R
+
+Two useful packages for obtaining polygon boundaries are `rnaturalearth`
+and `tigris`. They overlap in some uses, but they are designed for
+different types of map data.
+
+### *rnaturalearth*: broad global map data
+
+`rnaturalearth` provides generalized map data from Natural Earth. It is
+useful for world maps, countries, and broad administrative boundaries at
+small to medium map scales. It is convenient for an introductory map
+because the data can be returned directly as an `sf` object:
+
+``` r
+world <- rnaturalearth::ne_countries(
+  scale = "medium",
+  returnclass = "sf"
+)
+
+ggplot2::ggplot(world) +
+  ggplot2::geom_sf()
+```
+
+Natural Earth data are generalized for cartographic use. They are
+usually not the best choice for detailed U.S. county, tract, road, or
+Census-data maps.
+
+### *tigris*: detailed U.S. Census geographies
+
+`tigris` downloads TIGER/Line or cartographic-boundary files from the
+U.S. Census Bureau and returns them as `sf` objects. It is useful when
+you need U.S.-specific boundaries, selectable data vintages, or detailed
+geographies such as states, counties, census tracts, roads, water
+features, and tribal areas.
+
+``` r
+options(tigris_use_cache = TRUE)
+
+states <- tigris::states(cb = TRUE)
+california_counties <- tigris::counties(
+  state = "CA",
+  cb = TRUE
+)
+```
+
+Compared with `rnaturalearth`, `tigris` is usually better for
+U.S.-specific analyses and spatial joins with Census or other U.S. data.
+It can return more detailed files, so downloads may be larger and maps
+may require more attention to the geographic vintage, resolution, and
+treatment of Alaska and Hawaii.
+
+See the [CRAN documentation for
+`tigris`](https://cran.r-project.org/package=tigris) and [Analyzing U.S.
+Census Data with R](https://walker-data.com/census-r/) for additional
+examples.
+
+## Spatial data concepts, file formats, and coordinate systems
+
+- [Spatial data in R: Paula Moraga, *Spatial Statistics for Data
+  Science*](https://www.paulamoraga.com/book-spatial/spatial-data-in-r.html)\
+  Introduces vector and raster data, shapefiles, GeoTIFFs, `sf`,
+  `terra`, and coordinate reference systems.
+
+- [`sf` vignette: Reading, Writing, and Converting Simple
+  Features](https://r-spatial.github.io/sf/articles/sf2.html)\
+  Reference documentation for reading and writing shapefiles, GeoJSON,
+  GeoPackages, and other spatial formats.
+
+- [`sf` vignette: Manipulating Simple
+  Features](https://r-spatial.github.io/sf/articles/sf4.html)\
+  Shows how `sf` objects work with `dplyr`, including ordinary joins and
+  spatially structured data manipulation.
+
+- [Geocomputation with R: Geographic Data in
+  R](https://r.geocompx.org/spatial-class)\
+  A more detailed introduction to vector and raster data structures,
+  spatial data models, and basic mapping.
+
+- [Geocomputation with R: Spatial Data
+  Operations](https://r.geocompx.org/spatial-operations)\
+  Introduces spatial joins with `st_join()`, such as adding the county
+  or habitat polygon containing each sampling location.
+
+- [Geocomputation with R: Raster-Vector
+  Interactions](https://r.geocompx.org/raster-vector)\
+  Explains how to crop and mask rasters, extract raster values at points
+  or polygons, and combine raster and vector data for analysis.
+
+- [R-GIS for Ecology: Vector-Raster
+  Interactions](https://aterui.github.io/rgis-for-ecology/vector-raster-interactions.html)\
+  Ecology-focused examples of extracting precipitation values at fish
+  survey sites and combining raster and vector data.
+
+## Complete books and longer references
+
+- [Geocomputation with R](https://r.geocompx.org/)\
+  A comprehensive, free online book covering `sf`, `terra`, spatial data
+  manipulation, spatial joins, raster-vector interactions, and links to
+  GIS software.
+
+- [Spatial Statistics for Data Science: Theory and Practice with
+  R](https://www.paulamoraga.com/book-spatial/index.html)\
+  A free online book by Paula Moraga. The early chapters provide useful
+  background on spatial data, `sf`, `terra`, map-making, and packages
+  for downloading open spatial data. Later chapters introduce spatial
+  statistics, spatial models, and point-pattern analysis.
+
+- [Spatial Data Science with R and `terra`](https://rspatial.org/)\
+  Additional reference material for raster and vector spatial data
+  analysis using the modern `terra` package.
