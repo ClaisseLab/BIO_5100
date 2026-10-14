@@ -36,13 +36,15 @@ By the end of this module, you should be able to:
 - identify the coordinate reference system (CRS) of a spatial object and
   transform objects when necessary
 
-## Before class: overview video
+## Before class: Watch overview videos
 
-Watch this introductory video before working through the tutorials below: [(10 min video) Create maps using the `sf` package in R](https://www.youtube.com/watch?v=F0ZRYo4SUb8)\
-- An introduction to creating and customizing maps with `sf` and `ggplot2` in R.
+1) [(10 min video) Create maps using the `sf` package & ggplot2 in R](https://www.youtube.com/watch?v=F0ZRYo4SUb8)\
 
-Then here's a more complete walk through video you can watch later as needed: [(1 hr video) You Should Probably Map That: Introduction to Geospatial Analysis in R](https://www.youtube.com/watch?v=eSZ9FB5Dqnk)
-- A broader introduction to spatial data and geospatial analysis, including mapping with `ggplot2`, `sf`, and other R packages.
+- A quick introduction to creating and customizing maps in R.
+
+2) [(1 hr video) You Should Probably Map That: Introduction to Geospatial Analysis in R](https://www.youtube.com/watch?v=eSZ9FB5Dqnk)
+
+- A broader introduction to spatial data and geospatial analysis, including more background on spatial data and mapping with `ggplot2`, `sf`, and other R packages. Can watch when you have time.
 
 ## Start here: layering spatial data with *sf* and *ggplot2*
 

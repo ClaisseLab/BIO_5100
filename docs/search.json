@@ -1096,7 +1096,7 @@
     "href": "Mapping_spatial_analysis_module.html#before-class-overview-video",
     "title": "Mapping with ggplot2 in R and Spatial Data Analysis",
     "section": "Before class: overview video",
-    "text": "Before class: overview video\nWatch this introductory video before working through the tutorials below: (10 min video) Create maps using the sf package in R\n- An introduction to creating and customizing maps with sf and ggplot2 in R.\nThen here’s a more complete walk through video you can watch later as needed: (1 hr video) You Should Probably Map That: Introduction to Geospatial Analysis in R - A broader introduction to spatial data and geospatial analysis, including mapping with ggplot2, sf, and other R packages."
+    "text": "Before class: overview video\nFirst watch this video before working through the tutorials (10 min video) Create maps using the sf package in R\n\n\nAn introduction to creating and customizing maps with sf and ggplot2 in R.\n\nThen here’s a more complete and long video (1 hr video) You Should Probably Map That: Introduction to Geospatial Analysis in R\n\nA broader introduction to spatial data and geospatial analysis, including mapping with ggplot2, sf, and other R packages."
   },
   {
     "objectID": "Mapping_spatial_analysis_module.html#start-here-layering-spatial-data-with-sf-and-ggplot2",
@@ -1139,5 +1139,12 @@
     "title": "Mapping with ggplot2 in R and Spatial Data Analysis",
     "section": "Complete books and longer references",
     "text": "Complete books and longer references\n\nGeocomputation with R\nA comprehensive, free online book covering sf, terra, spatial data manipulation, spatial joins, raster-vector interactions, and links to GIS software.\nSpatial Statistics for Data Science: Theory and Practice with R\nA free online book by Paula Moraga. The early chapters provide useful background on spatial data, sf, terra, map-making, and packages for downloading open spatial data. Later chapters introduce spatial statistics, spatial models, and point-pattern analysis.\nSpatial Data Science with R and terra\nAdditional reference material for raster and vector spatial data analysis using the modern terra package."
+  },
+  {
+    "objectID": "Mapping_spatial_analysis_module.html#before-class-watch-overview-videos",
+    "href": "Mapping_spatial_analysis_module.html#before-class-watch-overview-videos",
+    "title": "Mapping with ggplot2 in R and Spatial Data Analysis",
+    "section": "Before class: Watch overview videos",
+    "text": "Before class: Watch overview videos\n\n(10 min video) Create maps using the sf package & ggplot2 in R\n\n\n\nA quick introduction to creating and customizing maps in R.\n\n\n(1 hr video) You Should Probably Map That: Introduction to Geospatial Analysis in R\n\n\nA broader introduction to spatial data and geospatial analysis, including more background on spatial data and mapping with ggplot2, sf, and other R packages. Can watch when you have time."
   }
 ]
