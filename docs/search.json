@@ -1145,6 +1145,6 @@
     "href": "Mapping_spatial_analysis_module.html#before-class-watch-overview-videos",
     "title": "Mapping with ggplot2 in R and Spatial Data Analysis",
     "section": "Before class: Watch overview videos",
-    "text": "Before class: Watch overview videos\n\n(10 min video) Create maps using the sf package & ggplot2 in R\n\n\n\nA quick introduction to creating and customizing maps in R.\n\n\n(1 hr video) You Should Probably Map That: Introduction to Geospatial Analysis in R\n\n\nA broader introduction to spatial data and geospatial analysis, including more background on spatial data and mapping with ggplot2, sf, and other R packages. Can watch when you have time."
+    "text": "Before class: Watch overview videos\n\n(10 min video) Create maps using the sf package & ggplot2 in R\n\n\n\nA quick introduction to creating and customizing maps in R.\n\n\n(1 hr video) You Should Probably Map That: Introduction to Geospatial Analysis in R\n\n\nA broader introduction to spatial data and geospatial analysis, including more background on types of spatial data (vector or shapefiles vs. rasters) and mapping with ggplot2, sf, and other R packages. Can watch when you have time.\n\n(optional) (Youtube Playlist: Mapping with R, from R for the Rest of us\n\na series of short videos from general introductions to doing specific mapping tasks using tidyverse code along with other packages such as sf and rnaturalearth."
   }
 ]
