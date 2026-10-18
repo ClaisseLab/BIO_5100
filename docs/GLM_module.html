@@ -330,14 +330,29 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#interpreting-model-predictions" id="toc-interpreting-model-predictions" class="nav-link" data-scroll-target="#interpreting-model-predictions">Interpreting model predictions</a></li>
   </ul></li>
   <li><a href="#what-to-report" id="toc-what-to-report" class="nav-link" data-scroll-target="#what-to-report">What to report</a></li>
-  </ul></li>
-  <li><a href="#additional-glm-tutorials-planned" id="toc-additional-glm-tutorials-planned" class="nav-link" data-scroll-target="#additional-glm-tutorials-planned">3) Additional GLM tutorials planned</a>
-  <ul class="collapse">
   <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional resources</a>
   <ul class="collapse">
   <li><a href="#count-data-and-diagnostic-resources" id="toc-count-data-and-diagnostic-resources" class="nav-link" data-scroll-target="#count-data-and-diagnostic-resources">Count-data and diagnostic resources</a></li>
   <li><a href="#online-books-and-courses" id="toc-online-books-and-courses" class="nav-link" data-scroll-target="#online-books-and-courses">Online books and courses</a></li>
   </ul></li>
+  </ul></li>
+  <li><a href="#binomial-data-tutorial-logistic-regression" id="toc-binomial-data-tutorial-logistic-regression" class="nav-link" data-scroll-target="#binomial-data-tutorial-logistic-regression">3) Binomial Data Tutorial: Logistic Regression</a>
+  <ul class="collapse">
+  <li><a href="#before-class-1" id="toc-before-class-1" class="nav-link" data-scroll-target="#before-class-1">Before class</a>
+  <ul class="collapse">
+  <li><a href="#tutorial-files-1" id="toc-tutorial-files-1" class="nav-link" data-scroll-target="#tutorial-files-1">Tutorial files</a></li>
+  <li><a href="#what-the-tutorial-covers-1" id="toc-what-the-tutorial-covers-1" class="nav-link" data-scroll-target="#what-the-tutorial-covers-1">What the tutorial covers</a></li>
+  </ul></li>
+  <li><a href="#main-analytical-choices-1" id="toc-main-analytical-choices-1" class="nav-link" data-scroll-target="#main-analytical-choices-1">Main analytical choices</a>
+  <ul class="collapse">
+  <li><a href="#response-distribution-1" id="toc-response-distribution-1" class="nav-link" data-scroll-target="#response-distribution-1">Response distribution</a></li>
+  <li><a href="#link-function-1" id="toc-link-function-1" class="nav-link" data-scroll-target="#link-function-1">Link function</a></li>
+  <li><a href="#continuous-and-categorical-predictors-1" id="toc-continuous-and-categorical-predictors-1" class="nav-link" data-scroll-target="#continuous-and-categorical-predictors-1">Continuous and categorical predictors</a></li>
+  <li><a href="#model-diagnostics-1" id="toc-model-diagnostics-1" class="nav-link" data-scroll-target="#model-diagnostics-1">Model diagnostics</a></li>
+  <li><a href="#comparing-models-1" id="toc-comparing-models-1" class="nav-link" data-scroll-target="#comparing-models-1">Comparing models</a></li>
+  <li><a href="#interpreting-model-predictions-1" id="toc-interpreting-model-predictions-1" class="nav-link" data-scroll-target="#interpreting-model-predictions-1">Interpreting model predictions</a></li>
+  </ul></li>
+  <li><a href="#what-to-report-1" id="toc-what-to-report-1" class="nav-link" data-scroll-target="#what-to-report-1">What to report</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ClaisseLab/BIO_5100/blob/main/GLM_module.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
@@ -368,7 +383,11 @@ ul.task-list li input[type="checkbox"] {
 <section id="generalized-linear-models-overview" class="level1">
 <h1>1) Generalized Linear Models: Overview</h1>
 <p>Generalized linear models (GLMs) extend ordinary linear models to response variables that do not follow a normal distribution. They are useful when the response is a count, a proportion, or a continuous measurement with a strongly non-normal distribution.</p>
-<p>This module is a work in progress. It currently focuses on count data and introduces Poisson and negative binomial regression. Additional tutorials for other GLM types will be added later.</p>
+<p>This module currently includes tutorials for:</p>
+<ul>
+<li>count data and introduces Poisson and negative binomial regression</li>
+<li>binomial data (i.e., logistic regression)</li>
+</ul>
 <section id="common-glm-response-distributions" class="level2">
 <h2 class="anchored" data-anchor-id="common-glm-response-distributions">Common GLM response distributions</h2>
 <p>The response distribution should match the type of data being modeled. The table below gives common examples and the link function most often used with each model type.</p>
@@ -512,14 +531,6 @@ An R tidyverse coding example working through a Poisson GLM analysis that also d
 <p>In a methods section, report the response variable and its sampling unit, describe the relevant distributions of the response variable (i.e., why you used a Poisson or negative binomial GLM), the predictors and interactions, and how model diagnostics and model comparisons were used. Include the relevant R packages and functions when this helps readers reproduce the analysis.</p>
 <p>In a results section, emphasize estimates on the original response scale, 95% confidence intervals, and plots of the fitted relationships. Explain any important diagnostic signal and how it affected the analysis. Avoid reporting only a list of p-values or treating AICc as a substitute for biological interpretation.</p>
 </section>
-</section>
-<section id="additional-glm-tutorials-planned" class="level1">
-<h1>3) Additional GLM tutorials planned</h1>
-<p>Future tutorials may introduce:</p>
-<ul>
-<li>Binomial models for proportions and two-category responses.</li>
-<li>Tweedie models for non-negative continuous responses such as biomass when many observations are zero.</li>
-</ul>
 <section id="additional-resources" class="level2">
 <h2 class="anchored" data-anchor-id="additional-resources">Additional resources</h2>
 <section id="count-data-and-diagnostic-resources" class="level3">
@@ -544,9 +555,85 @@ Examples of more advanced count-model options.</li>
 <li><a href="https://www.highstat.com/index.php/books2?catid=18&amp;id=21&amp;view=article">Zuur, Ieno, and Elphick, A Beginner’s Guide to GLM and GLMM with R</a><br>
 See this book for additional detail and extended case studies applying GLMs and GLMMs. <a href="https://csu-cpp.primo.exlibrisgroup.com/permalink/01CALS_PUP/1fn8cvg/alma991008774460302915">Can also get it from the CPP Library</a></li>
 </ul>
-
-
 </section>
+</section>
+</section>
+<section id="binomial-data-tutorial-logistic-regression" class="level1">
+<h1>3) Binomial Data Tutorial: Logistic Regression</h1>
+<p>This tutorial introduces binomial GLMs, also called logistic regression when using a logit link. The main example examines whether the probability of a soil core containing the mite PHTH differs between topography levels and changes with substrate water content. A separate seed-germination example introduces grouped-binomial responses, where each observation records successes out of a known number of trials.</p>
+<section id="before-class-1" class="level2">
+<h2 class="anchored" data-anchor-id="before-class-1">Before class</h2>
+<p>Watch the following three videos before working through the R tutorial. Rewatch them as needed while interpreting the models.</p>
+<ol type="1">
+<li><p><a href="https://youtu.be/yIYKR4sgzI8">StatQuest: Logistic Regression</a><br>
+An introduction to modeling probabilities with logistic regression.</p></li>
+<li><p><a href="https://youtu.be/Gvf815Mz-mU">GLM Part 3: Logistic Regression</a><br>
+Additional background on binomial GLMs and the logit link.</p></li>
+<li><p><a href="https://youtu.be/E7J3M1oYVlc">Binomial GLM (Logistic Regression) using tidyverse in R</a><br>
+An R coding example demonstrating a binomial GLM workflow.</p></li>
+</ol>
+<section id="tutorial-files-1" class="level3">
+<h3 class="anchored" data-anchor-id="tutorial-files-1">Tutorial files</h3>
+<p>Download the tutorial script before working through it:</p>
+<ul>
+<li><a href="downloads/GLM_binomial_data_tutorial.R">Download the GLM binomial-data R script</a></li>
+</ul>
+<p>The example data are included in the <code>vegan</code> and <code>agridat</code> packages, so no separate data download is needed.</p>
+</section>
+<section id="what-the-tutorial-covers-1" class="level3">
+<h3 class="anchored" data-anchor-id="what-the-tutorial-covers-1">What the tutorial covers</h3>
+<ol type="1">
+<li>Prepare a presence/absence response for PHTH and select topography and water content as predictors.</li>
+<li>Explore the response and predictors using summaries and <code>ggplot2</code> graphics.</li>
+<li>Fit a categorical-only model and estimate the probability of mite presence for each topography level.</li>
+<li>Compare topography levels using an odds ratio and its 95% confidence interval.</li>
+<li>Fit a continuous-only model and interpret how the odds and probability of presence change with water content.</li>
+<li>Fit an interaction model that allows the water-content relationship to differ between topography levels.</li>
+<li>Check model fit with <code>DHARMa</code>, compare the three models using AICc, and plot predictions with 95% confidence intervals.</li>
+<li>Fit a grouped-binomial germination model and estimate the percentage germinated for each concentration–temperature combination.</li>
+</ol>
+</section>
+</section>
+<section id="main-analytical-choices-1" class="level2">
+<h2 class="anchored" data-anchor-id="main-analytical-choices-1">Main analytical choices</h2>
+<section id="response-distribution-1" class="level3">
+<h3 class="anchored" data-anchor-id="response-distribution-1">Response distribution</h3>
+<p>The mite response is binary: each soil core either contains PHTH or does not. We code these outcomes as 1 and 0 and use a binomial model to estimate the probability of presence.</p>
+<p>For grouped-binomial data, each row contains a number of successes and failures. The germination example uses <code>cbind(germ, failures)</code> so the model retains the number of seeds tested, rather than treating each observed proportion as an ordinary continuous response.</p>
+<p>The binomial model assumes independent trials with the same success probability within each group, conditional on the predictors.</p>
+</section>
+<section id="link-function-1" class="level3">
+<h3 class="anchored" data-anchor-id="link-function-1">Link function</h3>
+<p>The logit link connects the predictors to the probability of success while keeping predicted probabilities between 0 and 1. Model coefficients describe changes in log-odds. Exponentiating a slope gives an odds ratio, while back-transforming a predicted logit gives a probability.</p>
+<p>Odds compare the probability of success with the probability of failure: <code>p / (1 - p)</code>. An odds ratio compares odds between groups or across a specified change in a continuous predictor. A doubling of the odds does not mean a doubling of the probability.</p>
+</section>
+<section id="continuous-and-categorical-predictors-1" class="level3">
+<h3 class="anchored" data-anchor-id="continuous-and-categorical-predictors-1">Continuous and categorical predictors</h3>
+<p>Topography is categorical, so the tutorial estimates and compares the probabilities of presence in Blanket and Hummock samples. Water content is continuous, so the tutorial evaluates how presence changes across the observed water-content range.</p>
+<p>The interaction model allows a separate water-content slope for each topography on the log-odds scale. The tutorial uses <code>emtrends()</code> to estimate these slopes separately and converts them to odds ratios with 95% confidence intervals.</p>
+</section>
+<section id="model-diagnostics-1" class="level3">
+<h3 class="anchored" data-anchor-id="model-diagnostics-1">Model diagnostics</h3>
+<p>The tutorial uses <code>DHARMa</code> to examine residual uniformity, dispersion, outlier frequency, and patterns across predictors.</p>
+<p>A diagnostic signal should prompt investigation of the data and model structure. For example, an interaction may be needed if the relationship with a continuous predictor differs between groups. Observations should not be removed simply because a diagnostic test flags them.</p>
+</section>
+<section id="comparing-models-1" class="level3">
+<h3 class="anchored" data-anchor-id="comparing-models-1">Comparing models</h3>
+<p>AICc compares the categorical-only, continuous-only, and interaction models fitted to the same observations. Lower AICc indicates stronger relative support within this candidate set.</p>
+<p>Consider model comparisons together with diagnostics, effect estimates, confidence intervals, and biological interpretation. Support for the combined interaction model does not, by itself, establish that the interaction term is needed.</p>
+</section>
+<section id="interpreting-model-predictions-1" class="level3">
+<h3 class="anchored" data-anchor-id="interpreting-model-predictions-1">Interpreting model predictions</h3>
+<p>The tutorial uses <code>emmeans</code> to estimate probabilities and compare groups, and <code>ggeffects</code> to generate predictions across continuous predictors. Plots express probabilities as percentages with 95% confidence intervals.</p>
+<p>These intervals describe uncertainty in the estimated probability, rather than the range of individual outcomes. For categorical comparisons and continuous slopes, odds ratios describe effect magnitude, with 1 representing no change in odds.</p>
+</section>
+</section>
+<section id="what-to-report-1" class="level2">
+<h2 class="anchored" data-anchor-id="what-to-report-1">What to report</h2>
+<p>In a methods section, identify the response, sampling unit, predictors, interactions, binomial distribution, and logit link. For grouped data, report the number of trials and how successes and failures were recorded. Describe diagnostic checks and model comparisons.</p>
+<p>In a results section, lead with the biological pattern. Report estimated percentages and their 95% confidence intervals, supported by odds ratios where useful. For continuous predictors, state the size and units of the predictor change. Use plots to describe the fitted relationships and distinguish uncertainty in effect magnitude from evidence that an effect differs from zero.</p>
+
+
 </section>
 </section>
 

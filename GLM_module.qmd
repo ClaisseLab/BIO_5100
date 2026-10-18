@@ -8,7 +8,10 @@ toc-title: "On this page"
 
 Generalized linear models (GLMs) extend ordinary linear models to response variables that do not follow a normal distribution. They are useful when the response is a count, a proportion, or a continuous measurement with a strongly non-normal distribution.
 
-This module is a work in progress. It currently focuses on count data and introduces Poisson and negative binomial regression. Additional tutorials for other GLM types will be added later.
+This module currently includes tutorials for:
+
+- count data and introduces Poisson and negative binomial regression
+- binomial data (i.e., logistic regression)
 
 ## Common GLM response distributions
 
@@ -44,11 +47,8 @@ Watch the following 3 videos before working through the R tutorial.
 
 The first 2 videos are part of a larger [GLM video series](https://www.youtube.com/playlist?list=PLl4b1XM725Oc8g3V9p98UeRTOXoAlGEYw). The full series includes additional material that may be useful as you continue learning about GLMs.
 
-
-Also Here's another (~20 min) video if want to hear another explanation of working with count data and GLMs:
-- [Regression with Count Data: Poisson and Negative Binomial](https://youtu.be/uGKnoAw-PFQ)  
-  *A concise, non-R overview of Poisson, quasi-Poisson, and negative binomial regression, including overdispersion and underdispersion. It also briefly introduces more advanced count-data models for cases with too many zeros (zero-inflated models) or when zero counts are impossible (zero-truncated models). These extensions are beyond the scope of this tutorial but provide useful context for choosing among count-data models.*
-
+Also Here's another (\~20 min) video if want to hear another explanation of working with count data and GLMs: - [Regression with Count Data: Poisson and Negative Binomial](https://youtu.be/uGKnoAw-PFQ)\
+*A concise, non-R overview of Poisson, quasi-Poisson, and negative binomial regression, including overdispersion and underdispersion. It also briefly introduces more advanced count-data models for cases with too many zeros (zero-inflated models) or when zero counts are impossible (zero-truncated models). These extensions are beyond the scope of this tutorial but provide useful context for choosing among count-data models.*
 
 ### Tutorial files
 
@@ -89,7 +89,7 @@ The full model asks whether the relationship between female width and the number
 
 ### Model diagnostics
 
-Watch these videos before or during the diagnostic sections: 
+Watch these videos before or during the diagnostic sections:
 
 - [GLM Part 4: Overdispersion](https://youtu.be/xJm6eN5ZDzk)
 
@@ -121,26 +121,20 @@ In a methods section, report the response variable and its sampling unit, descri
 
 In a results section, emphasize estimates on the original response scale, 95% confidence intervals, and plots of the fitted relationships. Explain any important diagnostic signal and how it affected the analysis. Avoid reporting only a list of p-values or treating AICc as a substitute for biological interpretation.
 
-# 3) Additional GLM tutorials planned
-
-Future tutorials may introduce:
-
-- Binomial models for proportions and two-category responses.
-- Tweedie models for non-negative continuous responses such as biomass when many observations are zero.
-
 ## Additional resources
 
 ### Count-data and diagnostic resources
 
 - [GLM Part 4: Overdispersion](https://www.youtube.com/playlist?list=PLl4b1XM725Oc8g3V9p98UeRTOXoAlGEYw)\
   Use the series link to locate the section on overdispersion.
+
 - [GLM Part 5: Diagnostics](https://www.youtube.com/playlist?list=PLl4b1XM725Oc8g3V9p98UeRTOXoAlGEYw)\
   Use the series link to locate the section on model diagnostics.
+
 - [DHARMa vignettes and documentation](https://cran.r-project.org/web/packages/DHARMa/vignettes/DHARMa.html)
 
-
-- [(Video) Regression with Count Data: Poisson and Negative Binomial](https://youtu.be/uGKnoAw-PFQ)  
-  A concise, non-R overview of Poisson, quasi-Poisson, and negative binomial regression, including overdispersion and underdispersion. It also briefly introduces more advanced count-data models for cases with too many zeros (zero-inflated models) or when zero counts are impossible (zero-truncated models). These extensions are beyond the scope of this tutorial but provide useful context for choosing among count-data models. 
+- [(Video) Regression with Count Data: Poisson and Negative Binomial](https://youtu.be/uGKnoAw-PFQ)\
+  A concise, non-R overview of Poisson, quasi-Poisson, and negative binomial regression, including overdispersion and underdispersion. It also briefly introduces more advanced count-data models for cases with too many zeros (zero-inflated models) or when zero counts are impossible (zero-truncated models). These extensions are beyond the scope of this tutorial but provide useful context for choosing among count-data models.
 
 ### Online books and courses
 
@@ -150,4 +144,88 @@ Future tutorials may introduce:
   Examples of more advanced count-model options.
 - [Zuur, Ieno, and Elphick, A Beginner's Guide to GLM and GLMM with R](https://www.highstat.com/index.php/books2?catid=18&id=21&view=article)\
   See this book for additional detail and extended case studies applying GLMs and GLMMs. [Can also get it from the CPP Library](https://csu-cpp.primo.exlibrisgroup.com/permalink/01CALS_PUP/1fn8cvg/alma991008774460302915)
+
+
+# 3) Binomial Data Tutorial: Logistic Regression
+
+This tutorial introduces binomial GLMs, also called logistic regression when using a logit link. The main example examines whether the probability of a soil core containing the mite PHTH differs between topography levels and changes with substrate water content. A separate seed-germination example introduces grouped-binomial responses, where each observation records successes out of a known number of trials.
+
+## Before class
+
+Watch the following three videos before working through the R tutorial. Rewatch them as needed while interpreting the models.
+
+1.  [StatQuest: Logistic Regression](https://youtu.be/yIYKR4sgzI8)\
+    An introduction to modeling probabilities with logistic regression.
+
+2.  [GLM Part 3: Logistic Regression](https://youtu.be/Gvf815Mz-mU)\
+    Additional background on binomial GLMs and the logit link.
+
+3.  [Binomial GLM (Logistic Regression) using tidyverse in R](https://youtu.be/E7J3M1oYVlc)\
+    An R coding example demonstrating a binomial GLM workflow.
+
+### Tutorial files
+
+Download the tutorial script before working through it:
+
+- [Download the GLM binomial-data R script](downloads/GLM_binomial_data_tutorial.R)
+
+The example data are included in the `vegan` and `agridat` packages, so no separate data download is needed.
+
+### What the tutorial covers
+
+1.  Prepare a presence/absence response for PHTH and select topography and water content as predictors.
+2.  Explore the response and predictors using summaries and `ggplot2` graphics.
+3.  Fit a categorical-only model and estimate the probability of mite presence for each topography level.
+4.  Compare topography levels using an odds ratio and its 95% confidence interval.
+5.  Fit a continuous-only model and interpret how the odds and probability of presence change with water content.
+6.  Fit an interaction model that allows the water-content relationship to differ between topography levels.
+7.  Check model fit with `DHARMa`, compare the three models using AICc, and plot predictions with 95% confidence intervals.
+8.  Fit a grouped-binomial germination model and estimate the percentage germinated for each concentration–temperature combination.
+
+## Main analytical choices
+
+### Response distribution
+
+The mite response is binary: each soil core either contains PHTH or does not. We code these outcomes as 1 and 0 and use a binomial model to estimate the probability of presence.
+
+For grouped-binomial data, each row contains a number of successes and failures. The germination example uses `cbind(germ, failures)` so the model retains the number of seeds tested, rather than treating each observed proportion as an ordinary continuous response.
+
+The binomial model assumes independent trials with the same success probability within each group, conditional on the predictors.
+
+### Link function
+
+The logit link connects the predictors to the probability of success while keeping predicted probabilities between 0 and 1. Model coefficients describe changes in log-odds. Exponentiating a slope gives an odds ratio, while back-transforming a predicted logit gives a probability.
+
+Odds compare the probability of success with the probability of failure: `p / (1 - p)`. An odds ratio compares odds between groups or across a specified change in a continuous predictor. A doubling of the odds does not mean a doubling of the probability.
+
+### Continuous and categorical predictors
+
+Topography is categorical, so the tutorial estimates and compares the probabilities of presence in Blanket and Hummock samples. Water content is continuous, so the tutorial evaluates how presence changes across the observed water-content range.
+
+The interaction model allows a separate water-content slope for each topography on the log-odds scale. The tutorial uses `emtrends()` to estimate these slopes separately and converts them to odds ratios with 95% confidence intervals.
+
+### Model diagnostics
+
+The tutorial uses `DHARMa` to examine residual uniformity, dispersion, outlier frequency, and patterns across predictors.
+
+A diagnostic signal should prompt investigation of the data and model structure. For example, an interaction may be needed if the relationship with a continuous predictor differs between groups. Observations should not be removed simply because a diagnostic test flags them.
+
+### Comparing models
+
+AICc compares the categorical-only, continuous-only, and interaction models fitted to the same observations. Lower AICc indicates stronger relative support within this candidate set.
+
+Consider model comparisons together with diagnostics, effect estimates, confidence intervals, and biological interpretation. Support for the combined interaction model does not, by itself, establish that the interaction term is needed.
+
+### Interpreting model predictions
+
+The tutorial uses `emmeans` to estimate probabilities and compare groups, and `ggeffects` to generate predictions across continuous predictors. Plots express probabilities as percentages with 95% confidence intervals.
+
+These intervals describe uncertainty in the estimated probability, rather than the range of individual outcomes. For categorical comparisons and continuous slopes, odds ratios describe effect magnitude, with 1 representing no change in odds.
+
+## What to report
+
+In a methods section, identify the response, sampling unit, predictors, interactions, binomial distribution, and logit link. For grouped data, report the number of trials and how successes and failures were recorded. Describe diagnostic checks and model comparisons.
+
+In a results section, lead with the biological pattern. Report estimated percentages and their 95% confidence intervals, supported by odds ratios where useful. For continuous predictors, state the size and units of the predictor change. Use plots to describe the fitted relationships and distinguish uncertainty in effect magnitude from evidence that an effect differs from zero.
+
 
