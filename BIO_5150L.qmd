@@ -29,15 +29,16 @@ Tutorials and resources for preparing, visualizing, and analyzing multivariate e
 - PCA for continuous environmental, morphological, or physiological variables
 - Hierarchical cluster analysis for species assemblages or continuous variables
 
-### [Generalized Linear Models (GLMs) Module](https://claisselab.github.io/BIO_5100/GLM_module.html) *(in development)*
+### [Generalized Linear Models (GLMs) Module](https://claisselab.github.io/BIO_5100/GLM_module.html)
 
 A developing set of resources and tutorials for fitting and interpreting generalized linear models in R.
 
 - Overview of common GLM distributions and link functions
-- Poisson and negative binomial regression for biological count data
+- (tutorial for) Poisson and negative binomial regression for biological count data
+- (tutorial for) Binomial data (i.e., logistic regression) when the response variable is a proportions or binary outcomes (e.g., success/failure, presence/absence)
 - Model diagnostics using DHARMa and model comparison using AICc
 - Interpreting and plotting predictions, estimated means, response ratios, confidence intervals, and interactions
-- R code that can be adapted for analyzing your own count data
+- R code that can be adapted for analyzing your own data using these GLM approaches
 
 
 
