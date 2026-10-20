@@ -332,7 +332,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#what-to-report" id="toc-what-to-report" class="nav-link" data-scroll-target="#what-to-report">What to report</a></li>
   <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional resources</a>
   <ul class="collapse">
-  <li><a href="#count-data-and-diagnostic-resources" id="toc-count-data-and-diagnostic-resources" class="nav-link" data-scroll-target="#count-data-and-diagnostic-resources">Count-data and diagnostic resources</a></li>
+  <li><a href="#count-data-glm-and-diagnostic-resources" id="toc-count-data-glm-and-diagnostic-resources" class="nav-link" data-scroll-target="#count-data-glm-and-diagnostic-resources">Count-data GLM and diagnostic resources</a></li>
   <li><a href="#online-books-and-courses" id="toc-online-books-and-courses" class="nav-link" data-scroll-target="#online-books-and-courses">Online books and courses</a></li>
   </ul></li>
   </ul></li>
@@ -514,6 +514,7 @@ An R tidyverse coding example working through a Poisson GLM analysis that also d
 <p>A significant DHARMa test is a signal to investigate, not an automatic reason to discard a model. Look at the diagnostic plots, consider which feature of the data is causing the signal, and decide whether the problem matters for the biological question. A model can be useful even when a test detects a small departure, particularly when the main conclusions are stable and no important pattern remains in the residual plots.</p>
 <p>For count models, also consider whether the data contain more zeros than expected. If zero inflation is substantial, a zero-inflated or hurdle model may be appropriate, but those models are beyond the scope of this first tutorial.</p>
 <p>And for more detail, read the <a href="https://cran.r-project.org/web/packages/DHARMa/vignettes/DHARMa.html">DHARMa vignettes</a></p>
+<p>And <a href="https://benchbiostats.com/chapters/glm.html">see this GLM book chapter for additional explanations of GLM diagnostics</a></p>
 </section>
 <section id="comparing-models" class="level3">
 <h3 class="anchored" data-anchor-id="comparing-models">Comparing models</h3>
@@ -533,9 +534,10 @@ An R tidyverse coding example working through a Poisson GLM analysis that also d
 </section>
 <section id="additional-resources" class="level2">
 <h2 class="anchored" data-anchor-id="additional-resources">Additional resources</h2>
-<section id="count-data-and-diagnostic-resources" class="level3">
-<h3 class="anchored" data-anchor-id="count-data-and-diagnostic-resources">Count-data and diagnostic resources</h3>
+<section id="count-data-glm-and-diagnostic-resources" class="level3">
+<h3 class="anchored" data-anchor-id="count-data-glm-and-diagnostic-resources">Count-data GLM and diagnostic resources</h3>
 <ul>
+<li><p><a href="https://benchbiostats.com/chapters/glm.html">see this GLM book chapter for additional complete worked/explained GLM examples</a></p></li>
 <li><p><a href="https://www.youtube.com/playlist?list=PLl4b1XM725Oc8g3V9p98UeRTOXoAlGEYw">GLM Part 4: Overdispersion</a><br>
 Use the series link to locate the section on overdispersion.</p></li>
 <li><p><a href="https://www.youtube.com/playlist?list=PLl4b1XM725Oc8g3V9p98UeRTOXoAlGEYw">GLM Part 5: Diagnostics</a><br>

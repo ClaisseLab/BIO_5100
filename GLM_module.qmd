@@ -103,6 +103,8 @@ For count models, also consider whether the data contain more zeros than expecte
 
 And for more detail, read the [DHARMa vignettes](https://cran.r-project.org/web/packages/DHARMa/vignettes/DHARMa.html)
 
+And [see this GLM book chapter for additional explanations of GLM diagnostics](https://benchbiostats.com/chapters/glm.html)
+
 ### Comparing models
 
 AICc is used to compare models fitted to the same response variable and the same observations. Lower AICc indicates more support from the models being compared. AICc does not prove that one model is biologically correct, so use it together with diagnostics, effect estimates, plots, and knowledge of the sampling process.
@@ -123,7 +125,8 @@ In a results section, emphasize estimates on the original response scale, 95% co
 
 ## Additional resources
 
-### Count-data and diagnostic resources
+### Count-data GLM and diagnostic resources
+- [see this GLM book chapter for additional complete worked/explained GLM examples](https://benchbiostats.com/chapters/glm.html)
 
 - [GLM Part 4: Overdispersion](https://www.youtube.com/playlist?list=PLl4b1XM725Oc8g3V9p98UeRTOXoAlGEYw)\
   Use the series link to locate the section on overdispersion.
@@ -227,5 +230,3 @@ These intervals describe uncertainty in the estimated probability, rather than t
 In a methods section, identify the response, sampling unit, predictors, interactions, binomial distribution, and logit link. For grouped data, report the number of trials and how successes and failures were recorded. Describe diagnostic checks and model comparisons.
 
 In a results section, lead with the biological pattern. Report estimated percentages and their 95% confidence intervals, supported by odds ratios where useful. For continuous predictors, state the size and units of the predictor change. Use plots to describe the fitted relationships and distinguish uncertainty in effect magnitude from evidence that an effect differs from zero.
-
-
