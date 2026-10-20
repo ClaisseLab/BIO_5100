@@ -65,7 +65,7 @@ title: "Online Books"
 
 - Modern take on introductory statistics in an R based format.
 
-#### [Modern Statistics for Modern Biology by Susan Holmes, Wolfgang Huber](https://www.huber.embl.de/msmb/introduction.html)
+#### [Modern Statistics for Modern Biology by Susan Holmes, Wolfgang Huber](https://www.huber.embl.de/msmb/)
 
 - Covers many modern approaches to data analysis, and many different types of data including RNA-Seq, flow-cytometry, taxa abundances, imaging data and single cell measurements.
 
