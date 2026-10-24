@@ -4,20 +4,23 @@ title: "BIO 5150L Resources and Tutorials"
 
 ### [Download a .R script organization template](downloads/Organized_Script.R){download="Organized_Script.R"}
 
-- You can download and then use this template as a starting point for new R scripts and as a guide for organizing your code.
+- You can download and then use this template as a starting point for new R scripts and as a guide for organizing your code for any type of analysis you are doing.
 
 ### [Using Git & GitHub Tutorial](https://claisselab.github.io/BIO_5100/git_github_rstudio.html)
 
+Git is software that tracks changes to your files, while GitHub is an online platform for storing, backing up, sharing, and collaborating on Git repositories.
+
 - Guides you through installing (software) Git on your computer, creating a GitHub.com account, connecting it to RStudio, and creating a repository (i.e., a folder).
-
 - Describes workflows for personal version control, student–PI code review, and publicly sharing analysis code.
-
 - Provides guidance for organizing projects, excluding and backing up data, and other uses, issues, and organization.
 
 ### [Mapping with ggplot2 in R and Spatial Data Analysis](Mapping_spatial_analysis_module.html)
 
-- An introduction to making maps in R and plotting them with ggplot2. Links to tutorials for mapping vector (GIS shapefile) and raster spatial data in R using `ggplot2`, `sf`, and `terra`.
-- Includes intro videos, basic to advanced tutorials, & links to comprehensive mapping and spatial analysis online textbooks.
+Introduces how to create maps and work with spatial data in R using `ggplot2` and related packages.
+
+- Provides tutorials for mapping vector data, such as GIS shapefiles, using `sf` and `ggplot2`.
+- Includes tutorials for working with and plotting raster data using `terra` and `ggplot2`.
+- Links to introductory videos and comprehensive online textbooks for mapping and spatial analysis.
 
 
 ### [Multivariate Module](https://claisselab.github.io/BIO_5100/Multivariate_module.html)
