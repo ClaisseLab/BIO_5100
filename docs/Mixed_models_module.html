@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Mixed Models Module – BIO 5100</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-58517bf092653ad21f93cd08db2e9ea1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-c8bae1f407610881bc621976b8284e03.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-58517bf092653ad21f93cd08db2e9ea1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">BIO 5100</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Online_Books.html"> 
+<span class="menu-text">Online Books</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Example_Code.html"> 
+<span class="menu-text">Example Code</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./BIO_5150L.html"> 
+<span class="menu-text">BIO 5150L</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://claisselab.github.io/BIO_5800L/"> 
+<span class="menu-text">BIO 5800L</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://claisselab.com" title="" class="quarto-navigation-tool px-1" aria-label="Claisse Lab website"><i class="bi bi-house-fill"></i></a>
+    <a href="https://github.com/ClaisseLab/BIO_5100" title="" class="quarto-navigation-tool px-1" aria-label="BIO 5100 GitHub repository"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#mixed-models-overview" id="toc-mixed-models-overview" class="nav-link active" data-scroll-target="#mixed-models-overview">1) Mixed models: Overview</a></li>
+  <li><a href="#before-class-videos-and-guided-practice" id="toc-before-class-videos-and-guided-practice" class="nav-link" data-scroll-target="#before-class-videos-and-guided-practice">2) Before class: Videos and guided practice</a></li>
+  <li><a href="#describe-your-study-design-and-use-ai-to-develop-a-model" id="toc-describe-your-study-design-and-use-ai-to-develop-a-model" class="nav-link" data-scroll-target="#describe-your-study-design-and-use-ai-to-develop-a-model">3) Describe your study design and use AI to develop a model</a>
+  <ul class="collapse">
+  <li><a href="#step-1-describe-your-study-and-how-you-collected-the-data" id="toc-step-1-describe-your-study-and-how-you-collected-the-data" class="nav-link" data-scroll-target="#step-1-describe-your-study-and-how-you-collected-the-data">Step 1: Describe your study and how you collected the data</a></li>
+  <li><a href="#step-2-ask-for-a-starting-model-and-plain-language-explanations" id="toc-step-2-ask-for-a-starting-model-and-plain-language-explanations" class="nav-link" data-scroll-target="#step-2-ask-for-a-starting-model-and-plain-language-explanations">Step 2: Ask for a starting model and plain-language explanations</a></li>
+  <li><a href="#step-3-connect-to-a-tutorial" id="toc-step-3-connect-to-a-tutorial" class="nav-link" data-scroll-target="#step-3-connect-to-a-tutorial">Step 3: Connect to a tutorial</a></li>
+  <li><a href="#step-4-review-the-tutorial-and-adapt-code-to-your-analysis" id="toc-step-4-review-the-tutorial-and-adapt-code-to-your-analysis" class="nav-link" data-scroll-target="#step-4-review-the-tutorial-and-adapt-code-to-your-analysis">Step 4: Review the tutorial and adapt code to your analysis</a></li>
+  </ul></li>
+  <li><a href="#r-packages-for-fitting-mixed-models" id="toc-r-packages-for-fitting-mixed-models" class="nav-link" data-scroll-target="#r-packages-for-fitting-mixed-models">4) R packages for fitting mixed models</a></li>
+  <li><a href="#choose-a-tutorial-relevant-to-your-research" id="toc-choose-a-tutorial-relevant-to-your-research" class="nav-link" data-scroll-target="#choose-a-tutorial-relevant-to-your-research">5) Choose a tutorial relevant to your research</a></li>
+  <li><a href="#explore-fit-check-and-interpret-your-model" id="toc-explore-fit-check-and-interpret-your-model" class="nav-link" data-scroll-target="#explore-fit-check-and-interpret-your-model">6) Explore, fit, check, and interpret your model</a></li>
+  </ul>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ClaisseLab/BIO_5100/blob/main/Mixed_models_module.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Mixed Models Module</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="mixed-models-overview" class="level1">
+<h1>1) Mixed models: Overview</h1>
+<p><strong>Mixed-effects models</strong>, also called <strong>mixed models</strong>, <strong>random-effects models</strong>, <strong>multilevel models</strong>, or <strong>hierarchical models</strong>, account for observations that share a group or sampling unit.</p>
+<p>Common biological applications include:</p>
+<ul>
+<li><strong>Field studies:</strong> multiple samples within sites, permanent plots surveyed over time, or multiple/repeated observations from individual animals or plants.</li>
+<li><strong>Laboratory studies:</strong> repeated measurements from individual mice or lizards, cells or tissues sampled within animals, or observations sharing cultures, donors, plates, cages, or experimental runs.</li>
+</ul>
+<p>Observations within a group/location/individual may be more similar than those from different groups/locations/individuals. Treating them as independent can underrepresent uncertainty and lead to <strong>pseudoreplication</strong>.</p>
+<p><strong>Fixed effects</strong> describe systematic comparisons or relationships, such as treatment differences or time trends. <strong>Random effects</strong> describe variation among groups/locations/individuals in baseline responses or relationships with predictors.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Typical application</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Linear mixed model (LMM), also called a linear mixed-effects model (LME or LMEM)</td>
+<td>Continuous responses with approximately Gaussian residuals after accounting for predictors and grouping.</td>
+</tr>
+<tr class="even">
+<td>Generalized linear mixed model (GLMM)</td>
+<td>Counts, binary outcomes, or other responses modeled with a GLM distribution and random effects.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Repeated-measures and longitudinal (sampled repeatedly over time) analyses describe applications of mixed models.</p></li>
+<li><p>Note: Choosing the response distribution (<em>i.e., whether you should use a general<u>ized</u> linear model; review the <a href="https://claisselab.github.io/BIO_5100/GLM_module.html">GLM module here</a></em>) and deciding whether to include random effect(s) in your model are separate decisions.</p></li>
+</ul>
+<p>This module will help you recognize when mixed models may be appropriate, describe your design, and find a relevant analysis example.</p>
+</section>
+<section id="before-class-videos-and-guided-practice" class="level1">
+<h1>2) Before class: Videos and guided practice</h1>
+<ul>
+<li><strong>Watch first:</strong> <a href="https://www.youtube.com/watch?v=FCcVPsq8VcA">Fixed and random effects with Tom Reader</a>. Consider which observations in your research share a sampling unit.</li>
+<li><strong>Recommended practice:</strong> <a href="https://app.datacamp.com/learn/courses/hierarchical-and-mixed-effects-models-in-r">DataCamp: Hierarchical and Mixed Effects Models in R</a>. A tutorial lasting approximately 3-4 hours, covering random intercepts and slopes, LMMs, GLMMs, and repeated measures.</li>
+<li><strong>Additional (17 min) conceptual video</strong> (<em>description of mixed model concepts</em>): <a href="https://youtu.be/5tOifM51ZOk">Simple Explanation of Mixed Models</a>. Explains independence, terminology, and random intercepts and slopes.</li>
+<li><strong>Additional (12 min) video demonstrating coding mixed models in R and interpreting outputs:</strong> <a href="https://www.youtube.com/watch?v=smYZdlbE9m8">Palmer Penguins mixed-model example</a>. Practice following the coding example and interpreting random-effects output.</li>
+</ul>
+</section>
+<section id="describe-your-study-design-and-use-ai-to-develop-a-model" class="level1">
+<h1>3) Describe your study design and use AI to develop a model</h1>
+<p>AI can help you decide whether a mixed-effects model is appropriate, translate your study design into an R model formula, and find relevant tutorials.</p>
+<section id="step-1-describe-your-study-and-how-you-collected-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-describe-your-study-and-how-you-collected-the-data">Step 1: Describe your study and how you collected the data</h2>
+<p>Copy and adapt the prompt below. Describe what you actually did in the field or lab without worrying about statistical terminology.</p>
+<p><strong>Prompt to copy:</strong></p>
+<p>Help me choose a statistical model for my biology study, including whether I need random effects and how to specify them.</p>
+<ul>
+<li><strong>My biological question:</strong> [What am I trying to find out or compare?]</li>
+<li><strong>What I measured:</strong> [Describe the outcome and units. For proportions, give the number of successes and total trials; for counts, describe sampling time, area, or other effort.]</li>
+<li><strong>What one spreadsheet row represents:</strong> [For example, one quadrat survey or one mouse measured on one date. You can also paste the output of <code>glimpse(main_data_table)</code> here.]</li>
+<li><strong>Treatments or other factors:</strong> [What did I manipulate or compare? Explain how treatments were assigned and whether they were applied to individual animals, entire tanks, plots, or other units.]</li>
+<li><strong>How samples are organized:</strong> [Describe the numbers of sites, plots, animals, cages, cultures, or batches and samples per group. Explain which units belong together (did you use “blocks” of each treatment?) and how their IDs appear in the spreadsheet.]</li>
+<li><strong>Repeated measurements:</strong> [Did I measure the same units again at certain time intervals, take several measurements within each unit, or collect new samples each time?]</li>
+<li><strong>Timing and other details:</strong> [Describe sampling dates, missing observations, unequal sample sizes, or differences in effort.]</li>
+</ul>
+<p>Before giving me R code, summarize my design back to me in plain language. Identify which units provide separate treatment comparisons and which observations are probably not independent. Ask me questions if important details are missing.</p>
+<p><strong>Examples of design descriptions:</strong></p>
+<ul>
+<li><strong>Ecology:</strong> We counted invertebrates in four permanent plots at each of six sites, three sites for each habitat type. We surveyed the same plots monthly for six months to compare habitats.</li>
+<li><strong>Laboratory:</strong> We assigned eight cages to two diets, with four cages per diet and three mice per cage. We weighed the same mice weekly for six weeks to compare growth between diets.</li>
+</ul>
+</section>
+<section id="step-2-ask-for-a-starting-model-and-plain-language-explanations" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-ask-for-a-starting-model-and-plain-language-explanations">Step 2: Ask for a starting model and plain-language explanations</h2>
+<p>Once the AI accurately describes your study, follow up with:</p>
+<p><strong>Prompt to copy:</strong></p>
+<p>Suggest a starting model formula in R and explain each part in plain language:</p>
+<ul>
+<li><strong>Model terms:</strong> Which terms describe treatment differences or other relationships (fixed effects), and which account for the fact that measurements from the same site, animal, or other group may not be independent (random effects)?</li>
+<li><strong>Type of response:</strong> What model family or distribution fits what I measured? Explain this separately from how observations are grouped.</li>
+</ul>
+<p><strong>Quick tip for students: Why “plain language” works better here:</strong></p>
+<ul>
+<li>When students try to use statistical terms they are still learning (<em>like calling a fixed treatment a “random block” or saying data are “nested” when they are “crossed”</em>), the AI will often take those terms literally and recommend the wrong model formula. Describing the physical reality of the experiment (“I had 4 tanks per temperature, and I measured 10 fish in each tank”) forces the AI to translate from biology to statistical terminology.</li>
+</ul>
+</section>
+<section id="step-3-connect-to-a-tutorial" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-connect-to-a-tutorial">Step 3: Connect to a tutorial</h2>
+<p>Choose a resource from Section 5, then prompt in AI:</p>
+<p>Review this tutorial: [paste URL]. Identify the sections or examples most relevant to my design, explain similarities and differences, and identify anything it does not address.</p>
+</section>
+<section id="step-4-review-the-tutorial-and-adapt-code-to-your-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-review-the-tutorial-and-adapt-code-to-your-analysis">Step 4: Review the tutorial and adapt code to your analysis</h2>
+<p>Your analysis should still involve all the typical steps: exploring data distributions and individual or group patterns with <code>ggplot2</code>, fitting the model, checking diagnostics, and interpreting estimates or predictions with confidence intervals. If you are unsure, you can ask AI to help you interpret a model or diagnostic output (paste the R code and the output into the AI). Check the sources directly and discuss important choices with your adviser.</p>
+</section>
+</section>
+<section id="r-packages-for-fitting-mixed-models" class="level1">
+<h1>4) R packages for fitting mixed models</h1>
+<p>These are the R packages typically used for fitting linear mixed-effects models (LMMs) and generalized linear mixed-effects models (GLMMs). You can typically start with whichever package is used in the tutorial you are following.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Package and main functions</th>
+<th>Why use it?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong><code>lme4</code></strong>: <a href="https://lme4.github.io/lme4/reference/lmer.html"><code>lmer()</code></a>, <a href="https://lme4.github.io/lme4/reference/glmer.html"><code>glmer()</code></a></td>
+<td>Common starting point for LMMs and GLMMs; nested and crossed random effects. <a href="https://www.jstatsoft.org/article/view/v067i01">Paper/citation for this package</a>.</td>
+</tr>
+<tr class="even">
+<td><strong><code>glmmTMB</code></strong>: <a href="https://glmmtmb.github.io/glmmTMB/"><code>glmmTMB()</code></a></td>
+<td>Flexible families, including negative binomial; options for zero-inflation, dispersion, and correlation structures.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="choose-a-tutorial-relevant-to-your-research" class="level1">
+<h1>5) Choose a tutorial relevant to your research</h1>
+<p>Here is a list of tutorials walking through linear mixed-effects model analyses. Find the one most appropriate to adapt to your needs (you can use AI to help identify it).</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Tutorial</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5970551/">(Sci. Paper) Harrison et al.&nbsp;(2018): A brief introduction to mixed effects modelling and multi-model inference in ecology</a></td>
+<td>Paper that walks through examples and explanations for how mixed models can be used in ecological research.</td>
+</tr>
+<tr class="even">
+<td><a href="https://ourcodingclub.github.io/tutorials/mixed-models/">Coding Club: Introduction to linear mixed models</a></td>
+<td>A workshop aimed at people new to mixed modeling. As such, it doesn’t cover all the nuances of mixed models, but hopefully serves as a starting point.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://popecol.org/docs/lme-guide/">PopEcol: Ecology-focused tutorial on linear mixed-effects models</a></td>
+<td>A step-by-step R tutorial that uses an intuitive ecological field example (multiple bird nests sampled across individual trees) to show how ignoring grouped data leads to pseudoreplication and false positives, and how to specify random intercepts, nested designs, and random slopes.</td>
+</tr>
+<tr class="even">
+<td><a href="https://benchbiostats.com/chapters/lmm.html">Bench Biostats: Models for non-independence</a></td>
+<td>An online textbook (mixed-model chapter) focused on using laboratory experiments as examples, including subsampling, blocked designs, and batches.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://r.qcbs.ca/workshop07/book-en/learning-objectives.html">QCBS R Workshop 7: Linear and Generalized Linear Mixed Models</a></td>
+<td>An online textbook guide focused on ecology (using an example of fish trophic position across species and lakes) that covers how to avoid pseudoreplication, build LMMs and GLMMs in <code>lme4</code>, check model assumptions, and plot predictions with <code>ggplot2</code>.</td>
+</tr>
+<tr class="even">
+<td><a href="https://bridgeslab.sph.umich.edu/posts/using-mixed-linear-models-for-repeated-measures/">Bridges Lab: Using mixed linear models for repeated measures</a></td>
+<td>Using longitudinal data, this R tutorial demonstrates how to account for repeated measurements on the same individuals over time by progressing from a standard linear model to mixed-effects models.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://bookdown.org/ybrandvain/Applied-Biostats/rndefx.html#rndefx">Applied Biostats Online Textbook, Random Effects and Mixed Model Chapters</a></td>
+<td>Relevant chapters using tidyverse workflows that introduce mixed models, fixed versus random effects, and tools like <code>broom.mixed</code> and <code>ggeffects</code> for tidying and plotting model outputs.</td>
+</tr>
+<tr class="even">
+<td><a href="https://cran.r-project.org/web/packages/DHARMa/vignettes/DHARMa.html">DHARMa Package Vignette: Residual Diagnostics for Hierarchical Models</a></td>
+<td>Companion guide for checking assumptions (overdispersion, zero-inflation, and residual patterns) in mixed models fitted with <code>lme4</code> or <code>glmmTMB</code> using simulation-based residuals.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://glmmtmb.github.io/glmmTMB/articles/glmmTMB.pdf">Official glmmTMB introduction</a></td>
+<td>Grouped count data and GLMM extensions; ecological count example with repeated observations of nests. Consult advanced options as needed.</td>
+</tr>
+</tbody>
+</table>
+<p>And remember, if your response variable is count or binary data, you can connect these examples to the <a href="https://claisselab.github.io/BIO_5100/GLM_module.html">Generalized Linear Models module</a> and DataCamp’s GLMM chapter.</p>
+</section>
+<section id="explore-fit-check-and-interpret-your-model" class="level1">
+<h1>6) Explore, fit, check, and interpret your model</h1>
+<p>Follow the same general workflow as for other models:</p>
+<ol type="1">
+<li><strong>Explore:</strong> use <code>ggplot2</code> histograms, individual-value plots, and scatterplots; show groups and patterns, and summarize replication.</li>
+<li><strong>Specify and fit:</strong> match the response distribution and fixed and random effects to your question and design.</li>
+<li><strong>Check:</strong> examine residual patterns, assumptions, warnings, and remaining temporal/spatial dependence. Assess residual normality for LMMs and distribution-appropriate diagnostics for GLMMs, typically with the <a href="https://cran.r-project.org/web/packages/DHARMa/vignettes/DHARMa.html">DHARMa package</a>.</li>
+<li><strong>Interpret and plot:</strong> emphasize effect sizes, predictions or estimated means, confidence intervals, and biological relevance.</li>
+<li><strong>Report:</strong> describe sampling units, group and observation counts, model structure, estimation, diagnostics, and packages.</li>
+</ol>
+<p><a href="https://bbolker.github.io/mixedmodels-misc/glmmFAQ.html"><strong>Ben Bolker and colleagues’ GLMM FAQ</strong></a>: <em>You can use this reference for model specification, diagnostics, convergence warnings, singular fits, and other troubleshooting.</em></p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/claisselab\.github\.io\/BIO_5100");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Claisse BIO Course Resources</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ClaisseLab/BIO_5100/blob/main/Mixed_models_module.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org/">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

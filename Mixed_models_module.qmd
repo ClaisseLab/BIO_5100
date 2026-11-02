@@ -9,12 +9,12 @@ format:
 
 # 1) Mixed models: Overview
 
-**Mixed-effects models**, also called **mixed models**, **random effects models**, **multilevel models**, or **hierarchical models**, account for observations that share a group or sampling unit. These terms overlap, although hierarchical models include broader approaches.
+**Mixed-effects models**, also called **mixed models**, **random-effects models**, **multilevel models**, or **hierarchical models**, account for observations that share a group or sampling unit.
 
 Common biological applications include:
 
-- **Field studies:** multiple samples within sites, permanent plots surveyed over time, or repeated observations from individual animals or plants.
-- **Laboratory studies:** repeated measurements from individual mice, lizards, cells or tissues sampled within animals, or observations sharing cultures, donors, plates, cages, or experimental runs.
+- **Field studies:** multiple samples within sites, permanent plots surveyed over time, or multiple/repeated observations from individual animals or plants.
+- **Laboratory studies:** repeated measurements from individual mice or lizards, cells or tissues sampled within animals, or observations sharing cultures, donors, plates, cages, or experimental runs.
 
 Observations within a group/location/individual may be more similar than those from different groups/locations/individuals. Treating them as independent can underrepresent uncertainty and lead to **pseudoreplication**.
 
@@ -27,110 +27,104 @@ Observations within a group/location/individual may be more similar than those f
 
 - Repeated-measures and longitudinal (sampled repeatedly over time) analyses describe applications of mixed models.
 
-- Note: Choosing the response distribution - *i.e., should you use a general[ized]{.underline} linear mode, review the* [GLM](https://claisselab.github.io/BIO_5100/GLM_module.html) *module here* and if you should include random effect(s) in your model are separate decisions.
+- Note: Choosing the response distribution (*i.e., whether you should use a general[ized]{.underline} linear model; review the [GLM module here](https://claisselab.github.io/BIO_5100/GLM_module.html)*) and deciding whether to include random effect(s) in your model are separate decisions.
 
 This module will help you recognize when mixed models may be appropriate, describe your design, and find a relevant analysis example.
 
 # 2) Before class: Videos and guided practice
 
 - **Watch first:** [Fixed and random effects with Tom Reader](https://www.youtube.com/watch?v=FCcVPsq8VcA). Consider which observations in your research share a sampling unit.
-- **Recommended practice:** [DataCamp: Hierarchical and Mixed Effects Models in R](https://app.datacamp.com/learn/courses/hierarchical-and-mixed-effects-models-in-r). Approximately 3-4 hour tutorial covering random intercepts and slopes, LMMs, GLMMs, and repeated measures.
+- **Recommended practice:** [DataCamp: Hierarchical and Mixed Effects Models in R](https://app.datacamp.com/learn/courses/hierarchical-and-mixed-effects-models-in-r). A tutorial lasting approximately 3-4 hours, covering random intercepts and slopes, LMMs, GLMMs, and repeated measures.
 - **Additional (17 min) conceptual video** (*description of mixed model concepts*): [Simple Explanation of Mixed Models](https://youtu.be/5tOifM51ZOk). Explains independence, terminology, and random intercepts and slopes.
-- **Additional (12 min) video demo coding mixed models in R and interpreting outputs:** [Palmer Penguins mixed-model example](https://www.youtube.com/watch?v=smYZdlbE9m8). Practice following coding example and interpreting random-effects outputs.
+- **Additional (12 min) video demonstrating coding mixed models in R and interpreting outputs:** [Palmer Penguins mixed-model example](https://www.youtube.com/watch?v=smYZdlbE9m8). Practice following the coding example and interpreting random-effects output.
 
 # 3) Describe your study design and use AI to develop a model
 
-AI can help translate your biological question and experimental/sampling design into model terms (*i.e., how should you specify the fixed and random effects in your model formula?*) and identify relevant tutorials.
+AI can help you decide whether a mixed-effects model is appropriate, translate your study design into an R model formula, and find relevant tutorials.
 
-## Step 1: Describe your study design and research question(s).
+## Step 1: Describe your study and how you collected the data
 
-Adapt this prompt. If you are unsure about a statistical term, just describe what you actually did.
+Copy and adapt the prompt below. Describe what you actually did in the field or lab without worrying about statistical terminology.
 
-Help me choose an analysis for this study:
+**Prompt to copy:**
 
-- Biological question and comparison of interest: [description]
-- Response and units: [include trial denominator or sampling effort if relevant]
-- One row represents: [description]
-- Main predictors and treatment assignment: [what received treatment independently,
-  or explain that the study is observational]
-- Groups and replication: [numbers of sites, plots, animals, cultures, batches,
-  etc., and observations per group]
-- Repeated sampling: [which exact units were measured again versus newly sampled]
-- Group relationships and IDs: [which units belong to which groups; unique IDs?]
-- Timing, missing observations, and unequal effort: [description]
+Help me choose a statistical model for my biology study, including whether I need random effects and how to specify them.
 
-Restate my design, identify the observation and experimental units where applicable,
-and explain sources of non-independence. Ask about missing information before coding.
+- **My biological question:** \[What am I trying to find out or compare?\]
+- **What I measured:** \[Describe the outcome and units. For proportions, give the number of successes and total trials; for counts, describe sampling time, area, or other effort.\]
+- **What one spreadsheet row represents:** \[For example, one quadrat survey or one mouse measured on one date. You can also paste the output of `glimpse(main_data_table)` here.\]
+- **Treatments or other factors:** \[What did I manipulate or compare? Explain how treatments were assigned and whether they were applied to individual animals, entire tanks, plots, or other units.\]
+- **How samples are organized:** \[Describe the numbers of sites, plots, animals, cages, cultures, or batches and samples per group. Explain which units belong together (did you use "blocks" of each treatment?) and how their IDs appear in the spreadsheet.\]
+- **Repeated measurements:** \[Did I measure the same units again at certain time intervals, take several measurements within each unit, or collect new samples each time?\]
+- **Timing and other details:** \[Describe sampling dates, missing observations, unequal sample sizes, or differences in effort.\]
 
+Before giving me R code, summarize my design back to me in plain language. Identify which units provide separate treatment comparisons and which observations are probably not independent. Ask me questions if important details are missing.
 
-## Step 2: Request a model and explanations
+**Examples of design descriptions:**
 
-Propose a starting model and explain each fixed and random term. Explain the
-response distribution separately from the grouping structure. Consider whether
-the design supports random slopes, nested or crossed effects, or additional
-temporal/spatial correlation. Identify limitations from replication, few groups,
-or confounding, and explain any reasonable alternative formulation.
+- **Ecology:** We counted invertebrates in four permanent plots at each of six sites, three sites for each habitat type. We surveyed the same plots monthly for six months to compare habitats.
+- **Laboratory:** We assigned eight cages to two diets, with four cages per diet and three mice per cage. We weighed the same mice weekly for six weeks to compare growth between diets.
 
+## Step 2: Ask for a starting model and plain-language explanations
+
+Once the AI accurately describes your study, follow up with:
+
+**Prompt to copy:**
+
+Suggest a starting model formula in R and explain each part in plain language:
+
+- **Model terms:** Which terms describe treatment differences or other relationships (fixed effects), and which account for the fact that measurements from the same site, animal, or other group may not be independent (random effects)?
+- **Type of response:** What model family or distribution fits what I measured? Explain this separately from how observations are grouped.
+
+**Quick tip for students: Why "plain language" works better here:**
+
+- When students try to use statistical terms they are still learning (*like calling a fixed treatment a "random block" or saying data are "nested" when they are "crossed"*), the AI will often take those terms literally and recommend the wrong model formula. Describing the physical reality of the experiment ("I had 4 tanks per temperature, and I measured 10 fish in each tank") forces the AI to translate from biology to statistical terminology.
 
 ## Step 3: Connect to a tutorial
 
-Choose a resource from Section 5, then ask:
+Choose a resource from Section 5, then prompt in AI:
 
-Review this tutorial: [paste URL]. Identify the sections or examples most relevant
-to my design, explain similarities and differences, and identify anything it
-does not address.
-
+Review this tutorial: \[paste URL\]. Identify the sections or examples most relevant to my design, explain similarities and differences, and identify anything it does not address.
 
 ## Step 4: Review the tutorial and adapt code to your analysis
 
-Your analysis still involves exploring data distributions and individual or group patterns with `ggplot2`, fitting the model, checking diagnostics, and interpreting estimates or predictions with confidence intervals. If you are unsure you can ask AI to help you interpret a model or diagnostic output. Check the sources directly and discuss important choices with your adviser.
+Your analysis should still involve all the typical steps: exploring data distributions and individual or group patterns with `ggplot2`, fitting the model, checking diagnostics, and interpreting estimates or predictions with confidence intervals. If you are unsure, you can ask AI to help you interpret a model or diagnostic output (paste the R code and the output into the AI). Check the sources directly and discuss important choices with your adviser.
 
 # 4) R packages for fitting mixed models
 
-These are the R packages typically used for fitting linear mixed effect models (LMM) and generalized linear mixed effect models (GLMM). Typically you could start with using whichever package the tutorial you are 
+These are the R packages typically used for fitting linear mixed-effects models (LMMs) and generalized linear mixed-effects models (GLMMs). You can typically start with whichever package is used in the tutorial you are following.
 
 | Package and main functions | Why use it? |
 |------------------------------------|------------------------------------|
-| **`lme4`**: [`lmer()`](https://lme4.github.io/lme4/reference/lmer.html), [`glmer()`](https://lme4.github.io/lme4/reference/glmer.html) | Common starting point for LMMs and GLMMs; nested and crossed random effects. [paper/citation for this package](https://www.jstatsoft.org/article/view/v067i01) |
+| **`lme4`**: [`lmer()`](https://lme4.github.io/lme4/reference/lmer.html), [`glmer()`](https://lme4.github.io/lme4/reference/glmer.html) | Common starting point for LMMs and GLMMs; nested and crossed random effects. [Paper/citation for this package](https://www.jstatsoft.org/article/view/v067i01). |
 | **`glmmTMB`**: [`glmmTMB()`](https://glmmtmb.github.io/glmmTMB/) | Flexible families, including negative binomial; options for zero-inflation, dispersion, and correlation structures. |
 
 # 5) Choose a tutorial relevant to your research
 
-Here are a list of tutorials walking through linear mixed effect model analyses. Find (can use AI to help you identify) which is most appropriate to adapt to your needs.
+Here is a list of tutorials walking through linear mixed-effects model analyses. Find the one most appropriate to adapt to your needs (you can use AI to help identify it).
 
-| Tutorial | Best suited to | Suggested focus |
-|------------------------|------------------------|------------------------|
-| [Coding Club: Introduction to linear mixed models](https://ourcodingclub.github.io/tutorials/mixed-models/) | Nested or crossed sampling | Equation-free example of dragons within sites and mountain ranges; model structure and predictions. Model-selection extras are optional. |
-| **Start here for ecology:** [PopEcol: Field guide to linear mixed-effects models](https://popecol.org/docs/lme-guide/) | Grouped field observations | Nest temperatures within trees; sampling structure, random-effect variation, nesting, and slopes. |
-| [Bench Biostats: Models for non-independence](https://benchbiostats.com/chapters/lmm.html) | Laboratory experiments, subsampling, blocked designs, and batches | Sections 16.1-16.4 introduce designs; 16.8 covers measurements within mice, 16.9 paired observations, and 16.10 multiple conditions within blocks. |
-| **Start here for repeated measurements:** [Bridges Lab tutorial](https://bridgeslab.sph.umich.edu/posts/using-mixed-linear-models-for-repeated-measures/) | Repeated measurements over time | Reaction times within people; random intercepts, random slopes, and diagnostics. Adapt the structure to repeatedly measured animals. |
-| [Michael Clark: Random intercepts](https://m-clark.github.io/mixed-models-with-R/random_intercepts.html) | Further conceptual explanation | Repeated GPA measurements, variance components, and predictors at different levels; continue to random slopes as needed. |
-| [Adrian Correndo: Tidy Mixed Models in R](https://adriancorrendo.github.io/univ6020/coding/code/repmeasuresmodel.html) | Correlated measurements and unequal variance | Optional, more detailed workflow using repeated soil-depth measurements within plots, diagnostics, and estimated means. |
-| [Official glmmTMB introduction](https://glmmtmb.github.io/glmmTMB/articles/glmmTMB.pdf) | Grouped count data and GLMM extensions | Ecological count example with repeated observations of nests; consult advanced options as needed. |
+| Tutorial | Description |
+|------------------------------------|------------------------------------|
+| [(Sci. Paper) Harrison et al. (2018): A brief introduction to mixed effects modelling and multi-model inference in ecology](https://pmc.ncbi.nlm.nih.gov/articles/PMC5970551/) | Paper that walks through examples and explanations for how mixed models can be used in ecological research. |
+| [Coding Club: Introduction to linear mixed models](https://ourcodingclub.github.io/tutorials/mixed-models/) | A workshop aimed at people new to mixed modeling. As such, it doesn't cover all the nuances of mixed models, but hopefully serves as a starting point. |
+| [PopEcol: Ecology-focused tutorial on linear mixed-effects models](https://popecol.org/docs/lme-guide/) | A step-by-step R tutorial that uses an intuitive ecological field example (multiple bird nests sampled across individual trees) to show how ignoring grouped data leads to pseudoreplication and false positives, and how to specify random intercepts, nested designs, and random slopes. |
+| [Bench Biostats: Models for non-independence](https://benchbiostats.com/chapters/lmm.html) | An online textbook (mixed-model chapter) focused on using laboratory experiments as examples, including subsampling, blocked designs, and batches. |
+| [QCBS R Workshop 7: Linear and Generalized Linear Mixed Models](https://r.qcbs.ca/workshop07/book-en/learning-objectives.html) | An online textbook guide focused on ecology (using an example of fish trophic position across species and lakes) that covers how to avoid pseudoreplication, build LMMs and GLMMs in `lme4`, check model assumptions, and plot predictions with `ggplot2`. |
+| [Bridges Lab: Using mixed linear models for repeated measures](https://bridgeslab.sph.umich.edu/posts/using-mixed-linear-models-for-repeated-measures/) | Using longitudinal data, this R tutorial demonstrates how to account for repeated measurements on the same individuals over time by progressing from a standard linear model to mixed-effects models. |
+| [Applied Biostats Online Textbook, Random Effects and Mixed Model Chapters](https://bookdown.org/ybrandvain/Applied-Biostats/rndefx.html#rndefx) | Relevant chapters using tidyverse workflows that introduce mixed models, fixed versus random effects, and tools like `broom.mixed` and `ggeffects` for tidying and plotting model outputs. |
+| [DHARMa Package Vignette: Residual Diagnostics for Hierarchical Models](https://cran.r-project.org/web/packages/DHARMa/vignettes/DHARMa.html) | Companion guide for checking assumptions (overdispersion, zero-inflation, and residual patterns) in mixed models fitted with `lme4` or `glmmTMB` using simulation-based residuals. |
+| [Official glmmTMB introduction](https://glmmtmb.github.io/glmmTMB/articles/glmmTMB.pdf) | Grouped count data and GLMM extensions; ecological count example with repeated observations of nests. Consult advanced options as needed. |
 
-For grouped count or binary responses, connect these examples to the [GLM module](GLM_module.html) and DataCamp's GLMM chapter.
+And remember, if your response variable is count or binary data, you can connect these examples to the [Generalized Linear Models module](https://claisselab.github.io/BIO_5100/GLM_module.html) and DataCamp's GLMM chapter.
 
 # 6) Explore, fit, check, and interpret your model
 
-::: {.callout-tip title="Key reference for mixed models"}
-[**Ben Bolker and colleagues' GLMM FAQ**](https://bbolker.github.io/mixedmodels-misc/glmmFAQ.html)
-
-Use this reference for model specification, diagnostics, convergence warnings, singular fits, and troubleshooting.
-:::
-
 Follow the same general workflow as for other models:
 
-1.  **Explore:** use `ggplot2` histograms, individual-value plots, and scatterplots; show groups or trajectories and summarize replication.
+1.  **Explore:** use `ggplot2` histograms, individual-value plots, and scatterplots; show groups and patterns, and summarize replication.
 2.  **Specify and fit:** match the response distribution and fixed and random effects to your question and design.
-3.  **Check:** examine residual patterns, assumptions, warnings, and remaining temporal/spatial dependence. Assess residual normality for LMMs and distribution-appropriate diagnostics for GLMMs.
+3.  **Check:** examine residual patterns, assumptions, warnings, and remaining temporal/spatial dependence. Assess residual normality for LMMs and distribution-appropriate diagnostics for GLMMs, typically with the [DHARMa package](https://cran.r-project.org/web/packages/DHARMa/vignettes/DHARMa.html).
 4.  **Interpret and plot:** emphasize effect sizes, predictions or estimated means, confidence intervals, and biological relevance.
 5.  **Report:** describe sampling units, group and observation counts, model structure, estimation, diagnostics, and packages.
 
-# 7) Further learning
-
-- [Beyond Multiple Linear Regression, Chapter 8](https://bookdown.org/roback/bookdown-BeyondMLR/ch-multilevelintro.html): deeper explanation of multilevel models.
-- [Harrison et al. (2018)](https://pmc.ncbi.nlm.nih.gov/articles/PMC5970551/): mixed-model guidance for ecological research.
-
-Pursue additional coursework or a workshop if mixed models are central to your thesis. Students continuing to PhD programs should take a full course when these methods are important in their subfield.
-
-[Back to BIO 5150L resources](BIO_5150L.html)
+[**Ben Bolker and colleagues' GLMM FAQ**](https://bbolker.github.io/mixedmodels-misc/glmmFAQ.html): *You can use this reference for model specification, diagnostics, convergence warnings, singular fits, and other troubleshooting.*
