@@ -1,0 +1,136 @@
+---
+title: "Mixed Models Module"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-copy: true
+---
+
+# 1) Mixed models: Overview
+
+**Mixed-effects models**, also called **mixed models**, **random effects models**, **multilevel models**, or **hierarchical models**, account for observations that share a group or sampling unit. These terms overlap, although hierarchical models include broader approaches.
+
+Common biological applications include:
+
+- **Field studies:** multiple samples within sites, permanent plots surveyed over time, or repeated observations from individual animals or plants.
+- **Laboratory studies:** repeated measurements from individual mice, lizards, cells or tissues sampled within animals, or observations sharing cultures, donors, plates, cages, or experimental runs.
+
+Observations within a group/location/individual may be more similar than those from different groups/locations/individuals. Treating them as independent can underrepresent uncertainty and lead to **pseudoreplication**.
+
+**Fixed effects** describe systematic comparisons or relationships, such as treatment differences or time trends. **Random effects** describe variation among groups/locations/individuals in baseline responses or relationships with predictors.
+
+| Model | Typical application |
+|------------------------------------|------------------------------------|
+| Linear mixed model (LMM), also called a linear mixed-effects model (LME or LMEM) | Continuous responses with approximately Gaussian residuals after accounting for predictors and grouping. |
+| Generalized linear mixed model (GLMM) | Counts, binary outcomes, or other responses modeled with a GLM distribution and random effects. |
+
+- Repeated-measures and longitudinal (sampled repeatedly over time) analyses describe applications of mixed models.
+
+- Note: Choosing the response distribution - *i.e., should you use a general[ized]{.underline} linear mode, review the* [GLM](https://claisselab.github.io/BIO_5100/GLM_module.html) *module here* and if you should include random effect(s) in your model are separate decisions.
+
+This module will help you recognize when mixed models may be appropriate, describe your design, and find a relevant analysis example.
+
+# 2) Before class: Videos and guided practice
+
+- **Watch first:** [Fixed and random effects with Tom Reader](https://www.youtube.com/watch?v=FCcVPsq8VcA). Consider which observations in your research share a sampling unit.
+- **Recommended practice:** [DataCamp: Hierarchical and Mixed Effects Models in R](https://app.datacamp.com/learn/courses/hierarchical-and-mixed-effects-models-in-r). Approximately 3-4 hour tutorial covering random intercepts and slopes, LMMs, GLMMs, and repeated measures.
+- **Additional (17 min) conceptual video** (*description of mixed model concepts*): [Simple Explanation of Mixed Models](https://youtu.be/5tOifM51ZOk). Explains independence, terminology, and random intercepts and slopes.
+- **Additional (12 min) video demo coding mixed models in R and interpreting outputs:** [Palmer Penguins mixed-model example](https://www.youtube.com/watch?v=smYZdlbE9m8). Practice following coding example and interpreting random-effects outputs.
+
+# 3) Describe your study design and use AI to develop a model
+
+AI can help translate your biological question and experimental/sampling design into model terms (*i.e., how should you specify the fixed and random effects in your model formula?*) and identify relevant tutorials.
+
+## Step 1: Describe your study design and research question(s).
+
+Adapt this prompt. If you are unsure about a statistical term, just describe what you actually did.
+
+Help me choose an analysis for this study:
+
+- Biological question and comparison of interest: [description]
+- Response and units: [include trial denominator or sampling effort if relevant]
+- One row represents: [description]
+- Main predictors and treatment assignment: [what received treatment independently,
+  or explain that the study is observational]
+- Groups and replication: [numbers of sites, plots, animals, cultures, batches,
+  etc., and observations per group]
+- Repeated sampling: [which exact units were measured again versus newly sampled]
+- Group relationships and IDs: [which units belong to which groups; unique IDs?]
+- Timing, missing observations, and unequal effort: [description]
+
+Restate my design, identify the observation and experimental units where applicable,
+and explain sources of non-independence. Ask about missing information before coding.
+
+
+## Step 2: Request a model and explanations
+
+Propose a starting model and explain each fixed and random term. Explain the
+response distribution separately from the grouping structure. Consider whether
+the design supports random slopes, nested or crossed effects, or additional
+temporal/spatial correlation. Identify limitations from replication, few groups,
+or confounding, and explain any reasonable alternative formulation.
+
+
+## Step 3: Connect to a tutorial
+
+Choose a resource from Section 5, then ask:
+
+Review this tutorial: [paste URL]. Identify the sections or examples most relevant
+to my design, explain similarities and differences, and identify anything it
+does not address.
+
+
+## Step 4: Review the tutorial and adapt code to your analysis
+
+Your analysis still involves exploring data distributions and individual or group patterns with `ggplot2`, fitting the model, checking diagnostics, and interpreting estimates or predictions with confidence intervals. If you are unsure you can ask AI to help you interpret a model or diagnostic output. Check the sources directly and discuss important choices with your adviser.
+
+# 4) R packages for fitting mixed models
+
+These are the R packages typically used for fitting linear mixed effect models (LMM) and generalized linear mixed effect models (GLMM). Typically you could start with using whichever package the tutorial you are 
+
+| Package and main functions | Why use it? |
+|------------------------------------|------------------------------------|
+| **`lme4`**: [`lmer()`](https://lme4.github.io/lme4/reference/lmer.html), [`glmer()`](https://lme4.github.io/lme4/reference/glmer.html) | Common starting point for LMMs and GLMMs; nested and crossed random effects. [paper/citation for this package](https://www.jstatsoft.org/article/view/v067i01) |
+| **`glmmTMB`**: [`glmmTMB()`](https://glmmtmb.github.io/glmmTMB/) | Flexible families, including negative binomial; options for zero-inflation, dispersion, and correlation structures. |
+
+# 5) Choose a tutorial relevant to your research
+
+Here are a list of tutorials walking through linear mixed effect model analyses. Find (can use AI to help you identify) which is most appropriate to adapt to your needs.
+
+| Tutorial | Best suited to | Suggested focus |
+|------------------------|------------------------|------------------------|
+| [Coding Club: Introduction to linear mixed models](https://ourcodingclub.github.io/tutorials/mixed-models/) | Nested or crossed sampling | Equation-free example of dragons within sites and mountain ranges; model structure and predictions. Model-selection extras are optional. |
+| **Start here for ecology:** [PopEcol: Field guide to linear mixed-effects models](https://popecol.org/docs/lme-guide/) | Grouped field observations | Nest temperatures within trees; sampling structure, random-effect variation, nesting, and slopes. |
+| [Bench Biostats: Models for non-independence](https://benchbiostats.com/chapters/lmm.html) | Laboratory experiments, subsampling, blocked designs, and batches | Sections 16.1-16.4 introduce designs; 16.8 covers measurements within mice, 16.9 paired observations, and 16.10 multiple conditions within blocks. |
+| **Start here for repeated measurements:** [Bridges Lab tutorial](https://bridgeslab.sph.umich.edu/posts/using-mixed-linear-models-for-repeated-measures/) | Repeated measurements over time | Reaction times within people; random intercepts, random slopes, and diagnostics. Adapt the structure to repeatedly measured animals. |
+| [Michael Clark: Random intercepts](https://m-clark.github.io/mixed-models-with-R/random_intercepts.html) | Further conceptual explanation | Repeated GPA measurements, variance components, and predictors at different levels; continue to random slopes as needed. |
+| [Adrian Correndo: Tidy Mixed Models in R](https://adriancorrendo.github.io/univ6020/coding/code/repmeasuresmodel.html) | Correlated measurements and unequal variance | Optional, more detailed workflow using repeated soil-depth measurements within plots, diagnostics, and estimated means. |
+| [Official glmmTMB introduction](https://glmmtmb.github.io/glmmTMB/articles/glmmTMB.pdf) | Grouped count data and GLMM extensions | Ecological count example with repeated observations of nests; consult advanced options as needed. |
+
+For grouped count or binary responses, connect these examples to the [GLM module](GLM_module.html) and DataCamp's GLMM chapter.
+
+# 6) Explore, fit, check, and interpret your model
+
+::: {.callout-tip title="Key reference for mixed models"}
+[**Ben Bolker and colleagues' GLMM FAQ**](https://bbolker.github.io/mixedmodels-misc/glmmFAQ.html)
+
+Use this reference for model specification, diagnostics, convergence warnings, singular fits, and troubleshooting.
+:::
+
+Follow the same general workflow as for other models:
+
+1.  **Explore:** use `ggplot2` histograms, individual-value plots, and scatterplots; show groups or trajectories and summarize replication.
+2.  **Specify and fit:** match the response distribution and fixed and random effects to your question and design.
+3.  **Check:** examine residual patterns, assumptions, warnings, and remaining temporal/spatial dependence. Assess residual normality for LMMs and distribution-appropriate diagnostics for GLMMs.
+4.  **Interpret and plot:** emphasize effect sizes, predictions or estimated means, confidence intervals, and biological relevance.
+5.  **Report:** describe sampling units, group and observation counts, model structure, estimation, diagnostics, and packages.
+
+# 7) Further learning
+
+- [Beyond Multiple Linear Regression, Chapter 8](https://bookdown.org/roback/bookdown-BeyondMLR/ch-multilevelintro.html): deeper explanation of multilevel models.
+- [Harrison et al. (2018)](https://pmc.ncbi.nlm.nih.gov/articles/PMC5970551/): mixed-model guidance for ecological research.
+
+Pursue additional coursework or a workshop if mixed models are central to your thesis. Students continuing to PhD programs should take a full course when these methods are important in their subfield.
+
+[Back to BIO 5150L resources](BIO_5150L.html)
